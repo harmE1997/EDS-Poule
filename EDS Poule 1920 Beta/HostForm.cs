@@ -51,7 +51,7 @@ namespace EDS_Poule
                 finalists[0] = tbFin1.Text;
                 finalists[1] = tbFin2.Text;
                 BonusQuestions questions = new BonusQuestions(tbKampioen.Text, tbDegradant.Text, tbTopscorer.Text, tbTrainer.Text
-                    , tbWinterkampioen.Text, Convert.ToInt16(tbRonde.Text), tbDiv1Kampioen.Text, finalists);
+                    , tbWinterkampioen.Text, tbRonde.Text, tbDiv1Kampioen.Text, finalists);
 
                 Estimations estimations = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));
                 Host = new Player(tbName.Text, weeks, questions, estimations);
@@ -81,15 +81,15 @@ namespace EDS_Poule
 
         private void loadBonus()
         {
-            tbKampioen.Text = Host.Questions.Kampioen;
-            tbDegradant.Text = Host.Questions.Degradant;
-            tbDiv1Kampioen.Text = Host.Questions.KamipoenDivisie1;
-            tbFin1.Text = Host.Questions.Bekerfinalisten[0];
-            tbFin2.Text = Host.Questions.Bekerfinalisten[1];
-            tbRonde.Text = Host.Questions.ChampionRound.ToString();
-            tbTopscorer.Text = Host.Questions.Topscorer;
-            tbTrainer.Text = Host.Questions.Trainer;
-            tbWinterkampioen.Text = Host.Questions.Winterkampioen;
+            tbKampioen.Text = Host.Questions.Answers["Kampioen"].Answer;
+            tbDegradant.Text = Host.Questions.Answers["Degradant"].Answer;
+            tbDiv1Kampioen.Text = Host.Questions.Answers["Kampioendivisie1"].Answer;
+            tbFin1.Text = Host.Questions.Answers["Finalisten"].Answer[0];
+            tbFin2.Text = Host.Questions.Answers["Finalisten"].Answer[1];
+            tbRonde.Text = Host.Questions.Answers["Championround"].Answer;
+            tbTopscorer.Text = Host.Questions.Answers["Topscorer"].Answer;
+            tbTrainer.Text = Host.Questions.Answers["Trainer"].Answer;
+            tbWinterkampioen.Text = Host.Questions.Answers["Winterkampioen"].Answer;
         }
         private void fillNudsArray()
         {
@@ -157,7 +157,7 @@ namespace EDS_Poule
             string[] finalists = new string[2];
             finalists[0] = "";
             finalists[1] = "";
-            BonusQuestions ans = new BonusQuestions("", "", "", "", "", 0, "", finalists);
+            BonusQuestions ans = new BonusQuestions("", "", "", "", "", "", "", finalists);
             Estimations ests = new Estimations(-20,-20);
             Host = new Player("Host", weeks, ans, ests);
         }

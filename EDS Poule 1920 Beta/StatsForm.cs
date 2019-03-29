@@ -38,37 +38,37 @@ namespace EDS_Poule
                 switch (field)
                 {
                     case "c":
-                        stat = player.Questions.Kampioen;
+                        stat = player.Questions.Answers["Kampioen"].Answer;
                         break;
 
                     case "cd1":
-                        stat = player.Questions.KamipoenDivisie1;
+                        stat = player.Questions.Answers["Kampioendivisie1"].Answer;
                         break;
 
                     case "t":
-                        stat = player.Questions.Topscorer;
+                        stat = player.Questions.Answers["Topscorer"].Answer;
                         break;
 
                     case "tr":
-                        stat = player.Questions.Trainer;
+                        stat = player.Questions.Answers["Trainer"].Answer;
                         break;
 
                     case "wc":
-                        stat = player.Questions.Winterkampioen;
+                        stat = player.Questions.Answers["Winterkampioen"].Answer;
                         break;
 
                     case "d":
-                        stat = player.Questions.Degradant;
+                        stat = player.Questions.Answers["Degradant"].Answer;
                         break;
 
                     case "rc":
-                        stat = player.Questions.ChampionRound.ToString();
+                        stat = player.Questions.Answers["Championround"].Answer;
                         break;
 
                     case "cf":
-                        stat = player.Questions.Bekerfinalisten[0];
+                        stat = player.Questions.Answers["Finalisten"].Answer[0];
                         UpdateStats(stat, player.Name);
-                        stat = player.Questions.Bekerfinalisten[1];
+                        stat = player.Questions.Answers["Finalisten"].Answer[1];
                         break;
                 }
                 UpdateStats(stat, player.Name);               

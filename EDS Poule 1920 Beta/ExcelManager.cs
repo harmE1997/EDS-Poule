@@ -9,6 +9,38 @@ using System.IO;
 
 namespace EDS_Poule
 {
+    public class ExcelReadSettings
+    {
+        public int StartRow = 11;
+        public int BlockSize = 9;
+        public int TotalBlocks = 34;
+        public int CurrentBlock = 0;
+        public int HomeColumn = 7;
+        public int OutColumn = 8;
+        public int Miss = 0;
+
+        public ExcelReadSettings(int adjustment = 0, int miss = 0)
+        {
+            Adjustsettings(adjustment);
+            StartRow += miss;
+        }
+        public void Adjustsettings( int adjustment)
+        {
+            if (adjustment == 1)
+            {
+                TotalBlocks = 17;
+            }
+
+            else if (adjustment == 2)
+            {
+                CurrentBlock = 17;
+                StartRow = 11;
+                HomeColumn = 16;
+                OutColumn = 17;
+            }
+        }
+    }
+
     public class ExcelManager
     {
         excel.Application xlApp;
@@ -49,83 +81,46 @@ namespace EDS_Poule
             }
         }
 
-        public Week[] readPredictions(string filename, int sheet, bool first, bool second, int miss, Week[] Weeks = null)
+        public Week[] readPredictions(string filename, int sheet, ExcelReadSettings Settings, Week[] Weeks = null)
         {
             Initialise(filename, sheet);
             var weeks = new Week[34];
             if (Weeks != null)
                 weeks = Weeks;
 
-            int row = 11;
-            int rowcounter = 20;
-            int blockchecker = 34;
-            int blocks = 0;
-            int Home = 7;
-            int Out = 8;
-
-            if (first && !second)
-            {
-                blockchecker = 17;
-                weeks = new Week[17];
-            }
-
-            if (second && !first)
-            {
-                blocks = 17;
-                rowcounter = 20;
-                Home = 16;
-                Out = 17;
-            }
-
-            row += miss;
-            rowcounter += miss;
-
-            while (blocks < blockchecker)
+            int StartRow = Settings.StartRow;
+            int currentblock = Settings.CurrentBlock;
+            while (currentblock < Settings.TotalBlocks)
             {
                 Match[] fileMatches = new Match[9];
-                int rowschecked = 1;
-                while (row < rowcounter) // excel is niet 0 based.
+                int rowschecked = 0;
+                while (rowschecked < Settings.BlockSize)
                 {
-                    double x;
-                    double y;
-                    if (xlRange.Cells[row, Home].Value2 == null || xlRange.Cells[row, Out].Value2 == null)
-                    {
-                        x = 99;
-                        y = 99;
-                    }
+                    double x = 99;
+                    double y = 99;
+                    int currentRow = StartRow + rowschecked;
 
-                    else
+                    if (xlRange.Cells[currentRow, Settings.HomeColumn].Value2 != null && xlRange.Cells[currentRow, Settings.OutColumn].Value2 != null)
                     {
-                        x = xlRange.Cells[row, Home].Value2;
-                        y = xlRange.Cells[row, Out].Value2;
+                        x = xlRange.Cells[currentRow, Settings.HomeColumn].Value2;
+                        y = xlRange.Cells[currentRow, Settings.OutColumn].Value2;
                     }
                     Match match = new Match(Convert.ToInt32(x), Convert.ToInt32(y));
                     fileMatches[rowschecked] = match;
 
-                    row++;
                     rowschecked++;
                     if (rowschecked == 9)
                         rowschecked = 0;
                 }
 
-                weeks[blocks] = new Week(blocks + 1, fileMatches);
+                weeks[currentblock] = new Week(currentblock + 1, fileMatches);
+                StartRow += Settings.BlockSize + 1;
+                currentblock++;
 
-                if (blocks == 16 && blockchecker == 34)
+                if (currentblock == 16 && Settings.TotalBlocks == 34)
                 {
-                    blocks = 17;
-                    row = 11;
-                    rowcounter = 20;
-                    Home = 16;
-                    Out = 17;
+                    Settings.Adjustsettings(2);
                 }
-
-                else
-                {
-                    row++;
-                    rowcounter += 10;
-                }
-
-                blocks++;
             }
 
             return weeks;
