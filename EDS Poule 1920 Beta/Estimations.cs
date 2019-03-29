@@ -6,34 +6,36 @@ using System.Threading.Tasks;
 
 namespace EDS_Poule
 {
+    public struct Estimation
+    {
+        public int Answer;
+        public int Max;
+    }
+
     [Serializable]
     public class Estimations
     {
-        public int Redcards { get; private set; }
-        public int RedsMax { get; private set; }
-
-        public int GoalsTopscorer { get; private set; }
-        public int GoalsMax { get; private set; }
-
+        Dictionary<string, Estimation> Answers;
 
         public Estimations(int reds, int goals)
         {
-            GoalsTopscorer = goals;
-            Redcards = reds;
-            RedsMax = 20;
-            GoalsMax = 10;
+            Answers = new Dictionary<string, Estimation>()
+            {
+                { "Reds", new Estimation() {Answer = reds, Max = 20 } },
+                { "Goals", new Estimation() { Answer = goals, Max = 10} }
+            };
         }
         public int checkEstimations(Player host)
         {
             int score = 0;
-
-            int miss = Math.Abs(Redcards - host.Estimations.Redcards); 
-            if(RedsMax > miss)
-                score += (RedsMax - miss);
-
-            miss = Math.Abs(GoalsTopscorer - host.Estimations.GoalsTopscorer);
-            if (GoalsMax > miss)
-                score += (GoalsMax - miss);
+            foreach (var a in Answers)
+            {
+                int miss = Math.Abs(a.Value.Answer - host.Estimations.Answers[a.Key].Answer);
+                if (a.Value.Max > miss)
+                {
+                    score += (a.Value.Max - miss);
+                }
+            }
 
             return score;
         }

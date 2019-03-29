@@ -25,31 +25,31 @@ namespace EDS_Poule
 
             while (counter < 9)
             {
-                if (hostweek.Matches[counter].ResultA != 99 && Matches[counter].ResultA != 99)
+                var ThisA = Matches[counter].ResultA;
+                var ThisB = Matches[counter].ResultB;
+                var HostA = hostweek.Matches[counter].ResultA;
+                var HostB = hostweek.Matches[counter].ResultB;
+                var ThisWinner = Matches[counter].Winner;
+                var HostWinner = hostweek.Matches[counter].Winner;
+
+                if (HostA != 99 && ThisA != 99)
                 {
-                    if (Matches[counter].ResultA == hostweek.Matches[counter].ResultA
-                        && Matches[counter].ResultB == hostweek.Matches[counter].ResultB)
+                    if (ThisA == HostA && ThisB == HostB)
                     {
                         score += 10;
                     }
 
-                    else if ((Matches[counter].ResultA == hostweek.Matches[counter].ResultA
-                        || Matches[counter].ResultB == hostweek.Matches[counter].ResultB)
-                        && Matches[counter].Winner == hostweek.Matches[counter].Winner)
+                    else if ((ThisA == HostA || ThisB == HostB) && ThisWinner == HostWinner)
                     {
                         score += 8;
                     }
 
-                    else if ((Matches[counter].ResultA != hostweek.Matches[counter].ResultA
-                        && Matches[counter].ResultB != hostweek.Matches[counter].ResultB)
-                        && Matches[counter].Winner == hostweek.Matches[counter].Winner)
+                    else if ((ThisA != HostA && ThisB != HostB) && ThisWinner == HostWinner)
                     {
                         score += 6;
                     }
 
-                    else if ((Matches[counter].ResultA == hostweek.Matches[counter].ResultA
-                    || Matches[counter].ResultB == hostweek.Matches[counter].ResultB)
-                    && Matches[counter].Winner != hostweek.Matches[counter].Winner)
+                    else if ((ThisA == HostA || ThisB == HostB) && ThisWinner != HostWinner)
                     {
                         score += 2;
                     }
@@ -68,16 +68,17 @@ namespace EDS_Poule
         public int CheckMOTW(Player Host)
         {
             int matchID = 0;
-            Week hostweek = Host.Weeks[Weeknr - 1];
-            if (hostweek.Matches[matchID].ResultA != 99 && Matches[matchID].ResultA != 99)
+            Match HostMatch = Host.Weeks[Weeknr - 1].Matches[matchID];
+            Match ThisMatch = Matches[matchID];
+
+            if (HostMatch.ResultA != 99 && ThisMatch.ResultA != 99)
             {
-                if (Matches[matchID].ResultA == hostweek.Matches[matchID].ResultA
-                    && Matches[matchID].ResultB == hostweek.Matches[matchID].ResultB)
+                if (HostMatch.ResultA == ThisMatch.ResultA && ThisMatch.ResultB == HostMatch.ResultB)
                 {
                     return 2;
                 }
 
-                else if (Matches[matchID].Winner == hostweek.Matches[matchID].Winner)
+                else if (ThisMatch.Winner == HostMatch.Winner)
                 {
                     return 1;
                 }

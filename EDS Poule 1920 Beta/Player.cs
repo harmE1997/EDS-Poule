@@ -33,24 +33,21 @@ namespace EDS_Poule
         }
         public string PlayerToString()
         {
+            int maxtabs = 3;
+            int rangesize = 8;
+            decimal NrTabs = maxtabs - (Math.Floor(Convert.ToDecimal(Name.Length) / rangesize));
             string text = Ranking + "\t" + Name;
-            if (Name == "Bas Vos" || Name == "Gert Staal" || Name == "Jaco Vink" || Name == "Piet Visée")
+
+            if (NrTabs < 1)
             {
-                text += "\t\t\t";
+                NrTabs = 1;
             }
 
-            else if (Name == "Danny Hoogerwaard" || Name == "Tim van den Boogaard"
-                || Name == "Gijsbert Wiggelinkhuijsen" || Name == "Peter van der Meijden" || Name == "Noud van den Heuvel"
-                || Name == "Herman van Wissen" || Name == "Sandra van der Poel" || Name == "Vincent van den Bighelaar"
-                || Name == "Ferdi van de Zwaluw" || Name == "Marijke van Thienen-Enkelaar")
+            for (int i = 0; i < NrTabs; i++)
             {
                 text += "\t";
             }
-
-            else
-            {
-                text += "\t\t";
-            }
+            
             text += "\t" + TotalScore + "\t" + WeekScore;
             return text;
         }
@@ -83,6 +80,7 @@ namespace EDS_Poule
             }
 
             TotalScore += Questions.checkBonus(Host);
+            TotalScore += Estimations.checkEstimations(Host);
         }
     }
 }

@@ -66,7 +66,7 @@ namespace EDS_Poule
                 counter++;
                 gbWeeks.Text = "Week " + (counter + 1);
                 foreach (NumericUpDown nud in NUDs)
-                    nud.Value = 0;
+                    nud.Value = 99;
             }
         }
 
@@ -151,15 +151,15 @@ namespace EDS_Poule
 
         public void loadBonus()
         {
-            tbKampioen.Text = player.Questions.Kampioen;
-            tbDegradant.Text = player.Questions.Degradant;
-            tbDiv1Kampioen.Text = player.Questions.KamipoenDivisie1;
-            tbFin1.Text = player.Questions.Bekerfinalisten[0];
-            tbFin2.Text = player.Questions.Bekerfinalisten[1];
-            tbRonde.Text = player.Questions.ChampionRound.ToString();
-            tbTopscorer.Text = player.Questions.Topscorer;
-            tbTrainer.Text = player.Questions.Trainer;
-            tbWinterkampioen.Text = player.Questions.Winterkampioen;
+            tbKampioen.Text = player.Questions.Answers["Kampioen"].Answer;
+            tbDegradant.Text = player.Questions.Answers["Degradant"].Answer;
+            tbDiv1Kampioen.Text = player.Questions.Answers["Kampioendivisie1"].Answer;
+            tbFin1.Text = player.Questions.Answers["Finalisten"].Answer[0];
+            tbFin2.Text = player.Questions.Answers["Finalisten"].Answer[1];
+            tbRonde.Text = player.Questions.Answers["Championround"].Answer;
+            tbTopscorer.Text = player.Questions.Answers["Topscorer"].Answer;
+            tbTrainer.Text = player.Questions.Answers["Trainer"].Answer;
+            tbWinterkampioen.Text = player.Questions.Answers["Winterkampioen"].Answer;
         }
 
         public void setName(string name)
@@ -175,7 +175,7 @@ namespace EDS_Poule
                 finalists[0] = tbFin1.Text;
                 finalists[1] = tbFin2.Text;
                 BonusQuestions questions = new BonusQuestions(tbKampioen.Text, tbDegradant.Text, tbTopscorer.Text, tbTrainer.Text
-                    , tbWinterkampioen.Text, Convert.ToInt16(tbRonde.Text), tbDiv1Kampioen.Text, finalists);
+                    , tbWinterkampioen.Text, tbRonde.Text, tbDiv1Kampioen.Text, finalists);
 
                 if(estimations == null)
                 estimations = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));
