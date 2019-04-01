@@ -1,6 +1,6 @@
 ﻿namespace EDS_Poule
 {
-    partial class MainForm
+    partial class lblMatch
     {
         /// <summary>
         /// Required designer variable.
@@ -38,17 +38,20 @@
             this.cbCheck = new System.Windows.Forms.ComboBox();
             this.btnLoadPlayer = new System.Windows.Forms.Button();
             this.btnStats = new System.Windows.Forms.Button();
-            this.btnMOTW = new System.Windows.Forms.Button();
+            this.btnMatch = new System.Windows.Forms.Button();
             this.rtbNotes = new System.Windows.Forms.RichTextBox();
             this.lblNotes = new System.Windows.Forms.Label();
             this.btnRankingToExcel = new System.Windows.Forms.Button();
             this.ofdRanking = new System.Windows.Forms.OpenFileDialog();
+            this.lblWeek = new System.Windows.Forms.Label();
+            this.cbMatches = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnNewPlayer
             // 
             this.btnNewPlayer.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnNewPlayer.Location = new System.Drawing.Point(570, 228);
+            this.btnNewPlayer.Location = new System.Drawing.Point(572, 264);
             this.btnNewPlayer.Margin = new System.Windows.Forms.Padding(4);
             this.btnNewPlayer.Name = "btnNewPlayer";
             this.btnNewPlayer.Size = new System.Drawing.Size(268, 28);
@@ -94,7 +97,7 @@
             // 
             this.btnRemovePlayer.BackColor = System.Drawing.Color.Red;
             this.btnRemovePlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemovePlayer.Location = new System.Drawing.Point(570, 264);
+            this.btnRemovePlayer.Location = new System.Drawing.Point(572, 300);
             this.btnRemovePlayer.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemovePlayer.Name = "btnRemovePlayer";
             this.btnRemovePlayer.Size = new System.Drawing.Size(268, 28);
@@ -105,7 +108,7 @@
             // 
             // tbPlayer
             // 
-            this.tbPlayer.Location = new System.Drawing.Point(570, 371);
+            this.tbPlayer.Location = new System.Drawing.Point(572, 407);
             this.tbPlayer.Margin = new System.Windows.Forms.Padding(4);
             this.tbPlayer.Name = "tbPlayer";
             this.tbPlayer.Size = new System.Drawing.Size(268, 22);
@@ -118,7 +121,7 @@
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(266, 28);
             this.btnCheck.TabIndex = 8;
-            this.btnCheck.Text = "Check";
+            this.btnCheck.Text = "Check All";
             this.btnCheck.UseVisualStyleBackColor = true;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
@@ -160,16 +163,16 @@
             "32",
             "33",
             "34"});
-            this.cbCheck.Location = new System.Drawing.Point(572, 161);
+            this.cbCheck.Location = new System.Drawing.Point(626, 161);
             this.cbCheck.Margin = new System.Windows.Forms.Padding(4);
             this.cbCheck.Name = "cbCheck";
-            this.cbCheck.Size = new System.Drawing.Size(266, 24);
+            this.cbCheck.Size = new System.Drawing.Size(212, 24);
             this.cbCheck.TabIndex = 9;
             this.cbCheck.Text = "1";
             // 
             // btnLoadPlayer
             // 
-            this.btnLoadPlayer.Location = new System.Drawing.Point(570, 300);
+            this.btnLoadPlayer.Location = new System.Drawing.Point(572, 336);
             this.btnLoadPlayer.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoadPlayer.Name = "btnLoadPlayer";
             this.btnLoadPlayer.Size = new System.Drawing.Size(268, 28);
@@ -180,7 +183,7 @@
             // 
             // btnStats
             // 
-            this.btnStats.Location = new System.Drawing.Point(570, 338);
+            this.btnStats.Location = new System.Drawing.Point(572, 374);
             this.btnStats.Name = "btnStats";
             this.btnStats.Size = new System.Drawing.Size(269, 26);
             this.btnStats.TabIndex = 12;
@@ -188,19 +191,19 @@
             this.btnStats.UseVisualStyleBackColor = true;
             this.btnStats.Click += new System.EventHandler(this.btnStats_Click);
             // 
-            // btnMOTW
+            // btnMatch
             // 
-            this.btnMOTW.Location = new System.Drawing.Point(574, 125);
-            this.btnMOTW.Name = "btnMOTW";
-            this.btnMOTW.Size = new System.Drawing.Size(266, 29);
-            this.btnMOTW.TabIndex = 13;
-            this.btnMOTW.Text = "Check MOTW";
-            this.btnMOTW.UseVisualStyleBackColor = true;
-            this.btnMOTW.Click += new System.EventHandler(this.btnMOTW_Click);
+            this.btnMatch.Location = new System.Drawing.Point(574, 125);
+            this.btnMatch.Name = "btnMatch";
+            this.btnMatch.Size = new System.Drawing.Size(266, 29);
+            this.btnMatch.TabIndex = 13;
+            this.btnMatch.Text = "Check Match";
+            this.btnMatch.UseVisualStyleBackColor = true;
+            this.btnMatch.Click += new System.EventHandler(this.btnMatch_Click);
             // 
             // rtbNotes
             // 
-            this.rtbNotes.Location = new System.Drawing.Point(570, 432);
+            this.rtbNotes.Location = new System.Drawing.Point(569, 480);
             this.rtbNotes.Name = "rtbNotes";
             this.rtbNotes.Size = new System.Drawing.Size(269, 358);
             this.rtbNotes.TabIndex = 14;
@@ -209,7 +212,7 @@
             // lblNotes
             // 
             this.lblNotes.AutoSize = true;
-            this.lblNotes.Location = new System.Drawing.Point(567, 412);
+            this.lblNotes.Location = new System.Drawing.Point(566, 447);
             this.lblNotes.Name = "lblNotes";
             this.lblNotes.Size = new System.Drawing.Size(45, 17);
             this.lblNotes.TabIndex = 15;
@@ -217,7 +220,7 @@
             // 
             // btnRankingToExcel
             // 
-            this.btnRankingToExcel.Location = new System.Drawing.Point(572, 192);
+            this.btnRankingToExcel.Location = new System.Drawing.Point(574, 228);
             this.btnRankingToExcel.Name = "btnRankingToExcel";
             this.btnRankingToExcel.Size = new System.Drawing.Size(267, 29);
             this.btnRankingToExcel.TabIndex = 16;
@@ -229,16 +232,56 @@
             // 
             this.ofdRanking.FileName = "openFileDialog1";
             // 
-            // MainForm
+            // lblWeek
+            // 
+            this.lblWeek.AutoSize = true;
+            this.lblWeek.Location = new System.Drawing.Point(571, 164);
+            this.lblWeek.Name = "lblWeek";
+            this.lblWeek.Size = new System.Drawing.Size(48, 17);
+            this.lblWeek.TabIndex = 17;
+            this.lblWeek.Text = "Week:";
+            // 
+            // cbMatches
+            // 
+            this.cbMatches.FormattingEnabled = true;
+            this.cbMatches.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "MOTW"});
+            this.cbMatches.Location = new System.Drawing.Point(626, 192);
+            this.cbMatches.Name = "cbMatches";
+            this.cbMatches.Size = new System.Drawing.Size(212, 24);
+            this.cbMatches.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(571, 195);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 17);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Match:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblMatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(860, 809);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbMatches);
+            this.Controls.Add(this.lblWeek);
             this.Controls.Add(this.btnRankingToExcel);
             this.Controls.Add(this.lblNotes);
             this.Controls.Add(this.rtbNotes);
-            this.Controls.Add(this.btnMOTW);
+            this.Controls.Add(this.btnMatch);
             this.Controls.Add(this.btnStats);
             this.Controls.Add(this.btnLoadPlayer);
             this.Controls.Add(this.cbCheck);
@@ -250,7 +293,7 @@
             this.Controls.Add(this.btnHost);
             this.Controls.Add(this.btnNewPlayer);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "MainForm";
+            this.Name = "lblMatch";
             this.Text = "MainForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -269,11 +312,14 @@
         private System.Windows.Forms.ComboBox cbCheck;
         private System.Windows.Forms.Button btnLoadPlayer;
         private System.Windows.Forms.Button btnStats;
-        private System.Windows.Forms.Button btnMOTW;
+        private System.Windows.Forms.Button btnMatch;
         private System.Windows.Forms.RichTextBox rtbNotes;
         private System.Windows.Forms.Label lblNotes;
         private System.Windows.Forms.Button btnRankingToExcel;
         private System.Windows.Forms.OpenFileDialog ofdRanking;
+        private System.Windows.Forms.Label lblWeek;
+        private System.Windows.Forms.ComboBox cbMatches;
+        private System.Windows.Forms.Label label1;
     }
 }
 

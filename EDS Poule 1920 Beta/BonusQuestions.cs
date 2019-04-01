@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EDS_Poule
 {
+    [Serializable]
     public struct Question
     {
         public dynamic Answer;

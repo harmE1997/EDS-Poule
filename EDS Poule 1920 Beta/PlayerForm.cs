@@ -170,6 +170,11 @@ namespace EDS_Poule
             tbWinterkampioen.Text = player.Questions.Answers["Winterkampioen"].Answer;
         }
 
+        public void loadEstimations()
+        {
+            nudGoals.Value = player.Estimations.Answers["Goals"].Answer;
+            nudReds.Value = player.Estimations.Answers["Reds"].Answer;
+        }
         public void setName(string name)
         {
             tbName.Text = name;

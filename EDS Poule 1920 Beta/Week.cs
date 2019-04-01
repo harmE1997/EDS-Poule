@@ -65,9 +65,9 @@ namespace EDS_Poule
             return score;
         }
         
-        public int CheckMOTW(Player Host)
+        public int CheckMatch(Player Host, int matchID)
         {
-            int matchID = 0;
+            //MOTW has matchID 0.
             Match HostMatch = Host.Weeks[Weeknr - 1].Matches[matchID];
             Match ThisMatch = Matches[matchID];
 

@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace EDS_Poule
 {
-    public partial class MainForm : Form
+    public partial class lblMatch : Form
     {
         PlayerManager Manager;
-        public MainForm()
+        public lblMatch()
         {
             Manager = new PlayerManager();
             InitializeComponent();
@@ -82,6 +82,7 @@ namespace EDS_Poule
                 form.switchInput();
                 form.loadWeek(0);
                 form.loadBonus();
+                form.loadEstimations();
                 form.setName(tbPlayer.Text);
                 form.Show();
             }
@@ -100,20 +101,26 @@ namespace EDS_Poule
 
         }
 
-        private void btnMOTW_Click(object sender, EventArgs e)
+        private void btnMatch_Click(object sender, EventArgs e)
         {
             if (cbCheck.Text != "All")
             {
                 int fulls = 0;
                 int halfs = 0;
-                HostForm form = new HostForm();
+                string matchid = cbMatches.Text;
+                if (!int.TryParse(matchid, out int matchID))
+                {
+                    matchID = 0; // MOTW's matchID is 0.
+                }
+
                 List<string> names = new List<string>();
+                HostForm form = new HostForm();
                 foreach (Player player in Manager.Players)
                 {
                     var week = Convert.ToInt16(cbCheck.Text) - 1;
                     if (player.Weeks[week] != null)
                     {
-                        int check = player.Weeks[week].CheckMOTW(form.Host);
+                        int check = player.Weeks[week].CheckMatch(form.Host, matchID);
                         if (check > 0)
                         {
                             halfs++;

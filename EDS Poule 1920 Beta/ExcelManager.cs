@@ -106,21 +106,28 @@ namespace EDS_Poule
                         y = xlRange.Cells[currentRow, Settings.OutColumn].Value2;
                     }
                     Match match = new Match(Convert.ToInt32(x), Convert.ToInt32(y));
-                    fileMatches[rowschecked] = match;
+                    if (rowschecked == Settings.BlockSize - 1)
+                    {
+                        fileMatches[0] = match; //MOTW must be the first element in the array!
+                    }
 
+                    else
+                    {
+                        fileMatches[rowschecked + 1] = match;
+                    }
                     rowschecked++;
-                    if (rowschecked == 9)
-                        rowschecked = 0;
                 }
 
                 weeks[currentblock] = new Week(currentblock + 1, fileMatches);
                 StartRow += Settings.BlockSize + 1;
-                currentblock++;
-
+                rowschecked = 0;
                 if (currentblock == 16 && Settings.TotalBlocks == 34)
                 {
                     Settings.Adjustsettings(2);
+                    StartRow = Settings.StartRow;
                 }
+
+                currentblock++;
             }
 
             return weeks;
@@ -128,8 +135,8 @@ namespace EDS_Poule
 
         public Estimations ReadEstimations()
         {
-            int reds = xlRange.Cells[184, 21].Value2;
-            int goals = xlRange.Cells[185, 21].Value2;
+            int reds = Convert.ToInt32(xlRange.Cells[184, 21].Value2);
+            int goals = Convert.ToInt32(xlRange.Cells[185, 21].Value2);
 
             return new Estimations(reds, goals);
         }

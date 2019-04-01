@@ -32,7 +32,6 @@ C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\bi
 C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\obj\Debug\EDS Poule 1920 Beta.csprojAssemblyReference.cache
 C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\obj\Debug\EDS Poule 1920 Beta.csproj.ResolveComReference.cache
 C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\obj\Debug\EDS_Poule.HostForm.resources
-C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\obj\Debug\EDS_Poule.MainForm.resources
 C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\obj\Debug\EDS_Poule.PlayerForm.resources
 C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\obj\Debug\EDS_Poule.Properties.Resources.resources
 C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\obj\Debug\EDS_Poule.StatsForm.resources
@@ -40,3 +39,4 @@ C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\ob
 C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\obj\Debug\EDS Poule 1920 Beta.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\obj\Debug\EDS Poule.exe
 C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\obj\Debug\EDS Poule.pdb
+C:\Users\Administrator\Documents\GitHub\EDS2019-2020-Beta\EDS Poule 1920 Beta\obj\Debug\EDS_Poule.lblMatch.resources

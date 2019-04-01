@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EDS_Poule
 {
+    [Serializable]
     public struct Estimation
     {
         public int Answer;
@@ -15,7 +16,7 @@ namespace EDS_Poule
     [Serializable]
     public class Estimations
     {
-        Dictionary<string, Estimation> Answers;
+        public Dictionary<string, Estimation> Answers { get; private set; }
 
         public Estimations(int reds, int goals)
         {
