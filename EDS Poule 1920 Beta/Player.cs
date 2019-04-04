@@ -79,8 +79,8 @@ namespace EDS_Poule
                 }
             }
 
-            TotalScore += Questions.checkBonus(Host);
-            TotalScore += Estimations.checkEstimations(Host);
+            TotalScore += Questions.checkBonus(Host.Questions);
+            TotalScore += Estimations.checkEstimations(Host.Estimations);
         }
     }
 }

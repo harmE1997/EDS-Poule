@@ -20,18 +20,26 @@ namespace EDS_Poule
 
         public Estimations(int reds, int goals)
         {
+            if(reds < 0 || goals < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             Answers = new Dictionary<string, Estimation>()
             {
                 { "Reds", new Estimation() {Answer = reds, Max = 20 } },
                 { "Goals", new Estimation() { Answer = goals, Max = 10} }
             };
         }
-        public int checkEstimations(Player host)
+        public int checkEstimations(Estimations hostestimations)
         {
+            if (hostestimations == null)
+            {
+                throw new ArgumentNullException();
+            }
             int score = 0;
             foreach (var a in Answers)
             {
-                int miss = Math.Abs(a.Value.Answer - host.Estimations.Answers[a.Key].Answer);
+                int miss = Math.Abs(a.Value.Answer - hostestimations.Answers[a.Key].Answer);
                 if (a.Value.Max > miss)
                 {
                     score += (a.Value.Max - miss);

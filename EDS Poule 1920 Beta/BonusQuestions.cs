@@ -35,17 +35,20 @@ namespace EDS_Poule
             };
         }
 
-        public int checkBonus(Player Host)
+        public int checkBonus(BonusQuestions HostQuestions)
         {
+            if (HostQuestions == null)
+            {
+                throw new ArgumentNullException();
+            }
             int score = 0;
-            BonusQuestions ans = Host.Questions;
             foreach (var a in Answers)
             {
                 if (a.Value.IsArray)
                 {
                     foreach (var e in a.Value.Answer)
                     {
-                        if (ans.Answers[a.Key].Answer.Contains(e))
+                        if (HostQuestions.Answers[a.Key].Answer.Contains(e))
                         {
                             score += a.Value.Points;
                         }
@@ -54,7 +57,7 @@ namespace EDS_Poule
 
                 else
                 {
-                    if (a.Value.Answer == ans.Answers[a.Key].Answer)
+                    if (a.Value.Answer == HostQuestions.Answers[a.Key].Answer)
                     {
                         score += a.Value.Points;
                     }
