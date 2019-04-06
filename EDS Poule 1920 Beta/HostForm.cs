@@ -13,6 +13,12 @@ using System.Runtime.Serialization;
 
 namespace EDS_Poule
 {
+    public struct BonusLocation
+    {
+        public TextBox text;
+        public NumericUpDown nud;
+    }
+
     public partial class HostForm : Form
     {
         public Player Host;
@@ -20,6 +26,7 @@ namespace EDS_Poule
         NumericUpDown[] NUDs;
         Week[] weeks;
         int counter;
+        private Dictionary<string,BonusLocation> Bonuslocs;
         public HostForm()
         {
             NUDs = new NumericUpDown[18];
@@ -27,6 +34,17 @@ namespace EDS_Poule
             counter = 0;
             InitializeComponent();
             fillNudsArray();
+            Bonuslocs = new Dictionary<string, BonusLocation>()
+            {
+                { "Kampioen", new BonusLocation() { text = tbKampioen, nud = nudweek1 }},
+                { "Degradant", new BonusLocation() { text = tbDegradant, nud = nudweek2 }},
+                { "Kampioendivisie1", new BonusLocation() { text = tbDiv1Kampioen, nud = nudweek3 }},
+                { "Championround", new BonusLocation() { text = tbRonde, nud = nudweek4 }},
+                { "Topscorer", new BonusLocation() { text = tbTopscorer, nud = nudweek5 }},
+                { "Trainer", new BonusLocation() { text = tbTrainer, nud = nudweek6 }},
+                { "Winterkampioen", new BonusLocation() { text = tbWinterkampioen, nud = nudweek7 }}
+            };
+
             try { LoadHost(); }
             catch { createHost(); }
             tbName.Text = "Host";
@@ -50,8 +68,19 @@ namespace EDS_Poule
                 string[] finalists = new string[2];
                 finalists[0] = tbFin1.Text;
                 finalists[1] = tbFin2.Text;
+
+                int[] Weeks = new int[8];
+                Weeks[0] = Convert.ToInt32(nudweek1.Value);
+                Weeks[1] = Convert.ToInt32(nudweek2.Value);
+                Weeks[2] = Convert.ToInt32(nudweek3.Value); 
+                Weeks[3] = Convert.ToInt32(nudweek4.Value);
+                Weeks[4] = Convert.ToInt32(nudweek5.Value);
+                Weeks[5] = Convert.ToInt32(nudweek6.Value);
+                Weeks[6] = Convert.ToInt32(nudweek7.Value);
+                Weeks[7] = Convert.ToInt32(nudweek8.Value);
+
                 BonusQuestions questions = new BonusQuestions(tbKampioen.Text, tbDegradant.Text, tbTopscorer.Text, tbTrainer.Text
-                    , tbWinterkampioen.Text, tbRonde.Text, tbDiv1Kampioen.Text, finalists);
+                    , tbWinterkampioen.Text, tbRonde.Text, tbDiv1Kampioen.Text, finalists, Weeks);
 
                 Estimations estimations = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));
                 Host = new Player(tbName.Text, weeks, questions, estimations);
@@ -81,15 +110,14 @@ namespace EDS_Poule
 
         private void loadBonus()
         {
-            tbKampioen.Text = Host.Questions.Answers["Kampioen"].Answer;
-            tbDegradant.Text = Host.Questions.Answers["Degradant"].Answer;
-            tbDiv1Kampioen.Text = Host.Questions.Answers["Kampioendivisie1"].Answer;
+            foreach (var b in Bonuslocs)
+            {
+                b.Value.text.Text = Host.Questions.Answers[b.Key].Answer;
+                b.Value.nud.Value = Host.Questions.Answers[b.Key].WeekAnswered;
+            }
             tbFin1.Text = Host.Questions.Answers["Finalisten"].Answer[0];
             tbFin2.Text = Host.Questions.Answers["Finalisten"].Answer[1];
-            tbRonde.Text = Host.Questions.Answers["Championround"].Answer;
-            tbTopscorer.Text = Host.Questions.Answers["Topscorer"].Answer;
-            tbTrainer.Text = Host.Questions.Answers["Trainer"].Answer;
-            tbWinterkampioen.Text = Host.Questions.Answers["Winterkampioen"].Answer;
+            nudweek8.Value = Host.Questions.Answers["Finalisten"].WeekAnswered;
         }
         private void fillNudsArray()
         {
@@ -157,8 +185,8 @@ namespace EDS_Poule
             string[] finalists = new string[2];
             finalists[0] = "";
             finalists[1] = "";
-            BonusQuestions ans = new BonusQuestions("", "", "", "", "", "", "", finalists);
-            Estimations ests = new Estimations(-20,-20);
+            BonusQuestions ans = new BonusQuestions("", "", "", "", "", "", "", finalists, new int[] { 99,99,99,99,99,99,99,99});
+            Estimations ests = new Estimations(-99,-99);
             Host = new Player("Host", weeks, ans, ests);
         }
     }

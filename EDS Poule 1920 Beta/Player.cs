@@ -11,8 +11,10 @@ namespace EDS_Poule
     {
         public string Name { get; private set; }
         public int TotalScore { get; private set; }
+        public int PreviousScore { get; set; }
         public int WeekScore { get; private set; }
         public int Ranking { get; private set; }
+        public int PreviousRanking { get; set; }
         public Week[] Weeks { get; private set; }
         public BonusQuestions Questions { get; private set; }
         public Estimations Estimations { get; private set; }
@@ -25,6 +27,7 @@ namespace EDS_Poule
             WeekScore = 0;
             Questions = questions;
             Estimations = estimations;
+            PreviousScore = 0;
         }
 
         public void SetRanking(int rank)
@@ -36,7 +39,7 @@ namespace EDS_Poule
             int maxtabs = 3;
             int rangesize = 8;
             decimal NrTabs = maxtabs - (Math.Floor(Convert.ToDecimal(Name.Length) / rangesize));
-            string text = Ranking + "\t" + Name;
+            string text = Ranking + "\t" + PreviousRanking + "\t" + Name;
 
             if (NrTabs < 1)
             {
@@ -56,7 +59,7 @@ namespace EDS_Poule
         {
             if (other != null)
             {
-                return TotalScore.CompareTo(other.TotalScore);
+                return PreviousScore.CompareTo(other.PreviousScore);
             }
 
             else
@@ -79,8 +82,15 @@ namespace EDS_Poule
                 }
             }
 
-            TotalScore += Questions.checkBonus(Host.Questions);
-            TotalScore += Estimations.checkEstimations(Host.Estimations);
+            TotalScore += Questions.checkBonus(Host.Questions, currentWeek);
+            var EstScore = Estimations.checkEstimations(Host.Estimations);
+            TotalScore += EstScore;
+
+            PreviousScore = TotalScore - WeekScore - Questions.WeekScore;
+            if (currentWeek == 34)
+            {
+                PreviousScore -= EstScore;
+            }
         }
     }
 }

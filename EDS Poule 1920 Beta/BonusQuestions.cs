@@ -12,54 +12,69 @@ namespace EDS_Poule
         public dynamic Answer;
         public int Points;
         public bool IsArray;
+        public int WeekAnswered;
     }
 
     [Serializable]
     public class BonusQuestions
     {
         public Dictionary<string, Question> Answers { get; private set; }
+        public int WeekScore { get; private set; }
 
-        public BonusQuestions(string kampioen, string degradant, string topscorer, string trainer, 
-            string winterkampioen, string championround, string kampioendivisie1, string[] finalisten)
+        public BonusQuestions(string kampioen, string degradant, string topscorer, string trainer,
+            string winterkampioen, string championround, string kampioendivisie1, string[] finalisten, int[] weeks)
         {
             Answers = new Dictionary<string, Question>()
             {
-                {"Kampioen", new Question(){Answer = kampioen, Points = 25, IsArray = false } },
-                {"Degradant", new Question(){Answer = degradant, Points = 20, IsArray = false } },
-                {"Topscorer", new Question(){Answer = topscorer, Points = 20, IsArray = false } },
-                {"Trainer", new Question(){Answer = trainer, Points = 20, IsArray = false } },
-                {"Winterkampioen", new Question(){Answer = winterkampioen, Points = 15, IsArray = false } },
-                {"Championround", new Question(){Answer = championround, Points = 10, IsArray = false } },
-                {"Kampioendivisie1", new Question(){Answer = kampioendivisie1, Points = 20, IsArray = false } },
-                {"Finalisten", new Question(){Answer = finalisten, Points = 10, IsArray = true } },
+                {"Kampioen", new Question(){Answer = kampioen, Points = 25, IsArray = false, WeekAnswered = weeks[0] } },
+                {"Degradant", new Question(){Answer = degradant, Points = 20, IsArray = false, WeekAnswered = weeks[1] } },
+                {"Topscorer", new Question(){Answer = topscorer, Points = 20, IsArray = false, WeekAnswered = weeks[2] } },
+                {"Trainer", new Question(){Answer = trainer, Points = 20, IsArray = false, WeekAnswered = weeks[3] } },
+                {"Winterkampioen", new Question(){Answer = winterkampioen, Points = 15, IsArray = false, WeekAnswered = weeks[4] } },
+                {"Championround", new Question(){Answer = championround, Points = 10, IsArray = false, WeekAnswered = weeks[5] } },
+                {"Kampioendivisie1", new Question(){Answer = kampioendivisie1, Points = 20, IsArray = false, WeekAnswered = weeks[6] } },
+                {"Finalisten", new Question(){Answer = finalisten, Points = 10, IsArray = true, WeekAnswered = weeks[7] } },
             };
         }
 
-        public int checkBonus(BonusQuestions HostQuestions)
+        public int checkBonus(BonusQuestions HostQuestions, int currentweek)
         {
             if (HostQuestions == null)
             {
                 throw new ArgumentNullException();
             }
             int score = 0;
+            
             foreach (var a in Answers)
             {
-                if (a.Value.IsArray)
+                var ans = HostQuestions.Answers[a.Key];
+                if (ans.WeekAnswered <= currentweek)
                 {
-                    foreach (var e in a.Value.Answer)
+                    if (a.Value.IsArray)
                     {
-                        if (HostQuestions.Answers[a.Key].Answer.Contains(e))
+                        foreach (var e in a.Value.Answer)
                         {
-                            score += a.Value.Points;
+                            if (ans.Answer.Contains(e))
+                            {
+                                score += a.Value.Points;
+                                if (ans.WeekAnswered == currentweek)
+                                {
+                                    WeekScore += a.Value.Points;
+                                }
+                            }
                         }
                     }
-                }
 
-                else
-                {
-                    if (a.Value.Answer == HostQuestions.Answers[a.Key].Answer)
+                    else
                     {
-                        score += a.Value.Points;
+                        if (a.Value.Answer == ans.Answer)
+                        {
+                            score += a.Value.Points;
+                            if (ans.WeekAnswered == currentweek)
+                            {
+                                WeekScore += a.Value.Points;
+                            }
+                        }
                     }
                 }
             }

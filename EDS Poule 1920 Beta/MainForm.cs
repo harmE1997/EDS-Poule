@@ -167,8 +167,14 @@ namespace EDS_Poule
         private void RefreshRanking()
         {
             Manager.RankPlayers();
+            foreach (var p in Manager.Players)
+            {
+                p.PreviousScore = p.TotalScore;
+                p.PreviousRanking = p.Ranking;
+            }
+            Manager.RankPlayers();
             lbRanking.Items.Clear();
-            lbRanking.Items.Add("#\tName\t\t\t\tTotal\tWeek");
+            lbRanking.Items.Add("#\t#Last\tName\t\t\t\tTotal\tWeek");
             foreach (Player player in Manager.Players)
             {
                 lbRanking.Items.Add(player.PlayerToString());

@@ -24,7 +24,7 @@ namespace EDS_Poule
             Adjustsettings(adjustment);
             StartRow += miss;
         }
-        public void Adjustsettings( int adjustment)
+        public void Adjustsettings(int adjustment)
         {
             if (adjustment == 1)
             {
@@ -64,18 +64,11 @@ namespace EDS_Poule
             int progress = 0;
             foreach (Player player in Players)
             {
-                for (int y = 2; y <= Players.Count + 1; y++)
-                {
-                    if (xlRange.Cells[y, 3].value2 == player.Name)
-                    {
-                        int rank = Convert.ToInt32(xlRange.Cells[y, 1].value2);
-                        xlRange.Cells[y, 2].value2 = rank;
-                        xlRange.Cells[y, 1].value2 = player.Ranking;
-                        xlRange.Cells[y, 5].value2 = player.TotalScore;
-                        xlRange.Cells[y, 6].value2 = player.WeekScore;
-                        break;
-                    }
-                }
+                int y = player.PreviousRanking;              
+                xlRange.Cells[y, 1].value2 = player.Ranking;
+                xlRange.Cells[y, 2].value2 = y;
+                xlRange.Cells[y, 5].value2 = player.TotalScore;
+                xlRange.Cells[y, 6].value2 = player.WeekScore;
                 progress++;
                 yield return progress;
             }

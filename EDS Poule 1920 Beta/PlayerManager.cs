@@ -64,7 +64,6 @@ namespace EDS_Poule
                 player.SetRanking(ranking);
                 index++;
                 previousScore = player.TotalScore;
-
             }
         }
 

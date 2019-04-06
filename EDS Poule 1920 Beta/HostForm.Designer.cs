@@ -82,6 +82,15 @@
             this.lblReds = new System.Windows.Forms.Label();
             this.nudGoals = new System.Windows.Forms.NumericUpDown();
             this.nudReds = new System.Windows.Forms.NumericUpDown();
+            this.lblweek = new System.Windows.Forms.Label();
+            this.nudweek1 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek2 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek3 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek4 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek5 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek6 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek7 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek8 = new System.Windows.Forms.NumericUpDown();
             this.gbBonus.SuspendLayout();
             this.gbWeeks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).BeginInit();
@@ -105,10 +114,27 @@
             this.gbEstimations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudGoals)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudReds)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek8)).BeginInit();
             this.SuspendLayout();
             // 
             // gbBonus
             // 
+            this.gbBonus.Controls.Add(this.nudweek8);
+            this.gbBonus.Controls.Add(this.nudweek7);
+            this.gbBonus.Controls.Add(this.nudweek6);
+            this.gbBonus.Controls.Add(this.nudweek5);
+            this.gbBonus.Controls.Add(this.nudweek4);
+            this.gbBonus.Controls.Add(this.nudweek3);
+            this.gbBonus.Controls.Add(this.nudweek2);
+            this.gbBonus.Controls.Add(this.nudweek1);
+            this.gbBonus.Controls.Add(this.lblweek);
             this.gbBonus.Controls.Add(this.tbFin2);
             this.gbBonus.Controls.Add(this.tbFin1);
             this.gbBonus.Controls.Add(this.tbDiv1Kampioen);
@@ -130,7 +156,7 @@
             this.gbBonus.Margin = new System.Windows.Forms.Padding(4);
             this.gbBonus.Name = "gbBonus";
             this.gbBonus.Padding = new System.Windows.Forms.Padding(4);
-            this.gbBonus.Size = new System.Drawing.Size(525, 402);
+            this.gbBonus.Size = new System.Drawing.Size(693, 402);
             this.gbBonus.TabIndex = 9;
             this.gbBonus.TabStop = false;
             this.gbBonus.Text = "Bonusvragen";
@@ -603,7 +629,7 @@
             this.gbEstimations.Controls.Add(this.lblReds);
             this.gbEstimations.Controls.Add(this.nudGoals);
             this.gbEstimations.Controls.Add(this.nudReds);
-            this.gbEstimations.Location = new System.Drawing.Point(1093, 32);
+            this.gbEstimations.Location = new System.Drawing.Point(539, 441);
             this.gbEstimations.Name = "gbEstimations";
             this.gbEstimations.Size = new System.Drawing.Size(251, 99);
             this.gbEstimations.TabIndex = 11;
@@ -642,11 +668,76 @@
             this.nudReds.Size = new System.Drawing.Size(120, 22);
             this.nudReds.TabIndex = 0;
             // 
+            // lblweek
+            // 
+            this.lblweek.AutoSize = true;
+            this.lblweek.Location = new System.Drawing.Point(595, 24);
+            this.lblweek.Name = "lblweek";
+            this.lblweek.Size = new System.Drawing.Size(44, 17);
+            this.lblweek.TabIndex = 17;
+            this.lblweek.Text = "Week";
+            // 
+            // nudweek1
+            // 
+            this.nudweek1.Location = new System.Drawing.Point(519, 42);
+            this.nudweek1.Name = "nudweek1";
+            this.nudweek1.Size = new System.Drawing.Size(120, 22);
+            this.nudweek1.TabIndex = 18;
+            // 
+            // nudweek2
+            // 
+            this.nudweek2.Location = new System.Drawing.Point(519, 83);
+            this.nudweek2.Name = "nudweek2";
+            this.nudweek2.Size = new System.Drawing.Size(120, 22);
+            this.nudweek2.TabIndex = 19;
+            // 
+            // nudweek3
+            // 
+            this.nudweek3.Location = new System.Drawing.Point(519, 130);
+            this.nudweek3.Name = "nudweek3";
+            this.nudweek3.Size = new System.Drawing.Size(120, 22);
+            this.nudweek3.TabIndex = 20;
+            // 
+            // nudweek4
+            // 
+            this.nudweek4.Location = new System.Drawing.Point(519, 175);
+            this.nudweek4.Name = "nudweek4";
+            this.nudweek4.Size = new System.Drawing.Size(120, 22);
+            this.nudweek4.TabIndex = 21;
+            // 
+            // nudweek5
+            // 
+            this.nudweek5.Location = new System.Drawing.Point(519, 217);
+            this.nudweek5.Name = "nudweek5";
+            this.nudweek5.Size = new System.Drawing.Size(120, 22);
+            this.nudweek5.TabIndex = 22;
+            // 
+            // nudweek6
+            // 
+            this.nudweek6.Location = new System.Drawing.Point(519, 266);
+            this.nudweek6.Name = "nudweek6";
+            this.nudweek6.Size = new System.Drawing.Size(120, 22);
+            this.nudweek6.TabIndex = 23;
+            // 
+            // nudweek7
+            // 
+            this.nudweek7.Location = new System.Drawing.Point(519, 303);
+            this.nudweek7.Name = "nudweek7";
+            this.nudweek7.Size = new System.Drawing.Size(120, 22);
+            this.nudweek7.TabIndex = 24;
+            // 
+            // nudweek8
+            // 
+            this.nudweek8.Location = new System.Drawing.Point(519, 348);
+            this.nudweek8.Name = "nudweek8";
+            this.nudweek8.Size = new System.Drawing.Size(120, 22);
+            this.nudweek8.TabIndex = 25;
+            // 
             // HostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1383, 441);
+            this.ClientSize = new System.Drawing.Size(1383, 549);
             this.Controls.Add(this.gbEstimations);
             this.Controls.Add(this.gbBonus);
             this.Controls.Add(this.btnNext);
@@ -682,6 +773,14 @@
             this.gbEstimations.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudGoals)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudReds)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -743,5 +842,14 @@
         private System.Windows.Forms.Label lblReds;
         private System.Windows.Forms.NumericUpDown nudGoals;
         private System.Windows.Forms.NumericUpDown nudReds;
+        private System.Windows.Forms.NumericUpDown nudweek7;
+        private System.Windows.Forms.NumericUpDown nudweek6;
+        private System.Windows.Forms.NumericUpDown nudweek5;
+        private System.Windows.Forms.NumericUpDown nudweek4;
+        private System.Windows.Forms.NumericUpDown nudweek3;
+        private System.Windows.Forms.NumericUpDown nudweek2;
+        private System.Windows.Forms.NumericUpDown nudweek1;
+        private System.Windows.Forms.Label lblweek;
+        private System.Windows.Forms.NumericUpDown nudweek8;
     }
 }

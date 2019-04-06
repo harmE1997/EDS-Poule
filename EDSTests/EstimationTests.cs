@@ -26,13 +26,6 @@ namespace EDSTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestConstructorWithInvalidSecondtArgument()
-        {
-            Estimations e = new Estimations(0, -1);
-        }
-
-        [TestMethod]
         public void TestCheckWithCorrectInput()
         {
             Estimations es = new Estimations(50, 20);

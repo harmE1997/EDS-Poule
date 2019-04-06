@@ -20,10 +20,6 @@ namespace EDS_Poule
 
         public Estimations(int reds, int goals)
         {
-            if(reds < 0 || goals < 0)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
             Answers = new Dictionary<string, Estimation>()
             {
                 { "Reds", new Estimation() {Answer = reds, Max = 20 } },

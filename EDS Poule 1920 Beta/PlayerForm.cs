@@ -188,7 +188,7 @@ namespace EDS_Poule
                 finalists[0] = tbFin1.Text;
                 finalists[1] = tbFin2.Text;
                 BonusQuestions questions = new BonusQuestions(tbKampioen.Text, tbDegradant.Text, tbTopscorer.Text, tbTrainer.Text
-                    , tbWinterkampioen.Text, tbRonde.Text, tbDiv1Kampioen.Text, finalists);
+                    , tbWinterkampioen.Text, tbRonde.Text, tbDiv1Kampioen.Text, finalists, new int[8] {99,99,99,99,99,99,99,99});
 
                 if(estimations == null)
                 estimations = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));
