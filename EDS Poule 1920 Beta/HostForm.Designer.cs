@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             this.gbBonus = new System.Windows.Forms.GroupBox();
+            this.nudweek8 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek7 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek6 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek5 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek4 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek3 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek2 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek1 = new System.Windows.Forms.NumericUpDown();
+            this.lblweek = new System.Windows.Forms.Label();
             this.tbFin2 = new System.Windows.Forms.TextBox();
             this.tbFin1 = new System.Windows.Forms.TextBox();
             this.tbDiv1Kampioen = new System.Windows.Forms.TextBox();
@@ -82,16 +91,31 @@
             this.lblReds = new System.Windows.Forms.Label();
             this.nudGoals = new System.Windows.Forms.NumericUpDown();
             this.nudReds = new System.Windows.Forms.NumericUpDown();
-            this.lblweek = new System.Windows.Forms.Label();
-            this.nudweek1 = new System.Windows.Forms.NumericUpDown();
-            this.nudweek2 = new System.Windows.Forms.NumericUpDown();
-            this.nudweek3 = new System.Windows.Forms.NumericUpDown();
-            this.nudweek4 = new System.Windows.Forms.NumericUpDown();
-            this.nudweek5 = new System.Windows.Forms.NumericUpDown();
-            this.nudweek6 = new System.Windows.Forms.NumericUpDown();
-            this.nudweek7 = new System.Windows.Forms.NumericUpDown();
-            this.nudweek8 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek13 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek12 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek11 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek10 = new System.Windows.Forms.NumericUpDown();
+            this.nudweek9 = new System.Windows.Forms.NumericUpDown();
+            this.tbProdeg2 = new System.Windows.Forms.TextBox();
+            this.tbProdeg1 = new System.Windows.Forms.TextBox();
+            this.tbKeeper = new System.Windows.Forms.TextBox();
+            this.tbWorstDefence = new System.Windows.Forms.TextBox();
+            this.tbAssists = new System.Windows.Forms.TextBox();
+            this.tbMostRed = new System.Windows.Forms.TextBox();
+            this.lblProDeg = new System.Windows.Forms.Label();
+            this.lblWorstDefence = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblAsssists = new System.Windows.Forms.Label();
+            this.lblMostRed = new System.Windows.Forms.Label();
             this.gbBonus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek1)).BeginInit();
             this.gbWeeks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).BeginInit();
@@ -114,18 +138,31 @@
             this.gbEstimations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudGoals)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudReds)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek9)).BeginInit();
             this.SuspendLayout();
             // 
             // gbBonus
             // 
+            this.gbBonus.Controls.Add(this.nudweek13);
+            this.gbBonus.Controls.Add(this.nudweek12);
+            this.gbBonus.Controls.Add(this.nudweek11);
+            this.gbBonus.Controls.Add(this.nudweek10);
+            this.gbBonus.Controls.Add(this.nudweek9);
+            this.gbBonus.Controls.Add(this.tbProdeg2);
+            this.gbBonus.Controls.Add(this.tbProdeg1);
+            this.gbBonus.Controls.Add(this.tbKeeper);
+            this.gbBonus.Controls.Add(this.tbWorstDefence);
+            this.gbBonus.Controls.Add(this.tbAssists);
+            this.gbBonus.Controls.Add(this.tbMostRed);
+            this.gbBonus.Controls.Add(this.lblProDeg);
+            this.gbBonus.Controls.Add(this.lblWorstDefence);
+            this.gbBonus.Controls.Add(this.label4);
+            this.gbBonus.Controls.Add(this.lblAsssists);
+            this.gbBonus.Controls.Add(this.lblMostRed);
             this.gbBonus.Controls.Add(this.nudweek8);
             this.gbBonus.Controls.Add(this.nudweek7);
             this.gbBonus.Controls.Add(this.nudweek6);
@@ -156,10 +193,75 @@
             this.gbBonus.Margin = new System.Windows.Forms.Padding(4);
             this.gbBonus.Name = "gbBonus";
             this.gbBonus.Padding = new System.Windows.Forms.Padding(4);
-            this.gbBonus.Size = new System.Drawing.Size(693, 402);
+            this.gbBonus.Size = new System.Drawing.Size(693, 613);
             this.gbBonus.TabIndex = 9;
             this.gbBonus.TabStop = false;
             this.gbBonus.Text = "Bonusvragen";
+            // 
+            // nudweek8
+            // 
+            this.nudweek8.Location = new System.Drawing.Point(519, 348);
+            this.nudweek8.Name = "nudweek8";
+            this.nudweek8.Size = new System.Drawing.Size(120, 22);
+            this.nudweek8.TabIndex = 25;
+            // 
+            // nudweek7
+            // 
+            this.nudweek7.Location = new System.Drawing.Point(519, 303);
+            this.nudweek7.Name = "nudweek7";
+            this.nudweek7.Size = new System.Drawing.Size(120, 22);
+            this.nudweek7.TabIndex = 24;
+            // 
+            // nudweek6
+            // 
+            this.nudweek6.Location = new System.Drawing.Point(519, 266);
+            this.nudweek6.Name = "nudweek6";
+            this.nudweek6.Size = new System.Drawing.Size(120, 22);
+            this.nudweek6.TabIndex = 23;
+            // 
+            // nudweek5
+            // 
+            this.nudweek5.Location = new System.Drawing.Point(519, 217);
+            this.nudweek5.Name = "nudweek5";
+            this.nudweek5.Size = new System.Drawing.Size(120, 22);
+            this.nudweek5.TabIndex = 22;
+            // 
+            // nudweek4
+            // 
+            this.nudweek4.Location = new System.Drawing.Point(519, 175);
+            this.nudweek4.Name = "nudweek4";
+            this.nudweek4.Size = new System.Drawing.Size(120, 22);
+            this.nudweek4.TabIndex = 21;
+            // 
+            // nudweek3
+            // 
+            this.nudweek3.Location = new System.Drawing.Point(519, 130);
+            this.nudweek3.Name = "nudweek3";
+            this.nudweek3.Size = new System.Drawing.Size(120, 22);
+            this.nudweek3.TabIndex = 20;
+            // 
+            // nudweek2
+            // 
+            this.nudweek2.Location = new System.Drawing.Point(519, 83);
+            this.nudweek2.Name = "nudweek2";
+            this.nudweek2.Size = new System.Drawing.Size(120, 22);
+            this.nudweek2.TabIndex = 19;
+            // 
+            // nudweek1
+            // 
+            this.nudweek1.Location = new System.Drawing.Point(519, 42);
+            this.nudweek1.Name = "nudweek1";
+            this.nudweek1.Size = new System.Drawing.Size(120, 22);
+            this.nudweek1.TabIndex = 18;
+            // 
+            // lblweek
+            // 
+            this.lblweek.AutoSize = true;
+            this.lblweek.Location = new System.Drawing.Point(595, 24);
+            this.lblweek.Name = "lblweek";
+            this.lblweek.Size = new System.Drawing.Size(44, 17);
+            this.lblweek.TabIndex = 17;
+            this.lblweek.Text = "Week";
             // 
             // tbFin2
             // 
@@ -629,7 +731,7 @@
             this.gbEstimations.Controls.Add(this.lblReds);
             this.gbEstimations.Controls.Add(this.nudGoals);
             this.gbEstimations.Controls.Add(this.nudReds);
-            this.gbEstimations.Location = new System.Drawing.Point(539, 441);
+            this.gbEstimations.Location = new System.Drawing.Point(51, 514);
             this.gbEstimations.Name = "gbEstimations";
             this.gbEstimations.Size = new System.Drawing.Size(251, 99);
             this.gbEstimations.TabIndex = 11;
@@ -668,76 +770,151 @@
             this.nudReds.Size = new System.Drawing.Size(120, 22);
             this.nudReds.TabIndex = 0;
             // 
-            // lblweek
+            // nudweek13
             // 
-            this.lblweek.AutoSize = true;
-            this.lblweek.Location = new System.Drawing.Point(595, 24);
-            this.lblweek.Name = "lblweek";
-            this.lblweek.Size = new System.Drawing.Size(44, 17);
-            this.lblweek.TabIndex = 17;
-            this.lblweek.Text = "Week";
+            this.nudweek13.Location = new System.Drawing.Point(519, 565);
+            this.nudweek13.Name = "nudweek13";
+            this.nudweek13.Size = new System.Drawing.Size(120, 22);
+            this.nudweek13.TabIndex = 41;
             // 
-            // nudweek1
+            // nudweek12
             // 
-            this.nudweek1.Location = new System.Drawing.Point(519, 42);
-            this.nudweek1.Name = "nudweek1";
-            this.nudweek1.Size = new System.Drawing.Size(120, 22);
-            this.nudweek1.TabIndex = 18;
+            this.nudweek12.Location = new System.Drawing.Point(519, 520);
+            this.nudweek12.Name = "nudweek12";
+            this.nudweek12.Size = new System.Drawing.Size(120, 22);
+            this.nudweek12.TabIndex = 40;
             // 
-            // nudweek2
+            // nudweek11
             // 
-            this.nudweek2.Location = new System.Drawing.Point(519, 83);
-            this.nudweek2.Name = "nudweek2";
-            this.nudweek2.Size = new System.Drawing.Size(120, 22);
-            this.nudweek2.TabIndex = 19;
+            this.nudweek11.Location = new System.Drawing.Point(519, 483);
+            this.nudweek11.Name = "nudweek11";
+            this.nudweek11.Size = new System.Drawing.Size(120, 22);
+            this.nudweek11.TabIndex = 39;
             // 
-            // nudweek3
+            // nudweek10
             // 
-            this.nudweek3.Location = new System.Drawing.Point(519, 130);
-            this.nudweek3.Name = "nudweek3";
-            this.nudweek3.Size = new System.Drawing.Size(120, 22);
-            this.nudweek3.TabIndex = 20;
+            this.nudweek10.Location = new System.Drawing.Point(519, 434);
+            this.nudweek10.Name = "nudweek10";
+            this.nudweek10.Size = new System.Drawing.Size(120, 22);
+            this.nudweek10.TabIndex = 38;
             // 
-            // nudweek4
+            // nudweek9
             // 
-            this.nudweek4.Location = new System.Drawing.Point(519, 175);
-            this.nudweek4.Name = "nudweek4";
-            this.nudweek4.Size = new System.Drawing.Size(120, 22);
-            this.nudweek4.TabIndex = 21;
+            this.nudweek9.Location = new System.Drawing.Point(519, 392);
+            this.nudweek9.Name = "nudweek9";
+            this.nudweek9.Size = new System.Drawing.Size(120, 22);
+            this.nudweek9.TabIndex = 37;
             // 
-            // nudweek5
+            // tbProdeg2
             // 
-            this.nudweek5.Location = new System.Drawing.Point(519, 217);
-            this.nudweek5.Name = "nudweek5";
-            this.nudweek5.Size = new System.Drawing.Size(120, 22);
-            this.nudweek5.TabIndex = 22;
+            this.tbProdeg2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbProdeg2.Location = new System.Drawing.Point(368, 564);
+            this.tbProdeg2.Margin = new System.Windows.Forms.Padding(4);
+            this.tbProdeg2.Name = "tbProdeg2";
+            this.tbProdeg2.Size = new System.Drawing.Size(132, 22);
+            this.tbProdeg2.TabIndex = 36;
             // 
-            // nudweek6
+            // tbProdeg1
             // 
-            this.nudweek6.Location = new System.Drawing.Point(519, 266);
-            this.nudweek6.Name = "nudweek6";
-            this.nudweek6.Size = new System.Drawing.Size(120, 22);
-            this.nudweek6.TabIndex = 23;
+            this.tbProdeg1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbProdeg1.Location = new System.Drawing.Point(227, 564);
+            this.tbProdeg1.Margin = new System.Windows.Forms.Padding(4);
+            this.tbProdeg1.Name = "tbProdeg1";
+            this.tbProdeg1.Size = new System.Drawing.Size(132, 22);
+            this.tbProdeg1.TabIndex = 35;
             // 
-            // nudweek7
+            // tbKeeper
             // 
-            this.nudweek7.Location = new System.Drawing.Point(519, 303);
-            this.nudweek7.Name = "nudweek7";
-            this.nudweek7.Size = new System.Drawing.Size(120, 22);
-            this.nudweek7.TabIndex = 24;
+            this.tbKeeper.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbKeeper.Location = new System.Drawing.Point(239, 519);
+            this.tbKeeper.Margin = new System.Windows.Forms.Padding(4);
+            this.tbKeeper.Name = "tbKeeper";
+            this.tbKeeper.Size = new System.Drawing.Size(248, 22);
+            this.tbKeeper.TabIndex = 34;
             // 
-            // nudweek8
+            // tbWorstDefence
             // 
-            this.nudweek8.Location = new System.Drawing.Point(519, 348);
-            this.nudweek8.Name = "nudweek8";
-            this.nudweek8.Size = new System.Drawing.Size(120, 22);
-            this.nudweek8.TabIndex = 25;
+            this.tbWorstDefence.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbWorstDefence.Location = new System.Drawing.Point(239, 482);
+            this.tbWorstDefence.Margin = new System.Windows.Forms.Padding(4);
+            this.tbWorstDefence.Name = "tbWorstDefence";
+            this.tbWorstDefence.Size = new System.Drawing.Size(248, 22);
+            this.tbWorstDefence.TabIndex = 33;
+            // 
+            // tbAssists
+            // 
+            this.tbAssists.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbAssists.Location = new System.Drawing.Point(239, 435);
+            this.tbAssists.Margin = new System.Windows.Forms.Padding(4);
+            this.tbAssists.Name = "tbAssists";
+            this.tbAssists.Size = new System.Drawing.Size(248, 22);
+            this.tbAssists.TabIndex = 32;
+            // 
+            // tbMostRed
+            // 
+            this.tbMostRed.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbMostRed.Location = new System.Drawing.Point(239, 391);
+            this.tbMostRed.Margin = new System.Windows.Forms.Padding(4);
+            this.tbMostRed.Name = "tbMostRed";
+            this.tbMostRed.Size = new System.Drawing.Size(248, 22);
+            this.tbMostRed.TabIndex = 31;
+            // 
+            // lblProDeg
+            // 
+            this.lblProDeg.AutoSize = true;
+            this.lblProDeg.Location = new System.Drawing.Point(47, 568);
+            this.lblProDeg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProDeg.Name = "lblProDeg";
+            this.lblProDeg.Size = new System.Drawing.Size(128, 17);
+            this.lblProDeg.TabIndex = 30;
+            this.lblProDeg.Text = "Nacompetitieteams";
+            // 
+            // lblWorstDefence
+            // 
+            this.lblWorstDefence.AutoSize = true;
+            this.lblWorstDefence.Location = new System.Drawing.Point(47, 485);
+            this.lblWorstDefence.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWorstDefence.Name = "lblWorstDefence";
+            this.lblWorstDefence.Size = new System.Drawing.Size(181, 17);
+            this.lblWorstDefence.TabIndex = 28;
+            this.lblWorstDefence.Text = "Club met slechtste defensie";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(47, 522);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(143, 17);
+            this.label4.TabIndex = 29;
+            this.label4.Tag = "lblKeeper";
+            this.label4.Text = "Keeper met meeste 0";
+            // 
+            // lblAsssists
+            // 
+            this.lblAsssists.AutoSize = true;
+            this.lblAsssists.Location = new System.Drawing.Point(47, 439);
+            this.lblAsssists.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAsssists.Name = "lblAsssists";
+            this.lblAsssists.Size = new System.Drawing.Size(173, 17);
+            this.lblAsssists.TabIndex = 27;
+            this.lblAsssists.Text = "Speler met meeste assists";
+            // 
+            // lblMostRed
+            // 
+            this.lblMostRed.AutoSize = true;
+            this.lblMostRed.Location = new System.Drawing.Point(47, 394);
+            this.lblMostRed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMostRed.Name = "lblMostRed";
+            this.lblMostRed.Size = new System.Drawing.Size(146, 17);
+            this.lblMostRed.TabIndex = 26;
+            this.lblMostRed.Text = "Club met meeste rood";
             // 
             // HostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1383, 549);
+            this.ClientSize = new System.Drawing.Size(1244, 671);
             this.Controls.Add(this.gbEstimations);
             this.Controls.Add(this.gbBonus);
             this.Controls.Add(this.btnNext);
@@ -749,6 +926,14 @@
             this.Text = "HostForm";
             this.gbBonus.ResumeLayout(false);
             this.gbBonus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek1)).EndInit();
             this.gbWeeks.ResumeLayout(false);
             this.gbWeeks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).EndInit();
@@ -773,14 +958,11 @@
             this.gbEstimations.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudGoals)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudReds)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudweek8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudweek9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -851,5 +1033,21 @@
         private System.Windows.Forms.NumericUpDown nudweek1;
         private System.Windows.Forms.Label lblweek;
         private System.Windows.Forms.NumericUpDown nudweek8;
+        private System.Windows.Forms.NumericUpDown nudweek13;
+        private System.Windows.Forms.NumericUpDown nudweek12;
+        private System.Windows.Forms.NumericUpDown nudweek11;
+        private System.Windows.Forms.NumericUpDown nudweek10;
+        private System.Windows.Forms.NumericUpDown nudweek9;
+        private System.Windows.Forms.TextBox tbProdeg2;
+        private System.Windows.Forms.TextBox tbProdeg1;
+        private System.Windows.Forms.TextBox tbKeeper;
+        private System.Windows.Forms.TextBox tbWorstDefence;
+        private System.Windows.Forms.TextBox tbAssists;
+        private System.Windows.Forms.TextBox tbMostRed;
+        private System.Windows.Forms.Label lblProDeg;
+        private System.Windows.Forms.Label lblWorstDefence;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblAsssists;
+        private System.Windows.Forms.Label lblMostRed;
     }
 }

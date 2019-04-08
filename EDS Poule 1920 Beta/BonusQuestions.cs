@@ -22,7 +22,8 @@ namespace EDS_Poule
         public int WeekScore { get; private set; }
 
         public BonusQuestions(string kampioen, string degradant, string topscorer, string trainer,
-            string winterkampioen, string championround, string kampioendivisie1, string[] finalisten, int[] weeks)
+            string winterkampioen, string championround, string kampioendivisie1, string[] finalisten, 
+            string teamReds, string topAssists, string worstdefence, string keeper, string[] prodeg ,int[] weeks)
         {
             Answers = new Dictionary<string, Question>()
             {
@@ -34,6 +35,11 @@ namespace EDS_Poule
                 {"Championround", new Question(){Answer = championround, Points = 10, IsArray = false, WeekAnswered = weeks[5] } },
                 {"Kampioendivisie1", new Question(){Answer = kampioendivisie1, Points = 20, IsArray = false, WeekAnswered = weeks[6] } },
                 {"Finalisten", new Question(){Answer = finalisten, Points = 10, IsArray = true, WeekAnswered = weeks[7] } },
+                {"Teamreds", new Question(){Answer = teamReds, Points = 20, IsArray = false, WeekAnswered = weeks[8]} },
+                {"Assists", new Question(){Answer = topAssists, Points = 20, IsArray = false, WeekAnswered = weeks[9] } },
+                {"Worstdefence", new Question(){Answer = worstdefence, Points = 15, IsArray = false, WeekAnswered = weeks[10] } },
+                {"Keeper", new Question(){Answer = keeper, Points = 15, IsArray = false, WeekAnswered = weeks[11]  } },
+                {"Prodeg", new Question(){Answer = prodeg, Points = 10, IsArray = true, WeekAnswered = weeks[12] } }
             };
         }
 

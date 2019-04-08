@@ -34,24 +34,19 @@ namespace EDS_Poule
 
                 if (HostA != 99 && ThisA != 99)
                 {
-                    if (ThisA == HostA && ThisB == HostB)
+                    if (ThisWinner == HostWinner)
                     {
                         score += 10;
                     }
 
-                    else if ((ThisA == HostA || ThisB == HostB) && ThisWinner == HostWinner)
+                    if (ThisA == HostA)
                     {
-                        score += 8;
+                        score += 5;
                     }
 
-                    else if ((ThisA != HostA && ThisB != HostB) && ThisWinner == HostWinner)
+                    if (ThisB == HostB)
                     {
-                        score += 6;
-                    }
-
-                    else if ((ThisA == HostA || ThisB == HostB) && ThisWinner != HostWinner)
-                    {
-                        score += 2;
+                        score += 5;
                     }
 
                     if (counter == 0)

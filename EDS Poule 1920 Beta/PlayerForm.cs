@@ -168,6 +168,12 @@ namespace EDS_Poule
             tbTopscorer.Text = player.Questions.Answers["Topscorer"].Answer;
             tbTrainer.Text = player.Questions.Answers["Trainer"].Answer;
             tbWinterkampioen.Text = player.Questions.Answers["Winterkampioen"].Answer;
+            tbKeeper.Text = player.Questions.Answers["Keeper"].Answer;
+            tbMostRed.Text = player.Questions.Answers["Teamreds"].Answer;
+            tbAssists.Text = player.Questions.Answers["Assists"].Answer;
+            tbWorstDefence.Text = player.Questions.Answers["Worstdefence"].Answer;
+            tbProdeg1.Text = player.Questions.Answers["Prodeg"].Answer[0];
+            tbProdeg2.Text = player.Questions.Answers["Prodeg"].Answer[1];
         }
 
         public void loadEstimations()
@@ -184,11 +190,11 @@ namespace EDS_Poule
         {
             try
             {
-                string[] finalists = new string[2];
-                finalists[0] = tbFin1.Text;
-                finalists[1] = tbFin2.Text;
+                string[] finalists = { tbFin1.Text, tbFin2.Text };
+                string[] prodeg = { tbProdeg1.Text, tbProdeg2.Text };
                 BonusQuestions questions = new BonusQuestions(tbKampioen.Text, tbDegradant.Text, tbTopscorer.Text, tbTrainer.Text
-                    , tbWinterkampioen.Text, tbRonde.Text, tbDiv1Kampioen.Text, finalists, new int[8] {99,99,99,99,99,99,99,99});
+                    , tbWinterkampioen.Text, tbRonde.Text, tbDiv1Kampioen.Text, finalists, tbMostRed.Text, tbAssists.Text, tbWorstDefence.Text, 
+                    tbKeeper.Text, prodeg,new int[13] {99,99,99,99,99,99,99,99,99,99,99,99,99});
 
                 if(estimations == null)
                 estimations = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));

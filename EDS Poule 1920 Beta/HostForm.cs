@@ -42,7 +42,11 @@ namespace EDS_Poule
                 { "Championround", new BonusLocation() { text = tbRonde, nud = nudweek4 }},
                 { "Topscorer", new BonusLocation() { text = tbTopscorer, nud = nudweek5 }},
                 { "Trainer", new BonusLocation() { text = tbTrainer, nud = nudweek6 }},
-                { "Winterkampioen", new BonusLocation() { text = tbWinterkampioen, nud = nudweek7 }}
+                { "Winterkampioen", new BonusLocation() { text = tbWinterkampioen, nud = nudweek7 }},
+                { "Teamreds", new BonusLocation(){ text = tbMostRed, nud = nudweek9 }},
+                { "Assists", new BonusLocation(){ text = tbAssists, nud = nudweek10 }},
+                { "Worstdefence", new BonusLocation(){ text = tbWorstDefence, nud = nudweek11}},
+                { "Keeper", new BonusLocation(){ text = tbKeeper, nud = nudweek12}},
             };
 
             try { LoadHost(); }
@@ -65,22 +69,19 @@ namespace EDS_Poule
             weeks[counter] = new Week((counter + 1), matches);
             if (counter == 33)
             {
-                string[] finalists = new string[2];
-                finalists[0] = tbFin1.Text;
-                finalists[1] = tbFin2.Text;
+                string[] finalists = { tbFin1.Text, tbFin2.Text };
+                string[] prodeg = { tbProdeg1.Text, tbProdeg2.Text };
 
-                int[] Weeks = new int[8];
-                Weeks[0] = Convert.ToInt32(nudweek1.Value);
-                Weeks[1] = Convert.ToInt32(nudweek2.Value);
-                Weeks[2] = Convert.ToInt32(nudweek3.Value); 
-                Weeks[3] = Convert.ToInt32(nudweek4.Value);
-                Weeks[4] = Convert.ToInt32(nudweek5.Value);
-                Weeks[5] = Convert.ToInt32(nudweek6.Value);
-                Weeks[6] = Convert.ToInt32(nudweek7.Value);
-                Weeks[7] = Convert.ToInt32(nudweek8.Value);
+                int[] Weeks = {
+                Convert.ToInt32(nudweek1.Value), Convert.ToInt32(nudweek2.Value), Convert.ToInt32(nudweek3.Value),
+                Convert.ToInt32(nudweek4.Value), Convert.ToInt32(nudweek5.Value), Convert.ToInt32(nudweek6.Value),
+                Convert.ToInt32(nudweek7.Value), Convert.ToInt32(nudweek8.Value), Convert.ToInt32(nudweek9.Value),
+                Convert.ToInt32(nudweek10.Value), Convert.ToInt32(nudweek11.Value), Convert.ToInt32(nudweek12.Value),
+                Convert.ToInt32(nudweek13.Value) };
 
                 BonusQuestions questions = new BonusQuestions(tbKampioen.Text, tbDegradant.Text, tbTopscorer.Text, tbTrainer.Text
-                    , tbWinterkampioen.Text, tbRonde.Text, tbDiv1Kampioen.Text, finalists, Weeks);
+                    , tbWinterkampioen.Text, tbRonde.Text, tbDiv1Kampioen.Text, finalists, tbMostRed.Text, tbAssists.Text, 
+                    tbWorstDefence.Text, tbKeeper.Text, prodeg ,Weeks);
 
                 Estimations estimations = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));
                 Host = new Player(tbName.Text, weeks, questions, estimations);
@@ -182,10 +183,9 @@ namespace EDS_Poule
                 weeks[x] = new Week(x + 1, matches);
             }
 
-            string[] finalists = new string[2];
-            finalists[0] = "";
-            finalists[1] = "";
-            BonusQuestions ans = new BonusQuestions("", "", "", "", "", "", "", finalists, new int[] { 99,99,99,99,99,99,99,99});
+            string[] finalists = { "",""};
+            string[] prodeg = { "", "" };
+            BonusQuestions ans = new BonusQuestions("", "", "", "", "", "", "",finalists,"","","","", prodeg, new int[] { 99,99,99,99,99,99,99,99});
             Estimations ests = new Estimations(-99,-99);
             Host = new Player("Host", weeks, ans, ests);
         }

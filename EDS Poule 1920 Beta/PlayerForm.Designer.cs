@@ -90,10 +90,21 @@
             this.gbManualInput = new System.Windows.Forms.GroupBox();
             this.btnSwitchInput = new System.Windows.Forms.Button();
             this.gbEstimations = new System.Windows.Forms.GroupBox();
-            this.nudReds = new System.Windows.Forms.NumericUpDown();
-            this.nudGoals = new System.Windows.Forms.NumericUpDown();
-            this.lblReds = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblReds = new System.Windows.Forms.Label();
+            this.nudGoals = new System.Windows.Forms.NumericUpDown();
+            this.nudReds = new System.Windows.Forms.NumericUpDown();
+            this.tbProdeg2 = new System.Windows.Forms.TextBox();
+            this.tbProdeg1 = new System.Windows.Forms.TextBox();
+            this.tbKeeper = new System.Windows.Forms.TextBox();
+            this.tbWorstDefence = new System.Windows.Forms.TextBox();
+            this.tbAssists = new System.Windows.Forms.TextBox();
+            this.tbMostRed = new System.Windows.Forms.TextBox();
+            this.lblProDeg = new System.Windows.Forms.Label();
+            this.lblWorstDefence = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblAsssists = new System.Windows.Forms.Label();
+            this.lblMostRed = new System.Windows.Forms.Label();
             this.gbWeeks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).BeginInit();
@@ -118,8 +129,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudAfwijking)).BeginInit();
             this.gbManualInput.SuspendLayout();
             this.gbEstimations.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudReds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGoals)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudReds)).BeginInit();
             this.SuspendLayout();
             // 
             // gbWeeks
@@ -515,6 +526,17 @@
             // 
             // gbBonus
             // 
+            this.gbBonus.Controls.Add(this.tbProdeg2);
+            this.gbBonus.Controls.Add(this.tbProdeg1);
+            this.gbBonus.Controls.Add(this.tbKeeper);
+            this.gbBonus.Controls.Add(this.tbWorstDefence);
+            this.gbBonus.Controls.Add(this.tbAssists);
+            this.gbBonus.Controls.Add(this.tbMostRed);
+            this.gbBonus.Controls.Add(this.lblProDeg);
+            this.gbBonus.Controls.Add(this.lblWorstDefence);
+            this.gbBonus.Controls.Add(this.label4);
+            this.gbBonus.Controls.Add(this.lblAsssists);
+            this.gbBonus.Controls.Add(this.lblMostRed);
             this.gbBonus.Controls.Add(this.tbFin2);
             this.gbBonus.Controls.Add(this.tbFin1);
             this.gbBonus.Controls.Add(this.tbDiv1Kampioen);
@@ -536,7 +558,7 @@
             this.gbBonus.Margin = new System.Windows.Forms.Padding(4);
             this.gbBonus.Name = "gbBonus";
             this.gbBonus.Padding = new System.Windows.Forms.Padding(4);
-            this.gbBonus.Size = new System.Drawing.Size(525, 402);
+            this.gbBonus.Size = new System.Drawing.Size(525, 602);
             this.gbBonus.TabIndex = 4;
             this.gbBonus.TabStop = false;
             this.gbBonus.Text = "Bonusvragen";
@@ -838,35 +860,12 @@
             this.gbEstimations.Controls.Add(this.lblReds);
             this.gbEstimations.Controls.Add(this.nudGoals);
             this.gbEstimations.Controls.Add(this.nudReds);
-            this.gbEstimations.Location = new System.Drawing.Point(1113, 96);
+            this.gbEstimations.Location = new System.Drawing.Point(84, 525);
             this.gbEstimations.Name = "gbEstimations";
             this.gbEstimations.Size = new System.Drawing.Size(251, 99);
             this.gbEstimations.TabIndex = 10;
             this.gbEstimations.TabStop = false;
             this.gbEstimations.Text = "Estimations";
-            // 
-            // nudReds
-            // 
-            this.nudReds.Location = new System.Drawing.Point(125, 29);
-            this.nudReds.Name = "nudReds";
-            this.nudReds.Size = new System.Drawing.Size(120, 22);
-            this.nudReds.TabIndex = 0;
-            // 
-            // nudGoals
-            // 
-            this.nudGoals.Location = new System.Drawing.Point(125, 57);
-            this.nudGoals.Name = "nudGoals";
-            this.nudGoals.Size = new System.Drawing.Size(120, 22);
-            this.nudGoals.TabIndex = 1;
-            // 
-            // lblReds
-            // 
-            this.lblReds.AutoSize = true;
-            this.lblReds.Location = new System.Drawing.Point(6, 31);
-            this.lblReds.Name = "lblReds";
-            this.lblReds.Size = new System.Drawing.Size(94, 17);
-            this.lblReds.TabIndex = 2;
-            this.lblReds.Text = "Rode kaarten";
             // 
             // label3
             // 
@@ -877,11 +876,139 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Goals Topscorer";
             // 
+            // lblReds
+            // 
+            this.lblReds.AutoSize = true;
+            this.lblReds.Location = new System.Drawing.Point(6, 31);
+            this.lblReds.Name = "lblReds";
+            this.lblReds.Size = new System.Drawing.Size(94, 17);
+            this.lblReds.TabIndex = 2;
+            this.lblReds.Text = "Rode kaarten";
+            // 
+            // nudGoals
+            // 
+            this.nudGoals.Location = new System.Drawing.Point(125, 57);
+            this.nudGoals.Name = "nudGoals";
+            this.nudGoals.Size = new System.Drawing.Size(120, 22);
+            this.nudGoals.TabIndex = 1;
+            // 
+            // nudReds
+            // 
+            this.nudReds.Location = new System.Drawing.Point(125, 29);
+            this.nudReds.Name = "nudReds";
+            this.nudReds.Size = new System.Drawing.Size(120, 22);
+            this.nudReds.TabIndex = 0;
+            // 
+            // tbProdeg2
+            // 
+            this.tbProdeg2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbProdeg2.Location = new System.Drawing.Point(368, 567);
+            this.tbProdeg2.Margin = new System.Windows.Forms.Padding(4);
+            this.tbProdeg2.Name = "tbProdeg2";
+            this.tbProdeg2.Size = new System.Drawing.Size(132, 22);
+            this.tbProdeg2.TabIndex = 47;
+            // 
+            // tbProdeg1
+            // 
+            this.tbProdeg1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbProdeg1.Location = new System.Drawing.Point(227, 567);
+            this.tbProdeg1.Margin = new System.Windows.Forms.Padding(4);
+            this.tbProdeg1.Name = "tbProdeg1";
+            this.tbProdeg1.Size = new System.Drawing.Size(132, 22);
+            this.tbProdeg1.TabIndex = 46;
+            // 
+            // tbKeeper
+            // 
+            this.tbKeeper.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbKeeper.Location = new System.Drawing.Point(239, 522);
+            this.tbKeeper.Margin = new System.Windows.Forms.Padding(4);
+            this.tbKeeper.Name = "tbKeeper";
+            this.tbKeeper.Size = new System.Drawing.Size(248, 22);
+            this.tbKeeper.TabIndex = 45;
+            // 
+            // tbWorstDefence
+            // 
+            this.tbWorstDefence.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbWorstDefence.Location = new System.Drawing.Point(239, 485);
+            this.tbWorstDefence.Margin = new System.Windows.Forms.Padding(4);
+            this.tbWorstDefence.Name = "tbWorstDefence";
+            this.tbWorstDefence.Size = new System.Drawing.Size(248, 22);
+            this.tbWorstDefence.TabIndex = 44;
+            // 
+            // tbAssists
+            // 
+            this.tbAssists.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbAssists.Location = new System.Drawing.Point(239, 438);
+            this.tbAssists.Margin = new System.Windows.Forms.Padding(4);
+            this.tbAssists.Name = "tbAssists";
+            this.tbAssists.Size = new System.Drawing.Size(248, 22);
+            this.tbAssists.TabIndex = 43;
+            // 
+            // tbMostRed
+            // 
+            this.tbMostRed.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbMostRed.Location = new System.Drawing.Point(239, 394);
+            this.tbMostRed.Margin = new System.Windows.Forms.Padding(4);
+            this.tbMostRed.Name = "tbMostRed";
+            this.tbMostRed.Size = new System.Drawing.Size(248, 22);
+            this.tbMostRed.TabIndex = 42;
+            // 
+            // lblProDeg
+            // 
+            this.lblProDeg.AutoSize = true;
+            this.lblProDeg.Location = new System.Drawing.Point(47, 571);
+            this.lblProDeg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProDeg.Name = "lblProDeg";
+            this.lblProDeg.Size = new System.Drawing.Size(128, 17);
+            this.lblProDeg.TabIndex = 41;
+            this.lblProDeg.Text = "Nacompetitieteams";
+            // 
+            // lblWorstDefence
+            // 
+            this.lblWorstDefence.AutoSize = true;
+            this.lblWorstDefence.Location = new System.Drawing.Point(47, 488);
+            this.lblWorstDefence.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWorstDefence.Name = "lblWorstDefence";
+            this.lblWorstDefence.Size = new System.Drawing.Size(181, 17);
+            this.lblWorstDefence.TabIndex = 39;
+            this.lblWorstDefence.Text = "Club met slechtste defensie";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(47, 525);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(143, 17);
+            this.label4.TabIndex = 40;
+            this.label4.Tag = "lblKeeper";
+            this.label4.Text = "Keeper met meeste 0";
+            // 
+            // lblAsssists
+            // 
+            this.lblAsssists.AutoSize = true;
+            this.lblAsssists.Location = new System.Drawing.Point(47, 442);
+            this.lblAsssists.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAsssists.Name = "lblAsssists";
+            this.lblAsssists.Size = new System.Drawing.Size(173, 17);
+            this.lblAsssists.TabIndex = 38;
+            this.lblAsssists.Text = "Speler met meeste assists";
+            // 
+            // lblMostRed
+            // 
+            this.lblMostRed.AutoSize = true;
+            this.lblMostRed.Location = new System.Drawing.Point(47, 397);
+            this.lblMostRed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMostRed.Name = "lblMostRed";
+            this.lblMostRed.Size = new System.Drawing.Size(146, 17);
+            this.lblMostRed.TabIndex = 37;
+            this.lblMostRed.Text = "Club met meeste rood";
+            // 
             // PlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1376, 499);
+            this.ClientSize = new System.Drawing.Size(1088, 702);
             this.Controls.Add(this.gbEstimations);
             this.Controls.Add(this.btnSwitchInput);
             this.Controls.Add(this.gbManualInput);
@@ -920,8 +1047,8 @@
             this.gbManualInput.ResumeLayout(false);
             this.gbEstimations.ResumeLayout(false);
             this.gbEstimations.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudReds)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGoals)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudReds)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -995,5 +1122,16 @@
         private System.Windows.Forms.Label lblReds;
         private System.Windows.Forms.NumericUpDown nudGoals;
         private System.Windows.Forms.NumericUpDown nudReds;
+        private System.Windows.Forms.TextBox tbProdeg2;
+        private System.Windows.Forms.TextBox tbProdeg1;
+        private System.Windows.Forms.TextBox tbKeeper;
+        private System.Windows.Forms.TextBox tbWorstDefence;
+        private System.Windows.Forms.TextBox tbAssists;
+        private System.Windows.Forms.TextBox tbMostRed;
+        private System.Windows.Forms.Label lblProDeg;
+        private System.Windows.Forms.Label lblWorstDefence;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblAsssists;
+        private System.Windows.Forms.Label lblMostRed;
     }
 }
