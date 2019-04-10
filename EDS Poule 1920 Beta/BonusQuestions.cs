@@ -9,7 +9,8 @@ namespace EDS_Poule
     [Serializable]
     public struct Question
     {
-        public dynamic Answer;
+        public string Answer;
+        public string[] AnswerArray;
         public int Points;
         public bool IsArray;
         public int WeekAnswered;
@@ -23,7 +24,7 @@ namespace EDS_Poule
 
         public BonusQuestions(string kampioen, string degradant, string topscorer, string trainer,
             string winterkampioen, string championround, string kampioendivisie1, string[] finalisten, 
-            string teamReds, string topAssists, string worstdefence, string keeper, string[] prodeg ,int[] weeks)
+            string teamReds, string topAssists, string worstdefence, string[] prodeg ,int[] weeks)
         {
             Answers = new Dictionary<string, Question>()
             {
@@ -34,12 +35,11 @@ namespace EDS_Poule
                 {"Winterkampioen", new Question(){Answer = winterkampioen, Points = 15, IsArray = false, WeekAnswered = weeks[4] } },
                 {"Championround", new Question(){Answer = championround, Points = 10, IsArray = false, WeekAnswered = weeks[5] } },
                 {"Kampioendivisie1", new Question(){Answer = kampioendivisie1, Points = 20, IsArray = false, WeekAnswered = weeks[6] } },
-                {"Finalisten", new Question(){Answer = finalisten, Points = 10, IsArray = true, WeekAnswered = weeks[7] } },
-                {"Teamreds", new Question(){Answer = teamReds, Points = 20, IsArray = false, WeekAnswered = weeks[8]} },
+                {"Finalisten", new Question(){AnswerArray = finalisten, Points = 10, IsArray = true, WeekAnswered = weeks[7] } },
+                {"Teamreds", new Question(){Answer = teamReds, Points = 15, IsArray = false, WeekAnswered = weeks[8]} },
                 {"Assists", new Question(){Answer = topAssists, Points = 20, IsArray = false, WeekAnswered = weeks[9] } },
                 {"Worstdefence", new Question(){Answer = worstdefence, Points = 15, IsArray = false, WeekAnswered = weeks[10] } },
-                {"Keeper", new Question(){Answer = keeper, Points = 15, IsArray = false, WeekAnswered = weeks[11]  } },
-                {"Prodeg", new Question(){Answer = prodeg, Points = 10, IsArray = true, WeekAnswered = weeks[12] } }
+                {"Prodeg", new Question(){AnswerArray = prodeg, Points = 10, IsArray = true, WeekAnswered = weeks[11] } }
             };
         }
 
@@ -58,9 +58,10 @@ namespace EDS_Poule
                 {
                     if (a.Value.IsArray)
                     {
-                        foreach (var e in a.Value.Answer)
+                        foreach (var e in a.Value.AnswerArray)
                         {
-                            if (ans.Answer.Contains(e))
+                            int[] i = { 0, 0 };
+                            if (ans.AnswerArray.Contains(e))
                             {
                                 score += a.Value.Points;
                                 if (ans.WeekAnswered == currentweek)

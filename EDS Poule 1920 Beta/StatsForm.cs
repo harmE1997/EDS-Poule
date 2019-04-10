@@ -66,9 +66,9 @@ namespace EDS_Poule
                         break;
 
                     case "cf":
-                        stat = player.Questions.Answers["Finalisten"].Answer[0];
+                        stat = player.Questions.Answers["Finalisten"].AnswerArray[0];
                         UpdateStats(stat, player.Name);
-                        stat = player.Questions.Answers["Finalisten"].Answer[1];
+                        stat = player.Questions.Answers["Finalisten"].AnswerArray[1];
                         break;
                 }
                 UpdateStats(stat, player.Name);               

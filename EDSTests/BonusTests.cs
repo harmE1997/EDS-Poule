@@ -45,7 +45,8 @@ namespace EDSTests
         [TestMethod]
         public void TestConstructor()
         {
-            BonusQuestions q = new BonusQuestions("a", "b", "c", "d", "e", "f", "g", new string[] { "h", "i" });
+            BonusQuestions q = new BonusQuestions("a", "b", "c", "d", "e", "f", "g", new string[] { "h", "i" },"j", "k", "l", new string[] {"m", "n" },
+                 new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 });
             Assert.AreEqual("a", q.Answers["Kampioen"].Answer);
             Assert.IsFalse(q.Answers["Kampioen"].IsArray);
             Assert.AreEqual(25, q.Answers["Kampioen"].Points);
