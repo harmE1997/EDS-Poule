@@ -11,7 +11,7 @@ namespace EDS_Poule
 {
     public class ExcelReadSettings
     {
-        public int StartRow = 11;
+        public int StartRow = 12;
         public int BlockSize = 9;
         public int TotalBlocks = 34;
         public int CurrentBlock = 0;
@@ -34,7 +34,7 @@ namespace EDS_Poule
             else if (adjustment == 2)
             {
                 CurrentBlock = 17;
-                StartRow = 11;
+                StartRow = 12;
                 HomeColumn = 16;
                 OutColumn = 17;
             }

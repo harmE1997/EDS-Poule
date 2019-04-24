@@ -73,7 +73,7 @@ namespace EDS_Poule
         private void btnReadFile_Click(object sender, EventArgs e)
         {
             string filename = tbFileName.Text;
-            if (string.IsNullOrEmpty(filename) || !System.IO.File.Exists(filename) || (!filename.EndsWith(".xlsx") && !filename.EndsWith(".xls")))
+            if (string.IsNullOrEmpty(filename) || !System.IO.File.Exists(filename) || (!filename.EndsWith(".xls*")))
             {
                 MessageBox.Show("Invalid file");
                 return;
