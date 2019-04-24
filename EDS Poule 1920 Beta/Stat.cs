@@ -35,7 +35,7 @@ namespace EDS_Poule
         {
             if (other != null)
             {
-                return Number.CompareTo(other.Number);
+                return Number.CompareTo(other.Name);
             }
 
             else

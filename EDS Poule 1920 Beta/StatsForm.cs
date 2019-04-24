@@ -12,66 +12,62 @@ namespace EDS_Poule
 {
     public partial class StatsForm : Form
     {
-        public PlayerManager manager;
-        List<Stat> stats;
+        public PlayerManager manager { get; set; }
+        List<Stat> stats { get; set; }
         public StatsForm()
         {
             InitializeComponent();
             stats = new List<Stat>();
         }
 
-        private void btnChampions_Click(object sender, EventArgs e) => action("c");
-        private void btnDegrade_Click(object sender, EventArgs e) => action("d");
-        private void btnTopscorers_Click(object sender, EventArgs e) => action("t");
-        private void btnTrainers_Click(object sender, EventArgs e) => action("tr");
-        private void btnWinterChamps_Click(object sender, EventArgs e) => action("wc");
-        private void btnChampsDiv1_Click(object sender, EventArgs e) => action("cd1");
-        private void btnCupFinalists_Click(object sender, EventArgs e) => action("cf");
-        private void btnChampionRound_Click(object sender, EventArgs e) => action("rc");
+        //=======================================BonusQuestions==========================================
+        private void btnChampions_Click(object sender, EventArgs e) => ActionBonusQuestion("Kampioen");
+        private void btnDegrade_Click(object sender, EventArgs e) => ActionBonusQuestion("Degradant");
+        private void btnTopscorers_Click(object sender, EventArgs e) => ActionBonusQuestion("Topscorer");
+        private void btnTrainers_Click(object sender, EventArgs e) => ActionBonusQuestion("Trainer");
+        private void btnWinterChamps_Click(object sender, EventArgs e) => ActionBonusQuestion("Winterkampioen");
+        private void btnChampsDiv1_Click(object sender, EventArgs e) => ActionBonusQuestion("Kampioendivisie1");
+        private void btnCupFinalists_Click(object sender, EventArgs e) => ActionBonusQuestion("Finalisten");
+        private void btnChampionRound_Click(object sender, EventArgs e) => ActionBonusQuestion("Championround");
+        private void btnRedCards_Click(object sender, EventArgs e) => ActionBonusQuestion("Teamreds");
+        private void btnPlayOffs_Click(object sender, EventArgs e) => ActionBonusQuestion("Prodeg");
+        private void btnAssists_Click(object sender, EventArgs e) => ActionBonusQuestion("Assists");
+        private void btnGoalsAgainst_Click(object sender, EventArgs e) => ActionBonusQuestion("Worstdefence");
 
-        private void action(string field)
+        //=========================================Estimations==========================================
+        private void btnNrReds_Click(object sender, EventArgs e) => ActionEstimation("Reds");
+        private void btnNrGoals_Click(object sender, EventArgs e) => ActionEstimation("Goals");
+
+        private void ActionBonusQuestion(string Key)
         {
             stats.Clear();
             foreach (Player player in manager.Players)
             {
-                string stat = "";
-                switch (field)
+                var Name = player.Name;
+                var answer = player.Questions.Answers[Key];
+                if (answer.IsArray)
                 {
-                    case "c":
-                        stat = player.Questions.Answers["Kampioen"].Answer;
-                        break;
-
-                    case "cd1":
-                        stat = player.Questions.Answers["Kampioendivisie1"].Answer;
-                        break;
-
-                    case "t":
-                        stat = player.Questions.Answers["Topscorer"].Answer;
-                        break;
-
-                    case "tr":
-                        stat = player.Questions.Answers["Trainer"].Answer;
-                        break;
-
-                    case "wc":
-                        stat = player.Questions.Answers["Winterkampioen"].Answer;
-                        break;
-
-                    case "d":
-                        stat = player.Questions.Answers["Degradant"].Answer;
-                        break;
-
-                    case "rc":
-                        stat = player.Questions.Answers["Championround"].Answer;
-                        break;
-
-                    case "cf":
-                        stat = player.Questions.Answers["Finalisten"].AnswerArray[0];
-                        UpdateStats(stat, player.Name);
-                        stat = player.Questions.Answers["Finalisten"].AnswerArray[1];
-                        break;
+                    foreach (var e in answer.AnswerArray)
+                    {
+                        UpdateStats(e, Name);
+                    }
                 }
-                UpdateStats(stat, player.Name);               
+
+                else
+                {
+                    UpdateStats(answer.Answer, Name);
+                }          
+            }
+            UpdateListBox();
+        }
+
+        private void ActionEstimation(string Key)
+        {
+            stats.Clear();
+            foreach (Player player in manager.Players)
+            {
+                var answer = player.Estimations.Answers[Key].Answer;
+                    UpdateStats(answer.ToString(), player.Name);             
             }
             UpdateListBox();
         }
@@ -116,6 +112,6 @@ namespace EDS_Poule
             }
         }
 
-        
+
     }
 }
