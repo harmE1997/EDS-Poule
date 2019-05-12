@@ -36,7 +36,7 @@ namespace EDS_Poule
                 {
                     if (ThisWinner == HostWinner)
                     {
-                        score += 10;
+                        score += 15;
                     }
 
                     if (ThisA == HostA)
