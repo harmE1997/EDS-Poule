@@ -14,6 +14,7 @@ namespace EDS_Poule
         public int StartRow = 12;
         public int BlockSize = 9;
         public int TotalBlocks = 34;
+        public int FirstHalfSize = 18;
         public int CurrentBlock = 0;
         public int HomeColumn = 7;
         public int OutColumn = 8;
@@ -26,17 +27,17 @@ namespace EDS_Poule
         }
         public void Adjustsettings(int adjustment)
         {
+            // 1: only first half
+            // 2: switch to second half
             if (adjustment == 1)
             {
-                TotalBlocks = 17;
+                TotalBlocks = FirstHalfSize;
             }
 
             else if (adjustment == 2)
             {
-                CurrentBlock = 17;
-                StartRow = 12;
-                HomeColumn = 16;
-                OutColumn = 17;
+                CurrentBlock = TotalBlocks - FirstHalfSize;
+                StartRow = 204;
             }
         }
     }
@@ -128,8 +129,9 @@ namespace EDS_Poule
 
         public Estimations ReadEstimations()
         {
-            int reds = Convert.ToInt32(xlRange.Cells[184, 21].Value2);
-            int goals = Convert.ToInt32(xlRange.Cells[185, 21].Value2);
+            int column = 10;
+            int reds = Convert.ToInt32(xlRange.Cells[385, column].Value2);
+            int goals = Convert.ToInt32(xlRange.Cells[386, column].Value2);
 
             return new Estimations(reds, goals);
         }
