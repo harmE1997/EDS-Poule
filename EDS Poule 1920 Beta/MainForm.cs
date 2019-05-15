@@ -83,7 +83,7 @@ namespace EDS_Poule
                 form.loadWeek(0);
                 form.loadBonus();
                 form.loadEstimations();
-                form.setName(tbPlayer.Text);
+                form.loadPlayer(player);
                 form.Show();
             }
 
@@ -155,8 +155,9 @@ namespace EDS_Poule
             {
                 filename = ofdRanking.FileName;
                 ExcelManager em = new ExcelManager();
-                foreach (var i in em.ExportPlayersToExcel(filename, 2, Manager.Players))
-                    rtbNotes.Text = "Exported " + i + " out of " + Manager.Players.Count + " players.";
+                int.TryParse(cbCheck.Text, out int round);
+                foreach (var i in em.ExportPlayersToExcel(filename, 2, Manager.Players, round))
+                    rtbNotes.Text = "Exported " + (i - 2) + " out of " + Manager.Players.Count + " players.";
                
                 em.Clean();
                 MessageBox.Show("Ranking sucessfully exported");

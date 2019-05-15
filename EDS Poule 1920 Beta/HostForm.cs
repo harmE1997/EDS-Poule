@@ -38,11 +38,11 @@ namespace EDS_Poule
             {
                 { "Kampioen", new BonusLocation() { text = tbKampioen, nud = nudweek1 }},
                 { "Degradant", new BonusLocation() { text = tbDegradant, nud = nudweek2 }},
-                { "Kampioendivisie1", new BonusLocation() { text = tbDiv1Kampioen, nud = nudweek3 }},
-                { "Championround", new BonusLocation() { text = tbRonde, nud = nudweek4 }},
-                { "Topscorer", new BonusLocation() { text = tbTopscorer, nud = nudweek5 }},
-                { "Trainer", new BonusLocation() { text = tbTrainer, nud = nudweek6 }},
-                { "Winterkampioen", new BonusLocation() { text = tbWinterkampioen, nud = nudweek7 }},
+                { "Kampioendivisie1", new BonusLocation() { text = tbDiv1Kampioen, nud = nudweek7 }},
+                { "Championround", new BonusLocation() { text = tbRonde, nud = nudweek6 }},
+                { "Topscorer", new BonusLocation() { text = tbTopscorer, nud = nudweek3 }},
+                { "Trainer", new BonusLocation() { text = tbTrainer, nud = nudweek4 }},
+                { "Winterkampioen", new BonusLocation() { text = tbWinterkampioen, nud = nudweek5 }},
                 { "Teamreds", new BonusLocation(){ text = tbMostRed, nud = nudweek9 }},
                 { "Assists", new BonusLocation(){ text = tbAssists, nud = nudweek10 }},
                 { "Worstdefence", new BonusLocation(){ text = tbWorstDefence, nud = nudweek11}},
@@ -83,7 +83,7 @@ namespace EDS_Poule
                     tbWorstDefence.Text, prodeg, Weeks);
                 
                 Estimations estimations = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));
-                Host = new Player(tbName.Text, weeks, questions, estimations);
+                Host = new Player(tbName.Text, "", "", weeks, questions, estimations);
                 SaveHost();
                 this.Dispose();
                 this.Close();
@@ -196,7 +196,7 @@ namespace EDS_Poule
             string[] prodeg = { "", "" };
             BonusQuestions ans = new BonusQuestions("", "", "", "", "", "", "",finalists,"","","", prodeg, new int[] { 99,99,99,99,99,99,99,99,99,99,99,99});
             Estimations ests = new Estimations(-99,-99);
-            Host = new Player("Host", weeks, ans, ests);
+            Host = new Player("Host", "", "", weeks, ans, ests);
         }
     }
 }

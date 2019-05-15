@@ -10,6 +10,8 @@ namespace EDS_Poule
     public class Player : IComparable<Player>
     {
         public string Name { get; private set; }
+        public string Age { get; private set; }
+        public string Woonplaats { get; private set; }
         public int TotalScore { get; private set; }
         public int PreviousScore { get; set; }
         public int WeekScore { get; private set; }
@@ -19,10 +21,12 @@ namespace EDS_Poule
         public BonusQuestions Questions { get; private set; }
         public Estimations Estimations { get; private set; }
 
-        public Player(string name, Week[] weeks, BonusQuestions questions, Estimations estimations)
+        public Player(string name, string age, string woonplaats, Week[] weeks, BonusQuestions questions, Estimations estimations)
         {
             Weeks = weeks;
             Name = name;
+            Age = age;
+            Woonplaats = woonplaats;
             TotalScore = 0;
             WeekScore = 0;
             Questions = questions;
@@ -71,7 +75,7 @@ namespace EDS_Poule
         public void checkPlayer(Player Host, int currentWeek)
         {
             TotalScore = 0;
-            for (int i = 0; i < 34; i++)
+            for (int i = 0; i < currentWeek; i++)
             {
                 if (Weeks[i] != null)
                 {
@@ -83,7 +87,7 @@ namespace EDS_Poule
             }
 
             TotalScore += Questions.checkBonus(Host.Questions, currentWeek);
-            var EstScore = Estimations.checkEstimations(Host.Estimations);
+            var EstScore = Estimations.checkEstimations(Host.Estimations, currentWeek);
             TotalScore += EstScore;
 
             PreviousScore = TotalScore - WeekScore - Questions.WeekScore;

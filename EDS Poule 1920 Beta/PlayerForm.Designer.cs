@@ -103,6 +103,10 @@
             this.lblReds = new System.Windows.Forms.Label();
             this.nudGoals = new System.Windows.Forms.NumericUpDown();
             this.nudReds = new System.Windows.Forms.NumericUpDown();
+            this.lblAge = new System.Windows.Forms.Label();
+            this.tbAge = new System.Windows.Forms.TextBox();
+            this.lblWoonplaats = new System.Windows.Forms.Label();
+            this.tbWoonplaats = new System.Windows.Forms.TextBox();
             this.gbWeeks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).BeginInit();
@@ -980,11 +984,51 @@
             this.nudReds.Size = new System.Drawing.Size(120, 22);
             this.nudReds.TabIndex = 0;
             // 
+            // lblAge
+            // 
+            this.lblAge.AutoSize = true;
+            this.lblAge.Location = new System.Drawing.Point(324, 20);
+            this.lblAge.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(33, 17);
+            this.lblAge.TabIndex = 12;
+            this.lblAge.Text = "Age";
+            // 
+            // tbAge
+            // 
+            this.tbAge.Location = new System.Drawing.Point(365, 17);
+            this.tbAge.Margin = new System.Windows.Forms.Padding(4);
+            this.tbAge.Name = "tbAge";
+            this.tbAge.Size = new System.Drawing.Size(89, 22);
+            this.tbAge.TabIndex = 11;
+            // 
+            // lblWoonplaats
+            // 
+            this.lblWoonplaats.AutoSize = true;
+            this.lblWoonplaats.Location = new System.Drawing.Point(473, 19);
+            this.lblWoonplaats.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWoonplaats.Name = "lblWoonplaats";
+            this.lblWoonplaats.Size = new System.Drawing.Size(83, 17);
+            this.lblWoonplaats.TabIndex = 14;
+            this.lblWoonplaats.Text = "Woonplaats";
+            // 
+            // tbWoonplaats
+            // 
+            this.tbWoonplaats.Location = new System.Drawing.Point(564, 15);
+            this.tbWoonplaats.Margin = new System.Windows.Forms.Padding(4);
+            this.tbWoonplaats.Name = "tbWoonplaats";
+            this.tbWoonplaats.Size = new System.Drawing.Size(219, 22);
+            this.tbWoonplaats.TabIndex = 13;
+            // 
             // PlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 654);
+            this.Controls.Add(this.lblWoonplaats);
+            this.Controls.Add(this.tbWoonplaats);
+            this.Controls.Add(this.lblAge);
+            this.Controls.Add(this.tbAge);
             this.Controls.Add(this.gbEstimations);
             this.Controls.Add(this.btnSwitchInput);
             this.Controls.Add(this.gbManualInput);
@@ -1107,5 +1151,9 @@
         private System.Windows.Forms.Label lblWorstDefence;
         private System.Windows.Forms.Label lblAsssists;
         private System.Windows.Forms.Label lblMostRed;
+        private System.Windows.Forms.Label lblAge;
+        private System.Windows.Forms.TextBox tbAge;
+        private System.Windows.Forms.Label lblWoonplaats;
+        private System.Windows.Forms.TextBox tbWoonplaats;
     }
 }

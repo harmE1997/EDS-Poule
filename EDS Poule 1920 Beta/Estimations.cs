@@ -26,11 +26,16 @@ namespace EDS_Poule
                 { "Goals", new Estimation() { Answer = goals, Max = 10} }
             };
         }
-        public int checkEstimations(Estimations hostestimations)
+        public int checkEstimations(Estimations hostestimations, int week)
         {
             if (hostestimations == null)
             {
                 throw new ArgumentNullException();
+            }
+
+            if (week != 34)
+            {
+                return 0;
             }
             int score = 0;
             foreach (var a in Answers)

@@ -73,7 +73,7 @@ namespace EDS_Poule
         private void btnReadFile_Click(object sender, EventArgs e)
         {
             string filename = tbFileName.Text;
-            if (string.IsNullOrEmpty(filename) || !System.IO.File.Exists(filename) || (!filename.EndsWith(".xls*")))
+            if (string.IsNullOrEmpty(filename) || !System.IO.File.Exists(filename) || ((!filename.EndsWith(".xls")) && (!filename.EndsWith(".xlsx"))))
             {
                 MessageBox.Show("Invalid file");
                 return;
@@ -180,9 +180,11 @@ namespace EDS_Poule
             nudGoals.Value = player.Estimations.Answers["Goals"].Answer;
             nudReds.Value = player.Estimations.Answers["Reds"].Answer;
         }
-        public void setName(string name)
+        public void loadPlayer(Player player)
         {
-            tbName.Text = name;
+            tbName.Text = player.Name;
+            tbAge.Text = player.Age;
+            tbWoonplaats.Text = player.Woonplaats;
         }
 
         private void SavePlayer()
@@ -198,7 +200,7 @@ namespace EDS_Poule
                 if(estimations == null)
                 estimations = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));
 
-                Player newplayer = new Player(tbName.Text, weeks, questions, estimations);
+                Player newplayer = new Player(tbName.Text, tbAge.Text, tbWoonplaats.Text, weeks, questions, estimations);
                 if (player != null)
                 {
                     manager.removePlayer(player.Name);
