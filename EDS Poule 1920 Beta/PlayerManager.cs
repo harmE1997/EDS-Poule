@@ -47,23 +47,41 @@ namespace EDS_Poule
             }
         }
 
-        public void RankPlayers()
+        public void RankPlayers(bool previous)
         {
-            Players.Sort();
+            if (previous)
+            {
+                Players.OrderBy(p => p.PreviousScore);
+            }
+            else
+            {
+                Players.OrderBy(p => p.TotalScore);
+            }
             Players.Reverse();
-
             int index = 1;
             int ranking = 1;
-            int previousScore = 5000;
+            int previousScore = 10000;
 
             foreach (Player player in Players)
             {
-                if (player.TotalScore < previousScore)
-                    ranking = index;
+                if (previous)
+                {
+                    if (player.PreviousScore < previousScore)
+                        ranking = index;
 
-                player.SetRanking(ranking);
+                    player.PreviousRanking = ranking;
+                    previousScore = player.PreviousScore;
+                }
+
+                else
+                {
+                    if (player.TotalScore < previousScore)
+                        ranking = index;
+
+                    player.Ranking = ranking;                    
+                    previousScore = player.TotalScore;
+                }
                 index++;
-                previousScore = player.TotalScore;
             }
         }
 

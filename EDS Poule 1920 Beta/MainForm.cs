@@ -103,49 +103,41 @@ namespace EDS_Poule
 
         private void btnMatch_Click(object sender, EventArgs e)
         {
-            if (cbCheck.Text != "All")
+            int fulls = 0;
+            int halfs = 0;
+            string matchid = cbMatches.Text;
+            if (!int.TryParse(matchid, out int matchID))
             {
-                int fulls = 0;
-                int halfs = 0;
-                string matchid = cbMatches.Text;
-                if (!int.TryParse(matchid, out int matchID))
-                {
-                    matchID = 0; // MOTW's matchID is 0.
-                }
+                matchID = 0; // MOTW's matchID is 0.
+            }
 
-                List<string> names = new List<string>();
-                HostForm form = new HostForm();
-                foreach (Player player in Manager.Players)
+            List<string> names = new List<string>();
+            HostForm form = new HostForm();
+            foreach (Player player in Manager.Players)
+            {
+                var week = Convert.ToInt16(cbCheck.Text) - 1;
+                if (player.Weeks[week] != null)
                 {
-                    var week = Convert.ToInt16(cbCheck.Text) - 1;
-                    if (player.Weeks[week] != null)
+                    int check = player.Weeks[week].CheckMatch(form.Host, matchID);
+                    if (check > 0)
                     {
-                        int check = player.Weeks[week].CheckMatch(form.Host, matchID);
-                        if (check > 0)
-                        {
-                            halfs++;
-                        }
+                        halfs++;
+                    }
 
-                        if (check == 2)
-                        {
-                            fulls++;
-                            names.Add(player.Name);
-                        }
+                    if (check == 2)
+                    {
+                        fulls++;
+                        names.Add(player.Name);
                     }
                 }
-
-                string Names = "";
-                foreach (string name in names)
-                {
-                    Names += name + ", ";
-                }
-                rtbNotes.Text = "Goede winnaar: " + halfs + "\nHelemaal correct: " + fulls + " " + Names;
             }
 
-            else
+            string Names = "";
+            foreach (string name in names)
             {
-                MessageBox.Show("Select week please.");
+                Names += name + ", ";
             }
+            rtbNotes.Text = "Goede winnaar: " + halfs + "\nHelemaal correct: " + fulls + " " + Names;
         }
 
         private void btnRankingToExcel_Click(object sender, EventArgs e)
@@ -158,7 +150,7 @@ namespace EDS_Poule
                 int.TryParse(cbCheck.Text, out int round);
                 foreach (var i in em.ExportPlayersToExcel(filename, 2, Manager.Players, round))
                     rtbNotes.Text = "Exported " + (i - 2) + " out of " + Manager.Players.Count + " players.";
-               
+
                 em.Clean();
                 MessageBox.Show("Ranking sucessfully exported");
             }
@@ -167,13 +159,8 @@ namespace EDS_Poule
 
         private void RefreshRanking()
         {
-            Manager.RankPlayers();
-            foreach (var p in Manager.Players)
-            {
-                p.PreviousScore = p.TotalScore;
-                p.PreviousRanking = p.Ranking;
-            }
-            Manager.RankPlayers();
+            Manager.RankPlayers(true);
+            Manager.RankPlayers(false);
             lbRanking.Items.Clear();
             lbRanking.Items.Add("#\t#Last\tName\t\t\t\tTotal\tWeek");
             foreach (Player player in Manager.Players)

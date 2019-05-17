@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace EDS_Poule
 {
     [Serializable]
-    public class Player : IComparable<Player>
+    public class Player
     {
         public string Name { get; private set; }
         public string Age { get; private set; }
@@ -15,7 +15,7 @@ namespace EDS_Poule
         public int TotalScore { get; private set; }
         public int PreviousScore { get; set; }
         public int WeekScore { get; private set; }
-        public int Ranking { get; private set; }
+        public int Ranking { get; set; }
         public int PreviousRanking { get; set; }
         public Week[] Weeks { get; private set; }
         public BonusQuestions Questions { get; private set; }
@@ -34,17 +34,13 @@ namespace EDS_Poule
             PreviousScore = 0;
         }
 
-        public void SetRanking(int rank)
-        {
-            Ranking = rank;
-        }
         public string PlayerToString()
         {
             int maxtabs = 3;
             int rangesize = 8;
             decimal NrTabs = maxtabs - (Math.Floor(Convert.ToDecimal(Name.Length) / rangesize));
             string text = Ranking + "\t" + PreviousRanking + "\t" + Name;
-
+            
             if (NrTabs < 1)
             {
                 NrTabs = 1;
@@ -57,19 +53,6 @@ namespace EDS_Poule
             
             text += "\t" + TotalScore + "\t" + WeekScore;
             return text;
-        }
-
-        public int CompareTo(Player other)
-        {
-            if (other != null)
-            {
-                return PreviousScore.CompareTo(other.PreviousScore);
-            }
-
-            else
-            {
-                throw new ArgumentNullException("OtherPlayer");
-            }
         }
 
         public void checkPlayer(Player Host, int currentWeek)
