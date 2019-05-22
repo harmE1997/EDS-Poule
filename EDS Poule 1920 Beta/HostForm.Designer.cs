@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.gbBonus = new System.Windows.Forms.GroupBox();
+            this.tbPromovendi2 = new System.Windows.Forms.TextBox();
+            this.tbDegradant2 = new System.Windows.Forms.TextBox();
             this.nudweek12 = new System.Windows.Forms.NumericUpDown();
             this.nudweek11 = new System.Windows.Forms.NumericUpDown();
             this.nudweek10 = new System.Windows.Forms.NumericUpDown();
@@ -103,8 +105,6 @@
             this.lblReds = new System.Windows.Forms.Label();
             this.nudGoals = new System.Windows.Forms.NumericUpDown();
             this.nudReds = new System.Windows.Forms.NumericUpDown();
-            this.tbDegradant2 = new System.Windows.Forms.TextBox();
-            this.tbPromovendi2 = new System.Windows.Forms.TextBox();
             this.gbBonus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudweek12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudweek11)).BeginInit();
@@ -188,35 +188,53 @@
             this.gbBonus.Margin = new System.Windows.Forms.Padding(4);
             this.gbBonus.Name = "gbBonus";
             this.gbBonus.Padding = new System.Windows.Forms.Padding(4);
-            this.gbBonus.Size = new System.Drawing.Size(693, 561);
+            this.gbBonus.Size = new System.Drawing.Size(693, 436);
             this.gbBonus.TabIndex = 9;
             this.gbBonus.TabStop = false;
             this.gbBonus.Text = "Bonusvragen";
             // 
+            // tbPromovendi2
+            // 
+            this.tbPromovendi2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbPromovendi2.Location = new System.Drawing.Point(369, 391);
+            this.tbPromovendi2.Margin = new System.Windows.Forms.Padding(4);
+            this.tbPromovendi2.Name = "tbPromovendi2";
+            this.tbPromovendi2.Size = new System.Drawing.Size(132, 22);
+            this.tbPromovendi2.TabIndex = 43;
+            // 
+            // tbDegradant2
+            // 
+            this.tbDegradant2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbDegradant2.Location = new System.Drawing.Point(370, 355);
+            this.tbDegradant2.Margin = new System.Windows.Forms.Padding(4);
+            this.tbDegradant2.Name = "tbDegradant2";
+            this.tbDegradant2.Size = new System.Drawing.Size(132, 22);
+            this.tbDegradant2.TabIndex = 42;
+            // 
             // nudweek12
             // 
-            this.nudweek12.Location = new System.Drawing.Point(519, 524);
+            this.nudweek12.Location = new System.Drawing.Point(519, 75);
             this.nudweek12.Name = "nudweek12";
             this.nudweek12.Size = new System.Drawing.Size(120, 22);
             this.nudweek12.TabIndex = 41;
             // 
             // nudweek11
             // 
-            this.nudweek11.Location = new System.Drawing.Point(519, 483);
+            this.nudweek11.Location = new System.Drawing.Point(519, 293);
             this.nudweek11.Name = "nudweek11";
             this.nudweek11.Size = new System.Drawing.Size(120, 22);
             this.nudweek11.TabIndex = 39;
             // 
             // nudweek10
             // 
-            this.nudweek10.Location = new System.Drawing.Point(519, 434);
+            this.nudweek10.Location = new System.Drawing.Point(519, 259);
             this.nudweek10.Name = "nudweek10";
             this.nudweek10.Size = new System.Drawing.Size(120, 22);
             this.nudweek10.TabIndex = 38;
             // 
             // nudweek9
             // 
-            this.nudweek9.Location = new System.Drawing.Point(519, 392);
+            this.nudweek9.Location = new System.Drawing.Point(519, 231);
             this.nudweek9.Name = "nudweek9";
             this.nudweek9.Size = new System.Drawing.Size(120, 22);
             this.nudweek9.TabIndex = 37;
@@ -224,7 +242,7 @@
             // tbProdeg
             // 
             this.tbProdeg.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbProdeg.Location = new System.Drawing.Point(239, 522);
+            this.tbProdeg.Location = new System.Drawing.Point(239, 73);
             this.tbProdeg.Margin = new System.Windows.Forms.Padding(4);
             this.tbProdeg.Name = "tbProdeg";
             this.tbProdeg.Size = new System.Drawing.Size(248, 22);
@@ -233,7 +251,7 @@
             // tbWorstDefence
             // 
             this.tbWorstDefence.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbWorstDefence.Location = new System.Drawing.Point(239, 482);
+            this.tbWorstDefence.Location = new System.Drawing.Point(239, 292);
             this.tbWorstDefence.Margin = new System.Windows.Forms.Padding(4);
             this.tbWorstDefence.Name = "tbWorstDefence";
             this.tbWorstDefence.Size = new System.Drawing.Size(248, 22);
@@ -242,7 +260,7 @@
             // tbAssists
             // 
             this.tbAssists.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbAssists.Location = new System.Drawing.Point(239, 435);
+            this.tbAssists.Location = new System.Drawing.Point(239, 260);
             this.tbAssists.Margin = new System.Windows.Forms.Padding(4);
             this.tbAssists.Name = "tbAssists";
             this.tbAssists.Size = new System.Drawing.Size(248, 22);
@@ -251,7 +269,7 @@
             // tbMostRed
             // 
             this.tbMostRed.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbMostRed.Location = new System.Drawing.Point(239, 391);
+            this.tbMostRed.Location = new System.Drawing.Point(239, 230);
             this.tbMostRed.Margin = new System.Windows.Forms.Padding(4);
             this.tbMostRed.Name = "tbMostRed";
             this.tbMostRed.Size = new System.Drawing.Size(248, 22);
@@ -260,7 +278,7 @@
             // lblProDeg
             // 
             this.lblProDeg.AutoSize = true;
-            this.lblProDeg.Location = new System.Drawing.Point(47, 527);
+            this.lblProDeg.Location = new System.Drawing.Point(47, 78);
             this.lblProDeg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProDeg.Name = "lblProDeg";
             this.lblProDeg.Size = new System.Drawing.Size(121, 17);
@@ -270,7 +288,7 @@
             // lblWorstDefence
             // 
             this.lblWorstDefence.AutoSize = true;
-            this.lblWorstDefence.Location = new System.Drawing.Point(47, 485);
+            this.lblWorstDefence.Location = new System.Drawing.Point(47, 295);
             this.lblWorstDefence.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWorstDefence.Name = "lblWorstDefence";
             this.lblWorstDefence.Size = new System.Drawing.Size(181, 17);
@@ -280,7 +298,7 @@
             // lblAsssists
             // 
             this.lblAsssists.AutoSize = true;
-            this.lblAsssists.Location = new System.Drawing.Point(47, 439);
+            this.lblAsssists.Location = new System.Drawing.Point(47, 264);
             this.lblAsssists.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAsssists.Name = "lblAsssists";
             this.lblAsssists.Size = new System.Drawing.Size(173, 17);
@@ -290,7 +308,7 @@
             // lblMostRed
             // 
             this.lblMostRed.AutoSize = true;
-            this.lblMostRed.Location = new System.Drawing.Point(47, 394);
+            this.lblMostRed.Location = new System.Drawing.Point(47, 233);
             this.lblMostRed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMostRed.Name = "lblMostRed";
             this.lblMostRed.Size = new System.Drawing.Size(146, 17);
@@ -299,49 +317,49 @@
             // 
             // nudweek8
             // 
-            this.nudweek8.Location = new System.Drawing.Point(519, 348);
+            this.nudweek8.Location = new System.Drawing.Point(521, 325);
             this.nudweek8.Name = "nudweek8";
             this.nudweek8.Size = new System.Drawing.Size(120, 22);
             this.nudweek8.TabIndex = 25;
             // 
             // nudweek7
             // 
-            this.nudweek7.Location = new System.Drawing.Point(519, 303);
+            this.nudweek7.Location = new System.Drawing.Point(521, 392);
             this.nudweek7.Name = "nudweek7";
             this.nudweek7.Size = new System.Drawing.Size(120, 22);
             this.nudweek7.TabIndex = 24;
             // 
             // nudweek6
             // 
-            this.nudweek6.Location = new System.Drawing.Point(519, 266);
+            this.nudweek6.Location = new System.Drawing.Point(519, 201);
             this.nudweek6.Name = "nudweek6";
             this.nudweek6.Size = new System.Drawing.Size(120, 22);
             this.nudweek6.TabIndex = 23;
             // 
             // nudweek5
             // 
-            this.nudweek5.Location = new System.Drawing.Point(519, 217);
+            this.nudweek5.Location = new System.Drawing.Point(519, 169);
             this.nudweek5.Name = "nudweek5";
             this.nudweek5.Size = new System.Drawing.Size(120, 22);
             this.nudweek5.TabIndex = 22;
             // 
             // nudweek4
             // 
-            this.nudweek4.Location = new System.Drawing.Point(519, 175);
+            this.nudweek4.Location = new System.Drawing.Point(519, 141);
             this.nudweek4.Name = "nudweek4";
             this.nudweek4.Size = new System.Drawing.Size(120, 22);
             this.nudweek4.TabIndex = 21;
             // 
             // nudweek3
             // 
-            this.nudweek3.Location = new System.Drawing.Point(519, 130);
+            this.nudweek3.Location = new System.Drawing.Point(519, 106);
             this.nudweek3.Name = "nudweek3";
             this.nudweek3.Size = new System.Drawing.Size(120, 22);
             this.nudweek3.TabIndex = 20;
             // 
             // nudweek2
             // 
-            this.nudweek2.Location = new System.Drawing.Point(519, 83);
+            this.nudweek2.Location = new System.Drawing.Point(519, 355);
             this.nudweek2.Name = "nudweek2";
             this.nudweek2.Size = new System.Drawing.Size(120, 22);
             this.nudweek2.TabIndex = 19;
@@ -365,7 +383,7 @@
             // tbFin2
             // 
             this.tbFin2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbFin2.Location = new System.Drawing.Point(368, 347);
+            this.tbFin2.Location = new System.Drawing.Point(370, 324);
             this.tbFin2.Margin = new System.Windows.Forms.Padding(4);
             this.tbFin2.Name = "tbFin2";
             this.tbFin2.Size = new System.Drawing.Size(132, 22);
@@ -374,7 +392,7 @@
             // tbFin1
             // 
             this.tbFin1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbFin1.Location = new System.Drawing.Point(227, 347);
+            this.tbFin1.Location = new System.Drawing.Point(229, 324);
             this.tbFin1.Margin = new System.Windows.Forms.Padding(4);
             this.tbFin1.Name = "tbFin1";
             this.tbFin1.Size = new System.Drawing.Size(132, 22);
@@ -383,7 +401,7 @@
             // tbPromovendi1
             // 
             this.tbPromovendi1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbPromovendi1.Location = new System.Drawing.Point(227, 302);
+            this.tbPromovendi1.Location = new System.Drawing.Point(229, 391);
             this.tbPromovendi1.Margin = new System.Windows.Forms.Padding(4);
             this.tbPromovendi1.Name = "tbPromovendi1";
             this.tbPromovendi1.Size = new System.Drawing.Size(132, 22);
@@ -392,7 +410,7 @@
             // tbRonde
             // 
             this.tbRonde.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbRonde.Location = new System.Drawing.Point(239, 265);
+            this.tbRonde.Location = new System.Drawing.Point(239, 200);
             this.tbRonde.Margin = new System.Windows.Forms.Padding(4);
             this.tbRonde.Name = "tbRonde";
             this.tbRonde.Size = new System.Drawing.Size(248, 22);
@@ -401,7 +419,7 @@
             // tbWinterkampioen
             // 
             this.tbWinterkampioen.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbWinterkampioen.Location = new System.Drawing.Point(239, 218);
+            this.tbWinterkampioen.Location = new System.Drawing.Point(239, 170);
             this.tbWinterkampioen.Margin = new System.Windows.Forms.Padding(4);
             this.tbWinterkampioen.Name = "tbWinterkampioen";
             this.tbWinterkampioen.Size = new System.Drawing.Size(248, 22);
@@ -410,7 +428,7 @@
             // tbTrainer
             // 
             this.tbTrainer.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbTrainer.Location = new System.Drawing.Point(239, 174);
+            this.tbTrainer.Location = new System.Drawing.Point(239, 140);
             this.tbTrainer.Margin = new System.Windows.Forms.Padding(4);
             this.tbTrainer.Name = "tbTrainer";
             this.tbTrainer.Size = new System.Drawing.Size(248, 22);
@@ -419,7 +437,7 @@
             // tbTopscorer
             // 
             this.tbTopscorer.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbTopscorer.Location = new System.Drawing.Point(239, 129);
+            this.tbTopscorer.Location = new System.Drawing.Point(239, 105);
             this.tbTopscorer.Margin = new System.Windows.Forms.Padding(4);
             this.tbTopscorer.Name = "tbTopscorer";
             this.tbTopscorer.Size = new System.Drawing.Size(248, 22);
@@ -428,10 +446,10 @@
             // tbDegradant1
             // 
             this.tbDegradant1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbDegradant1.Location = new System.Drawing.Point(239, 82);
+            this.tbDegradant1.Location = new System.Drawing.Point(229, 354);
             this.tbDegradant1.Margin = new System.Windows.Forms.Padding(4);
             this.tbDegradant1.Name = "tbDegradant1";
-            this.tbDegradant1.Size = new System.Drawing.Size(120, 22);
+            this.tbDegradant1.Size = new System.Drawing.Size(133, 22);
             this.tbDegradant1.TabIndex = 9;
             // 
             // tbKampioen
@@ -446,7 +464,7 @@
             // lblfinalisten
             // 
             this.lblfinalisten.AutoSize = true;
-            this.lblfinalisten.Location = new System.Drawing.Point(47, 351);
+            this.lblfinalisten.Location = new System.Drawing.Point(49, 328);
             this.lblfinalisten.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblfinalisten.Name = "lblfinalisten";
             this.lblfinalisten.Size = new System.Drawing.Size(101, 17);
@@ -456,7 +474,7 @@
             // lblRound
             // 
             this.lblRound.AutoSize = true;
-            this.lblRound.Location = new System.Drawing.Point(47, 268);
+            this.lblRound.Location = new System.Drawing.Point(47, 203);
             this.lblRound.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRound.Name = "lblRound";
             this.lblRound.Size = new System.Drawing.Size(155, 17);
@@ -466,7 +484,7 @@
             // lblPromovendi
             // 
             this.lblPromovendi.AutoSize = true;
-            this.lblPromovendi.Location = new System.Drawing.Point(47, 311);
+            this.lblPromovendi.Location = new System.Drawing.Point(49, 400);
             this.lblPromovendi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPromovendi.Name = "lblPromovendi";
             this.lblPromovendi.Size = new System.Drawing.Size(83, 17);
@@ -476,7 +494,7 @@
             // lblWinterkampioen
             // 
             this.lblWinterkampioen.AutoSize = true;
-            this.lblWinterkampioen.Location = new System.Drawing.Point(47, 222);
+            this.lblWinterkampioen.Location = new System.Drawing.Point(47, 174);
             this.lblWinterkampioen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWinterkampioen.Name = "lblWinterkampioen";
             this.lblWinterkampioen.Size = new System.Drawing.Size(110, 17);
@@ -486,7 +504,7 @@
             // lblTrainer
             // 
             this.lblTrainer.AutoSize = true;
-            this.lblTrainer.Location = new System.Drawing.Point(47, 177);
+            this.lblTrainer.Location = new System.Drawing.Point(47, 143);
             this.lblTrainer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTrainer.Name = "lblTrainer";
             this.lblTrainer.Size = new System.Drawing.Size(123, 17);
@@ -496,7 +514,7 @@
             // lblTopscorer
             // 
             this.lblTopscorer.AutoSize = true;
-            this.lblTopscorer.Location = new System.Drawing.Point(47, 133);
+            this.lblTopscorer.Location = new System.Drawing.Point(47, 109);
             this.lblTopscorer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTopscorer.Name = "lblTopscorer";
             this.lblTopscorer.Size = new System.Drawing.Size(138, 17);
@@ -506,7 +524,7 @@
             // lblDegradanten
             // 
             this.lblDegradanten.AutoSize = true;
-            this.lblDegradanten.Location = new System.Drawing.Point(47, 86);
+            this.lblDegradanten.Location = new System.Drawing.Point(47, 358);
             this.lblDegradanten.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDegradanten.Name = "lblDegradanten";
             this.lblDegradanten.Size = new System.Drawing.Size(156, 17);
@@ -830,7 +848,7 @@
             this.gbEstimations.Controls.Add(this.lblReds);
             this.gbEstimations.Controls.Add(this.nudGoals);
             this.gbEstimations.Controls.Add(this.nudReds);
-            this.gbEstimations.Location = new System.Drawing.Point(71, 479);
+            this.gbEstimations.Location = new System.Drawing.Point(539, 475);
             this.gbEstimations.Name = "gbEstimations";
             this.gbEstimations.Size = new System.Drawing.Size(251, 99);
             this.gbEstimations.TabIndex = 11;
@@ -878,24 +896,6 @@
             this.nudReds.Name = "nudReds";
             this.nudReds.Size = new System.Drawing.Size(120, 22);
             this.nudReds.TabIndex = 0;
-            // 
-            // tbDegradant2
-            // 
-            this.tbDegradant2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbDegradant2.Location = new System.Drawing.Point(367, 83);
-            this.tbDegradant2.Margin = new System.Windows.Forms.Padding(4);
-            this.tbDegradant2.Name = "tbDegradant2";
-            this.tbDegradant2.Size = new System.Drawing.Size(120, 22);
-            this.tbDegradant2.TabIndex = 42;
-            // 
-            // tbPromovendi2
-            // 
-            this.tbPromovendi2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbPromovendi2.Location = new System.Drawing.Point(367, 302);
-            this.tbPromovendi2.Margin = new System.Windows.Forms.Padding(4);
-            this.tbPromovendi2.Name = "tbPromovendi2";
-            this.tbPromovendi2.Size = new System.Drawing.Size(132, 22);
-            this.tbPromovendi2.TabIndex = 43;
             // 
             // HostForm
             // 

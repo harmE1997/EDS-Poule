@@ -162,7 +162,7 @@ namespace EDS_Poule
             tbKampioen.Text = player.Questions.Answers["Kampioen"].Answer;
             tbProdeg.Text = player.Questions.Answers["Prodeg"].Answer;
             tbPromovendi1.Text = player.Questions.Answers["Promovendi"].AnswerArray[0];
-            tbPromovendi1.Text = player.Questions.Answers["Promovendi"].AnswerArray[1];
+            tbPromovendi2.Text = player.Questions.Answers["Promovendi"].AnswerArray[1];
             tbFin1.Text = player.Questions.Answers["Finalisten"].AnswerArray[0];
             tbFin2.Text = player.Questions.Answers["Finalisten"].AnswerArray[1];
             tbRonde.Text = player.Questions.Answers["Championround"].Answer;
