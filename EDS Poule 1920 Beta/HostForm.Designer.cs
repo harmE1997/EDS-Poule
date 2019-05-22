@@ -33,8 +33,7 @@
             this.nudweek11 = new System.Windows.Forms.NumericUpDown();
             this.nudweek10 = new System.Windows.Forms.NumericUpDown();
             this.nudweek9 = new System.Windows.Forms.NumericUpDown();
-            this.tbProdeg2 = new System.Windows.Forms.TextBox();
-            this.tbProdeg1 = new System.Windows.Forms.TextBox();
+            this.tbProdeg = new System.Windows.Forms.TextBox();
             this.tbWorstDefence = new System.Windows.Forms.TextBox();
             this.tbAssists = new System.Windows.Forms.TextBox();
             this.tbMostRed = new System.Windows.Forms.TextBox();
@@ -53,20 +52,20 @@
             this.lblweek = new System.Windows.Forms.Label();
             this.tbFin2 = new System.Windows.Forms.TextBox();
             this.tbFin1 = new System.Windows.Forms.TextBox();
-            this.tbDiv1Kampioen = new System.Windows.Forms.TextBox();
+            this.tbPromovendi1 = new System.Windows.Forms.TextBox();
             this.tbRonde = new System.Windows.Forms.TextBox();
             this.tbWinterkampioen = new System.Windows.Forms.TextBox();
             this.tbTrainer = new System.Windows.Forms.TextBox();
             this.tbTopscorer = new System.Windows.Forms.TextBox();
-            this.tbDegradant = new System.Windows.Forms.TextBox();
+            this.tbDegradant1 = new System.Windows.Forms.TextBox();
             this.tbKampioen = new System.Windows.Forms.TextBox();
             this.lblfinalisten = new System.Windows.Forms.Label();
             this.lblRound = new System.Windows.Forms.Label();
-            this.lblKampioendiv1 = new System.Windows.Forms.Label();
+            this.lblPromovendi = new System.Windows.Forms.Label();
             this.lblWinterkampioen = new System.Windows.Forms.Label();
             this.lblTrainer = new System.Windows.Forms.Label();
             this.lblTopscorer = new System.Windows.Forms.Label();
-            this.lblDegradant = new System.Windows.Forms.Label();
+            this.lblDegradanten = new System.Windows.Forms.Label();
             this.lblKampioen = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
@@ -104,6 +103,8 @@
             this.lblReds = new System.Windows.Forms.Label();
             this.nudGoals = new System.Windows.Forms.NumericUpDown();
             this.nudReds = new System.Windows.Forms.NumericUpDown();
+            this.tbDegradant2 = new System.Windows.Forms.TextBox();
+            this.tbPromovendi2 = new System.Windows.Forms.TextBox();
             this.gbBonus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudweek12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudweek11)).BeginInit();
@@ -143,12 +144,13 @@
             // 
             // gbBonus
             // 
+            this.gbBonus.Controls.Add(this.tbPromovendi2);
+            this.gbBonus.Controls.Add(this.tbDegradant2);
             this.gbBonus.Controls.Add(this.nudweek12);
             this.gbBonus.Controls.Add(this.nudweek11);
             this.gbBonus.Controls.Add(this.nudweek10);
             this.gbBonus.Controls.Add(this.nudweek9);
-            this.gbBonus.Controls.Add(this.tbProdeg2);
-            this.gbBonus.Controls.Add(this.tbProdeg1);
+            this.gbBonus.Controls.Add(this.tbProdeg);
             this.gbBonus.Controls.Add(this.tbWorstDefence);
             this.gbBonus.Controls.Add(this.tbAssists);
             this.gbBonus.Controls.Add(this.tbMostRed);
@@ -167,20 +169,20 @@
             this.gbBonus.Controls.Add(this.lblweek);
             this.gbBonus.Controls.Add(this.tbFin2);
             this.gbBonus.Controls.Add(this.tbFin1);
-            this.gbBonus.Controls.Add(this.tbDiv1Kampioen);
+            this.gbBonus.Controls.Add(this.tbPromovendi1);
             this.gbBonus.Controls.Add(this.tbRonde);
             this.gbBonus.Controls.Add(this.tbWinterkampioen);
             this.gbBonus.Controls.Add(this.tbTrainer);
             this.gbBonus.Controls.Add(this.tbTopscorer);
-            this.gbBonus.Controls.Add(this.tbDegradant);
+            this.gbBonus.Controls.Add(this.tbDegradant1);
             this.gbBonus.Controls.Add(this.tbKampioen);
             this.gbBonus.Controls.Add(this.lblfinalisten);
             this.gbBonus.Controls.Add(this.lblRound);
-            this.gbBonus.Controls.Add(this.lblKampioendiv1);
+            this.gbBonus.Controls.Add(this.lblPromovendi);
             this.gbBonus.Controls.Add(this.lblWinterkampioen);
             this.gbBonus.Controls.Add(this.lblTrainer);
             this.gbBonus.Controls.Add(this.lblTopscorer);
-            this.gbBonus.Controls.Add(this.lblDegradant);
+            this.gbBonus.Controls.Add(this.lblDegradanten);
             this.gbBonus.Controls.Add(this.lblKampioen);
             this.gbBonus.Location = new System.Drawing.Point(539, 32);
             this.gbBonus.Margin = new System.Windows.Forms.Padding(4);
@@ -219,23 +221,14 @@
             this.nudweek9.Size = new System.Drawing.Size(120, 22);
             this.nudweek9.TabIndex = 37;
             // 
-            // tbProdeg2
+            // tbProdeg
             // 
-            this.tbProdeg2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbProdeg2.Location = new System.Drawing.Point(368, 523);
-            this.tbProdeg2.Margin = new System.Windows.Forms.Padding(4);
-            this.tbProdeg2.Name = "tbProdeg2";
-            this.tbProdeg2.Size = new System.Drawing.Size(132, 22);
-            this.tbProdeg2.TabIndex = 36;
-            // 
-            // tbProdeg1
-            // 
-            this.tbProdeg1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbProdeg1.Location = new System.Drawing.Point(227, 523);
-            this.tbProdeg1.Margin = new System.Windows.Forms.Padding(4);
-            this.tbProdeg1.Name = "tbProdeg1";
-            this.tbProdeg1.Size = new System.Drawing.Size(132, 22);
-            this.tbProdeg1.TabIndex = 35;
+            this.tbProdeg.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbProdeg.Location = new System.Drawing.Point(239, 522);
+            this.tbProdeg.Margin = new System.Windows.Forms.Padding(4);
+            this.tbProdeg.Name = "tbProdeg";
+            this.tbProdeg.Size = new System.Drawing.Size(248, 22);
+            this.tbProdeg.TabIndex = 35;
             // 
             // tbWorstDefence
             // 
@@ -270,9 +263,9 @@
             this.lblProDeg.Location = new System.Drawing.Point(47, 527);
             this.lblProDeg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProDeg.Name = "lblProDeg";
-            this.lblProDeg.Size = new System.Drawing.Size(128, 17);
+            this.lblProDeg.Size = new System.Drawing.Size(121, 17);
             this.lblProDeg.TabIndex = 30;
-            this.lblProDeg.Text = "Nacompetitieteams";
+            this.lblProDeg.Text = "Nacompetitieteam";
             // 
             // lblWorstDefence
             // 
@@ -387,14 +380,14 @@
             this.tbFin1.Size = new System.Drawing.Size(132, 22);
             this.tbFin1.TabIndex = 15;
             // 
-            // tbDiv1Kampioen
+            // tbPromovendi1
             // 
-            this.tbDiv1Kampioen.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbDiv1Kampioen.Location = new System.Drawing.Point(239, 302);
-            this.tbDiv1Kampioen.Margin = new System.Windows.Forms.Padding(4);
-            this.tbDiv1Kampioen.Name = "tbDiv1Kampioen";
-            this.tbDiv1Kampioen.Size = new System.Drawing.Size(248, 22);
-            this.tbDiv1Kampioen.TabIndex = 14;
+            this.tbPromovendi1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbPromovendi1.Location = new System.Drawing.Point(227, 302);
+            this.tbPromovendi1.Margin = new System.Windows.Forms.Padding(4);
+            this.tbPromovendi1.Name = "tbPromovendi1";
+            this.tbPromovendi1.Size = new System.Drawing.Size(132, 22);
+            this.tbPromovendi1.TabIndex = 14;
             // 
             // tbRonde
             // 
@@ -432,14 +425,14 @@
             this.tbTopscorer.Size = new System.Drawing.Size(248, 22);
             this.tbTopscorer.TabIndex = 10;
             // 
-            // tbDegradant
+            // tbDegradant1
             // 
-            this.tbDegradant.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbDegradant.Location = new System.Drawing.Point(239, 82);
-            this.tbDegradant.Margin = new System.Windows.Forms.Padding(4);
-            this.tbDegradant.Name = "tbDegradant";
-            this.tbDegradant.Size = new System.Drawing.Size(248, 22);
-            this.tbDegradant.TabIndex = 9;
+            this.tbDegradant1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbDegradant1.Location = new System.Drawing.Point(239, 82);
+            this.tbDegradant1.Margin = new System.Windows.Forms.Padding(4);
+            this.tbDegradant1.Name = "tbDegradant1";
+            this.tbDegradant1.Size = new System.Drawing.Size(120, 22);
+            this.tbDegradant1.TabIndex = 9;
             // 
             // tbKampioen
             // 
@@ -470,15 +463,15 @@
             this.lblRound.TabIndex = 5;
             this.lblRound.Text = "Ronde Kampioenschap";
             // 
-            // lblKampioendiv1
+            // lblPromovendi
             // 
-            this.lblKampioendiv1.AutoSize = true;
-            this.lblKampioendiv1.Location = new System.Drawing.Point(47, 311);
-            this.lblKampioendiv1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblKampioendiv1.Name = "lblKampioendiv1";
-            this.lblKampioendiv1.Size = new System.Drawing.Size(158, 17);
-            this.lblKampioendiv1.TabIndex = 6;
-            this.lblKampioendiv1.Text = "Kampioen eerste divisie";
+            this.lblPromovendi.AutoSize = true;
+            this.lblPromovendi.Location = new System.Drawing.Point(47, 311);
+            this.lblPromovendi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPromovendi.Name = "lblPromovendi";
+            this.lblPromovendi.Size = new System.Drawing.Size(83, 17);
+            this.lblPromovendi.TabIndex = 6;
+            this.lblPromovendi.Text = "Promovendi";
             // 
             // lblWinterkampioen
             // 
@@ -510,15 +503,15 @@
             this.lblTopscorer.TabIndex = 2;
             this.lblTopscorer.Text = "Topscorer Eredivisie";
             // 
-            // lblDegradant
+            // lblDegradanten
             // 
-            this.lblDegradant.AutoSize = true;
-            this.lblDegradant.Location = new System.Drawing.Point(47, 86);
-            this.lblDegradant.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDegradant.Name = "lblDegradant";
-            this.lblDegradant.Size = new System.Drawing.Size(140, 17);
-            this.lblDegradant.TabIndex = 1;
-            this.lblDegradant.Text = "Degradant Eredivisie";
+            this.lblDegradanten.AutoSize = true;
+            this.lblDegradanten.Location = new System.Drawing.Point(47, 86);
+            this.lblDegradanten.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDegradanten.Name = "lblDegradanten";
+            this.lblDegradanten.Size = new System.Drawing.Size(156, 17);
+            this.lblDegradanten.TabIndex = 1;
+            this.lblDegradanten.Text = "Degradanten Eredivisie";
             // 
             // lblKampioen
             // 
@@ -886,6 +879,24 @@
             this.nudReds.Size = new System.Drawing.Size(120, 22);
             this.nudReds.TabIndex = 0;
             // 
+            // tbDegradant2
+            // 
+            this.tbDegradant2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbDegradant2.Location = new System.Drawing.Point(367, 83);
+            this.tbDegradant2.Margin = new System.Windows.Forms.Padding(4);
+            this.tbDegradant2.Name = "tbDegradant2";
+            this.tbDegradant2.Size = new System.Drawing.Size(120, 22);
+            this.tbDegradant2.TabIndex = 42;
+            // 
+            // tbPromovendi2
+            // 
+            this.tbPromovendi2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbPromovendi2.Location = new System.Drawing.Point(367, 302);
+            this.tbPromovendi2.Margin = new System.Windows.Forms.Padding(4);
+            this.tbPromovendi2.Name = "tbPromovendi2";
+            this.tbPromovendi2.Size = new System.Drawing.Size(132, 22);
+            this.tbPromovendi2.TabIndex = 43;
+            // 
             // HostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -948,20 +959,20 @@
         private System.Windows.Forms.GroupBox gbBonus;
         private System.Windows.Forms.TextBox tbFin2;
         private System.Windows.Forms.TextBox tbFin1;
-        private System.Windows.Forms.TextBox tbDiv1Kampioen;
+        private System.Windows.Forms.TextBox tbPromovendi1;
         private System.Windows.Forms.TextBox tbRonde;
         private System.Windows.Forms.TextBox tbWinterkampioen;
         private System.Windows.Forms.TextBox tbTrainer;
         private System.Windows.Forms.TextBox tbTopscorer;
-        private System.Windows.Forms.TextBox tbDegradant;
+        private System.Windows.Forms.TextBox tbDegradant1;
         private System.Windows.Forms.TextBox tbKampioen;
         private System.Windows.Forms.Label lblfinalisten;
         private System.Windows.Forms.Label lblRound;
-        private System.Windows.Forms.Label lblKampioendiv1;
+        private System.Windows.Forms.Label lblPromovendi;
         private System.Windows.Forms.Label lblWinterkampioen;
         private System.Windows.Forms.Label lblTrainer;
         private System.Windows.Forms.Label lblTopscorer;
-        private System.Windows.Forms.Label lblDegradant;
+        private System.Windows.Forms.Label lblDegradanten;
         private System.Windows.Forms.Label lblKampioen;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label lblName;
@@ -1012,8 +1023,7 @@
         private System.Windows.Forms.NumericUpDown nudweek11;
         private System.Windows.Forms.NumericUpDown nudweek10;
         private System.Windows.Forms.NumericUpDown nudweek9;
-        private System.Windows.Forms.TextBox tbProdeg2;
-        private System.Windows.Forms.TextBox tbProdeg1;
+        private System.Windows.Forms.TextBox tbProdeg;
         private System.Windows.Forms.TextBox tbWorstDefence;
         private System.Windows.Forms.TextBox tbAssists;
         private System.Windows.Forms.TextBox tbMostRed;
@@ -1021,5 +1031,7 @@
         private System.Windows.Forms.Label lblWorstDefence;
         private System.Windows.Forms.Label lblAsssists;
         private System.Windows.Forms.Label lblMostRed;
+        private System.Windows.Forms.TextBox tbDegradant2;
+        private System.Windows.Forms.TextBox tbPromovendi2;
     }
 }

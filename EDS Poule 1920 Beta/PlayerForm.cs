@@ -160,8 +160,9 @@ namespace EDS_Poule
         public void loadBonus()
         {
             tbKampioen.Text = player.Questions.Answers["Kampioen"].Answer;
-            tbDegradant.Text = player.Questions.Answers["Degradant"].Answer;
-            tbDiv1Kampioen.Text = player.Questions.Answers["Kampioendivisie1"].Answer;
+            tbProdeg.Text = player.Questions.Answers["Prodeg"].Answer;
+            tbPromovendi1.Text = player.Questions.Answers["Promovendi"].AnswerArray[0];
+            tbPromovendi1.Text = player.Questions.Answers["Promovendi"].AnswerArray[1];
             tbFin1.Text = player.Questions.Answers["Finalisten"].AnswerArray[0];
             tbFin2.Text = player.Questions.Answers["Finalisten"].AnswerArray[1];
             tbRonde.Text = player.Questions.Answers["Championround"].Answer;
@@ -171,8 +172,8 @@ namespace EDS_Poule
             tbMostRed.Text = player.Questions.Answers["Teamreds"].Answer;
             tbAssists.Text = player.Questions.Answers["Assists"].Answer;
             tbWorstDefence.Text = player.Questions.Answers["Worstdefence"].Answer;
-            tbProdeg1.Text = player.Questions.Answers["Prodeg"].AnswerArray[0];
-            tbProdeg2.Text = player.Questions.Answers["Prodeg"].AnswerArray[1];
+            tbDegradant1.Text = player.Questions.Answers["Degradanten"].AnswerArray[0];
+            tbDegradant2.Text = player.Questions.Answers["Degradanten"].AnswerArray[1];
         }
 
         public void loadEstimations()
@@ -192,10 +193,11 @@ namespace EDS_Poule
             try
             {
                 string[] finalists = { tbFin1.Text, tbFin2.Text };
-                string[] prodeg = { tbProdeg1.Text, tbProdeg2.Text };
-                BonusQuestions questions = new BonusQuestions(tbKampioen.Text, tbDegradant.Text, tbTopscorer.Text, tbTrainer.Text
-                    , tbWinterkampioen.Text, tbRonde.Text, tbDiv1Kampioen.Text, finalists, tbMostRed.Text, tbAssists.Text, tbWorstDefence.Text, 
-                     prodeg,new int[12] {99,99,99,99,99,99,99,99,99,99,99,99});
+                string[] degradanten = { tbDegradant1.Text, tbDegradant2.Text };
+                string[] promovendi = { tbPromovendi1.Text, tbPromovendi2.Text };
+                BonusQuestions questions = new BonusQuestions(tbKampioen.Text, degradanten, tbTopscorer.Text, tbTrainer.Text
+                    , tbWinterkampioen.Text, tbRonde.Text, promovendi, finalists, tbMostRed.Text, tbAssists.Text, tbWorstDefence.Text, 
+                     tbProdeg.Text,new int[12] {99,99,99,99,99,99,99,99,99,99,99,99});
 
                 if(estimations == null)
                 estimations = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));

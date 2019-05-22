@@ -22,11 +22,11 @@ namespace EDS_Poule
 
         //=======================================BonusQuestions==========================================
         private void btnChampions_Click(object sender, EventArgs e) => ActionBonusQuestion("Kampioen");
-        private void btnDegrade_Click(object sender, EventArgs e) => ActionBonusQuestion("Degradant");
+        private void btnDegrade_Click(object sender, EventArgs e) => ActionBonusQuestion("Degradanten");
         private void btnTopscorers_Click(object sender, EventArgs e) => ActionBonusQuestion("Topscorer");
         private void btnTrainers_Click(object sender, EventArgs e) => ActionBonusQuestion("Trainer");
         private void btnWinterChamps_Click(object sender, EventArgs e) => ActionBonusQuestion("Winterkampioen");
-        private void btnChampsDiv1_Click(object sender, EventArgs e) => ActionBonusQuestion("Kampioendivisie1");
+        private void btnChampsDiv1_Click(object sender, EventArgs e) => ActionBonusQuestion("Promovendi");
         private void btnCupFinalists_Click(object sender, EventArgs e) => ActionBonusQuestion("Finalisten");
         private void btnChampionRound_Click(object sender, EventArgs e) => ActionBonusQuestion("Championround");
         private void btnRedCards_Click(object sender, EventArgs e) => ActionBonusQuestion("Teamreds");

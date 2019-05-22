@@ -37,8 +37,7 @@ namespace EDS_Poule
             Bonuslocs = new Dictionary<string, BonusLocation>()
             {
                 { "Kampioen", new BonusLocation() { text = tbKampioen, nud = nudweek1 }},
-                { "Degradant", new BonusLocation() { text = tbDegradant, nud = nudweek2 }},
-                { "Kampioendivisie1", new BonusLocation() { text = tbDiv1Kampioen, nud = nudweek7 }},
+                { "Prodeg", new BonusLocation() { text = tbProdeg, nud = nudweek12 }},
                 { "Championround", new BonusLocation() { text = tbRonde, nud = nudweek6 }},
                 { "Topscorer", new BonusLocation() { text = tbTopscorer, nud = nudweek3 }},
                 { "Trainer", new BonusLocation() { text = tbTrainer, nud = nudweek4 }},
@@ -70,7 +69,8 @@ namespace EDS_Poule
             if (counter == 33)
             {
                 string[] finalists = { tbFin1.Text, tbFin2.Text };
-                string[] prodeg = { tbProdeg1.Text, tbProdeg2.Text };
+                string[] deg = { tbDegradant1.Text, tbDegradant2.Text };
+                string[] pro = { tbPromovendi1.Text, tbPromovendi2.Text };
 
                 int[] Weeks = {
                 Convert.ToInt32(nudweek1.Value), Convert.ToInt32(nudweek2.Value), Convert.ToInt32(nudweek3.Value),
@@ -78,9 +78,9 @@ namespace EDS_Poule
                 Convert.ToInt32(nudweek7.Value), Convert.ToInt32(nudweek8.Value), Convert.ToInt32(nudweek9.Value),
                 Convert.ToInt32(nudweek10.Value), Convert.ToInt32(nudweek11.Value), Convert.ToInt32(nudweek12.Value) };
 
-                BonusQuestions questions = new BonusQuestions(tbKampioen.Text, tbDegradant.Text, tbTopscorer.Text, tbTrainer.Text
-                    , tbWinterkampioen.Text, tbRonde.Text, tbDiv1Kampioen.Text, finalists, tbMostRed.Text, tbAssists.Text, 
-                    tbWorstDefence.Text, prodeg, Weeks);
+                BonusQuestions questions = new BonusQuestions(tbKampioen.Text, deg, tbTopscorer.Text, tbTrainer.Text
+                    , tbWinterkampioen.Text, tbRonde.Text, pro, finalists, tbMostRed.Text, tbAssists.Text, 
+                    tbWorstDefence.Text, tbProdeg.Text, Weeks);
                 
                 Estimations estimations = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));
                 Host = new Player(tbName.Text, "", "", weeks, questions, estimations);
@@ -119,9 +119,13 @@ namespace EDS_Poule
             tbFin2.Text = Host.Questions.Answers["Finalisten"].AnswerArray[1];
             nudweek8.Value = Host.Questions.Answers["Finalisten"].WeekAnswered;
 
-            tbProdeg1.Text = Host.Questions.Answers["Prodeg"].AnswerArray[0];
-            tbProdeg2.Text = Host.Questions.Answers["Prodeg"].AnswerArray[1];
-            nudweek12.Value = Host.Questions.Answers["Prodeg"].WeekAnswered;
+            tbPromovendi1.Text = Host.Questions.Answers["Promovendi"].AnswerArray[0];
+            tbPromovendi2.Text = Host.Questions.Answers["Promovendi"].AnswerArray[1];
+            nudweek7.Value = Host.Questions.Answers["Promovendi"].WeekAnswered;
+
+            tbDegradant1.Text = Host.Questions.Answers["Degradanten"].AnswerArray[0];
+            tbDegradant2.Text = Host.Questions.Answers["Degradanten"].AnswerArray[1];
+            nudweek2.Value = Host.Questions.Answers["Degradanten"].WeekAnswered;
         }
 
         private void loadEstimations()
@@ -193,8 +197,9 @@ namespace EDS_Poule
             }
 
             string[] finalists = { "",""};
-            string[] prodeg = { "", "" };
-            BonusQuestions ans = new BonusQuestions("", "", "", "", "", "", "",finalists,"","","", prodeg, new int[] { 99,99,99,99,99,99,99,99,99,99,99,99});
+            string[] deg = { "", "" };
+            string[] pro = { "", "" };
+            BonusQuestions ans = new BonusQuestions("", deg, "", "", "", "", pro,finalists,"","","", "", new int[] { 99,99,99,99,99,99,99,99,99,99,99,99});
             Estimations ests = new Estimations(-99,-99);
             Host = new Player("Host", "", "", weeks, ans, ests);
         }

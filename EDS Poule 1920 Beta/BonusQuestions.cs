@@ -22,24 +22,24 @@ namespace EDS_Poule
         public Dictionary<string, Question> Answers { get; private set; }
         public int WeekScore { get; private set; }
 
-        public BonusQuestions(string kampioen, string degradant, string topscorer, string trainer,
-            string winterkampioen, string championround, string kampioendivisie1, string[] finalisten, 
-            string teamReds, string topAssists, string worstdefence, string[] prodeg ,int[] weeks)
+        public BonusQuestions(string kampioen, string[] degradanten, string topscorer, string trainer,
+            string winterkampioen, string championround, string[] promovendi, string[] finalisten, 
+            string teamReds, string topAssists, string worstdefence, string prodeg ,int[] weeks)
         {
             Answers = new Dictionary<string, Question>()
             {
                 {"Kampioen", new Question(){Answer = kampioen, Points = 25, IsArray = false, WeekAnswered = weeks[0] } },
-                {"Degradant", new Question(){Answer = degradant, Points = 20, IsArray = false, WeekAnswered = weeks[1] } },
+                {"Degradanten", new Question(){AnswerArray = degradanten, Points = 10, IsArray = true, WeekAnswered = weeks[1] } },
                 {"Topscorer", new Question(){Answer = topscorer, Points = 20, IsArray = false, WeekAnswered = weeks[2] } },
                 {"Trainer", new Question(){Answer = trainer, Points = 20, IsArray = false, WeekAnswered = weeks[3] } },
                 {"Winterkampioen", new Question(){Answer = winterkampioen, Points = 15, IsArray = false, WeekAnswered = weeks[4] } },
                 {"Championround", new Question(){Answer = championround, Points = 10, IsArray = false, WeekAnswered = weeks[5] } },
-                {"Kampioendivisie1", new Question(){Answer = kampioendivisie1, Points = 20, IsArray = false, WeekAnswered = weeks[6] } },
+                {"Promovendi", new Question(){AnswerArray = promovendi, Points = 10, IsArray = true, WeekAnswered = weeks[6] } },
                 {"Finalisten", new Question(){AnswerArray = finalisten, Points = 10, IsArray = true, WeekAnswered = weeks[7] } },
                 {"Teamreds", new Question(){Answer = teamReds, Points = 15, IsArray = false, WeekAnswered = weeks[8]} },
                 {"Assists", new Question(){Answer = topAssists, Points = 20, IsArray = false, WeekAnswered = weeks[9] } },
                 {"Worstdefence", new Question(){Answer = worstdefence, Points = 15, IsArray = false, WeekAnswered = weeks[10] } },
-                {"Prodeg", new Question(){AnswerArray = prodeg, Points = 10, IsArray = true, WeekAnswered = weeks[11] } }
+                {"Prodeg", new Question(){Answer = prodeg, Points = 20, IsArray = false, WeekAnswered = weeks[11] } }
             };
         }
 

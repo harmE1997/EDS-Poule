@@ -34,7 +34,7 @@
             this.btnTopscorers = new System.Windows.Forms.Button();
             this.btnTrainers = new System.Windows.Forms.Button();
             this.btnWinterChamps = new System.Windows.Forms.Button();
-            this.btnChampsDiv1 = new System.Windows.Forms.Button();
+            this.btnPromovendi = new System.Windows.Forms.Button();
             this.btnCupFinalists = new System.Windows.Forms.Button();
             this.btnChampionRound = new System.Windows.Forms.Button();
             this.btnRedCards = new System.Windows.Forms.Button();
@@ -43,8 +43,8 @@
             this.btnGoalsAgainst = new System.Windows.Forms.Button();
             this.gbBonus = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnNrReds = new System.Windows.Forms.Button();
             this.btnNrGoals = new System.Windows.Forms.Button();
+            this.btnNrReds = new System.Windows.Forms.Button();
             this.gbBonus.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -108,15 +108,15 @@
             this.btnWinterChamps.UseVisualStyleBackColor = true;
             this.btnWinterChamps.Click += new System.EventHandler(this.btnWinterChamps_Click);
             // 
-            // btnChampsDiv1
+            // btnPromovendi
             // 
-            this.btnChampsDiv1.Location = new System.Drawing.Point(15, 242);
-            this.btnChampsDiv1.Name = "btnChampsDiv1";
-            this.btnChampsDiv1.Size = new System.Drawing.Size(213, 55);
-            this.btnChampsDiv1.TabIndex = 6;
-            this.btnChampsDiv1.Text = "Kampioenen 1e divisie";
-            this.btnChampsDiv1.UseVisualStyleBackColor = true;
-            this.btnChampsDiv1.Click += new System.EventHandler(this.btnChampsDiv1_Click);
+            this.btnPromovendi.Location = new System.Drawing.Point(15, 242);
+            this.btnPromovendi.Name = "btnPromovendi";
+            this.btnPromovendi.Size = new System.Drawing.Size(213, 55);
+            this.btnPromovendi.TabIndex = 6;
+            this.btnPromovendi.Text = "Promovendi";
+            this.btnPromovendi.UseVisualStyleBackColor = true;
+            this.btnPromovendi.Click += new System.EventHandler(this.btnChampsDiv1_Click);
             // 
             // btnCupFinalists
             // 
@@ -190,7 +190,7 @@
             this.gbBonus.Controls.Add(this.btnGoalsAgainst);
             this.gbBonus.Controls.Add(this.btnWinterChamps);
             this.gbBonus.Controls.Add(this.btnChampionRound);
-            this.gbBonus.Controls.Add(this.btnChampsDiv1);
+            this.gbBonus.Controls.Add(this.btnPromovendi);
             this.gbBonus.Controls.Add(this.btnCupFinalists);
             this.gbBonus.Location = new System.Drawing.Point(344, 9);
             this.gbBonus.Name = "gbBonus";
@@ -210,16 +210,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // btnNrReds
-            // 
-            this.btnNrReds.Location = new System.Drawing.Point(6, 21);
-            this.btnNrReds.Name = "btnNrReds";
-            this.btnNrReds.Size = new System.Drawing.Size(213, 55);
-            this.btnNrReds.TabIndex = 5;
-            this.btnNrReds.Text = "NrReds";
-            this.btnNrReds.UseVisualStyleBackColor = true;
-            this.btnNrReds.Click += new System.EventHandler(this.btnNrReds_Click);
-            // 
             // btnNrGoals
             // 
             this.btnNrGoals.Location = new System.Drawing.Point(6, 82);
@@ -229,6 +219,16 @@
             this.btnNrGoals.Text = "NrGoals";
             this.btnNrGoals.UseVisualStyleBackColor = true;
             this.btnNrGoals.Click += new System.EventHandler(this.btnNrGoals_Click);
+            // 
+            // btnNrReds
+            // 
+            this.btnNrReds.Location = new System.Drawing.Point(6, 21);
+            this.btnNrReds.Name = "btnNrReds";
+            this.btnNrReds.Size = new System.Drawing.Size(213, 55);
+            this.btnNrReds.TabIndex = 5;
+            this.btnNrReds.Text = "NrReds";
+            this.btnNrReds.UseVisualStyleBackColor = true;
+            this.btnNrReds.Click += new System.EventHandler(this.btnNrReds_Click);
             // 
             // StatsForm
             // 
@@ -254,7 +254,7 @@
         private System.Windows.Forms.Button btnTopscorers;
         private System.Windows.Forms.Button btnTrainers;
         private System.Windows.Forms.Button btnWinterChamps;
-        private System.Windows.Forms.Button btnChampsDiv1;
+        private System.Windows.Forms.Button btnPromovendi;
         private System.Windows.Forms.Button btnCupFinalists;
         private System.Windows.Forms.Button btnChampionRound;
         private System.Windows.Forms.Button btnRedCards;
