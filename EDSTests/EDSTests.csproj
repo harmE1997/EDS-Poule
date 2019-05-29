@@ -57,9 +57,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EDS Poule 1920 Beta\EDS Poule 1920 Beta.csproj">
+    <ProjectReference Include="..\EDS Poule 1920 Beta\EDS Poule 1920.csproj">
       <Project>{3acfc930-d530-41e3-b88e-876f72a24918}</Project>
-      <Name>EDS Poule 1920 Beta</Name>
+      <Name>EDS Poule 1920</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
