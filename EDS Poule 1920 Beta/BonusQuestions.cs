@@ -60,7 +60,6 @@ namespace EDS_Poule
                     {
                         foreach (var e in a.Value.AnswerArray)
                         {
-                            int[] i = { 0, 0 };
                             if (ans.AnswerArray.Contains(e))
                             {
                                 score += a.Value.Points;

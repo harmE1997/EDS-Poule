@@ -149,7 +149,9 @@ namespace EDS_Poule
                 ExcelManager em = new ExcelManager();
                 int.TryParse(cbCheck.Text, out int round);
                 foreach (var i in em.ExportPlayersToExcel(filename, 2, Manager.Players, round))
+                {
                     rtbNotes.Text = "Exported " + (i - 2) + " out of " + Manager.Players.Count + " players.";
+                }
 
                 em.Clean();
                 MessageBox.Show("Ranking sucessfully exported");

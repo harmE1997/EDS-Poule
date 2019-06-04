@@ -45,15 +45,16 @@ namespace EDSTests
         [TestMethod]
         public void TestConstructor()
         {
-            BonusQuestions q = new BonusQuestions("a", "b", "c", "d", "e", "f", "g", new string[] { "h", "i" },"j", "k", "l", new string[] {"m", "n" },
+            BonusQuestions q = new BonusQuestions("a", new string[]{"p", "q" }, "c", "d", "e", "f", new string[]{"r", "s" }, new string[]{ "h", "i" },"j", "k", "l", "m",
                  new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 });
             Assert.AreEqual("a", q.Answers["Kampioen"].Answer);
             Assert.IsFalse(q.Answers["Kampioen"].IsArray);
             Assert.AreEqual(25, q.Answers["Kampioen"].Points);
 
-            Assert.AreEqual("b", q.Answers["Degradant"].Answer);
-            Assert.IsFalse(q.Answers["Degradant"].IsArray);
-            Assert.AreEqual(20, q.Answers["Degradant"].Points);
+            Assert.AreEqual("p", q.Answers["Degradanten"].AnswerArray[0]);
+            Assert.AreEqual("q", q.Answers["Degradanten"].AnswerArray[1]);
+            Assert.IsTrue(q.Answers["Degradanten"].IsArray);
+            Assert.AreEqual(10, q.Answers["Degradanten"].Points);
 
             Assert.AreEqual("c", q.Answers["Topscorer"].Answer);
             Assert.IsFalse(q.Answers["Topscorer"].IsArray);
@@ -71,12 +72,13 @@ namespace EDSTests
             Assert.IsFalse(q.Answers["Championround"].IsArray);
             Assert.AreEqual(10, q.Answers["Championround"].Points);
 
-            Assert.AreEqual("g", q.Answers["Kampioendivisie1"].Answer);
-            Assert.IsFalse(q.Answers["Kampioendivisie1"].IsArray);
-            Assert.AreEqual(20, q.Answers["Kampioendivisie1"].Points);
+            Assert.AreEqual("r", q.Answers["Promovendi"].AnswerArray[0]);
+            Assert.AreEqual("s", q.Answers["Promovendi"].AnswerArray[1]);
+            Assert.IsTrue(q.Answers["Promovendi"].IsArray);
+            Assert.AreEqual(10, q.Answers["Promovendi"].Points);
 
-            Assert.AreEqual("h", q.Answers["Finalisten"].Answer[0]);
-            Assert.AreEqual("i", q.Answers["Finalisten"].Answer[1]);
+            Assert.AreEqual("h", q.Answers["Finalisten"].AnswerArray[0]);
+            Assert.AreEqual("i", q.Answers["Finalisten"].AnswerArray[1]);
             Assert.IsTrue(q.Answers["Finalisten"].IsArray);
             Assert.AreEqual(10, q.Answers["Finalisten"].Points);
         }
