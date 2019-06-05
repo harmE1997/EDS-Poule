@@ -47,40 +47,40 @@ namespace EDSTests
         {
             BonusQuestions q = new BonusQuestions("a", new string[]{"p", "q" }, "c", "d", "e", "f", new string[]{"r", "s" }, new string[]{ "h", "i" },"j", "k", "l", "m",
                  new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 });
-            Assert.AreEqual("a", q.Answers["Kampioen"].Answer);
-            Assert.IsFalse(q.Answers["Kampioen"].IsArray);
-            Assert.AreEqual(25, q.Answers["Kampioen"].Points);
+            Assert.AreEqual("a", q.Answers[BonusKeys.Kampioen].Answer);
+            Assert.IsFalse(q.Answers[BonusKeys.Kampioen].IsArray);
+            Assert.AreEqual(25, q.Answers[BonusKeys.Kampioen].Points);
 
-            Assert.AreEqual("p", q.Answers["Degradanten"].AnswerArray[0]);
-            Assert.AreEqual("q", q.Answers["Degradanten"].AnswerArray[1]);
-            Assert.IsTrue(q.Answers["Degradanten"].IsArray);
-            Assert.AreEqual(10, q.Answers["Degradanten"].Points);
+            Assert.AreEqual("p", q.Answers[BonusKeys.Degradanten].AnswerArray[0]);
+            Assert.AreEqual("q", q.Answers[BonusKeys.Degradanten].AnswerArray[1]);
+            Assert.IsTrue(q.Answers[BonusKeys.Degradanten].IsArray);
+            Assert.AreEqual(10, q.Answers[BonusKeys.Degradanten].Points);
 
-            Assert.AreEqual("c", q.Answers["Topscorer"].Answer);
-            Assert.IsFalse(q.Answers["Topscorer"].IsArray);
-            Assert.AreEqual(20, q.Answers["Topscorer"].Points);
+            Assert.AreEqual("c", q.Answers[BonusKeys.Topscorer].Answer);
+            Assert.IsFalse(q.Answers[BonusKeys.Topscorer].IsArray);
+            Assert.AreEqual(20, q.Answers[BonusKeys.Topscorer].Points);
 
-            Assert.AreEqual("d", q.Answers["Trainer"].Answer);
-            Assert.IsFalse(q.Answers["Trainer"].IsArray);
-            Assert.AreEqual(20, q.Answers["Trainer"].Points);
+            Assert.AreEqual("d", q.Answers[BonusKeys.Trainer].Answer);
+            Assert.IsFalse(q.Answers[BonusKeys.Trainer].IsArray);
+            Assert.AreEqual(20, q.Answers[BonusKeys.Trainer].Points);
 
-            Assert.AreEqual("e", q.Answers["Winterkampioen"].Answer);
-            Assert.IsFalse(q.Answers["Winterkampioen"].IsArray);
-            Assert.AreEqual(15, q.Answers["Winterkampioen"].Points);
+            Assert.AreEqual("e", q.Answers[BonusKeys.Winterkampioen].Answer);
+            Assert.IsFalse(q.Answers[BonusKeys.Winterkampioen].IsArray);
+            Assert.AreEqual(15, q.Answers[BonusKeys.Winterkampioen].Points);
 
-            Assert.AreEqual("f", q.Answers["Championround"].Answer);
-            Assert.IsFalse(q.Answers["Championround"].IsArray);
-            Assert.AreEqual(10, q.Answers["Championround"].Points);
+            Assert.AreEqual("f", q.Answers[BonusKeys.Ronde].Answer);
+            Assert.IsFalse(q.Answers[BonusKeys.Ronde].IsArray);
+            Assert.AreEqual(10, q.Answers[BonusKeys.Ronde].Points);
 
-            Assert.AreEqual("r", q.Answers["Promovendi"].AnswerArray[0]);
-            Assert.AreEqual("s", q.Answers["Promovendi"].AnswerArray[1]);
-            Assert.IsTrue(q.Answers["Promovendi"].IsArray);
-            Assert.AreEqual(10, q.Answers["Promovendi"].Points);
+            Assert.AreEqual("r", q.Answers[BonusKeys.Promovendi].AnswerArray[0]);
+            Assert.AreEqual("s", q.Answers[BonusKeys.Promovendi].AnswerArray[1]);
+            Assert.IsTrue(q.Answers[BonusKeys.Promovendi].IsArray);
+            Assert.AreEqual(10, q.Answers[BonusKeys.Promovendi].Points);
 
-            Assert.AreEqual("h", q.Answers["Finalisten"].AnswerArray[0]);
-            Assert.AreEqual("i", q.Answers["Finalisten"].AnswerArray[1]);
-            Assert.IsTrue(q.Answers["Finalisten"].IsArray);
-            Assert.AreEqual(10, q.Answers["Finalisten"].Points);
+            Assert.AreEqual("h", q.Answers[BonusKeys.Finalisten].AnswerArray[0]);
+            Assert.AreEqual("i", q.Answers[BonusKeys.Finalisten].AnswerArray[1]);
+            Assert.IsTrue(q.Answers[BonusKeys.Finalisten].IsArray);
+            Assert.AreEqual(10, q.Answers[BonusKeys.Finalisten].Points);
         }
     }
 }

@@ -12,10 +12,10 @@ namespace EDSTests
         {
             Estimations es = new Estimations(50,20);
             Assert.AreEqual(2, es.Answers.Count);
-            Assert.AreEqual(50, es.Answers["Reds"].Answer);
-            Assert.AreEqual(20, es.Answers["Goals"].Answer);
-            Assert.AreEqual(20, es.Answers["Reds"].Max);
-            Assert.AreEqual(10, es.Answers["Goals"].Max);
+            Assert.AreEqual(50, es.Answers[EstimationKeys.Reds].Answer);
+            Assert.AreEqual(20, es.Answers[EstimationKeys.Goals].Answer);
+            Assert.AreEqual(20, es.Answers[EstimationKeys.Reds].Max);
+            Assert.AreEqual(10, es.Answers[EstimationKeys.Goals].Max);
         }
 
         [TestMethod]
