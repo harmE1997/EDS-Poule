@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 namespace EDS_Poule
 {
     [Serializable]
+    public enum EstimationKeys
+    {
+        Reds,
+        Goals
+    }
+
+    [Serializable]
     public struct Estimation
     {
         public int Answer;
@@ -16,19 +23,19 @@ namespace EDS_Poule
     [Serializable]
     public class Estimations
     {
-        public Dictionary<string, Estimation> Answers { get; private set; }
+        public Dictionary<EstimationKeys, Estimation> Answers { get; private set; }
 
         public Estimations(int reds, int goals)
         {
-            if (reds < 0 || goals < 0)
+            if ((reds < 0 && reds != -99) || (goals < 0 && goals != -99))
             {
                 throw new ArgumentOutOfRangeException();
             }
 
-            Answers = new Dictionary<string, Estimation>()
+            Answers = new Dictionary<EstimationKeys, Estimation>()
             {
-                { "Reds", new Estimation() {Answer = reds, Max = 20 } },
-                { "Goals", new Estimation() { Answer = goals, Max = 10} }
+                { EstimationKeys.Reds, new Estimation() {Answer = reds, Max = 20 } },
+                { EstimationKeys.Goals, new Estimation() { Answer = goals, Max = 10} }
             };
         }
         public int checkEstimations(Estimations hostestimations, int week)

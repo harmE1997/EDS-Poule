@@ -21,24 +21,24 @@ namespace EDS_Poule
         }
 
         //=======================================BonusQuestions==========================================
-        private void btnChampions_Click(object sender, EventArgs e) => ActionBonusQuestion("Kampioen");
-        private void btnDegrade_Click(object sender, EventArgs e) => ActionBonusQuestion("Degradanten");
-        private void btnTopscorers_Click(object sender, EventArgs e) => ActionBonusQuestion("Topscorer");
-        private void btnTrainers_Click(object sender, EventArgs e) => ActionBonusQuestion("Trainer");
-        private void btnWinterChamps_Click(object sender, EventArgs e) => ActionBonusQuestion("Winterkampioen");
-        private void btnChampsDiv1_Click(object sender, EventArgs e) => ActionBonusQuestion("Promovendi");
-        private void btnCupFinalists_Click(object sender, EventArgs e) => ActionBonusQuestion("Finalisten");
-        private void btnChampionRound_Click(object sender, EventArgs e) => ActionBonusQuestion("Championround");
-        private void btnRedCards_Click(object sender, EventArgs e) => ActionBonusQuestion("Teamreds");
-        private void btnPlayOffs_Click(object sender, EventArgs e) => ActionBonusQuestion("Prodeg");
-        private void btnAssists_Click(object sender, EventArgs e) => ActionBonusQuestion("Assists");
-        private void btnGoalsAgainst_Click(object sender, EventArgs e) => ActionBonusQuestion("Worstdefence");
+        private void btnChampions_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Kampioen);
+        private void btnDegrade_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Degradanten);
+        private void btnTopscorers_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Topscorer);
+        private void btnTrainers_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Trainer);
+        private void btnWinterChamps_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Winterkampioen);
+        private void btnChampsDiv1_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Promovendi);
+        private void btnCupFinalists_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Finalisten);
+        private void btnChampionRound_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Ronde);
+        private void btnRedCards_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Teamrood);
+        private void btnPlayOffs_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Prodeg);
+        private void btnAssists_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Assists);
+        private void btnGoalsAgainst_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Defensie);
 
         //=========================================Estimations==========================================
-        private void btnNrReds_Click(object sender, EventArgs e) => ActionEstimation("Reds");
-        private void btnNrGoals_Click(object sender, EventArgs e) => ActionEstimation("Goals");
+        private void btnNrReds_Click(object sender, EventArgs e) => ActionEstimation(EstimationKeys.Reds);
+        private void btnNrGoals_Click(object sender, EventArgs e) => ActionEstimation(EstimationKeys.Goals);
 
-        private void ActionBonusQuestion(string Key)
+        private void ActionBonusQuestion(BonusKeys Key)
         {
             stats.Clear();
             foreach (Player player in manager.Players)
@@ -61,7 +61,7 @@ namespace EDS_Poule
             UpdateListBox();
         }
 
-        private void ActionEstimation(string Key)
+        private void ActionEstimation(EstimationKeys Key)
         {
             stats.Clear();
             foreach (Player player in manager.Players)

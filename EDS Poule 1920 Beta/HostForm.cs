@@ -26,7 +26,7 @@ namespace EDS_Poule
         NumericUpDown[] NUDs;
         Week[] weeks;
         int counter;
-        private Dictionary<string,BonusLocation> Bonuslocs;
+        private Dictionary<BonusKeys,BonusLocation> Bonuslocs;
         public HostForm()
         {
             NUDs = new NumericUpDown[18];
@@ -34,17 +34,17 @@ namespace EDS_Poule
             counter = 0;
             InitializeComponent();
             fillNudsArray();
-            Bonuslocs = new Dictionary<string, BonusLocation>()
+            Bonuslocs = new Dictionary<BonusKeys, BonusLocation>()
             {
-                { "Kampioen", new BonusLocation() { text = tbKampioen, nud = nudweek1 }},
-                { "Prodeg", new BonusLocation() { text = tbProdeg, nud = nudweek12 }},
-                { "Championround", new BonusLocation() { text = tbRonde, nud = nudweek6 }},
-                { "Topscorer", new BonusLocation() { text = tbTopscorer, nud = nudweek3 }},
-                { "Trainer", new BonusLocation() { text = tbTrainer, nud = nudweek4 }},
-                { "Winterkampioen", new BonusLocation() { text = tbWinterkampioen, nud = nudweek5 }},
-                { "Teamreds", new BonusLocation(){ text = tbMostRed, nud = nudweek9 }},
-                { "Assists", new BonusLocation(){ text = tbAssists, nud = nudweek10 }},
-                { "Worstdefence", new BonusLocation(){ text = tbWorstDefence, nud = nudweek11}},
+                { BonusKeys.Kampioen, new BonusLocation() { text = tbKampioen, nud = nudweek1 }},
+                { BonusKeys.Prodeg, new BonusLocation() { text = tbProdeg, nud = nudweek12 }},
+                { BonusKeys.Ronde, new BonusLocation() { text = tbRonde, nud = nudweek6 }},
+                { BonusKeys.Topscorer, new BonusLocation() { text = tbTopscorer, nud = nudweek3 }},
+                { BonusKeys.Trainer, new BonusLocation() { text = tbTrainer, nud = nudweek4 }},
+                { BonusKeys.Winterkampioen, new BonusLocation() { text = tbWinterkampioen, nud = nudweek5 }},
+                { BonusKeys.Teamrood, new BonusLocation(){ text = tbMostRed, nud = nudweek9 }},
+                { BonusKeys.Assists, new BonusLocation(){ text = tbAssists, nud = nudweek10 }},
+                { BonusKeys.Defensie, new BonusLocation(){ text = tbWorstDefence, nud = nudweek11}},
             };
 
             try { LoadHost(); }
@@ -115,23 +115,23 @@ namespace EDS_Poule
                 b.Value.text.Text = Host.Questions.Answers[b.Key].Answer;
                 b.Value.nud.Value = Host.Questions.Answers[b.Key].WeekAnswered;
             }
-            tbFin1.Text = Host.Questions.Answers["Finalisten"].AnswerArray[0];
-            tbFin2.Text = Host.Questions.Answers["Finalisten"].AnswerArray[1];
-            nudweek8.Value = Host.Questions.Answers["Finalisten"].WeekAnswered;
+            tbFin1.Text = Host.Questions.Answers[BonusKeys.Finalisten].AnswerArray[0];
+            tbFin2.Text = Host.Questions.Answers[BonusKeys.Finalisten].AnswerArray[1];
+            nudweek8.Value = Host.Questions.Answers[BonusKeys.Finalisten].WeekAnswered;
 
-            tbPromovendi1.Text = Host.Questions.Answers["Promovendi"].AnswerArray[0];
-            tbPromovendi2.Text = Host.Questions.Answers["Promovendi"].AnswerArray[1];
-            nudweek7.Value = Host.Questions.Answers["Promovendi"].WeekAnswered;
+            tbPromovendi1.Text = Host.Questions.Answers[BonusKeys.Promovendi].AnswerArray[0];
+            tbPromovendi2.Text = Host.Questions.Answers[BonusKeys.Promovendi].AnswerArray[1];
+            nudweek7.Value = Host.Questions.Answers[BonusKeys.Promovendi].WeekAnswered;
 
-            tbDegradant1.Text = Host.Questions.Answers["Degradanten"].AnswerArray[0];
-            tbDegradant2.Text = Host.Questions.Answers["Degradanten"].AnswerArray[1];
-            nudweek2.Value = Host.Questions.Answers["Degradanten"].WeekAnswered;
+            tbDegradant1.Text = Host.Questions.Answers[BonusKeys.Degradanten].AnswerArray[0];
+            tbDegradant2.Text = Host.Questions.Answers[BonusKeys.Degradanten].AnswerArray[1];
+            nudweek2.Value = Host.Questions.Answers[BonusKeys.Degradanten].WeekAnswered;
         }
 
         private void loadEstimations()
         {
-            nudGoals.Value = Host.Estimations.Answers["Goals"].Answer;
-            nudReds.Value = Host.Estimations.Answers["Reds"].Answer;
+            nudGoals.Value = Host.Estimations.Answers[EstimationKeys.Goals].Answer;
+            nudReds.Value = Host.Estimations.Answers[EstimationKeys.Reds].Answer;
         }
         private void fillNudsArray()
         {

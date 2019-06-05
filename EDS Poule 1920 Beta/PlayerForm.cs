@@ -159,27 +159,27 @@ namespace EDS_Poule
 
         public void loadBonus()
         {
-            tbKampioen.Text = player.Questions.Answers["Kampioen"].Answer;
-            tbProdeg.Text = player.Questions.Answers["Prodeg"].Answer;
-            tbPromovendi1.Text = player.Questions.Answers["Promovendi"].AnswerArray[0];
-            tbPromovendi2.Text = player.Questions.Answers["Promovendi"].AnswerArray[1];
-            tbFin1.Text = player.Questions.Answers["Finalisten"].AnswerArray[0];
-            tbFin2.Text = player.Questions.Answers["Finalisten"].AnswerArray[1];
-            tbRonde.Text = player.Questions.Answers["Championround"].Answer;
-            tbTopscorer.Text = player.Questions.Answers["Topscorer"].Answer;
-            tbTrainer.Text = player.Questions.Answers["Trainer"].Answer;
-            tbWinterkampioen.Text = player.Questions.Answers["Winterkampioen"].Answer;
-            tbMostRed.Text = player.Questions.Answers["Teamreds"].Answer;
-            tbAssists.Text = player.Questions.Answers["Assists"].Answer;
-            tbWorstDefence.Text = player.Questions.Answers["Worstdefence"].Answer;
-            tbDegradant1.Text = player.Questions.Answers["Degradanten"].AnswerArray[0];
-            tbDegradant2.Text = player.Questions.Answers["Degradanten"].AnswerArray[1];
+            tbKampioen.Text = player.Questions.Answers[BonusKeys.Kampioen].Answer;
+            tbProdeg.Text = player.Questions.Answers[BonusKeys.Prodeg].Answer;
+            tbPromovendi1.Text = player.Questions.Answers[BonusKeys.Promovendi].AnswerArray[0];
+            tbPromovendi2.Text = player.Questions.Answers[BonusKeys.Promovendi].AnswerArray[1];
+            tbFin1.Text = player.Questions.Answers[BonusKeys.Finalisten].AnswerArray[0];
+            tbFin2.Text = player.Questions.Answers[BonusKeys.Finalisten].AnswerArray[1];
+            tbRonde.Text = player.Questions.Answers[BonusKeys.Ronde].Answer;
+            tbTopscorer.Text = player.Questions.Answers[BonusKeys.Topscorer].Answer;
+            tbTrainer.Text = player.Questions.Answers[BonusKeys.Trainer].Answer;
+            tbWinterkampioen.Text = player.Questions.Answers[BonusKeys.Winterkampioen].Answer;
+            tbMostRed.Text = player.Questions.Answers[BonusKeys.Teamrood].Answer;
+            tbAssists.Text = player.Questions.Answers[BonusKeys.Assists].Answer;
+            tbWorstDefence.Text = player.Questions.Answers[BonusKeys.Defensie].Answer;
+            tbDegradant1.Text = player.Questions.Answers[BonusKeys.Degradanten].AnswerArray[0];
+            tbDegradant2.Text = player.Questions.Answers[BonusKeys.Degradanten].AnswerArray[1];
         }
 
         public void loadEstimations()
         {
-            nudGoals.Value = player.Estimations.Answers["Goals"].Answer;
-            nudReds.Value = player.Estimations.Answers["Reds"].Answer;
+            nudGoals.Value = player.Estimations.Answers[EstimationKeys.Goals].Answer;
+            nudReds.Value = player.Estimations.Answers[EstimationKeys.Reds].Answer;
         }
         public void loadPlayer(Player player)
         {

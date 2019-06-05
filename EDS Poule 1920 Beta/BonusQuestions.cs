@@ -7,6 +7,23 @@ using System.Threading.Tasks;
 namespace EDS_Poule
 {
     [Serializable]
+    public enum BonusKeys
+    {
+        Kampioen,
+        Degradanten,
+        Topscorer,
+        Trainer,
+        Winterkampioen,
+        Ronde,
+        Promovendi,
+        Finalisten,
+        Teamrood,
+        Assists,
+        Defensie,
+        Prodeg
+    }
+
+    [Serializable]
     public struct Question
     {
         public string Answer;
@@ -19,27 +36,27 @@ namespace EDS_Poule
     [Serializable]
     public class BonusQuestions
     {
-        public Dictionary<string, Question> Answers { get; private set; }
+        public Dictionary<BonusKeys, Question> Answers { get; private set; }
         public int WeekScore { get; private set; }
 
         public BonusQuestions(string kampioen, string[] degradanten, string topscorer, string trainer,
             string winterkampioen, string championround, string[] promovendi, string[] finalisten, 
             string teamReds, string topAssists, string worstdefence, string prodeg ,int[] weeks)
         {
-            Answers = new Dictionary<string, Question>()
+            Answers = new Dictionary<BonusKeys, Question>()
             {
-                {"Kampioen", new Question(){Answer = kampioen, Points = 25, IsArray = false, WeekAnswered = weeks[0] } },
-                {"Degradanten", new Question(){AnswerArray = degradanten, Points = 10, IsArray = true, WeekAnswered = weeks[1] } },
-                {"Topscorer", new Question(){Answer = topscorer, Points = 20, IsArray = false, WeekAnswered = weeks[2] } },
-                {"Trainer", new Question(){Answer = trainer, Points = 20, IsArray = false, WeekAnswered = weeks[3] } },
-                {"Winterkampioen", new Question(){Answer = winterkampioen, Points = 15, IsArray = false, WeekAnswered = weeks[4] } },
-                {"Championround", new Question(){Answer = championround, Points = 10, IsArray = false, WeekAnswered = weeks[5] } },
-                {"Promovendi", new Question(){AnswerArray = promovendi, Points = 10, IsArray = true, WeekAnswered = weeks[6] } },
-                {"Finalisten", new Question(){AnswerArray = finalisten, Points = 10, IsArray = true, WeekAnswered = weeks[7] } },
-                {"Teamreds", new Question(){Answer = teamReds, Points = 15, IsArray = false, WeekAnswered = weeks[8]} },
-                {"Assists", new Question(){Answer = topAssists, Points = 20, IsArray = false, WeekAnswered = weeks[9] } },
-                {"Worstdefence", new Question(){Answer = worstdefence, Points = 15, IsArray = false, WeekAnswered = weeks[10] } },
-                {"Prodeg", new Question(){Answer = prodeg, Points = 20, IsArray = false, WeekAnswered = weeks[11] } }
+                {BonusKeys.Kampioen, new Question(){Answer = kampioen, Points = 25, IsArray = false, WeekAnswered = weeks[0] } },
+                {BonusKeys.Degradanten, new Question(){AnswerArray = degradanten, Points = 10, IsArray = true, WeekAnswered = weeks[1] } },
+                {BonusKeys.Topscorer, new Question(){Answer = topscorer, Points = 20, IsArray = false, WeekAnswered = weeks[2] } },
+                {BonusKeys.Trainer, new Question(){Answer = trainer, Points = 20, IsArray = false, WeekAnswered = weeks[3] } },
+                {BonusKeys.Winterkampioen, new Question(){Answer = winterkampioen, Points = 15, IsArray = false, WeekAnswered = weeks[4] } },
+                {BonusKeys.Ronde, new Question(){Answer = championround, Points = 10, IsArray = false, WeekAnswered = weeks[5] } },
+                {BonusKeys.Promovendi, new Question(){AnswerArray = promovendi, Points = 10, IsArray = true, WeekAnswered = weeks[6] } },
+                {BonusKeys.Finalisten, new Question(){AnswerArray = finalisten, Points = 10, IsArray = true, WeekAnswered = weeks[7] } },
+                {BonusKeys.Teamrood, new Question(){Answer = teamReds, Points = 15, IsArray = false, WeekAnswered = weeks[8]} },
+                {BonusKeys.Assists, new Question(){Answer = topAssists, Points = 20, IsArray = false, WeekAnswered = weeks[9] } },
+                {BonusKeys.Defensie, new Question(){Answer = worstdefence, Points = 15, IsArray = false, WeekAnswered = weeks[10] } },
+                {BonusKeys.Prodeg, new Question(){Answer = prodeg, Points = 20, IsArray = false, WeekAnswered = weeks[11] } }
             };
         }
 
