@@ -34,8 +34,8 @@ namespace EDS_Poule
 
             Answers = new Dictionary<EstimationKeys, Estimation>()
             {
-                { EstimationKeys.Reds, new Estimation() {Answer = reds, Max = 20 } },
-                { EstimationKeys.Goals, new Estimation() { Answer = goals, Max = 10} }
+                { EstimationKeys.Reds, new Estimation() {Answer = reds, Max = 80 } },
+                { EstimationKeys.Goals, new Estimation() { Answer = goals, Max = 40} }
             };
         }
         public int checkEstimations(Estimations hostestimations, int week)
@@ -56,7 +56,7 @@ namespace EDS_Poule
                 int miss = Math.Abs(a.Value.Answer - hostestimations.Answers[a.Key].Answer);
                 if (a.Value.Max > miss)
                 {
-                    score += (a.Value.Max - miss);
+                    score += (a.Value.Max - (miss * 4));
                 }
             }
 

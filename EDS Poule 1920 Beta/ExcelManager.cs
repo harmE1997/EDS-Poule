@@ -36,7 +36,7 @@ namespace EDS_Poule
 
             else if (adjustment == 2)
             {
-                CurrentBlock = TotalBlocks - FirstHalfSize;
+                CurrentBlock = TotalBlocks - (TotalBlocks - FirstHalfSize);
                 StartRow = 204;
             }
         }
@@ -117,7 +117,7 @@ namespace EDS_Poule
                 weeks[currentblock] = new Week(currentblock + 1, fileMatches);
                 StartRow += Settings.BlockSize + 1;
                 rowschecked = 0;
-                if (currentblock == 16 && Settings.TotalBlocks == 34)
+                if (currentblock == (Settings.FirstHalfSize - 1) && Settings.TotalBlocks == 34)
                 {
                     Settings.Adjustsettings(2);
                     StartRow = Settings.StartRow;

@@ -45,18 +45,18 @@ namespace EDS_Poule
         {
             Answers = new Dictionary<BonusKeys, Question>()
             {
-                {BonusKeys.Kampioen, new Question(){Answer = kampioen, Points = 25, IsArray = false, WeekAnswered = weeks[0] } },
-                {BonusKeys.Degradanten, new Question(){AnswerArray = degradanten, Points = 10, IsArray = true, WeekAnswered = weeks[1] } },
-                {BonusKeys.Topscorer, new Question(){Answer = topscorer, Points = 20, IsArray = false, WeekAnswered = weeks[2] } },
-                {BonusKeys.Trainer, new Question(){Answer = trainer, Points = 20, IsArray = false, WeekAnswered = weeks[3] } },
-                {BonusKeys.Winterkampioen, new Question(){Answer = winterkampioen, Points = 15, IsArray = false, WeekAnswered = weeks[4] } },
-                {BonusKeys.Ronde, new Question(){Answer = championround, Points = 10, IsArray = false, WeekAnswered = weeks[5] } },
-                {BonusKeys.Promovendi, new Question(){AnswerArray = promovendi, Points = 10, IsArray = true, WeekAnswered = weeks[6] } },
-                {BonusKeys.Finalisten, new Question(){AnswerArray = finalisten, Points = 10, IsArray = true, WeekAnswered = weeks[7] } },
-                {BonusKeys.Teamrood, new Question(){Answer = teamReds, Points = 15, IsArray = false, WeekAnswered = weeks[8]} },
-                {BonusKeys.Assists, new Question(){Answer = topAssists, Points = 20, IsArray = false, WeekAnswered = weeks[9] } },
-                {BonusKeys.Defensie, new Question(){Answer = worstdefence, Points = 15, IsArray = false, WeekAnswered = weeks[10] } },
-                {BonusKeys.Prodeg, new Question(){Answer = prodeg, Points = 20, IsArray = false, WeekAnswered = weeks[11] } }
+                {BonusKeys.Kampioen, new Question(){Answer = kampioen, Points = 100, IsArray = false, WeekAnswered = weeks[0] } },
+                {BonusKeys.Degradanten, new Question(){AnswerArray = degradanten, Points = 40, IsArray = true, WeekAnswered = weeks[1] } },
+                {BonusKeys.Topscorer, new Question(){Answer = topscorer, Points = 80, IsArray = false, WeekAnswered = weeks[2] } },
+                {BonusKeys.Trainer, new Question(){Answer = trainer, Points = 80, IsArray = false, WeekAnswered = weeks[3] } },
+                {BonusKeys.Winterkampioen, new Question(){Answer = winterkampioen, Points = 60, IsArray = false, WeekAnswered = weeks[4] } },
+                {BonusKeys.Ronde, new Question(){Answer = championround, Points = 40, IsArray = false, WeekAnswered = weeks[5] } },
+                {BonusKeys.Promovendi, new Question(){AnswerArray = promovendi, Points = 40, IsArray = true, WeekAnswered = weeks[6] } },
+                {BonusKeys.Finalisten, new Question(){AnswerArray = finalisten, Points = 40, IsArray = true, WeekAnswered = weeks[7] } },
+                {BonusKeys.Teamrood, new Question(){Answer = teamReds, Points = 60, IsArray = false, WeekAnswered = weeks[8]} },
+                {BonusKeys.Assists, new Question(){Answer = topAssists, Points = 80, IsArray = false, WeekAnswered = weeks[9] } },
+                {BonusKeys.Defensie, new Question(){Answer = worstdefence, Points = 60, IsArray = false, WeekAnswered = weeks[10] } },
+                {BonusKeys.Prodeg, new Question(){Answer = prodeg, Points = 80, IsArray = false, WeekAnswered = weeks[11] } }
             };
         }
 
