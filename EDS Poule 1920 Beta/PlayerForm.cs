@@ -58,7 +58,11 @@ namespace EDS_Poule
                 }
 
                 else
+                {
                     MessageBox.Show("Can't load week. It doesn't exist");
+                    SavePlayer();
+                }
+                
             }
 
             else

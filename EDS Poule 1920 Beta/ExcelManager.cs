@@ -131,7 +131,7 @@ namespace EDS_Poule
 
         public Estimations ReadEstimations()
         {
-            int column = 10;
+            int column = 8;
             int reds = Convert.ToInt32(xlRange.Cells[385, column].Value2);
             int goals = Convert.ToInt32(xlRange.Cells[386, column].Value2);
 

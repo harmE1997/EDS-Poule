@@ -37,10 +37,10 @@ namespace EDS_Poule
         public string PlayerToString()
         {
             int maxtabs = 3;
-            int rangesize = 8;
-            decimal NrTabs = maxtabs - (Math.Floor(Convert.ToDecimal(Name.Length) / rangesize));
+            int rangesize = 9;
             string text = Ranking + "\t" + PreviousRanking + "\t" + Name;
-            
+            decimal NrTabs = maxtabs - (Math.Floor(Convert.ToDecimal(Name.Length) / rangesize));
+                       
             if (NrTabs < 1)
             {
                 NrTabs = 1;
@@ -50,8 +50,10 @@ namespace EDS_Poule
             {
                 text += "\t";
             }
+
             
             text += "\t" + TotalScore + "\t" + WeekScore;
+            int l = text.Length;
             return text;
         }
 
