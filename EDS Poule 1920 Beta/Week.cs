@@ -59,7 +59,12 @@ namespace EDS_Poule
 
             return score;
         }
-        
+
+        public string GetMatch(int matchID)
+        {
+            return Matches[matchID].Winner;
+        }
+
         public int CheckMatch(Player Host, int matchID)
         {
             //MOTW has matchID 0.

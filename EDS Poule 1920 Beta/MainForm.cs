@@ -105,17 +105,12 @@ namespace EDS_Poule
         {
             int fulls = 0;
             int halfs = 0;
-            string matchid = cbMatches.Text;
-            if (!int.TryParse(matchid, out int matchID))
-            {
-                matchID = 0; // MOTW's matchID is 0.
-            }
-
-            List<string> names = new List<string>();
+            int matchID = GetMatchID();
+            var week = Convert.ToInt16(cbCheck.Text) - 1;
+            string Names = "";
             HostForm form = new HostForm();
             foreach (Player player in Manager.Players)
             {
-                var week = Convert.ToInt16(cbCheck.Text) - 1;
                 if (player.Weeks[week] != null)
                 {
                     int check = player.Weeks[week].CheckMatch(form.Host, matchID);
@@ -127,17 +122,42 @@ namespace EDS_Poule
                     if (check == 2)
                     {
                         fulls++;
-                        names.Add(player.Name);
+                        Names += player.Name + ", ";
                     }
                 }
             }
 
-            string Names = "";
-            foreach (string name in names)
-            {
-                Names += name + ", ";
-            }
             rtbNotes.Text = "Goede winnaar: " + halfs + "\nHelemaal correct: " + fulls + " " + Names;
+        }
+
+        private void btnGetMatch_Click(object sender, EventArgs e)
+        {
+            int As = 0;
+            int Bs = 0;
+            int Ds = 0;
+            int matchID = GetMatchID();
+            var week = Convert.ToInt16(cbCheck.Text) - 1;
+
+            foreach (Player p in Manager.Players)
+            {
+                string res = p.Weeks[week].GetMatch(matchID);
+                switch (res)
+                {
+                    case "A":
+                        As++;
+                        break;
+                    case "B":
+                        Bs++;
+                        break;
+                    case "D":
+                        Ds++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            rtbNotes.Text = "Winst A: " + As + "\nWinst B: " + Bs + "\nGelijkspel: " + Ds;
         }
 
         private void btnRankingToExcel_Click(object sender, EventArgs e)
@@ -169,6 +189,17 @@ namespace EDS_Poule
             {
                 lbRanking.Items.Add(player.PlayerToString());
             }
+        }
+
+        private int GetMatchID()
+        {
+            string matchid = cbMatches.Text;
+            if (!int.TryParse(matchid, out int matchID))
+            {
+                matchID = 0; // MOTW's matchID is 0.
+            }
+
+            return matchID;
         }
     }
 }

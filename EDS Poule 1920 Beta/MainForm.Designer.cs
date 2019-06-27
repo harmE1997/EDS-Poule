@@ -46,12 +46,21 @@
             this.lblWeek = new System.Windows.Forms.Label();
             this.cbMatches = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.gbPlayerOptions = new System.Windows.Forms.GroupBox();
+            this.gbMatchInfo = new System.Windows.Forms.GroupBox();
+            this.gbOtherOptions = new System.Windows.Forms.GroupBox();
+            this.gbRankingOptions = new System.Windows.Forms.GroupBox();
+            this.btnGetMatch = new System.Windows.Forms.Button();
+            this.gbPlayerOptions.SuspendLayout();
+            this.gbMatchInfo.SuspendLayout();
+            this.gbOtherOptions.SuspendLayout();
+            this.gbRankingOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNewPlayer
             // 
             this.btnNewPlayer.BackColor = System.Drawing.Color.LawnGreen;
-            this.btnNewPlayer.Location = new System.Drawing.Point(572, 264);
+            this.btnNewPlayer.Location = new System.Drawing.Point(7, 22);
             this.btnNewPlayer.Margin = new System.Windows.Forms.Padding(4);
             this.btnNewPlayer.Name = "btnNewPlayer";
             this.btnNewPlayer.Size = new System.Drawing.Size(268, 28);
@@ -63,7 +72,7 @@
             // btnHost
             // 
             this.btnHost.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnHost.Location = new System.Drawing.Point(574, 18);
+            this.btnHost.Location = new System.Drawing.Point(14, 22);
             this.btnHost.Margin = new System.Windows.Forms.Padding(4);
             this.btnHost.Name = "btnHost";
             this.btnHost.Size = new System.Drawing.Size(265, 28);
@@ -84,7 +93,7 @@
             // 
             // btnRanking
             // 
-            this.btnRanking.Location = new System.Drawing.Point(573, 54);
+            this.btnRanking.Location = new System.Drawing.Point(7, 22);
             this.btnRanking.Margin = new System.Windows.Forms.Padding(4);
             this.btnRanking.Name = "btnRanking";
             this.btnRanking.Size = new System.Drawing.Size(266, 28);
@@ -97,7 +106,7 @@
             // 
             this.btnRemovePlayer.BackColor = System.Drawing.Color.Red;
             this.btnRemovePlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemovePlayer.Location = new System.Drawing.Point(572, 300);
+            this.btnRemovePlayer.Location = new System.Drawing.Point(7, 58);
             this.btnRemovePlayer.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemovePlayer.Name = "btnRemovePlayer";
             this.btnRemovePlayer.Size = new System.Drawing.Size(268, 28);
@@ -108,7 +117,7 @@
             // 
             // tbPlayer
             // 
-            this.tbPlayer.Location = new System.Drawing.Point(572, 407);
+            this.tbPlayer.Location = new System.Drawing.Point(7, 130);
             this.tbPlayer.Margin = new System.Windows.Forms.Padding(4);
             this.tbPlayer.Name = "tbPlayer";
             this.tbPlayer.Size = new System.Drawing.Size(268, 22);
@@ -116,7 +125,7 @@
             // 
             // btnCheck
             // 
-            this.btnCheck.Location = new System.Drawing.Point(573, 90);
+            this.btnCheck.Location = new System.Drawing.Point(7, 58);
             this.btnCheck.Margin = new System.Windows.Forms.Padding(4);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(266, 28);
@@ -163,7 +172,7 @@
             "32",
             "33",
             "34"});
-            this.cbCheck.Location = new System.Drawing.Point(626, 161);
+            this.cbCheck.Location = new System.Drawing.Point(72, 97);
             this.cbCheck.Margin = new System.Windows.Forms.Padding(4);
             this.cbCheck.Name = "cbCheck";
             this.cbCheck.Size = new System.Drawing.Size(212, 24);
@@ -172,7 +181,7 @@
             // 
             // btnLoadPlayer
             // 
-            this.btnLoadPlayer.Location = new System.Drawing.Point(572, 336);
+            this.btnLoadPlayer.Location = new System.Drawing.Point(7, 94);
             this.btnLoadPlayer.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoadPlayer.Name = "btnLoadPlayer";
             this.btnLoadPlayer.Size = new System.Drawing.Size(268, 28);
@@ -183,7 +192,7 @@
             // 
             // btnStats
             // 
-            this.btnStats.Location = new System.Drawing.Point(572, 374);
+            this.btnStats.Location = new System.Drawing.Point(14, 92);
             this.btnStats.Name = "btnStats";
             this.btnStats.Size = new System.Drawing.Size(269, 26);
             this.btnStats.TabIndex = 12;
@@ -193,7 +202,7 @@
             // 
             // btnMatch
             // 
-            this.btnMatch.Location = new System.Drawing.Point(574, 125);
+            this.btnMatch.Location = new System.Drawing.Point(20, 27);
             this.btnMatch.Name = "btnMatch";
             this.btnMatch.Size = new System.Drawing.Size(266, 29);
             this.btnMatch.TabIndex = 13;
@@ -203,16 +212,16 @@
             // 
             // rtbNotes
             // 
-            this.rtbNotes.Location = new System.Drawing.Point(569, 480);
+            this.rtbNotes.Location = new System.Drawing.Point(552, 373);
             this.rtbNotes.Name = "rtbNotes";
-            this.rtbNotes.Size = new System.Drawing.Size(269, 358);
+            this.rtbNotes.Size = new System.Drawing.Size(596, 296);
             this.rtbNotes.TabIndex = 14;
             this.rtbNotes.Text = "";
             // 
             // lblNotes
             // 
             this.lblNotes.AutoSize = true;
-            this.lblNotes.Location = new System.Drawing.Point(566, 447);
+            this.lblNotes.Location = new System.Drawing.Point(556, 353);
             this.lblNotes.Name = "lblNotes";
             this.lblNotes.Size = new System.Drawing.Size(45, 17);
             this.lblNotes.TabIndex = 15;
@@ -220,7 +229,7 @@
             // 
             // btnRankingToExcel
             // 
-            this.btnRankingToExcel.Location = new System.Drawing.Point(574, 228);
+            this.btnRankingToExcel.Location = new System.Drawing.Point(14, 57);
             this.btnRankingToExcel.Name = "btnRankingToExcel";
             this.btnRankingToExcel.Size = new System.Drawing.Size(267, 29);
             this.btnRankingToExcel.TabIndex = 16;
@@ -235,7 +244,7 @@
             // lblWeek
             // 
             this.lblWeek.AutoSize = true;
-            this.lblWeek.Location = new System.Drawing.Point(571, 164);
+            this.lblWeek.Location = new System.Drawing.Point(17, 100);
             this.lblWeek.Name = "lblWeek";
             this.lblWeek.Size = new System.Drawing.Size(48, 17);
             this.lblWeek.TabIndex = 17;
@@ -254,7 +263,7 @@
             "7",
             "8",
             "MOTW"});
-            this.cbMatches.Location = new System.Drawing.Point(626, 192);
+            this.cbMatches.Location = new System.Drawing.Point(72, 128);
             this.cbMatches.Name = "cbMatches";
             this.cbMatches.Size = new System.Drawing.Size(212, 24);
             this.cbMatches.TabIndex = 18;
@@ -262,39 +271,96 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(571, 195);
+            this.label1.Location = new System.Drawing.Point(17, 131);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 17);
             this.label1.TabIndex = 19;
             this.label1.Text = "Match:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // gbPlayerOptions
+            // 
+            this.gbPlayerOptions.Controls.Add(this.btnNewPlayer);
+            this.gbPlayerOptions.Controls.Add(this.btnRemovePlayer);
+            this.gbPlayerOptions.Controls.Add(this.btnLoadPlayer);
+            this.gbPlayerOptions.Controls.Add(this.tbPlayer);
+            this.gbPlayerOptions.Location = new System.Drawing.Point(552, 18);
+            this.gbPlayerOptions.Name = "gbPlayerOptions";
+            this.gbPlayerOptions.Size = new System.Drawing.Size(286, 166);
+            this.gbPlayerOptions.TabIndex = 20;
+            this.gbPlayerOptions.TabStop = false;
+            this.gbPlayerOptions.Text = "PlayerOptions";
+            // 
+            // gbMatchInfo
+            // 
+            this.gbMatchInfo.Controls.Add(this.btnGetMatch);
+            this.gbMatchInfo.Controls.Add(this.btnMatch);
+            this.gbMatchInfo.Controls.Add(this.cbCheck);
+            this.gbMatchInfo.Controls.Add(this.label1);
+            this.gbMatchInfo.Controls.Add(this.cbMatches);
+            this.gbMatchInfo.Controls.Add(this.lblWeek);
+            this.gbMatchInfo.Location = new System.Drawing.Point(853, 18);
+            this.gbMatchInfo.Name = "gbMatchInfo";
+            this.gbMatchInfo.Size = new System.Drawing.Size(294, 166);
+            this.gbMatchInfo.TabIndex = 21;
+            this.gbMatchInfo.TabStop = false;
+            this.gbMatchInfo.Text = "MatchInfo";
+            // 
+            // gbOtherOptions
+            // 
+            this.gbOtherOptions.Controls.Add(this.btnHost);
+            this.gbOtherOptions.Controls.Add(this.btnStats);
+            this.gbOtherOptions.Controls.Add(this.btnRankingToExcel);
+            this.gbOtherOptions.Location = new System.Drawing.Point(853, 190);
+            this.gbOtherOptions.Name = "gbOtherOptions";
+            this.gbOtherOptions.Size = new System.Drawing.Size(295, 134);
+            this.gbOtherOptions.TabIndex = 22;
+            this.gbOtherOptions.TabStop = false;
+            this.gbOtherOptions.Text = "Other Options";
+            // 
+            // gbRankingOptions
+            // 
+            this.gbRankingOptions.Controls.Add(this.btnRanking);
+            this.gbRankingOptions.Controls.Add(this.btnCheck);
+            this.gbRankingOptions.Location = new System.Drawing.Point(552, 190);
+            this.gbRankingOptions.Name = "gbRankingOptions";
+            this.gbRankingOptions.Size = new System.Drawing.Size(286, 134);
+            this.gbRankingOptions.TabIndex = 23;
+            this.gbRankingOptions.TabStop = false;
+            this.gbRankingOptions.Text = "Ranking Options";
+            // 
+            // btnGetMatch
+            // 
+            this.btnGetMatch.Location = new System.Drawing.Point(20, 62);
+            this.btnGetMatch.Name = "btnGetMatch";
+            this.btnGetMatch.Size = new System.Drawing.Size(266, 29);
+            this.btnGetMatch.TabIndex = 20;
+            this.btnGetMatch.Text = "Get Match Info";
+            this.btnGetMatch.UseVisualStyleBackColor = true;
+            this.btnGetMatch.Click += new System.EventHandler(this.btnGetMatch_Click);
+            // 
             // lblMatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(860, 809);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbMatches);
-            this.Controls.Add(this.lblWeek);
-            this.Controls.Add(this.btnRankingToExcel);
+            this.ClientSize = new System.Drawing.Size(1160, 798);
+            this.Controls.Add(this.gbRankingOptions);
+            this.Controls.Add(this.gbOtherOptions);
+            this.Controls.Add(this.gbMatchInfo);
+            this.Controls.Add(this.gbPlayerOptions);
             this.Controls.Add(this.lblNotes);
             this.Controls.Add(this.rtbNotes);
-            this.Controls.Add(this.btnMatch);
-            this.Controls.Add(this.btnStats);
-            this.Controls.Add(this.btnLoadPlayer);
-            this.Controls.Add(this.cbCheck);
-            this.Controls.Add(this.btnCheck);
-            this.Controls.Add(this.tbPlayer);
-            this.Controls.Add(this.btnRemovePlayer);
-            this.Controls.Add(this.btnRanking);
             this.Controls.Add(this.lbRanking);
-            this.Controls.Add(this.btnHost);
-            this.Controls.Add(this.btnNewPlayer);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "lblMatch";
             this.Text = "MainForm";
+            this.gbPlayerOptions.ResumeLayout(false);
+            this.gbPlayerOptions.PerformLayout();
+            this.gbMatchInfo.ResumeLayout(false);
+            this.gbMatchInfo.PerformLayout();
+            this.gbOtherOptions.ResumeLayout(false);
+            this.gbRankingOptions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,6 +386,11 @@
         private System.Windows.Forms.Label lblWeek;
         private System.Windows.Forms.ComboBox cbMatches;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox gbPlayerOptions;
+        private System.Windows.Forms.GroupBox gbMatchInfo;
+        private System.Windows.Forms.Button btnGetMatch;
+        private System.Windows.Forms.GroupBox gbOtherOptions;
+        private System.Windows.Forms.GroupBox gbRankingOptions;
     }
 }
 
