@@ -99,7 +99,6 @@ namespace EDS_Poule
         {
             lbStats.Items.Clear();
             stats.Sort();
-            stats.Reverse();
             foreach (Stat stat in stats)
             {
                 lbStats.Items.Add(stat.statToString());
