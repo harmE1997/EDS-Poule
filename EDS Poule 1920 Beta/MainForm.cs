@@ -184,7 +184,7 @@ namespace EDS_Poule
             Manager.RankPlayers(true);
             Manager.RankPlayers(false);
             lbRanking.Items.Clear();
-            lbRanking.Items.Add("#\t#Last\tName\t\t\t\tTotal\tWeek");
+            lbRanking.Items.Add("#\t#Last\tTotal\tWeek\tName");
             foreach (Player player in Manager.Players)
             {
                 lbRanking.Items.Add(player.PlayerToString());
