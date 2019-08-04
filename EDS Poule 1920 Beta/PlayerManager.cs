@@ -51,12 +51,13 @@ namespace EDS_Poule
         {
             if (previous)
             {
-                Players.OrderBy(p => p.PreviousScore);
+                Players = Players.OrderBy(p => p.PreviousScore).ToList();
             }
             else
             {
-                Players.OrderBy(p => p.TotalScore);
+                Players = Players.OrderBy(p => p.TotalScore).ToList();
             }
+
             Players.Reverse();
             int index = 1;
             int ranking = 1;

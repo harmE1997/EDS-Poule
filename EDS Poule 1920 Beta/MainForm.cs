@@ -181,6 +181,7 @@ namespace EDS_Poule
 
         private void RefreshRanking()
         {
+            //sort players by score
             Manager.RankPlayers(true);
             Manager.RankPlayers(false);
             lbRanking.Items.Clear();

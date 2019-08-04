@@ -69,9 +69,8 @@ namespace EDS_Poule
                 xlRange.Cells[y, 2].value2 = player.PreviousRanking;
                 xlRange.Cells[y, 3].value2 = player.Name;
                 xlRange.Cells[y, 4].value2 = player.Woonplaats;
-                xlRange.Cells[y, 5].value2 = player.Age;
-                xlRange.Cells[y, 6].value2 = player.TotalScore;
-                xlRange.Cells[y, 7].value2 = player.WeekScore;
+                xlRange.Cells[y, 5].value2 = player.TotalScore;
+                xlRange.Cells[y, 6].value2 = player.WeekScore;
                 y++;
                 yield return y;
             }
