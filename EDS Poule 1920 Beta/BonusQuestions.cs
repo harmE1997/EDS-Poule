@@ -56,7 +56,7 @@ namespace EDS_Poule
                 {BonusKeys.Teamrood, new Question(){Answer = teamReds, Points = 60, IsArray = false, WeekAnswered = weeks[8]} },
                 {BonusKeys.Assists, new Question(){Answer = topAssists, Points = 80, IsArray = false, WeekAnswered = weeks[9] } },
                 {BonusKeys.Defensie, new Question(){Answer = worstdefence, Points = 60, IsArray = false, WeekAnswered = weeks[10] } },
-                {BonusKeys.Prodeg, new Question(){Answer = prodeg, Points = 80, IsArray = false, WeekAnswered = weeks[11] } }
+                {BonusKeys.Prodeg, new Question(){Answer = prodeg, Points = 40, IsArray = false, WeekAnswered = weeks[11] } }
             };
         }
 
