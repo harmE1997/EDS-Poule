@@ -48,9 +48,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gbPlayerOptions = new System.Windows.Forms.GroupBox();
             this.gbMatchInfo = new System.Windows.Forms.GroupBox();
+            this.btnGetMatch = new System.Windows.Forms.Button();
             this.gbOtherOptions = new System.Windows.Forms.GroupBox();
             this.gbRankingOptions = new System.Windows.Forms.GroupBox();
-            this.btnGetMatch = new System.Windows.Forms.Button();
             this.gbPlayerOptions.SuspendLayout();
             this.gbMatchInfo.SuspendLayout();
             this.gbOtherOptions.SuspendLayout();
@@ -212,6 +212,7 @@
             // 
             // rtbNotes
             // 
+            this.rtbNotes.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbNotes.Location = new System.Drawing.Point(552, 373);
             this.rtbNotes.Name = "rtbNotes";
             this.rtbNotes.Size = new System.Drawing.Size(596, 296);
@@ -306,6 +307,16 @@
             this.gbMatchInfo.TabStop = false;
             this.gbMatchInfo.Text = "MatchInfo";
             // 
+            // btnGetMatch
+            // 
+            this.btnGetMatch.Location = new System.Drawing.Point(20, 62);
+            this.btnGetMatch.Name = "btnGetMatch";
+            this.btnGetMatch.Size = new System.Drawing.Size(266, 29);
+            this.btnGetMatch.TabIndex = 20;
+            this.btnGetMatch.Text = "Get Match Info";
+            this.btnGetMatch.UseVisualStyleBackColor = true;
+            this.btnGetMatch.Click += new System.EventHandler(this.btnGetMatch_Click);
+            // 
             // gbOtherOptions
             // 
             this.gbOtherOptions.Controls.Add(this.btnHost);
@@ -328,16 +339,6 @@
             this.gbRankingOptions.TabIndex = 23;
             this.gbRankingOptions.TabStop = false;
             this.gbRankingOptions.Text = "Ranking Options";
-            // 
-            // btnGetMatch
-            // 
-            this.btnGetMatch.Location = new System.Drawing.Point(20, 62);
-            this.btnGetMatch.Name = "btnGetMatch";
-            this.btnGetMatch.Size = new System.Drawing.Size(266, 29);
-            this.btnGetMatch.TabIndex = 20;
-            this.btnGetMatch.Text = "Get Match Info";
-            this.btnGetMatch.UseVisualStyleBackColor = true;
-            this.btnGetMatch.Click += new System.EventHandler(this.btnGetMatch_Click);
             // 
             // lblMatch
             // 
