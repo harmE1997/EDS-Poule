@@ -23,41 +23,48 @@ namespace EDS_Poule
             int score = 0;
             int counter = 0;
 
-            while (counter < 9)
+            while (counter < Matches.Length)
             {
-                var ThisA = Matches[counter].ResultA;
-                var ThisB = Matches[counter].ResultB;
-                var HostA = hostweek.Matches[counter].ResultA;
-                var HostB = hostweek.Matches[counter].ResultB;
-                var ThisWinner = Matches[counter].Winner;
-                var HostWinner = hostweek.Matches[counter].Winner;
-
-                if (HostA != 99 && ThisA != 99)
-                {
-                    if (ThisWinner == HostWinner)
-                    {
-                        score += 15;
-                    }
-
-                    if (ThisA == HostA)
-                    {
-                        score += 5;
-                    }
-
-                    if (ThisB == HostB)
-                    {
-                        score += 5;
-                    }
-
-                    if (counter == 0)
-                    {
-                        score *= 2;
-                    }
-                }
-                    counter++;
+                score += checkMatch(hostweek, counter);
+                counter++;
             }
 
             return score;
+        }
+
+        private int checkMatch(Week hostweek, int counter)
+        {
+            var ThisA = Matches[counter].ResultA;
+            var ThisB = Matches[counter].ResultB;
+            var HostA = hostweek.Matches[counter].ResultA;
+            var HostB = hostweek.Matches[counter].ResultB;
+            var ThisWinner = Matches[counter].Winner;
+            var HostWinner = hostweek.Matches[counter].Winner;
+            var matchScore = 0;
+
+            if (HostA != 99 && ThisA != 99)
+            {
+                if (ThisWinner == HostWinner)
+                {
+                    matchScore += 15;
+                }
+
+                if (ThisA == HostA)
+                {
+                    matchScore += 5;
+                }
+
+                if (ThisB == HostB)
+                {
+                    matchScore += 5;
+                }
+
+                if (counter == 0)
+                {
+                    matchScore *= 2;
+                }
+            }
+            return matchScore;
         }
 
         public string GetMatch(int matchID)

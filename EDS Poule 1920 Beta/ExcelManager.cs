@@ -83,43 +83,14 @@ namespace EDS_Poule
             if (Weeks != null)
                 weeks = Weeks;
 
-            int StartRow = Settings.StartRow;
             int currentblock = Settings.CurrentBlock;
             while (currentblock < Settings.TotalBlocks)
             {
-                Match[] fileMatches = new Match[9];
-                int rowschecked = 0;
-                while (rowschecked < Settings.BlockSize)
-                {
-                    double x = 99;
-                    double y = 99;
-                    int currentRow = StartRow + rowschecked;
-
-                    if (xlRange.Cells[currentRow, Settings.HomeColumn].Value2 != null && xlRange.Cells[currentRow, Settings.OutColumn].Value2 != null)
-                    {
-                        x = xlRange.Cells[currentRow, Settings.HomeColumn].Value2;
-                        y = xlRange.Cells[currentRow, Settings.OutColumn].Value2;
-                    }
-                    Match match = new Match(Convert.ToInt32(x), Convert.ToInt32(y));
-                    if (rowschecked == Settings.BlockSize - 1)
-                    {
-                        fileMatches[0] = match; //MOTW must be the first element in the array!
-                    }
-
-                    else
-                    {
-                        fileMatches[rowschecked + 1] = match;
-                    }
-                    rowschecked++;
-                }
-
-                weeks[currentblock] = new Week(currentblock + 1, fileMatches);
-                StartRow += Settings.BlockSize + 1;
-                rowschecked = 0;
+                weeks[currentblock] = new Week(currentblock + 1, ReadWeek(Settings));
+                Settings.StartRow += Settings.BlockSize + 1;
                 if (currentblock == (Settings.FirstHalfSize - 1) && Settings.TotalBlocks == 34)
                 {
                     Settings.Adjustsettings(2);
-                    StartRow = Settings.StartRow;
                 }
 
                 currentblock++;
@@ -128,6 +99,33 @@ namespace EDS_Poule
             return weeks;
         }
 
+        private Match[] ReadWeek(ExcelReadSettings Settings)
+        {
+            Match[] fileMatches = new Match[9];
+            int rowschecked = 0;
+            while (rowschecked < Settings.BlockSize)
+            {
+                double x = 99;
+                double y = 99;
+                int currentRow = Settings.StartRow + rowschecked;
+
+                if (xlRange.Cells[currentRow, Settings.HomeColumn].Value2 != null && xlRange.Cells[currentRow, Settings.OutColumn].Value2 != null)
+                {
+                    x = xlRange.Cells[currentRow, Settings.HomeColumn].Value2;
+                    y = xlRange.Cells[currentRow, Settings.OutColumn].Value2;
+                }
+                Match match = new Match(Convert.ToInt32(x), Convert.ToInt32(y));
+                int index = rowschecked + 1;
+                if (rowschecked == Settings.BlockSize - 1)
+                {
+                    index = 0;
+                }
+
+                fileMatches[index] = match;                
+                rowschecked++;
+            }
+            return fileMatches;
+        }
         public Estimations ReadEstimations()
         {
             int column = 8;
