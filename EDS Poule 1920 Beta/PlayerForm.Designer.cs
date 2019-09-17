@@ -70,18 +70,18 @@
             this.lblWorstDefence = new System.Windows.Forms.Label();
             this.lblAsssists = new System.Windows.Forms.Label();
             this.lblMostRed = new System.Windows.Forms.Label();
-            this.tbFin2 = new System.Windows.Forms.TextBox();
-            this.tbFin1 = new System.Windows.Forms.TextBox();
-            this.tbPromovendi1 = new System.Windows.Forms.TextBox();
             this.tbRonde = new System.Windows.Forms.TextBox();
             this.tbWinterkampioen = new System.Windows.Forms.TextBox();
+            this.tbFin2 = new System.Windows.Forms.TextBox();
             this.tbTrainer = new System.Windows.Forms.TextBox();
             this.tbTopscorer = new System.Windows.Forms.TextBox();
+            this.tbFin1 = new System.Windows.Forms.TextBox();
             this.tbProdeg = new System.Windows.Forms.TextBox();
+            this.lblKampioendiv1 = new System.Windows.Forms.Label();
+            this.tbPromovendi1 = new System.Windows.Forms.TextBox();
             this.tbKampioen = new System.Windows.Forms.TextBox();
             this.lblfinalisten = new System.Windows.Forms.Label();
             this.lblRound = new System.Windows.Forms.Label();
-            this.lblKampioendiv1 = new System.Windows.Forms.Label();
             this.lblWinterkampioen = new System.Windows.Forms.Label();
             this.lblTrainer = new System.Windows.Forms.Label();
             this.lblTopscorer = new System.Windows.Forms.Label();
@@ -659,33 +659,6 @@
             this.lblMostRed.TabIndex = 37;
             this.lblMostRed.Text = "Club met meeste rood";
             // 
-            // tbFin2
-            // 
-            this.tbFin2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbFin2.Location = new System.Drawing.Point(368, 445);
-            this.tbFin2.Margin = new System.Windows.Forms.Padding(4);
-            this.tbFin2.Name = "tbFin2";
-            this.tbFin2.Size = new System.Drawing.Size(132, 22);
-            this.tbFin2.TabIndex = 16;
-            // 
-            // tbFin1
-            // 
-            this.tbFin1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbFin1.Location = new System.Drawing.Point(227, 445);
-            this.tbFin1.Margin = new System.Windows.Forms.Padding(4);
-            this.tbFin1.Name = "tbFin1";
-            this.tbFin1.Size = new System.Drawing.Size(132, 22);
-            this.tbFin1.TabIndex = 15;
-            // 
-            // tbPromovendi1
-            // 
-            this.tbPromovendi1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.tbPromovendi1.Location = new System.Drawing.Point(227, 510);
-            this.tbPromovendi1.Margin = new System.Windows.Forms.Padding(4);
-            this.tbPromovendi1.Name = "tbPromovendi1";
-            this.tbPromovendi1.Size = new System.Drawing.Size(132, 22);
-            this.tbPromovendi1.TabIndex = 14;
-            // 
             // tbRonde
             // 
             this.tbRonde.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
@@ -703,6 +676,15 @@
             this.tbWinterkampioen.Name = "tbWinterkampioen";
             this.tbWinterkampioen.Size = new System.Drawing.Size(248, 22);
             this.tbWinterkampioen.TabIndex = 12;
+            // 
+            // tbFin2
+            // 
+            this.tbFin2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbFin2.Location = new System.Drawing.Point(368, 445);
+            this.tbFin2.Margin = new System.Windows.Forms.Padding(4);
+            this.tbFin2.Name = "tbFin2";
+            this.tbFin2.Size = new System.Drawing.Size(132, 22);
+            this.tbFin2.TabIndex = 16;
             // 
             // tbTrainer
             // 
@@ -722,6 +704,15 @@
             this.tbTopscorer.Size = new System.Drawing.Size(248, 22);
             this.tbTopscorer.TabIndex = 10;
             // 
+            // tbFin1
+            // 
+            this.tbFin1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbFin1.Location = new System.Drawing.Point(227, 445);
+            this.tbFin1.Margin = new System.Windows.Forms.Padding(4);
+            this.tbFin1.Name = "tbFin1";
+            this.tbFin1.Size = new System.Drawing.Size(132, 22);
+            this.tbFin1.TabIndex = 15;
+            // 
             // tbProdeg
             // 
             this.tbProdeg.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
@@ -730,6 +721,25 @@
             this.tbProdeg.Name = "tbProdeg";
             this.tbProdeg.Size = new System.Drawing.Size(248, 22);
             this.tbProdeg.TabIndex = 9;
+            // 
+            // lblKampioendiv1
+            // 
+            this.lblKampioendiv1.AutoSize = true;
+            this.lblKampioendiv1.Location = new System.Drawing.Point(55, 513);
+            this.lblKampioendiv1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblKampioendiv1.Name = "lblKampioendiv1";
+            this.lblKampioendiv1.Size = new System.Drawing.Size(83, 17);
+            this.lblKampioendiv1.TabIndex = 6;
+            this.lblKampioendiv1.Text = "Promovendi";
+            // 
+            // tbPromovendi1
+            // 
+            this.tbPromovendi1.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.tbPromovendi1.Location = new System.Drawing.Point(227, 510);
+            this.tbPromovendi1.Margin = new System.Windows.Forms.Padding(4);
+            this.tbPromovendi1.Name = "tbPromovendi1";
+            this.tbPromovendi1.Size = new System.Drawing.Size(132, 22);
+            this.tbPromovendi1.TabIndex = 14;
             // 
             // tbKampioen
             // 
@@ -759,16 +769,6 @@
             this.lblRound.Size = new System.Drawing.Size(155, 17);
             this.lblRound.TabIndex = 5;
             this.lblRound.Text = "Ronde Kampioenschap";
-            // 
-            // lblKampioendiv1
-            // 
-            this.lblKampioendiv1.AutoSize = true;
-            this.lblKampioendiv1.Location = new System.Drawing.Point(55, 513);
-            this.lblKampioendiv1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblKampioendiv1.Name = "lblKampioendiv1";
-            this.lblKampioendiv1.Size = new System.Drawing.Size(83, 17);
-            this.lblKampioendiv1.TabIndex = 6;
-            this.lblKampioendiv1.Text = "Promovendi";
             // 
             // lblWinterkampioen
             // 
