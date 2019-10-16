@@ -29,11 +29,13 @@ namespace EDS_Poule
         private Dictionary<BonusKeys,BonusLocation> Bonuslocs;
         public HostForm()
         {
-            NUDs = new NumericUpDown[18];
+            NUDs = new NumericUpDown[18]{numericUpDown1 ,numericUpDown2 ,numericUpDown3 ,numericUpDown4, numericUpDown5 , numericUpDown6
+            ,numericUpDown7 ,numericUpDown8 ,numericUpDown9 ,numericUpDown10 ,numericUpDown11 ,numericUpDown12 ,numericUpDown13
+            ,numericUpDown14 ,numericUpDown15 ,numericUpDown16 ,numericUpDown17,numericUpDown18};
+
             weeks = new Week[34];
             counter = 0;
             InitializeComponent();
-            fillNudsArray();
             Bonuslocs = new Dictionary<BonusKeys, BonusLocation>()
             {
                 { BonusKeys.Kampioen, new BonusLocation() { text = tbKampioen, nud = nudweek1 }},
@@ -133,28 +135,6 @@ namespace EDS_Poule
             nudGoals.Value = Host.Estimations.Answers[EstimationKeys.Goals].Answer;
             nudReds.Value = Host.Estimations.Answers[EstimationKeys.Reds].Answer;
         }
-        private void fillNudsArray()
-        {
-
-            NUDs[0] = numericUpDown1;
-            NUDs[1] = numericUpDown2;
-            NUDs[2] = numericUpDown3;
-            NUDs[3] = numericUpDown4;
-            NUDs[4] = numericUpDown5;
-            NUDs[5] = numericUpDown6;
-            NUDs[6] = numericUpDown7;
-            NUDs[7] = numericUpDown8;
-            NUDs[8] = numericUpDown9;
-            NUDs[9] = numericUpDown10;
-            NUDs[10] = numericUpDown11;
-            NUDs[11] = numericUpDown12;
-            NUDs[12] = numericUpDown13;
-            NUDs[13] = numericUpDown14;
-            NUDs[14] = numericUpDown15;
-            NUDs[15] = numericUpDown16;
-            NUDs[16] = numericUpDown17;
-            NUDs[17] = numericUpDown18;
-        }
 
         private void SaveHost()
         {
@@ -183,6 +163,7 @@ namespace EDS_Poule
 
         private void createHost()
         {
+            //create an empty host with default values
             Match[] matches = new Match[9];
             for (int i = 0; i < 9; i++)
             {
