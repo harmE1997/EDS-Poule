@@ -29,13 +29,14 @@ namespace EDS_Poule
         private Dictionary<BonusKeys,BonusLocation> Bonuslocs;
         public HostForm()
         {
+            InitializeComponent();
             NUDs = new NumericUpDown[18]{numericUpDown1 ,numericUpDown2 ,numericUpDown3 ,numericUpDown4, numericUpDown5 , numericUpDown6
             ,numericUpDown7 ,numericUpDown8 ,numericUpDown9 ,numericUpDown10 ,numericUpDown11 ,numericUpDown12 ,numericUpDown13
             ,numericUpDown14 ,numericUpDown15 ,numericUpDown16 ,numericUpDown17,numericUpDown18};
 
             weeks = new Week[34];
             counter = 0;
-            InitializeComponent();
+            
             Bonuslocs = new Dictionary<BonusKeys, BonusLocation>()
             {
                 { BonusKeys.Kampioen, new BonusLocation() { text = tbKampioen, nud = nudweek1 }},
