@@ -167,8 +167,7 @@ namespace EDS_Poule
             {
                 filename = ofdRanking.FileName;
                 ExcelManager em = new ExcelManager();
-                int.TryParse(cbCheck.Text, out int round);
-                foreach (var i in em.ExportPlayersToExcel(filename, 2, Manager.Players, round))
+                foreach (var i in em.ExportPlayersToExcel(filename, 2, Manager.Players))
                 {
                     rtbNotes.Text = "Exported " + (i - 2) + " out of " + Manager.Players.Count + " players.";
                 }
