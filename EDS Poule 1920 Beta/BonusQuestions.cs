@@ -62,6 +62,7 @@ namespace EDS_Poule
 
         public int checkBonus(BonusQuestions HostQuestions, int currentweek)
         {
+            WeekScore = 0;
             if (HostQuestions == null)
             {
                 throw new ArgumentNullException();
