@@ -1,6 +1,6 @@
 ﻿namespace EDS_Poule
 {
-    partial class lblMatch
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnNewPlayer = new System.Windows.Forms.Button();
             this.btnHost = new System.Windows.Forms.Button();
             this.lbRanking = new System.Windows.Forms.ListBox();
@@ -45,7 +46,7 @@
             this.ofdRanking = new System.Windows.Forms.OpenFileDialog();
             this.lblWeek = new System.Windows.Forms.Label();
             this.cbMatches = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblMatch = new System.Windows.Forms.Label();
             this.gbPlayerOptions = new System.Windows.Forms.GroupBox();
             this.gbMatchInfo = new System.Windows.Forms.GroupBox();
             this.btnGetMatch = new System.Windows.Forms.Button();
@@ -269,15 +270,15 @@
             this.cbMatches.Size = new System.Drawing.Size(212, 24);
             this.cbMatches.TabIndex = 18;
             // 
-            // label1
+            // lblMatch
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 131);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 17);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Match:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblMatch.AutoSize = true;
+            this.lblMatch.Location = new System.Drawing.Point(17, 131);
+            this.lblMatch.Name = "lblMatch";
+            this.lblMatch.Size = new System.Drawing.Size(50, 17);
+            this.lblMatch.TabIndex = 19;
+            this.lblMatch.Text = "Match:";
+            this.lblMatch.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // gbPlayerOptions
             // 
@@ -297,7 +298,7 @@
             this.gbMatchInfo.Controls.Add(this.btnGetMatch);
             this.gbMatchInfo.Controls.Add(this.btnMatch);
             this.gbMatchInfo.Controls.Add(this.cbCheck);
-            this.gbMatchInfo.Controls.Add(this.label1);
+            this.gbMatchInfo.Controls.Add(this.lblMatch);
             this.gbMatchInfo.Controls.Add(this.cbMatches);
             this.gbMatchInfo.Controls.Add(this.lblWeek);
             this.gbMatchInfo.Location = new System.Drawing.Point(853, 18);
@@ -340,7 +341,7 @@
             this.gbRankingOptions.TabStop = false;
             this.gbRankingOptions.Text = "Ranking Options";
             // 
-            // lblMatch
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -353,8 +354,9 @@
             this.Controls.Add(this.lblNotes);
             this.Controls.Add(this.rtbNotes);
             this.Controls.Add(this.lbRanking);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "lblMatch";
+            this.Name = "MainForm";
             this.Text = "MainForm";
             this.gbPlayerOptions.ResumeLayout(false);
             this.gbPlayerOptions.PerformLayout();
@@ -386,7 +388,7 @@
         private System.Windows.Forms.OpenFileDialog ofdRanking;
         private System.Windows.Forms.Label lblWeek;
         private System.Windows.Forms.ComboBox cbMatches;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblMatch;
         private System.Windows.Forms.GroupBox gbPlayerOptions;
         private System.Windows.Forms.GroupBox gbMatchInfo;
         private System.Windows.Forms.Button btnGetMatch;

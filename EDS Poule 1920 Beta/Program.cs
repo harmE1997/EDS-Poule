@@ -16,7 +16,7 @@ namespace EDS_Poule
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new lblMatch());
+            Application.Run(new MainForm());
         }
     }
 }

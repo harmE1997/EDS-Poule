@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace EDS_Poule
 {
-    public partial class lblMatch : Form
+    public partial class MainForm : Form
     {
         PlayerManager Manager;
-        public lblMatch()
+        public MainForm()
         {
             Manager = new PlayerManager();
             InitializeComponent();
