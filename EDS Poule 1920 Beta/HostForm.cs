@@ -23,9 +23,9 @@ namespace EDS_Poule
     {
         public Player Host;
         private string HostFileName = "EDSHost1920";
-        NumericUpDown[] NUDs;
-        Week[] weeks;
-        int counter;
+        private NumericUpDown[] NUDs;
+        private Week[] weeks;
+        private int counter;
         private Dictionary<BonusKeys,BonusLocation> Bonuslocs;
         public HostForm()
         {
@@ -51,11 +51,11 @@ namespace EDS_Poule
             };
 
             try { LoadHost(); }
-            catch { createHost(); }
+            catch { CreateHost(); }
             tbName.Text = "Host";
-            loadWeek(counter);
-            loadBonus();
-            loadEstimations();
+            LoadWeek(counter);
+            LoadBonus();
+            LoadEstimations();
         }
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -96,11 +96,11 @@ namespace EDS_Poule
             {
                 counter++;
                 gbWeeks.Text = "Week " + (counter + 1);
-                loadWeek(counter);
+                LoadWeek(counter);
             }
         }
 
-        private void loadWeek(int round)
+        private void LoadWeek(int round)
         {
             int loader = 0;
             while (loader < 17)
@@ -111,7 +111,7 @@ namespace EDS_Poule
             }
         }
 
-        private void loadBonus()
+        private void LoadBonus()
         {
             foreach (var b in Bonuslocs)
             {
@@ -131,7 +131,7 @@ namespace EDS_Poule
             nudweek2.Value = Host.Questions.Answers[BonusKeys.Degradanten].WeekAnswered;
         }
 
-        private void loadEstimations()
+        private void LoadEstimations()
         {
             nudGoals.Value = Host.Estimations.Answers[EstimationKeys.Goals].Answer;
             nudReds.Value = Host.Estimations.Answers[EstimationKeys.Reds].Answer;
@@ -162,7 +162,7 @@ namespace EDS_Poule
             }
         }
 
-        private void createHost()
+        private void CreateHost()
         {
             //create an empty host with default values
             Match[] matches = new Match[9];

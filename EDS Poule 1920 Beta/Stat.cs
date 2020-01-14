@@ -26,7 +26,7 @@ namespace EDS_Poule
             Names.Add(playerName);
         }
 
-        public string statToString()
+        public string StatToString()
         {
             return Name + "\t\t" + Number.ToString();
         }

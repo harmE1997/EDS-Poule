@@ -44,7 +44,7 @@ namespace EDS_Poule
 
         private void btnRemovePlayer_Click(object sender, EventArgs e)
         {
-            int del = Manager.removePlayer(tbPlayer.Text);
+            int del = Manager.RemovePlayer(tbPlayer.Text);
             if (del == 0)
             {
                 MessageBox.Show("Player is removed.");
@@ -67,7 +67,7 @@ namespace EDS_Poule
         {
             int.TryParse(cbCheck.Text, out int round);
             HostForm form = new HostForm();
-            Manager.checkAllPlayers(form.Host, round);
+            Manager.CheckAllPlayers(form.Host, round);
             RefreshRanking();
         }
 
@@ -78,12 +78,7 @@ namespace EDS_Poule
             {
                 PlayerForm form = new PlayerForm();
                 form.manager = Manager;
-                form.player = player;
-                form.switchInput();
-                form.loadWeek(0);
-                form.loadBonus();
-                form.loadEstimations();
-                form.loadPlayer(player);
+                form.LoadPlayer(player);
                 form.Show();
             }
 

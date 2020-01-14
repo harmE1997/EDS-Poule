@@ -38,7 +38,7 @@ namespace EDS_Poule
                 { EstimationKeys.Goals, new Estimation() { Answer = goals, Max = 40} }
             };
         }
-        public int checkEstimations(Estimations hostestimations, int week)
+        public int CheckEstimations(Estimations hostestimations, int week)
         {
             if (hostestimations == null)
             {

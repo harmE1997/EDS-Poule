@@ -101,7 +101,7 @@ namespace EDS_Poule
             stats.Sort();
             foreach (Stat stat in stats)
             {
-                lbStats.Items.Add(stat.statToString());
+                lbStats.Items.Add(stat.StatToString());
                 foreach (string name in stat.Names)
                 {
                     lbStats.Items.Add(name);

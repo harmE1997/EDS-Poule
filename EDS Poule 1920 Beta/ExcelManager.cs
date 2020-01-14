@@ -76,7 +76,7 @@ namespace EDS_Poule
             }
         }
 
-        public Week[] readPredictions(string filename, int sheet, ExcelReadSettings Settings, Week[] Weeks = null)
+        public Week[] ReadPredictions(string filename, int sheet, ExcelReadSettings Settings, Week[] Weeks = null)
         {
             Initialise(filename, sheet);
             var weeks = new Week[34];

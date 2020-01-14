@@ -40,22 +40,23 @@ namespace EDS_Poule
             return text;
         }
 
-        public void checkPlayer(Player Host, int currentWeek)
+        public void CheckPlayer(Player Host, int currentWeek)
         {
             TotalScore = 0;
+            WeekScore = 0;
             for (int i = 0; i < currentWeek; i++)
             {
                 if (Weeks[i] != null)
                 {
-                    int weekscore = Weeks[i].checkweek(Host);
+                    int weekscore = Weeks[i].Checkweek(Host);
                     TotalScore += weekscore;
                     if (i == (currentWeek - 1))
                         WeekScore = weekscore;
                 }
             }
 
-            TotalScore += Questions.checkBonus(Host.Questions, currentWeek);
-            var EstScore = Estimations.checkEstimations(Host.Estimations, currentWeek);
+            TotalScore += Questions.CheckBonus(Host.Questions, currentWeek);
+            var EstScore = Estimations.CheckEstimations(Host.Estimations, currentWeek);
             TotalScore += EstScore;
 
             PreviousScore = TotalScore - WeekScore - Questions.WeekScore;

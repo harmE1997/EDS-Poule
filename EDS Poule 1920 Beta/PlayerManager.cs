@@ -99,7 +99,7 @@ namespace EDS_Poule
             return null;
         }
 
-        public int removePlayer(string name)
+        public int RemovePlayer(string name)
         {
             Player exitplayer = FindPlayer(name);
             if (exitplayer != null)
@@ -116,10 +116,10 @@ namespace EDS_Poule
             
         }
 
-        public void checkAllPlayers(Player Host, int currentWeek)
+        public void CheckAllPlayers(Player Host, int currentWeek)
         {
             foreach (Player player in Players)
-                player.checkPlayer(Host, currentWeek);
+                player.CheckPlayer(Host, currentWeek);
             
             SavePlayers();
         }

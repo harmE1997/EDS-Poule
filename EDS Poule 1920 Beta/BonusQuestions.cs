@@ -60,13 +60,14 @@ namespace EDS_Poule
             };
         }
 
-        public int checkBonus(BonusQuestions HostQuestions, int currentweek)
+        public int CheckBonus(BonusQuestions HostQuestions, int currentweek)
         {
-            WeekScore = 0;
+            
             if (HostQuestions == null)
             {
                 throw new ArgumentNullException();
             }
+            WeekScore = 0;
             int score = 0;
             
             foreach (var a in Answers)

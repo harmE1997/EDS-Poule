@@ -17,7 +17,7 @@ namespace EDS_Poule
             Matches = matches;
             Weeknr = nr;
         }
-        public int checkweek(Player host)
+        public int Checkweek(Player host)
         {
             Week hostweek = host.Weeks[Weeknr - 1];
             int score = 0;
@@ -25,14 +25,14 @@ namespace EDS_Poule
 
             while (counter < Matches.Length)
             {
-                score += checkMatch(hostweek, counter);
+                score += CheckMatch(hostweek, counter);
                 counter++;
             }
 
             return score;
         }
 
-        private int checkMatch(Week hostweek, int counter)
+        private int CheckMatch(Week hostweek, int counter)
         {
             var ThisA = Matches[counter].ResultA;
             var ThisB = Matches[counter].ResultB;

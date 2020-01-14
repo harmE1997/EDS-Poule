@@ -30,7 +30,7 @@ namespace EDSTests
         {
             Estimations es = new Estimations(50, 20);
             Estimations hoes = new Estimations(55, 22);
-            Assert.AreEqual(23, es.checkEstimations(hoes, 34));
+            Assert.AreEqual(23, es.CheckEstimations(hoes, 34));
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@ namespace EDSTests
         public void TestCheckWithInvalidInput()
         {
             Estimations es = new Estimations(50, 20);
-            es.checkEstimations(null, 34);
+            es.CheckEstimations(null, 34);
         }
     }
 }

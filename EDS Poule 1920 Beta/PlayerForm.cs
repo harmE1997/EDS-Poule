@@ -12,17 +12,15 @@ namespace EDS_Poule
 {
     public partial class PlayerForm : Form
     {
-        public Player player;
+        public Player Player;
         public PlayerManager manager;
         private NumericUpDown[] NUDs;
         private Week[] weeks;
-        private Estimations estimations;
-        int counter;
-        bool ManualInput;
+        private int counter;
+        private bool ManualInput;
         public PlayerForm()
         {
             weeks = new Week[34];
-            estimations = null;
             counter = 0;
             ManualInput = false;
             InitializeComponent();
@@ -49,14 +47,14 @@ namespace EDS_Poule
                 SavePlayer();
             }
 
-            else if (player != null)
+            else if (Player != null)
             {
                 counter++;
 
-                if (player.Weeks[counter] != null)
+                if (Player.Weeks[counter] != null)
                 {
                     gbWeeks.Text = "Week " + (counter + 1);
-                    loadWeek(counter);
+                    LoadWeek(counter);
                 }
 
                 else
@@ -88,27 +86,27 @@ namespace EDS_Poule
             ExcelManager em = new ExcelManager();
             if (cbSecondHalf.Checked)
             {
-                weeks = em.readPredictions(filename, 1, new ExcelReadSettings(2, Convert.ToInt32(nudAfwijking.Value)), player.Weeks);
+                weeks = em.ReadPredictions(filename, 1, new ExcelReadSettings(2, Convert.ToInt32(nudAfwijking.Value)), Player.Weeks);
             }
 
             else if (cbFirstHalf.Checked)
             {
-                weeks = em.readPredictions(filename, 1, new ExcelReadSettings(1, Convert.ToInt32(nudAfwijking.Value)));
+                weeks = em.ReadPredictions(filename, 1, new ExcelReadSettings(1, Convert.ToInt32(nudAfwijking.Value)));
             }
 
             else
             {
-                weeks = em.readPredictions(filename, 1, new ExcelReadSettings(0, Convert.ToInt32(nudAfwijking.Value)));
+                weeks = em.ReadPredictions(filename, 1, new ExcelReadSettings(0, Convert.ToInt32(nudAfwijking.Value)));
             }
-            estimations = em.ReadEstimations();
-            SavePlayer();
+            var estimations = em.ReadEstimations();
+            SavePlayer(estimations);
             em.Clean();
             MessageBox.Show("Predictions succesfully loaded and saved!");
         }
 
         private void btnSwitchInput_Click(object sender, EventArgs e)
         {
-            switchInput();
+            SwitchInput();
         }
 
         private void btnSelectFile_Click(object sender, EventArgs e)
@@ -133,7 +131,7 @@ namespace EDS_Poule
                 cbSecondHalf.Checked = false;
             }
         }
-        public void switchInput()
+        private void SwitchInput()
         {
             if (ManualInput)
             {
@@ -152,49 +150,54 @@ namespace EDS_Poule
             }
         }
 
-        public void loadWeek(int round)
+        private void LoadWeek(int round)
         {
             int loader = 0;
             while (loader < 17)
             {
-                NUDs[loader].Value = player.Weeks[round].Matches[loader / 2].ResultA;
-                NUDs[loader + 1].Value = player.Weeks[round].Matches[loader / 2].ResultB;
+                NUDs[loader].Value = Player.Weeks[round].Matches[loader / 2].ResultA;
+                NUDs[loader + 1].Value = Player.Weeks[round].Matches[loader / 2].ResultB;
                 loader += 2;
             }
         }
 
-        public void loadBonus()
+        private void LoadBonus()
         {
-            tbKampioen.Text = player.Questions.Answers[BonusKeys.Kampioen].Answer;
-            tbProdeg.Text = player.Questions.Answers[BonusKeys.Prodeg].Answer;
-            tbPromovendi1.Text = player.Questions.Answers[BonusKeys.Promovendi].AnswerArray[0];
-            tbPromovendi2.Text = player.Questions.Answers[BonusKeys.Promovendi].AnswerArray[1];
-            tbFin1.Text = player.Questions.Answers[BonusKeys.Finalisten].AnswerArray[0];
-            tbFin2.Text = player.Questions.Answers[BonusKeys.Finalisten].AnswerArray[1];
-            tbRonde.Text = player.Questions.Answers[BonusKeys.Ronde].Answer;
-            tbTopscorer.Text = player.Questions.Answers[BonusKeys.Topscorer].Answer;
-            tbTrainer.Text = player.Questions.Answers[BonusKeys.Trainer].Answer;
-            tbWinterkampioen.Text = player.Questions.Answers[BonusKeys.Winterkampioen].Answer;
-            tbMostRed.Text = player.Questions.Answers[BonusKeys.Teamrood].Answer;
-            tbAssists.Text = player.Questions.Answers[BonusKeys.Assists].Answer;
-            tbWorstDefence.Text = player.Questions.Answers[BonusKeys.Defensie].Answer;
-            tbDegradant1.Text = player.Questions.Answers[BonusKeys.Degradanten].AnswerArray[0];
-            tbDegradant2.Text = player.Questions.Answers[BonusKeys.Degradanten].AnswerArray[1];
+            tbKampioen.Text = Player.Questions.Answers[BonusKeys.Kampioen].Answer;
+            tbProdeg.Text = Player.Questions.Answers[BonusKeys.Prodeg].Answer;
+            tbPromovendi1.Text = Player.Questions.Answers[BonusKeys.Promovendi].AnswerArray[0];
+            tbPromovendi2.Text = Player.Questions.Answers[BonusKeys.Promovendi].AnswerArray[1];
+            tbFin1.Text = Player.Questions.Answers[BonusKeys.Finalisten].AnswerArray[0];
+            tbFin2.Text = Player.Questions.Answers[BonusKeys.Finalisten].AnswerArray[1];
+            tbRonde.Text = Player.Questions.Answers[BonusKeys.Ronde].Answer;
+            tbTopscorer.Text = Player.Questions.Answers[BonusKeys.Topscorer].Answer;
+            tbTrainer.Text = Player.Questions.Answers[BonusKeys.Trainer].Answer;
+            tbWinterkampioen.Text = Player.Questions.Answers[BonusKeys.Winterkampioen].Answer;
+            tbMostRed.Text = Player.Questions.Answers[BonusKeys.Teamrood].Answer;
+            tbAssists.Text = Player.Questions.Answers[BonusKeys.Assists].Answer;
+            tbWorstDefence.Text = Player.Questions.Answers[BonusKeys.Defensie].Answer;
+            tbDegradant1.Text = Player.Questions.Answers[BonusKeys.Degradanten].AnswerArray[0];
+            tbDegradant2.Text = Player.Questions.Answers[BonusKeys.Degradanten].AnswerArray[1];
         }
 
-        public void loadEstimations()
+        private void LoadEstimations()
         {
-            nudGoals.Value = player.Estimations.Answers[EstimationKeys.Goals].Answer;
-            nudReds.Value = player.Estimations.Answers[EstimationKeys.Reds].Answer;
+            nudGoals.Value = Player.Estimations.Answers[EstimationKeys.Goals].Answer;
+            nudReds.Value = Player.Estimations.Answers[EstimationKeys.Reds].Answer;
         }
-        public void loadPlayer(Player player)
+        public void LoadPlayer(Player player)
         {
+            Player = player;
             tbName.Text = player.Name;
             tbAge.Text = player.Age;
             tbWoonplaats.Text = player.Woonplaats;
+            LoadBonus();
+            LoadEstimations();
+            LoadWeek(0);
+            SwitchInput();
         }
 
-        private void SavePlayer()
+        private void SavePlayer(Estimations ests = null)
         {
             try
             {
@@ -205,13 +208,13 @@ namespace EDS_Poule
                     , tbWinterkampioen.Text, tbRonde.Text, promovendi, finalists, tbMostRed.Text, tbAssists.Text, tbWorstDefence.Text, 
                      tbProdeg.Text,new int[12] {99,99,99,99,99,99,99,99,99,99,99,99});
 
-                if(estimations == null)
-                estimations = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));
+                if(ests == null)
+                ests = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));
 
-                Player newplayer = new Player(tbName.Text, tbAge.Text, tbWoonplaats.Text, weeks, questions, estimations);
-                if (player != null)
+                Player newplayer = new Player(tbName.Text, tbAge.Text, tbWoonplaats.Text, weeks, questions, ests);
+                if (Player != null)
                 {
-                    manager.removePlayer(player.Name);
+                    manager.RemovePlayer(Player.Name);
                 }
                 manager.AddPlayer(newplayer);
                 manager.SavePlayers();
