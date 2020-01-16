@@ -23,10 +23,14 @@ namespace EDS_Poule
 
         public void AddPlayer(Player player)
         {
-            Players.Add(player);
+            if (player != null)
+            {
+                Players.Add(player);
+                SavePlayers();
+            }
         }
 
-        public void SavePlayers()
+        private void SavePlayers()
         {
             using (FileStream stream = new FileStream(FileName, FileMode.Create))
             {
@@ -38,7 +42,7 @@ namespace EDS_Poule
         public void LoadPlayers()
         {
             if (!File.Exists(FileName))
-                throw new FileNotFoundException(FileName);
+                SavePlayers();
 
             using (FileStream stream = new FileStream(FileName, FileMode.Open))
             {

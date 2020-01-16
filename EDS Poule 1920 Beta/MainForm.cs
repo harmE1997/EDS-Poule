@@ -12,29 +12,24 @@ namespace EDS_Poule
 {
     public partial class MainForm : Form
     {
-        PlayerManager Manager;
+        private PlayerManager Manager;
+        private PlayerForm playerForm;
+        private HostForm hostForm;
         public MainForm()
         {
             Manager = new PlayerManager();
             InitializeComponent();
-
-            try
-            {
-                Manager.LoadPlayers();
-                RefreshRanking();
-            }
-
-            catch
-            {
-                Manager.SavePlayers();
-            }
+            Manager.LoadPlayers();
+            RefreshRanking();
+            playerForm = new PlayerForm();
+            hostForm = new HostForm();
         }
 
+       
         private void btnNewPlayer_Click(object sender, EventArgs e)
         {
-            PlayerForm form = new PlayerForm();
-            form.manager = Manager;
-            form.Show();
+            playerForm.manager = Manager;
+            playerForm.Show();
         }
 
         private void btnRanking_Click(object sender, EventArgs e)
@@ -59,15 +54,13 @@ namespace EDS_Poule
 
         private void btnHost_Click(object sender, EventArgs e)
         {
-            HostForm form = new HostForm();
-            form.Show();
+            hostForm.Show();
         }
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
             int.TryParse(cbCheck.Text, out int round);
-            HostForm form = new HostForm();
-            Manager.CheckAllPlayers(form.Host, round);
+            Manager.CheckAllPlayers(hostForm.Host, round);
             RefreshRanking();
         }
 
@@ -103,12 +96,11 @@ namespace EDS_Poule
             int matchID = GetMatchID();
             var week = Convert.ToInt16(cbCheck.Text) - 1;
             string Names = "";
-            HostForm form = new HostForm();
             foreach (Player player in Manager.Players)
             {
                 if (player.Weeks[week] != null)
                 {
-                    int check = player.Weeks[week].CheckMatch(form.Host, matchID);
+                    int check = player.Weeks[week].CheckMatch(hostForm.Host, matchID);
                     if (check > 0)
                     {
                         halfs++;

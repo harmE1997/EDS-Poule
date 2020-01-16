@@ -217,7 +217,6 @@ namespace EDS_Poule
                     manager.RemovePlayer(Player.Name);
                 }
                 manager.AddPlayer(newplayer);
-                manager.SavePlayers();
                 this.Dispose();
                 this.Close();
             }
