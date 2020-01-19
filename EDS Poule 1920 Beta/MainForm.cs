@@ -127,6 +127,10 @@ namespace EDS_Poule
 
             foreach (Player p in Manager.Players)
             {
+                if (p.Weeks[week] == null)
+                {
+                    continue;
+                }
                 string res = p.Weeks[week].GetMatch(matchID);
                 switch (res)
                 {
