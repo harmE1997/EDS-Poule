@@ -88,7 +88,6 @@ namespace EDS_Poule
                 Estimations estimations = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));
                 Host = new Player(tbName.Text, "", "", weeks, questions, estimations);
                 SaveHost();
-                this.Dispose();
                 this.Close();
             }
 

@@ -28,6 +28,7 @@ namespace EDS_Poule
        
         private void btnNewPlayer_Click(object sender, EventArgs e)
         {
+            playerForm = new PlayerForm();
             playerForm.manager = Manager;
             playerForm.Show();
         }
@@ -54,6 +55,7 @@ namespace EDS_Poule
 
         private void btnHost_Click(object sender, EventArgs e)
         {
+            hostForm = new HostForm();
             hostForm.Show();
         }
 
@@ -69,10 +71,10 @@ namespace EDS_Poule
             Player player = Manager.FindPlayer(tbPlayer.Text);
             if (player != null)
             {
-                PlayerForm form = new PlayerForm();
-                form.manager = Manager;
-                form.LoadPlayer(player);
-                form.Show();
+                playerForm = new PlayerForm();
+                playerForm.manager = Manager;
+                playerForm.LoadPlayer(player);
+                playerForm.Show();
             }
 
             else
