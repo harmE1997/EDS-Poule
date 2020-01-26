@@ -52,6 +52,7 @@
             this.btnGetMatch = new System.Windows.Forms.Button();
             this.gbOtherOptions = new System.Windows.Forms.GroupBox();
             this.gbRankingOptions = new System.Windows.Forms.GroupBox();
+            this.btnAverage = new System.Windows.Forms.Button();
             this.gbPlayerOptions.SuspendLayout();
             this.gbMatchInfo.SuspendLayout();
             this.gbOtherOptions.SuspendLayout();
@@ -332,6 +333,7 @@
             // 
             // gbRankingOptions
             // 
+            this.gbRankingOptions.Controls.Add(this.btnAverage);
             this.gbRankingOptions.Controls.Add(this.btnRanking);
             this.gbRankingOptions.Controls.Add(this.btnCheck);
             this.gbRankingOptions.Location = new System.Drawing.Point(552, 190);
@@ -340,6 +342,16 @@
             this.gbRankingOptions.TabIndex = 23;
             this.gbRankingOptions.TabStop = false;
             this.gbRankingOptions.Text = "Ranking Options";
+            // 
+            // btnAverage
+            // 
+            this.btnAverage.Location = new System.Drawing.Point(7, 93);
+            this.btnAverage.Name = "btnAverage";
+            this.btnAverage.Size = new System.Drawing.Size(268, 25);
+            this.btnAverage.TabIndex = 9;
+            this.btnAverage.Text = "Average";
+            this.btnAverage.UseVisualStyleBackColor = true;
+            this.btnAverage.Click += new System.EventHandler(this.btnAverage_Click);
             // 
             // MainForm
             // 
@@ -394,6 +406,7 @@
         private System.Windows.Forms.Button btnGetMatch;
         private System.Windows.Forms.GroupBox gbOtherOptions;
         private System.Windows.Forms.GroupBox gbRankingOptions;
+        private System.Windows.Forms.Button btnAverage;
     }
 }
 

@@ -127,5 +127,15 @@ namespace EDS_Poule
             
             SavePlayers();
         }
+
+        public int GetAverageScore()
+        {
+            int total = 0;
+            foreach (var p in Players)
+            {
+                total += p.WeekScore;
+            }
+            return total / Players.Count;
+        }
     }
 }

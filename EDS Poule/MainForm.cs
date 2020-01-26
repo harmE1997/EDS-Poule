@@ -194,5 +194,10 @@ namespace EDS_Poule
 
             return matchID;
         }
+
+        private void btnAverage_Click(object sender, EventArgs e)
+        {
+            rtbNotes.Text = Manager.GetAverageScore().ToString();
+        }
     }
 }
