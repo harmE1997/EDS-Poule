@@ -32,3 +32,20 @@ C:\Users\Administrator\Documents\GitHub\EDS2019-2020\EDSTests\bin\Debug\EDS Poul
 C:\Users\Administrator\Documents\GitHub\EDS2019-2020\EDSTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\Users\Administrator\Documents\GitHub\EDS2019-2020\EDSTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\Users\Administrator\Documents\GitHub\EDS2019-2020\EDSTests\obj\Debug\EDSTests.csproj.CopyComplete
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\bin\Debug\EDSTests.dll
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\bin\Debug\EDSTests.pdb
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\bin\Debug\EDS Poule.exe
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\bin\Debug\EDS Poule.pdb
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\bin\Debug\EDS Poule.exe.config
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\obj\Debug\EDSTests.csprojAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\obj\Debug\EDSTests.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\obj\Debug\EDSTests.csproj.CopyComplete
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\obj\Debug\EDSTests.dll
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDSTests\obj\Debug\EDSTests.pdb

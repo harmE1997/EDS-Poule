@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace EDS_Poule
 {
@@ -14,7 +15,8 @@ namespace EDS_Poule
     {
         private PlayerManager Manager;
         private PlayerForm playerForm;
-        private HostForm hostForm;
+        private Host host;
+        private Player hostplayer;
         public MainForm()
         {
             Manager = new PlayerManager();
@@ -22,10 +24,11 @@ namespace EDS_Poule
             Manager.LoadPlayers();
             RefreshRanking();
             playerForm = new PlayerForm();
-            hostForm = new HostForm();
+            host = new Host();
+            hostplayer = host.getHost(); //this method takes approximately 15 seconds
         }
 
-       
+
         private void btnNewPlayer_Click(object sender, EventArgs e)
         {
             playerForm = new PlayerForm();
@@ -53,16 +56,10 @@ namespace EDS_Poule
             }
         }
 
-        private void btnHost_Click(object sender, EventArgs e)
-        {
-            hostForm = new HostForm();
-            hostForm.Show();
-        }
-
         private void btnCheck_Click(object sender, EventArgs e)
         {
             int.TryParse(cbCheck.Text, out int round);
-            Manager.CheckAllPlayers(hostForm.Host, round);
+            Manager.CheckAllPlayers(hostplayer, round);
             RefreshRanking();
         }
 
@@ -102,7 +99,7 @@ namespace EDS_Poule
             {
                 if (player.Weeks[week] != null)
                 {
-                    int check = player.Weeks[week].CheckMatch(hostForm.Host, matchID);
+                    int check = player.Weeks[week].CheckMatch(hostplayer, matchID);
                     if (check > 0)
                     {
                         halfs++;
@@ -155,19 +152,14 @@ namespace EDS_Poule
 
         private void btnRankingToExcel_Click(object sender, EventArgs e)
         {
-            string filename = "";
-            if (ofdRanking.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            ExcelManager em = new ExcelManager();
+            foreach (var i in em.ExportPlayersToExcel(ConfigurationManager.AppSettings.Get("AdminLocation"), 
+                Convert.ToInt32(ConfigurationManager.AppSettings.Get("RankingSheet")), Manager.Players))
             {
-                filename = ofdRanking.FileName;
-                ExcelManager em = new ExcelManager();
-                foreach (var i in em.ExportPlayersToExcel(filename, 2, Manager.Players))
-                {
-                    rtbNotes.Text = "Exported " + (i - 2) + " out of " + Manager.Players.Count + " players.";
-                }
-
-                em.Clean();
-                MessageBox.Show("Ranking sucessfully exported");
+                rtbNotes.Text = "Exported " + (i - 2) + " out of " + Manager.Players.Count + " players.";
             }
+
+            MessageBox.Show("Ranking sucessfully exported");
 
         }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using System.Configuration;
 
 namespace EDS_Poule
 {
@@ -18,7 +19,7 @@ namespace EDS_Poule
         public PlayerManager()
         {
             Players = new List<Player>();
-            FileName = "EDS1920";
+            FileName = ConfigurationManager.AppSettings.Get("PlayersFileName");
         }
 
         public void AddPlayer(Player player)

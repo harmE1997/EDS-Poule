@@ -64,7 +64,7 @@ namespace EDS_Poule
             Initialise(filename, sheet);
             int y = 2;
             foreach (Player player in Players)
-            { 
+            {
                 xlRange.Cells[y, 1].value2 = player.Ranking;
                 xlRange.Cells[y, 2].value2 = player.PreviousRanking;
                 xlRange.Cells[y, 3].value2 = player.Name;
@@ -74,29 +74,34 @@ namespace EDS_Poule
                 y++;
                 yield return y;
             }
+            Clean();
         }
 
         public Week[] ReadPredictions(string filename, int sheet, ExcelReadSettings Settings, Week[] Weeks = null)
         {
             Initialise(filename, sheet);
-            var weeks = new Week[34];
-            if (Weeks != null)
-                weeks = Weeks;
-
-            int currentblock = Settings.CurrentBlock;
-            while (currentblock < Settings.TotalBlocks)
+            try
             {
-                weeks[currentblock] = new Week(currentblock + 1, ReadWeek(Settings));
-                Settings.StartRow += Settings.BlockSize + 1;
-                if (currentblock == (Settings.FirstHalfSize - 1) && Settings.TotalBlocks == 34)
+                var weeks = new Week[34];
+                if (Weeks != null)
+                    weeks = Weeks;
+
+                int currentblock = Settings.CurrentBlock;
+                while (currentblock < Settings.TotalBlocks)
                 {
-                    Settings.Adjustsettings(2);
+                    weeks[currentblock] = new Week(currentblock + 1, ReadWeek(Settings));
+                    Settings.StartRow += Settings.BlockSize + 1;
+                    if (currentblock == (Settings.FirstHalfSize - 1) && Settings.TotalBlocks == 34)
+                    {
+                        Settings.Adjustsettings(2);
+                    }
+
+                    currentblock++;
                 }
-
-                currentblock++;
+                Clean();
+                return weeks;
             }
-
-            return weeks;
+            catch { Clean(); return null; }
         }
 
         private Match[] ReadWeek(ExcelReadSettings Settings)
@@ -121,20 +126,75 @@ namespace EDS_Poule
                     index = 0;
                 }
 
-                fileMatches[index] = match;                
+                fileMatches[index] = match;
                 rowschecked++;
             }
             return fileMatches;
         }
-        public Estimations ReadEstimations()
+        public Estimations ReadEstimations(string filename, int sheet)
         {
-            int column = 8;
-            int reds = Convert.ToInt32(xlRange.Cells[385, column].Value2);
-            int goals = Convert.ToInt32(xlRange.Cells[386, column].Value2);
+            Initialise(filename, sheet);
+            try
+            {
+                int column = 8;
+                int reds = Convert.ToInt32(xlRange.Cells[385, column].Value2);
+                int goals = Convert.ToInt32(xlRange.Cells[386, column].Value2);
+                Clean();
+                return new Estimations(reds, goals);
+            }
 
-            return new Estimations(reds, goals);
+            catch { Clean(); return null; }
         }
-        public void Clean()
+
+        public BonusQuestions ReadHostBonus(string filename, int sheet)
+        {
+            int column = 7;
+            int weekcolumn = 10;
+            Initialise(filename, sheet);
+            try
+            {
+                int[] weeks =
+                {
+                    Convert.ToInt32(xlRange.Cells[368, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[379, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[370, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[371, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[372, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[373, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[381, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[377, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[374, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[375, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[376, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[369, weekcolumn].value2)
+            };
+
+                string[] degradanten = { xlRange.Cells[379, column].value2.ToString(), xlRange.Cells[380, column].value2.ToString() };
+                string[] promovendi = { xlRange.Cells[381, column].value2.ToString(), xlRange.Cells[382, column].value2.ToString() };
+                string[] finalists = { xlRange.Cells[377, column].value2.ToString(), xlRange.Cells[378, column].value2.ToString() };
+                BonusQuestions bonus = new BonusQuestions
+                    (
+                    xlRange.Cells[368, column].value2.ToString(),
+                    degradanten,
+                    xlRange.Cells[370, column].value2.ToString(),
+                    xlRange.Cells[371, column].value2.ToString(),
+                    xlRange.Cells[372, column].value2.ToString(),
+                    xlRange.Cells[373, column].value2.ToString(),
+                    promovendi,
+                    finalists,
+                    xlRange.Cells[374, column].value2.ToString(),
+                    xlRange.Cells[375, column].value2.ToString(),
+                    xlRange.Cells[376, column].value2.ToString(),
+                    xlRange.Cells[369, column].value2.ToString(),
+                    weeks
+                    );
+                Clean();
+                return bonus;
+            }
+            catch { Clean(); return null; };
+        }
+
+        private void Clean()
         {
             //cleanup
             GC.Collect();

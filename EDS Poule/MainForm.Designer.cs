@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnNewPlayer = new System.Windows.Forms.Button();
-            this.btnHost = new System.Windows.Forms.Button();
             this.lbRanking = new System.Windows.Forms.ListBox();
             this.btnRanking = new System.Windows.Forms.Button();
             this.btnRemovePlayer = new System.Windows.Forms.Button();
@@ -43,7 +42,6 @@
             this.rtbNotes = new System.Windows.Forms.RichTextBox();
             this.lblNotes = new System.Windows.Forms.Label();
             this.btnRankingToExcel = new System.Windows.Forms.Button();
-            this.ofdRanking = new System.Windows.Forms.OpenFileDialog();
             this.lblWeek = new System.Windows.Forms.Label();
             this.cbMatches = new System.Windows.Forms.ComboBox();
             this.lblMatch = new System.Windows.Forms.Label();
@@ -70,18 +68,6 @@
             this.btnNewPlayer.Text = "New Player";
             this.btnNewPlayer.UseVisualStyleBackColor = false;
             this.btnNewPlayer.Click += new System.EventHandler(this.btnNewPlayer_Click);
-            // 
-            // btnHost
-            // 
-            this.btnHost.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnHost.Location = new System.Drawing.Point(14, 22);
-            this.btnHost.Margin = new System.Windows.Forms.Padding(4);
-            this.btnHost.Name = "btnHost";
-            this.btnHost.Size = new System.Drawing.Size(265, 28);
-            this.btnHost.TabIndex = 1;
-            this.btnHost.Text = "Host";
-            this.btnHost.UseVisualStyleBackColor = false;
-            this.btnHost.Click += new System.EventHandler(this.btnHost_Click);
             // 
             // lbRanking
             // 
@@ -194,7 +180,7 @@
             // 
             // btnStats
             // 
-            this.btnStats.Location = new System.Drawing.Point(14, 92);
+            this.btnStats.Location = new System.Drawing.Point(14, 57);
             this.btnStats.Name = "btnStats";
             this.btnStats.Size = new System.Drawing.Size(269, 26);
             this.btnStats.TabIndex = 12;
@@ -232,17 +218,13 @@
             // 
             // btnRankingToExcel
             // 
-            this.btnRankingToExcel.Location = new System.Drawing.Point(14, 57);
+            this.btnRankingToExcel.Location = new System.Drawing.Point(16, 22);
             this.btnRankingToExcel.Name = "btnRankingToExcel";
             this.btnRankingToExcel.Size = new System.Drawing.Size(267, 29);
             this.btnRankingToExcel.TabIndex = 16;
             this.btnRankingToExcel.Text = "Export Ranking to Excel";
             this.btnRankingToExcel.UseVisualStyleBackColor = true;
             this.btnRankingToExcel.Click += new System.EventHandler(this.btnRankingToExcel_Click);
-            // 
-            // ofdRanking
-            // 
-            this.ofdRanking.FileName = "openFileDialog1";
             // 
             // lblWeek
             // 
@@ -321,12 +303,11 @@
             // 
             // gbOtherOptions
             // 
-            this.gbOtherOptions.Controls.Add(this.btnHost);
             this.gbOtherOptions.Controls.Add(this.btnStats);
             this.gbOtherOptions.Controls.Add(this.btnRankingToExcel);
             this.gbOtherOptions.Location = new System.Drawing.Point(853, 190);
             this.gbOtherOptions.Name = "gbOtherOptions";
-            this.gbOtherOptions.Size = new System.Drawing.Size(295, 134);
+            this.gbOtherOptions.Size = new System.Drawing.Size(295, 98);
             this.gbOtherOptions.TabIndex = 22;
             this.gbOtherOptions.TabStop = false;
             this.gbOtherOptions.Text = "Other Options";
@@ -384,7 +365,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnNewPlayer;
-        private System.Windows.Forms.Button btnHost;
         private System.Windows.Forms.ListBox lbRanking;
         private System.Windows.Forms.Button btnRanking;
         private System.Windows.Forms.Button btnRemovePlayer;
@@ -397,7 +377,6 @@
         private System.Windows.Forms.RichTextBox rtbNotes;
         private System.Windows.Forms.Label lblNotes;
         private System.Windows.Forms.Button btnRankingToExcel;
-        private System.Windows.Forms.OpenFileDialog ofdRanking;
         private System.Windows.Forms.Label lblWeek;
         private System.Windows.Forms.ComboBox cbMatches;
         private System.Windows.Forms.Label lblMatch;

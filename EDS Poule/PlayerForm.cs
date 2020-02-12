@@ -98,9 +98,8 @@ namespace EDS_Poule
             {
                 weeks = em.ReadPredictions(filename, 1, new ExcelReadSettings(0, Convert.ToInt32(nudAfwijking.Value)));
             }
-            var estimations = em.ReadEstimations();
+            var estimations = em.ReadEstimations(filename, 1);
             SavePlayer(estimations);
-            em.Clean();
             MessageBox.Show("Predictions succesfully loaded and saved!");
         }
 
