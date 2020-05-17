@@ -36,7 +36,11 @@ namespace EDS_Poule
             int Indicator = 0;
             while (Indicator < 17)
             {
-                Match match = new Match(Convert.ToInt32(NUDs[Indicator].Value), Convert.ToInt32(NUDs[Indicator + 1].Value));
+                bool motw = false;
+                if (Indicator == 16)
+                    motw = true;
+
+                Match match = new Match(Convert.ToInt32(NUDs[Indicator].Value), Convert.ToInt32(NUDs[Indicator + 1].Value), motw);
                 matches[Indicator / 2] = match;
                 Indicator += 2;
             }
@@ -98,8 +102,7 @@ namespace EDS_Poule
             {
                 weeks = em.ReadPredictions(filename, 1, new ExcelReadSettings(0, Convert.ToInt32(nudAfwijking.Value)));
             }
-            var estimations = em.ReadEstimations(filename, 1);
-            SavePlayer(estimations);
+            SavePlayer();
             MessageBox.Show("Predictions succesfully loaded and saved!");
         }
 
@@ -173,17 +176,10 @@ namespace EDS_Poule
             tbTrainer.Text = Player.Questions.Answers[BonusKeys.Trainer].Answer;
             tbWinterkampioen.Text = Player.Questions.Answers[BonusKeys.Winterkampioen].Answer;
             tbMostRed.Text = Player.Questions.Answers[BonusKeys.Teamrood].Answer;
-            tbAssists.Text = Player.Questions.Answers[BonusKeys.Assists].Answer;
-            tbWorstDefence.Text = Player.Questions.Answers[BonusKeys.Defensie].Answer;
             tbDegradant1.Text = Player.Questions.Answers[BonusKeys.Degradanten].AnswerArray[0];
             tbDegradant2.Text = Player.Questions.Answers[BonusKeys.Degradanten].AnswerArray[1];
         }
 
-        private void LoadEstimations()
-        {
-            nudGoals.Value = Player.Estimations.Answers[EstimationKeys.Goals].Answer;
-            nudReds.Value = Player.Estimations.Answers[EstimationKeys.Reds].Answer;
-        }
         public void LoadPlayer(Player player)
         {
             Player = player;
@@ -191,26 +187,22 @@ namespace EDS_Poule
             tbAge.Text = player.Age;
             tbWoonplaats.Text = player.Woonplaats;
             LoadBonus();
-            LoadEstimations();
             LoadWeek(0);
             SwitchInput();
         }
 
-        private void SavePlayer(Estimations ests = null)
+        private void SavePlayer()
         {
             try
             {
                 string[] finalists = { tbFin1.Text, tbFin2.Text };
                 string[] degradanten = { tbDegradant1.Text, tbDegradant2.Text };
                 string[] promovendi = { tbPromovendi1.Text, tbPromovendi2.Text };
-                BonusQuestions questions = new BonusQuestions(tbKampioen.Text, degradanten, tbTopscorer.Text, tbTrainer.Text
-                    , tbWinterkampioen.Text, tbRonde.Text, promovendi, finalists, tbMostRed.Text, tbAssists.Text, tbWorstDefence.Text, 
-                     tbProdeg.Text,new int[12] {99,99,99,99,99,99,99,99,99,99,99,99});
+                BonusQuestions questions = new BonusQuestions(tbKampioen.Text, tbProdeg.Text, tbTopscorer.Text, tbTrainer.Text
+                    , tbWinterkampioen.Text, tbRonde.Text, tbMostRed.Text, degradanten, finalists, promovendi   
+                     ,new int[10] {99,99,99,99,99,99,99,99,99,99});
 
-                if(ests == null)
-                ests = new Estimations(Convert.ToInt32(nudReds.Value), Convert.ToInt32(nudGoals.Value));
-
-                Player newplayer = new Player(tbName.Text, tbAge.Text, tbWoonplaats.Text, weeks, questions, ests);
+                Player newplayer = new Player(tbName.Text, tbAge.Text, tbWoonplaats.Text, weeks, questions);
                 if (Player != null)
                 {
                     manager.RemovePlayer(Player.Name);

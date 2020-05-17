@@ -59,7 +59,7 @@ namespace EDS_Poule
                     matchScore += 5;
                 }
 
-                if (counter == 0)
+                if (hostweek.Matches[counter].MOTW)
                 {
                     matchScore *= 2;
                 }

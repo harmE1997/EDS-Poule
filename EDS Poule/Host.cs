@@ -9,20 +9,24 @@ namespace EDS_Poule
 {
     class Host
     {
-        private ExcelManager excelManager;
+        private Player host;
         public Host()
         {
-            excelManager = new ExcelManager();
+            host = null;
         }
 
         public Player getHost()
         {
+            if (host != null)
+            {
+                return host;
+            }
+            ExcelManager excelManager = new ExcelManager();
             int sheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet"));
             Week[] weeks = excelManager.ReadPredictions(ConfigurationManager.AppSettings.Get("AdminLocation"), sheet, new ExcelReadSettings());
-            Estimations ests = excelManager.ReadEstimations(ConfigurationManager.AppSettings.Get("AdminLocation"), sheet);
             BonusQuestions bonus = excelManager.ReadHostBonus(ConfigurationManager.AppSettings.Get("AdminLocation"), sheet);
-            Player player = new Player("host", "22", "zb",weeks,bonus,ests);
-            return player;
+            host = new Player("host", "22", "zb",weeks,bonus);
+            return host;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace EDS_Poule
 {
@@ -33,39 +34,42 @@ namespace EDS_Poule
         public int WeekAnswered;
     }
 
+    public struct Topscorer
+    {
+        public int Total;
+        public int Currentround;
+    }
+
     [Serializable]
     public class BonusQuestions
     {
         public Dictionary<BonusKeys, Question> Answers { get; private set; }
         public int WeekScore { get; private set; }
 
-        public BonusQuestions(string kampioen, string[] degradanten, string topscorer, string trainer,
-            string winterkampioen, string championround, string[] promovendi, string[] finalisten, 
-            string teamReds, string topAssists, string worstdefence, string prodeg ,int[] weeks)
+        public BonusQuestions(string kampioen, string prodeg,  string topscorer, string trainer,
+            string winterkampioen, string championround, string teamReds, string[] finalisten, string[] degradanten, string[] promovendi, 
+             int[] weeks)
         {
             Answers = new Dictionary<BonusKeys, Question>()
             {
                 {BonusKeys.Kampioen, new Question(){Answer = kampioen, Points = 100, IsArray = false, WeekAnswered = weeks[0] } },
-                {BonusKeys.Degradanten, new Question(){AnswerArray = degradanten, Points = 40, IsArray = true, WeekAnswered = weeks[1] } },
+                {BonusKeys.Prodeg, new Question(){Answer = prodeg, Points = 40, IsArray = false, WeekAnswered = weeks[1] } },               
                 {BonusKeys.Topscorer, new Question(){Answer = topscorer, Points = 80, IsArray = false, WeekAnswered = weeks[2] } },
                 {BonusKeys.Trainer, new Question(){Answer = trainer, Points = 80, IsArray = false, WeekAnswered = weeks[3] } },
                 {BonusKeys.Winterkampioen, new Question(){Answer = winterkampioen, Points = 60, IsArray = false, WeekAnswered = weeks[4] } },
                 {BonusKeys.Ronde, new Question(){Answer = championround, Points = 40, IsArray = false, WeekAnswered = weeks[5] } },
-                {BonusKeys.Promovendi, new Question(){AnswerArray = promovendi, Points = 40, IsArray = true, WeekAnswered = weeks[6] } },
-                {BonusKeys.Finalisten, new Question(){AnswerArray = finalisten, Points = 40, IsArray = true, WeekAnswered = weeks[7] } },
-                {BonusKeys.Teamrood, new Question(){Answer = teamReds, Points = 60, IsArray = false, WeekAnswered = weeks[8]} },
-                {BonusKeys.Assists, new Question(){Answer = topAssists, Points = 80, IsArray = false, WeekAnswered = weeks[9] } },
-                {BonusKeys.Defensie, new Question(){Answer = worstdefence, Points = 60, IsArray = false, WeekAnswered = weeks[10] } },
-                {BonusKeys.Prodeg, new Question(){Answer = prodeg, Points = 40, IsArray = false, WeekAnswered = weeks[11] } }
+                {BonusKeys.Teamrood, new Question(){Answer = teamReds, Points = 60, IsArray = false, WeekAnswered = weeks[6]} },
+                {BonusKeys.Finalisten, new Question(){AnswerArray = finalisten, Points = 40, IsArray = true, WeekAnswered = weeks[7] } }, 
+                {BonusKeys.Degradanten, new Question(){AnswerArray = degradanten, Points = 40, IsArray = true, WeekAnswered = weeks[8] } },
+                {BonusKeys.Promovendi, new Question(){AnswerArray = promovendi, Points = 40, IsArray = true, WeekAnswered = weeks[9] } }              
             };
         }
 
         public int CheckBonus(BonusQuestions HostQuestions, int currentweek)
-        {
-            
+        {          
             if (HostQuestions == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("hostquestions");
             }
             WeekScore = 0;
             int score = 0;
@@ -73,7 +77,7 @@ namespace EDS_Poule
             foreach (var a in Answers)
             {
                 var ans = HostQuestions.Answers[a.Key];
-                if (ans.WeekAnswered <= currentweek)
+                if (ans.WeekAnswered <= currentweek && ans.WeekAnswered > 0)
                 {
                     if (a.Value.IsArray)
                     {
@@ -103,7 +107,16 @@ namespace EDS_Poule
                     }
                 }
             }
+            score += checkTopscorer(currentweek);
             return score;
+        }
+
+        private int checkTopscorer(int round)
+        {
+            ExcelManager ex = new ExcelManager();
+            Topscorer ts = ex.readtopscorer(Answers[BonusKeys.Topscorer].Answer, round, ConfigurationManager.AppSettings.Get("AdminLocation"), 8);
+            WeekScore += ts.Currentround * 3;
+            return ts.Total * 3;
         }
     }
 }

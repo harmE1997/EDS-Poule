@@ -51,6 +51,7 @@
             this.gbOtherOptions = new System.Windows.Forms.GroupBox();
             this.gbRankingOptions = new System.Windows.Forms.GroupBox();
             this.btnAverage = new System.Windows.Forms.Button();
+            this.lblWarning = new System.Windows.Forms.Label();
             this.gbPlayerOptions.SuspendLayout();
             this.gbMatchInfo.SuspendLayout();
             this.gbOtherOptions.SuspendLayout();
@@ -334,12 +335,23 @@
             this.btnAverage.UseVisualStyleBackColor = true;
             this.btnAverage.Click += new System.EventHandler(this.btnAverage_Click);
             // 
+            // lblWarning
+            // 
+            this.lblWarning.AutoSize = true;
+            this.lblWarning.ForeColor = System.Drawing.Color.Red;
+            this.lblWarning.Location = new System.Drawing.Point(712, 338);
+            this.lblWarning.Name = "lblWarning";
+            this.lblWarning.Size = new System.Drawing.Size(266, 17);
+            this.lblWarning.TabIndex = 24;
+            this.lblWarning.Text = "First Check Run takes about 15 seconds!";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1160, 798);
+            this.Controls.Add(this.lblWarning);
             this.Controls.Add(this.gbRankingOptions);
             this.Controls.Add(this.gbOtherOptions);
             this.Controls.Add(this.gbMatchInfo);
@@ -386,6 +398,7 @@
         private System.Windows.Forms.GroupBox gbOtherOptions;
         private System.Windows.Forms.GroupBox gbRankingOptions;
         private System.Windows.Forms.Button btnAverage;
+        private System.Windows.Forms.Label lblWarning;
     }
 }
 

@@ -31,12 +31,7 @@ namespace EDS_Poule
         private void btnChampionRound_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Ronde);
         private void btnRedCards_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Teamrood);
         private void btnPlayOffs_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Prodeg);
-        private void btnAssists_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Assists);
-        private void btnGoalsAgainst_Click(object sender, EventArgs e) => ActionBonusQuestion(BonusKeys.Defensie);
 
-        //=========================================Estimations==========================================
-        private void btnNrReds_Click(object sender, EventArgs e) => ActionEstimation(EstimationKeys.Reds);
-        private void btnNrGoals_Click(object sender, EventArgs e) => ActionEstimation(EstimationKeys.Goals);
 
         private void ActionBonusQuestion(BonusKeys Key)
         {
@@ -57,17 +52,6 @@ namespace EDS_Poule
                 {
                     UpdateStats(answer.Answer, Name);
                 }          
-            }
-            UpdateListBox();
-        }
-
-        private void ActionEstimation(EstimationKeys Key)
-        {
-            stats.Clear();
-            foreach (Player player in manager.Players)
-            {
-                var answer = player.Estimations.Answers[Key].Answer;
-                    UpdateStats(answer.ToString(), player.Name);             
             }
             UpdateListBox();
         }

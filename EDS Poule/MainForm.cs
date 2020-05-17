@@ -16,7 +16,6 @@ namespace EDS_Poule
         private PlayerManager Manager;
         private PlayerForm playerForm;
         private Host host;
-        private Player hostplayer;
         public MainForm()
         {
             Manager = new PlayerManager();
@@ -25,7 +24,6 @@ namespace EDS_Poule
             RefreshRanking();
             playerForm = new PlayerForm();
             host = new Host();
-            hostplayer = host.getHost(); //this method takes approximately 15 seconds
         }
 
 
@@ -59,7 +57,7 @@ namespace EDS_Poule
         private void btnCheck_Click(object sender, EventArgs e)
         {
             int.TryParse(cbCheck.Text, out int round);
-            Manager.CheckAllPlayers(hostplayer, round);
+            Manager.CheckAllPlayers(host.getHost(), round);
             RefreshRanking();
         }
 
@@ -99,7 +97,7 @@ namespace EDS_Poule
             {
                 if (player.Weeks[week] != null)
                 {
-                    int check = player.Weeks[week].CheckMatch(hostplayer, matchID);
+                    int check = player.Weeks[week].CheckMatch(host.getHost(), matchID);
                     if (check > 0)
                     {
                         halfs++;

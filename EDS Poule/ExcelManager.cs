@@ -119,31 +119,17 @@ namespace EDS_Poule
                     x = xlRange.Cells[currentRow, Settings.HomeColumn].Value2;
                     y = xlRange.Cells[currentRow, Settings.OutColumn].Value2;
                 }
-                Match match = new Match(Convert.ToInt32(x), Convert.ToInt32(y));
-                int index = rowschecked + 1;
+                
+                bool motw = false;
                 if (rowschecked == Settings.BlockSize - 1)
                 {
-                    index = 0;
+                    motw = true;
                 }
-
-                fileMatches[index] = match;
+                Match match = new Match(Convert.ToInt32(x), Convert.ToInt32(y), motw);
+                fileMatches[rowschecked] = match;
                 rowschecked++;
             }
             return fileMatches;
-        }
-        public Estimations ReadEstimations(string filename, int sheet)
-        {
-            Initialise(filename, sheet);
-            try
-            {
-                int column = 8;
-                int reds = Convert.ToInt32(xlRange.Cells[385, column].Value2);
-                int goals = Convert.ToInt32(xlRange.Cells[386, column].Value2);
-                Clean();
-                return new Estimations(reds, goals);
-            }
-
-            catch { Clean(); return null; }
         }
 
         public BonusQuestions ReadHostBonus(string filename, int sheet)
@@ -174,24 +160,33 @@ namespace EDS_Poule
                 string[] finalists = { xlRange.Cells[377, column].value2.ToString(), xlRange.Cells[378, column].value2.ToString() };
                 BonusQuestions bonus = new BonusQuestions
                     (
-                    xlRange.Cells[368, column].value2.ToString(),
-                    degradanten,
+                    xlRange.Cells[368, column].value2.ToString(),                   
+                    xlRange.Cells[369, column].value2.ToString(),
                     xlRange.Cells[370, column].value2.ToString(),
                     xlRange.Cells[371, column].value2.ToString(),
-                    xlRange.Cells[372, column].value2.ToString(),
+                    xlRange.Cells[372, column].value2.ToString(),                    
                     xlRange.Cells[373, column].value2.ToString(),
-                    promovendi,
-                    finalists,
                     xlRange.Cells[374, column].value2.ToString(),
-                    xlRange.Cells[375, column].value2.ToString(),
-                    xlRange.Cells[376, column].value2.ToString(),
-                    xlRange.Cells[369, column].value2.ToString(),
+                    finalists, promovendi, degradanten,
                     weeks
                     );
                 Clean();
                 return bonus;
             }
             catch { Clean(); return null; };
+        }
+
+        public Topscorer readtopscorer(string name, int round, string filename, int sheet)
+        {
+            Initialise(filename, sheet);
+            Topscorer ts = new Topscorer() { Total=0, Currentround=0 };
+            for (int i = 2; i < 17; i++)
+            {                
+                if (xlRange.Cells[i, 1].value2.ToString() == name)
+                    ts.Total = xlRange.Cells[i, 2].value2;
+                    ts.Currentround = xlRange.Cells[i, round+2].value2;              
+            }
+            return ts;
         }
 
         private void Clean()

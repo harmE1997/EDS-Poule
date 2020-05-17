@@ -19,9 +19,8 @@ namespace EDS_Poule
         public int PreviousRanking { get; set; }
         public Week[] Weeks { get; private set; }
         public BonusQuestions Questions { get; set; }
-        public Estimations Estimations { get; set; }
 
-        public Player(string name, string age, string woonplaats, Week[] weeks, BonusQuestions questions, Estimations estimations)
+        public Player(string name, string age, string woonplaats, Week[] weeks, BonusQuestions questions)
         {
             Weeks = weeks;
             Name = name;
@@ -30,7 +29,6 @@ namespace EDS_Poule
             TotalScore = 0;
             WeekScore = 0;
             Questions = questions;
-            Estimations = estimations;
             PreviousScore = 0;
         }
 
@@ -56,14 +54,8 @@ namespace EDS_Poule
             }
 
             TotalScore += Questions.CheckBonus(Host.Questions, currentWeek);
-            var EstScore = Estimations.CheckEstimations(Host.Estimations, currentWeek);
-            TotalScore += EstScore;
-
-            PreviousScore = TotalScore - WeekScore - Questions.WeekScore;
-            if (currentWeek == 34)
-            {
-                PreviousScore -= EstScore;
-            }
+            WeekScore += Questions.WeekScore;
+            PreviousScore = TotalScore - WeekScore;
         }
     }
 }
