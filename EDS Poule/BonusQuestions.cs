@@ -52,16 +52,16 @@ namespace EDS_Poule
         {
             Answers = new Dictionary<BonusKeys, Question>()
             {
-                {BonusKeys.Kampioen, new Question(){Answer = kampioen, Points = 100, IsArray = false, WeekAnswered = weeks[0] } },
-                {BonusKeys.Prodeg, new Question(){Answer = prodeg, Points = 40, IsArray = false, WeekAnswered = weeks[1] } },               
-                {BonusKeys.Topscorer, new Question(){Answer = topscorer, Points = 80, IsArray = false, WeekAnswered = weeks[2] } },
-                {BonusKeys.Trainer, new Question(){Answer = trainer, Points = 80, IsArray = false, WeekAnswered = weeks[3] } },
-                {BonusKeys.Winterkampioen, new Question(){Answer = winterkampioen, Points = 60, IsArray = false, WeekAnswered = weeks[4] } },
-                {BonusKeys.Ronde, new Question(){Answer = championround, Points = 40, IsArray = false, WeekAnswered = weeks[5] } },
-                {BonusKeys.Teamrood, new Question(){Answer = teamReds, Points = 60, IsArray = false, WeekAnswered = weeks[6]} },
-                {BonusKeys.Finalisten, new Question(){AnswerArray = finalisten, Points = 40, IsArray = true, WeekAnswered = weeks[7] } }, 
-                {BonusKeys.Degradanten, new Question(){AnswerArray = degradanten, Points = 40, IsArray = true, WeekAnswered = weeks[8] } },
-                {BonusKeys.Promovendi, new Question(){AnswerArray = promovendi, Points = 40, IsArray = true, WeekAnswered = weeks[9] } }              
+                {BonusKeys.Kampioen, new Question(){Answer = kampioen, Points = 140, IsArray = false, WeekAnswered = weeks[0] } },
+                {BonusKeys.Prodeg, new Question(){Answer = prodeg, Points = 70, IsArray = false, WeekAnswered = weeks[1] } },               
+                {BonusKeys.Topscorer, new Question(){Answer = topscorer, Points = 0, IsArray = false, WeekAnswered = weeks[2] } },
+                {BonusKeys.Trainer, new Question(){Answer = trainer, Points = 120, IsArray = false, WeekAnswered = weeks[3] } },
+                {BonusKeys.Winterkampioen, new Question(){Answer = winterkampioen, Points = 90, IsArray = false, WeekAnswered = weeks[4] } },
+                {BonusKeys.Ronde, new Question(){Answer = championround, Points = 70, IsArray = false, WeekAnswered = weeks[5] } },
+                {BonusKeys.Teamrood, new Question(){Answer = teamReds, Points = 90, IsArray = false, WeekAnswered = weeks[6]} },
+                {BonusKeys.Finalisten, new Question(){AnswerArray = finalisten, Points = 50, IsArray = true, WeekAnswered = weeks[7] } }, 
+                {BonusKeys.Degradanten, new Question(){AnswerArray = degradanten, Points = 50, IsArray = true, WeekAnswered = weeks[8] } },
+                {BonusKeys.Promovendi, new Question(){AnswerArray = promovendi, Points = 50, IsArray = true, WeekAnswered = weeks[9] } }              
             };
         }
 
@@ -115,8 +115,8 @@ namespace EDS_Poule
         {
             ExcelManager ex = new ExcelManager();
             Topscorer ts = ex.readtopscorer(Answers[BonusKeys.Topscorer].Answer, round, ConfigurationManager.AppSettings.Get("AdminLocation"), 8);
-            WeekScore += ts.Currentround * 3;
-            return ts.Total * 3;
+            WeekScore += ts.Currentround * 5;
+            return ts.Total * 5;
         }
     }
 }
