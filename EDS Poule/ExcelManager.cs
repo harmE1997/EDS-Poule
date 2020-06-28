@@ -14,7 +14,7 @@ namespace EDS_Poule
         public int StartRow = 12;
         public int BlockSize = 9;
         public int TotalBlocks = 34;
-        public int FirstHalfSize = 18;
+        public int FirstHalfSize = 14;
         public int CurrentBlock = 0;
         public int HomeColumn = 7;
         public int OutColumn = 8;
