@@ -37,7 +37,7 @@ namespace EDS_Poule
             else if (adjustment == 2)
             {
                 CurrentBlock = TotalBlocks - (TotalBlocks - FirstHalfSize);
-                StartRow = 204;
+                StartRow = 162;
             }
         }
     }
@@ -141,32 +141,32 @@ namespace EDS_Poule
             {
                 int[] weeks =
                 {
+                    Convert.ToInt32(xlRange.Cells[366, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[367, weekcolumn].value2),
                     Convert.ToInt32(xlRange.Cells[368, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[379, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[369, weekcolumn].value2),
                     Convert.ToInt32(xlRange.Cells[370, weekcolumn].value2),
                     Convert.ToInt32(xlRange.Cells[371, weekcolumn].value2),
                     Convert.ToInt32(xlRange.Cells[372, weekcolumn].value2),
                     Convert.ToInt32(xlRange.Cells[373, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[381, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[377, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[374, weekcolumn].value2),
                     Convert.ToInt32(xlRange.Cells[375, weekcolumn].value2),
                     Convert.ToInt32(xlRange.Cells[376, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[369, weekcolumn].value2)
+                    Convert.ToInt32(xlRange.Cells[377, weekcolumn].value2),
+                    Convert.ToInt32(xlRange.Cells[378, weekcolumn].value2),
             };
 
-                string[] degradanten = { Convert.ToString(xlRange.Cells[379, column].value2), Convert.ToString(xlRange.Cells[380, column].value2) };
-                string[] promovendi = { Convert.ToString(xlRange.Cells[381, column].value2), Convert.ToString(xlRange.Cells[382, column].value2) };
-                string[] finalists = { Convert.ToString(xlRange.Cells[377, column].value2), Convert.ToString(xlRange.Cells[378, column].value2) };
+                string[] degradanten = { Convert.ToString(xlRange.Cells[375, column].value2), Convert.ToString(xlRange.Cells[376, column].value2) };
+                string[] promovendi = { Convert.ToString(xlRange.Cells[377, column].value2), Convert.ToString(xlRange.Cells[378, column].value2) };
+                string[] finalists = { Convert.ToString(xlRange.Cells[373, column].value2), Convert.ToString(xlRange.Cells[374, column].value2) };
                 BonusQuestions bonus = new BonusQuestions
                     (
+                    Convert.ToString(xlRange.Cells[366, column].value2),
+                    Convert.ToString(xlRange.Cells[367, column].value2),
                     Convert.ToString(xlRange.Cells[368, column].value2),
                     Convert.ToString(xlRange.Cells[369, column].value2),
                     Convert.ToString(xlRange.Cells[370, column].value2),
                     Convert.ToString(xlRange.Cells[371, column].value2),
                     Convert.ToString(xlRange.Cells[372, column].value2),
-                    Convert.ToString(xlRange.Cells[373, column].value2),
-                    Convert.ToString(xlRange.Cells[374, column].value2),
                     finalists, promovendi, degradanten,
                     weeks
                     );
@@ -181,11 +181,18 @@ namespace EDS_Poule
             Initialise(filename, sheet);
             Topscorer ts = new Topscorer() { Total=0, Currentround=0 };
             for (int i = 2; i < 17; i++)
-            {                
+            {
                 if (Convert.ToString(xlRange.Cells[i, 1].value2) == name)
+                {
                     ts.Total = Convert.ToInt32(xlRange.Cells[i, 2].value2);
-                    ts.Currentround = Convert.ToInt32(xlRange.Cells[i, round+2].value2);
+                    ts.Currentround = Convert.ToInt32(xlRange.Cells[i, round + 2].value2);
                     return ts;
+                }
+
+                else
+                {
+                    continue;
+                }
             }
             return ts;
         }
