@@ -107,6 +107,7 @@ namespace EDS_Poule
                     }
                 }
             }
+
             score += checkTopscorer(currentweek);
             return score;
         }

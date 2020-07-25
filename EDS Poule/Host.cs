@@ -21,6 +21,7 @@ namespace EDS_Poule
             {
                 return host;
             }
+
             ExcelManager excelManager = new ExcelManager();
             int sheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet"));
             Week[] weeks = excelManager.ReadPredictions(ConfigurationManager.AppSettings.Get("AdminLocation"), sheet, new ExcelReadSettings());

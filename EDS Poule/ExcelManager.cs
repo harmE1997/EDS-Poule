@@ -155,18 +155,18 @@ namespace EDS_Poule
                     Convert.ToInt32(xlRange.Cells[369, weekcolumn].value2)
             };
 
-                string[] degradanten = { xlRange.Cells[379, column].value2.ToString(), xlRange.Cells[380, column].value2.ToString() };
-                string[] promovendi = { xlRange.Cells[381, column].value2.ToString(), xlRange.Cells[382, column].value2.ToString() };
-                string[] finalists = { xlRange.Cells[377, column].value2.ToString(), xlRange.Cells[378, column].value2.ToString() };
+                string[] degradanten = { Convert.ToString(xlRange.Cells[379, column].value2), Convert.ToString(xlRange.Cells[380, column].value2) };
+                string[] promovendi = { Convert.ToString(xlRange.Cells[381, column].value2), Convert.ToString(xlRange.Cells[382, column].value2) };
+                string[] finalists = { Convert.ToString(xlRange.Cells[377, column].value2), Convert.ToString(xlRange.Cells[378, column].value2) };
                 BonusQuestions bonus = new BonusQuestions
                     (
-                    xlRange.Cells[368, column].value2.ToString(),                   
-                    xlRange.Cells[369, column].value2.ToString(),
-                    xlRange.Cells[370, column].value2.ToString(),
-                    xlRange.Cells[371, column].value2.ToString(),
-                    xlRange.Cells[372, column].value2.ToString(),                    
-                    xlRange.Cells[373, column].value2.ToString(),
-                    xlRange.Cells[374, column].value2.ToString(),
+                    Convert.ToString(xlRange.Cells[368, column].value2),
+                    Convert.ToString(xlRange.Cells[369, column].value2),
+                    Convert.ToString(xlRange.Cells[370, column].value2),
+                    Convert.ToString(xlRange.Cells[371, column].value2),
+                    Convert.ToString(xlRange.Cells[372, column].value2),
+                    Convert.ToString(xlRange.Cells[373, column].value2),
+                    Convert.ToString(xlRange.Cells[374, column].value2),
                     finalists, promovendi, degradanten,
                     weeks
                     );
@@ -182,9 +182,10 @@ namespace EDS_Poule
             Topscorer ts = new Topscorer() { Total=0, Currentround=0 };
             for (int i = 2; i < 17; i++)
             {                
-                if (xlRange.Cells[i, 1].value2.ToString() == name)
-                    ts.Total = xlRange.Cells[i, 2].value2;
-                    ts.Currentround = xlRange.Cells[i, round+2].value2;              
+                if (Convert.ToString(xlRange.Cells[i, 1].value2) == name)
+                    ts.Total = Convert.ToInt32(xlRange.Cells[i, 2].value2);
+                    ts.Currentround = Convert.ToInt32(xlRange.Cells[i, round+2].value2);
+                    return ts;
             }
             return ts;
         }
