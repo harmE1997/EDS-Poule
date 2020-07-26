@@ -150,9 +150,7 @@ namespace EDS_Poule
                     Convert.ToInt32(xlRange.Cells[372, weekcolumn].value2),
                     Convert.ToInt32(xlRange.Cells[373, weekcolumn].value2),
                     Convert.ToInt32(xlRange.Cells[375, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[376, weekcolumn].value2),
                     Convert.ToInt32(xlRange.Cells[377, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[378, weekcolumn].value2),
             };
 
                 string[] degradanten = { Convert.ToString(xlRange.Cells[375, column].value2), Convert.ToString(xlRange.Cells[376, column].value2) };

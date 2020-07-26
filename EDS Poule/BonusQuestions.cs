@@ -11,14 +11,12 @@ namespace EDS_Poule
     public enum BonusKeys
     {
         Kampioen,
-        Degradant1,
-        Degradant2,
+        Degradanten,
         Topscorer,
         Trainer,
         Winterkampioen,
         Ronde,
-        Promovendi1,
-        Promovendi2,
+        Promovendi,
         Finalisten,
         Teamrood,
         Assists,
@@ -62,10 +60,8 @@ namespace EDS_Poule
                 {BonusKeys.Ronde, new Question(){Answer = championround, Points = 70, IsArray = false, WeekAnswered = weeks[5] } },
                 {BonusKeys.Teamrood, new Question(){Answer = teamReds, Points = 90, IsArray = false, WeekAnswered = weeks[6]} },
                 {BonusKeys.Finalisten, new Question(){AnswerArray = finalisten, Points = 50, IsArray = true, WeekAnswered = weeks[7] } }, 
-                {BonusKeys.Degradant1, new Question(){Answer = degradanten[0], Points = 50, IsArray = false, WeekAnswered = weeks[8] } },
-                {BonusKeys.Degradant2, new Question(){Answer = degradanten[1], Points = 50, IsArray = false, WeekAnswered = weeks[9] } },
-                {BonusKeys.Promovendi1, new Question(){Answer = promovendi[0], Points = 50, IsArray = false, WeekAnswered = weeks[10] } },
-                {BonusKeys.Promovendi2, new Question(){Answer = promovendi[1], Points = 50, IsArray = false, WeekAnswered = weeks[11] } }   
+                {BonusKeys.Degradanten, new Question(){AnswerArray = degradanten, Points = 50, IsArray = true, WeekAnswered = weeks[8] } },
+                {BonusKeys.Promovendi, new Question(){AnswerArray = promovendi, Points = 50, IsArray = true, WeekAnswered = weeks[9] } },
                 
             };
         }
