@@ -199,7 +199,7 @@ namespace EDS_Poule
                 string[] degradanten = { tbDegradant1.Text, tbDegradant2.Text };
                 string[] promovendi = { tbPromovendi1.Text, tbPromovendi2.Text };
                 BonusQuestions questions = new BonusQuestions(tbKampioen.Text, tbProdeg.Text, tbTopscorer.Text, tbTrainer.Text
-                    , tbWinterkampioen.Text, tbRonde.Text, tbMostRed.Text, degradanten, finalists, promovendi   
+                    , tbWinterkampioen.Text, tbRonde.Text, tbMostRed.Text, finalists, degradanten,  promovendi   
                      ,new int[10] {99,99,99,99,99,99,99,99,99,99});
 
                 Player newplayer = new Player(tbName.Text, tbAge.Text, tbWoonplaats.Text, weeks, questions);
