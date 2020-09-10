@@ -66,7 +66,7 @@ namespace EDS_Poule
             };
         }
 
-        public int CheckBonus(BonusQuestions HostQuestions, int currentweek)
+        public int CheckBonus(BonusQuestions HostQuestions, int currentweek, Dictionary<string, Topscorer> topscorers)
         {          
             if (HostQuestions == null)
             {
@@ -109,16 +109,21 @@ namespace EDS_Poule
                 }
             }
 
-            score += checkTopscorer(currentweek);
+            score += checkTopscorer(currentweek, topscorers);
             return score;
         }
 
-        private int checkTopscorer(int round)
+        private int checkTopscorer(int round, Dictionary<string, Topscorer> topscorers)
         {
             ExcelManager ex = new ExcelManager();
-            Topscorer ts = ex.readtopscorer(Answers[BonusKeys.Topscorer].Answer, round, ConfigurationManager.AppSettings.Get("AdminLocation"), 8);
-            WeekScore += ts.Currentround * 5;
-            return ts.Total * 5;
+            try
+            {
+                var ans = topscorers[Answers[BonusKeys.Topscorer].Answer];
+                WeekScore += ans.Currentround * 5;
+                return ans.Total * 5;
+            }
+
+            catch{ return 0; }         
         }
     }
 }

@@ -57,7 +57,8 @@ namespace EDS_Poule
         private void btnCheck_Click(object sender, EventArgs e)
         {
             int.TryParse(cbCheck.Text, out int round);
-            Manager.CheckAllPlayers(host.getHost(), round);
+            foreach (int i in (Manager.CheckAllPlayers(host.getHost(), round)))
+                rtbNotes.Text = "Checked " + i + " out of " + Manager.Players.Count + " players";
             RefreshRanking();
         }
 

@@ -38,7 +38,7 @@ namespace EDS_Poule
             return text;
         }
 
-        public void CheckPlayer(Player Host, int currentWeek)
+        public void CheckPlayer(Player Host, int currentWeek, Dictionary<string, Topscorer> topscorers)
         {
             TotalScore = 0;
             WeekScore = 0;
@@ -53,7 +53,7 @@ namespace EDS_Poule
                 }
             }
 
-            TotalScore += Questions.CheckBonus(Host.Questions, currentWeek);
+            TotalScore += Questions.CheckBonus(Host.Questions, currentWeek, topscorers);
             WeekScore += Questions.WeekScore;
             PreviousScore = TotalScore - WeekScore;
         }

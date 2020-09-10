@@ -174,25 +174,21 @@ namespace EDS_Poule
             catch { Clean(); return null; };
         }
 
-        public Topscorer readtopscorer(string name, int round, string filename, int sheet)
+        public Dictionary<string, Topscorer> readtopscorers(int round, string filename, int sheet)
         {
             Initialise(filename, sheet);
             Topscorer ts = new Topscorer() { Total=0, Currentround=0 };
-            for (int i = 2; i < 17; i++)
+            Dictionary<string, Topscorer> topscorers = new Dictionary<string, Topscorer>();
+            for (int i = 2; i < 12; i++)
             {
-                if (Convert.ToString(xlRange.Cells[i, 1].value2) == name)
-                {
-                    ts.Total = Convert.ToInt32(xlRange.Cells[i, 2].value2);
-                    ts.Currentround = Convert.ToInt32(xlRange.Cells[i, round + 2].value2);
-                    return ts;
-                }
-
-                else
-                {
-                    continue;
-                }
+                string name = Convert.ToString(xlRange.Cells[i, 1].value2);
+                ts.Total = Convert.ToInt32(xlRange.Cells[i, 2].value2);
+                ts.Currentround = Convert.ToInt32(xlRange.Cells[i, round + 2].value2);
+                topscorers.Add(name, ts);
             }
-            return ts;
+
+            Clean();
+            return topscorers;
         }
 
         private void Clean()

@@ -121,11 +121,18 @@ namespace EDS_Poule
             
         }
 
-        public void CheckAllPlayers(Player Host, int currentWeek)
+        public IEnumerable<int> CheckAllPlayers(Player Host, int currentWeek)
         {
+            int i = 0;
+            ExcelManager em = new ExcelManager();
+            var topscorers = em.readtopscorers(currentWeek, ConfigurationManager.AppSettings.Get("AdminLocation"), 8);
             foreach (Player player in Players)
-                player.CheckPlayer(Host, currentWeek);
-            
+            {
+                player.CheckPlayer(Host, currentWeek, topscorers);
+                i++;
+                yield return i;
+            }
+
             SavePlayers();
         }
 
