@@ -180,10 +180,10 @@ namespace EDS_Poule
             string matchid = cbMatches.Text;
             if (!int.TryParse(matchid, out int matchID))
             {
-                matchID = 0; // MOTW's matchID is 0.
+                matchID = 9; // MOTW's matchID is 9.
             }
 
-            return matchID;
+            return matchID - 1;
         }
 
         private void btnAverage_Click(object sender, EventArgs e)
