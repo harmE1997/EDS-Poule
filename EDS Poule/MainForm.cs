@@ -190,5 +190,10 @@ namespace EDS_Poule
         {
             rtbNotes.Text = Manager.GetAverageScore().ToString();
         }
+
+        private void btnResetHost_Click(object sender, EventArgs e)
+        {
+            host = new Host();
+        }
     }
 }
