@@ -12,12 +12,12 @@ namespace EDS_Poule
     public class ExcelReadSettings
     {
         public int StartRow = 12;
-        public int BlockSize = 9;
+        public readonly int BlockSize = 9;
         public int TotalBlocks = 34;
-        public int FirstHalfSize = 14;
+        public readonly int FirstHalfSize = 14;
         public int CurrentBlock = 0;
-        public int HomeColumn = 7;
-        public int OutColumn = 8;
+        public readonly int HomeColumn = 7;
+        public readonly int OutColumn = 8;
         public int Miss = 0;
 
         public ExcelReadSettings(int adjustment = 0, int miss = 0)
