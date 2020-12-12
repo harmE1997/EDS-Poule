@@ -49,9 +49,9 @@
             this.gbMatchInfo = new System.Windows.Forms.GroupBox();
             this.btnGetMatch = new System.Windows.Forms.Button();
             this.gbOtherOptions = new System.Windows.Forms.GroupBox();
+            this.btnResetHost = new System.Windows.Forms.Button();
             this.gbRankingOptions = new System.Windows.Forms.GroupBox();
             this.btnAverage = new System.Windows.Forms.Button();
-            this.btnResetHost = new System.Windows.Forms.Button();
             this.gbPlayerOptions.SuspendLayout();
             this.gbMatchInfo.SuspendLayout();
             this.gbOtherOptions.SuspendLayout();
@@ -62,9 +62,9 @@
             // 
             this.btnNewPlayer.BackColor = System.Drawing.Color.LawnGreen;
             this.btnNewPlayer.Location = new System.Drawing.Point(7, 22);
-            this.btnNewPlayer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNewPlayer.Margin = new System.Windows.Forms.Padding(4);
             this.btnNewPlayer.Name = "btnNewPlayer";
-            this.btnNewPlayer.Size = new System.Drawing.Size(268, 28);
+            this.btnNewPlayer.Size = new System.Drawing.Size(270, 30);
             this.btnNewPlayer.TabIndex = 3;
             this.btnNewPlayer.Text = "New Player";
             this.btnNewPlayer.UseVisualStyleBackColor = false;
@@ -75,7 +75,7 @@
             this.lbRanking.FormattingEnabled = true;
             this.lbRanking.ItemHeight = 16;
             this.lbRanking.Location = new System.Drawing.Point(16, 18);
-            this.lbRanking.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbRanking.Margin = new System.Windows.Forms.Padding(4);
             this.lbRanking.Name = "lbRanking";
             this.lbRanking.Size = new System.Drawing.Size(512, 772);
             this.lbRanking.TabIndex = 4;
@@ -83,9 +83,9 @@
             // btnRanking
             // 
             this.btnRanking.Location = new System.Drawing.Point(7, 22);
-            this.btnRanking.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRanking.Margin = new System.Windows.Forms.Padding(4);
             this.btnRanking.Name = "btnRanking";
-            this.btnRanking.Size = new System.Drawing.Size(267, 28);
+            this.btnRanking.Size = new System.Drawing.Size(270, 30);
             this.btnRanking.TabIndex = 5;
             this.btnRanking.Text = "Refresh Ranking";
             this.btnRanking.UseVisualStyleBackColor = true;
@@ -96,9 +96,9 @@
             this.btnRemovePlayer.BackColor = System.Drawing.Color.Red;
             this.btnRemovePlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemovePlayer.Location = new System.Drawing.Point(7, 58);
-            this.btnRemovePlayer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemovePlayer.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemovePlayer.Name = "btnRemovePlayer";
-            this.btnRemovePlayer.Size = new System.Drawing.Size(268, 28);
+            this.btnRemovePlayer.Size = new System.Drawing.Size(270, 30);
             this.btnRemovePlayer.TabIndex = 6;
             this.btnRemovePlayer.Text = "Remove Player";
             this.btnRemovePlayer.UseVisualStyleBackColor = false;
@@ -107,7 +107,7 @@
             // tbPlayer
             // 
             this.tbPlayer.Location = new System.Drawing.Point(7, 130);
-            this.tbPlayer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbPlayer.Margin = new System.Windows.Forms.Padding(4);
             this.tbPlayer.Name = "tbPlayer";
             this.tbPlayer.Size = new System.Drawing.Size(268, 22);
             this.tbPlayer.TabIndex = 7;
@@ -115,9 +115,9 @@
             // btnCheck
             // 
             this.btnCheck.Location = new System.Drawing.Point(7, 58);
-            this.btnCheck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCheck.Margin = new System.Windows.Forms.Padding(4);
             this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(267, 28);
+            this.btnCheck.Size = new System.Drawing.Size(270, 30);
             this.btnCheck.TabIndex = 8;
             this.btnCheck.Text = "Check All";
             this.btnCheck.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@
             "33",
             "34"});
             this.cbCheck.Location = new System.Drawing.Point(72, 97);
-            this.cbCheck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCheck.Margin = new System.Windows.Forms.Padding(4);
             this.cbCheck.Name = "cbCheck";
             this.cbCheck.Size = new System.Drawing.Size(212, 24);
             this.cbCheck.TabIndex = 9;
@@ -171,9 +171,9 @@
             // btnLoadPlayer
             // 
             this.btnLoadPlayer.Location = new System.Drawing.Point(7, 94);
-            this.btnLoadPlayer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLoadPlayer.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoadPlayer.Name = "btnLoadPlayer";
-            this.btnLoadPlayer.Size = new System.Drawing.Size(268, 28);
+            this.btnLoadPlayer.Size = new System.Drawing.Size(270, 30);
             this.btnLoadPlayer.TabIndex = 11;
             this.btnLoadPlayer.Text = "Load Player";
             this.btnLoadPlayer.UseVisualStyleBackColor = true;
@@ -184,7 +184,7 @@
             this.btnStats.Location = new System.Drawing.Point(13, 57);
             this.btnStats.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStats.Name = "btnStats";
-            this.btnStats.Size = new System.Drawing.Size(269, 26);
+            this.btnStats.Size = new System.Drawing.Size(270, 30);
             this.btnStats.TabIndex = 12;
             this.btnStats.Text = "Stats";
             this.btnStats.UseVisualStyleBackColor = true;
@@ -192,10 +192,10 @@
             // 
             // btnMatch
             // 
-            this.btnMatch.Location = new System.Drawing.Point(20, 27);
+            this.btnMatch.Location = new System.Drawing.Point(13, 19);
             this.btnMatch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMatch.Name = "btnMatch";
-            this.btnMatch.Size = new System.Drawing.Size(267, 30);
+            this.btnMatch.Size = new System.Drawing.Size(270, 30);
             this.btnMatch.TabIndex = 13;
             this.btnMatch.Text = "Check Match";
             this.btnMatch.UseVisualStyleBackColor = true;
@@ -222,7 +222,7 @@
             // 
             // btnRankingToExcel
             // 
-            this.btnRankingToExcel.Location = new System.Drawing.Point(13, 22);
+            this.btnRankingToExcel.Location = new System.Drawing.Point(5, 94);
             this.btnRankingToExcel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRankingToExcel.Name = "btnRankingToExcel";
             this.btnRankingToExcel.Size = new System.Drawing.Size(270, 30);
@@ -303,10 +303,10 @@
             // 
             // btnGetMatch
             // 
-            this.btnGetMatch.Location = new System.Drawing.Point(20, 62);
+            this.btnGetMatch.Location = new System.Drawing.Point(13, 58);
             this.btnGetMatch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGetMatch.Name = "btnGetMatch";
-            this.btnGetMatch.Size = new System.Drawing.Size(267, 30);
+            this.btnGetMatch.Size = new System.Drawing.Size(270, 30);
             this.btnGetMatch.TabIndex = 20;
             this.btnGetMatch.Text = "Get Match Info";
             this.btnGetMatch.UseVisualStyleBackColor = true;
@@ -314,9 +314,9 @@
             // 
             // gbOtherOptions
             // 
+            this.gbOtherOptions.Controls.Add(this.btnAverage);
             this.gbOtherOptions.Controls.Add(this.btnResetHost);
             this.gbOtherOptions.Controls.Add(this.btnStats);
-            this.gbOtherOptions.Controls.Add(this.btnRankingToExcel);
             this.gbOtherOptions.Location = new System.Drawing.Point(853, 190);
             this.gbOtherOptions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbOtherOptions.Name = "gbOtherOptions";
@@ -326,11 +326,21 @@
             this.gbOtherOptions.TabStop = false;
             this.gbOtherOptions.Text = "Other Options";
             // 
+            // btnResetHost
+            // 
+            this.btnResetHost.Location = new System.Drawing.Point(13, 93);
+            this.btnResetHost.Name = "btnResetHost";
+            this.btnResetHost.Size = new System.Drawing.Size(270, 30);
+            this.btnResetHost.TabIndex = 17;
+            this.btnResetHost.Text = "Reset Host";
+            this.btnResetHost.UseVisualStyleBackColor = true;
+            this.btnResetHost.Click += new System.EventHandler(this.btnResetHost_Click);
+            // 
             // gbRankingOptions
             // 
-            this.gbRankingOptions.Controls.Add(this.btnAverage);
             this.gbRankingOptions.Controls.Add(this.btnRanking);
             this.gbRankingOptions.Controls.Add(this.btnCheck);
+            this.gbRankingOptions.Controls.Add(this.btnRankingToExcel);
             this.gbRankingOptions.Location = new System.Drawing.Point(552, 190);
             this.gbRankingOptions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRankingOptions.Name = "gbRankingOptions";
@@ -342,24 +352,14 @@
             // 
             // btnAverage
             // 
-            this.btnAverage.Location = new System.Drawing.Point(7, 94);
+            this.btnAverage.Location = new System.Drawing.Point(13, 22);
             this.btnAverage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAverage.Name = "btnAverage";
-            this.btnAverage.Size = new System.Drawing.Size(268, 25);
+            this.btnAverage.Size = new System.Drawing.Size(270, 30);
             this.btnAverage.TabIndex = 9;
             this.btnAverage.Text = "Average";
             this.btnAverage.UseVisualStyleBackColor = true;
             this.btnAverage.Click += new System.EventHandler(this.btnAverage_Click);
-            // 
-            // btnResetHost
-            // 
-            this.btnResetHost.Location = new System.Drawing.Point(13, 93);
-            this.btnResetHost.Name = "btnResetHost";
-            this.btnResetHost.Size = new System.Drawing.Size(269, 26);
-            this.btnResetHost.TabIndex = 17;
-            this.btnResetHost.Text = "Reset Host";
-            this.btnResetHost.UseVisualStyleBackColor = true;
-            this.btnResetHost.Click += new System.EventHandler(this.btnResetHost_Click);
             // 
             // MainForm
             // 
@@ -375,7 +375,7 @@
             this.Controls.Add(this.rtbNotes);
             this.Controls.Add(this.lbRanking);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.gbPlayerOptions.ResumeLayout(false);
