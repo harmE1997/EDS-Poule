@@ -38,6 +38,8 @@ namespace EDS_Poule
                 BinaryFormatter formatter = new BinaryFormatter();
                 formatter.Serialize(stream, Players);
             }
+
+            File.Copy(FileName, ConfigurationManager.AppSettings.Get("SaveFileLocation"));
         }
 
         public void LoadPlayers()
