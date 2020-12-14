@@ -39,7 +39,10 @@ namespace EDS_Poule
                 formatter.Serialize(stream, Players);
             }
 
-            File.Copy(FileName, ConfigurationManager.AppSettings.Get("SaveFileLocation"));
+            var dest = ConfigurationManager.AppSettings.Get("SaveFileLocation");
+            if(File.Exists(dest))
+                File.Delete(dest);
+            File.Copy(FileName, dest);
         }
 
         public void LoadPlayers()
