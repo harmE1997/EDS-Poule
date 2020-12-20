@@ -14,12 +14,12 @@ namespace EDS_Poule
     public class PlayerManager
     {
         public List<Player> Players {get; private set;}
-        private string FileName;
+        private string FilePath;
 
         public PlayerManager()
         {
             Players = new List<Player>();
-            FileName = ConfigurationManager.AppSettings.Get("PlayersFileName");
+            FilePath = ConfigurationManager.AppSettings.Get("SaveFileLocation");
         }
 
         public void AddPlayer(Player player)
@@ -33,24 +33,19 @@ namespace EDS_Poule
 
         private void SavePlayers()
         {
-            using (FileStream stream = new FileStream(FileName, FileMode.Create))
+            using (FileStream stream = new FileStream(FilePath, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
                 formatter.Serialize(stream, Players);
             }
-
-            var dest = ConfigurationManager.AppSettings.Get("SaveFileLocation");
-            if(File.Exists(dest))
-                File.Delete(dest);
-            File.Copy(FileName, dest);
         }
 
         public void LoadPlayers()
         {
-            if (!File.Exists(FileName))
+            if (!File.Exists(FilePath))
                 SavePlayers();
 
-            using (FileStream stream = new FileStream(FileName, FileMode.Open))
+            using (FileStream stream = new FileStream(FilePath, FileMode.Open))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
                 Players = (List<Player>)formatter.Deserialize(stream);
