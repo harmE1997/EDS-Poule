@@ -116,8 +116,12 @@ namespace EDS_Poule
 
                 if (xlRange.Cells[currentRow, Settings.HomeColumn].Value2 != null && xlRange.Cells[currentRow, Settings.OutColumn].Value2 != null)
                 {
-                    x = xlRange.Cells[currentRow, Settings.HomeColumn].Value2;
-                    y = xlRange.Cells[currentRow, Settings.OutColumn].Value2;
+                    try
+                    {
+                        x = xlRange.Cells[currentRow, Settings.HomeColumn].Value2;
+                        y = xlRange.Cells[currentRow, Settings.OutColumn].Value2;
+                    }
+                    catch { };
                 }
                 
                 bool motw = false;
@@ -125,6 +129,7 @@ namespace EDS_Poule
                 {
                     motw = true;
                 }
+
                 Match match = new Match(Convert.ToInt32(x), Convert.ToInt32(y), motw);
                 fileMatches[rowschecked] = match;
                 rowschecked++;
