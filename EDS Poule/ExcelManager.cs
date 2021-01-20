@@ -187,8 +187,8 @@ namespace EDS_Poule
             for (int i = 2; i < 12; i++)
             {
                 string name = Convert.ToString(xlRange.Cells[i, 1].value2);
-                ts.Total = Convert.ToInt32(xlRange.Cells[i, 2].value2);
-                ts.Currentround = Convert.ToInt32(xlRange.Cells[i, round + 2].value2);
+                ts.Total = Convert.ToInt32(xlRange.Cells[i, 3].value2);
+                ts.Currentround = Convert.ToInt32(xlRange.Cells[i, round + 3].value2);
                 topscorers.Add(name, ts);
             }
 
