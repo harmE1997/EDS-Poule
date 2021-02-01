@@ -24,7 +24,7 @@ namespace EDS_Poule
 
             ExcelManager excelManager = new ExcelManager();
             int sheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet"));
-            Week[] weeks = excelManager.ReadPredictions(ConfigurationManager.AppSettings.Get("AdminLocation"), sheet, new ExcelReadSettings());
+            Week[] weeks = excelManager.ReadPredictions(ConfigurationManager.AppSettings.Get("AdminLocation"), sheet);
             BonusQuestions bonus = excelManager.ReadHostBonus(ConfigurationManager.AppSettings.Get("AdminLocation"), sheet);
             host = new Player("host", "22", "zb",weeks,bonus);
             return host;
