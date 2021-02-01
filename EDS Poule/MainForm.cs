@@ -57,7 +57,7 @@ namespace EDS_Poule
         private void btnCheck_Click(object sender, EventArgs e)
         {
             int.TryParse(cbCheck.Text, out int round);
-            foreach (int i in (Manager.CheckAllPlayers(host.getHost(), round)))
+            foreach (int i in (Manager.CheckAllPlayers(host.getHost(), round, cbRecalculate.Checked)))
                 rtbNotes.Text = "Checked " + i + " out of " + Manager.Players.Count + " players";
             RefreshRanking();
         }
@@ -92,13 +92,15 @@ namespace EDS_Poule
             int fulls = 0;
             int halfs = 0;
             int matchID = GetMatchID();
-            var week = Convert.ToInt16(cbCheck.Text) - 1;
+            var week = Convert.ToInt16(cbCheck.Text) -1;
             string Names = "";
+            ExcelManager em = new ExcelManager();
+            var hostweek = em.ReadSingleWeek(ConfigurationManager.AppSettings.Get("AdminLocation"), Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet")), week);
             foreach (Player player in Manager.Players)
             {
                 if (player.Weeks[week] != null)
                 {
-                    int check = player.Weeks[week].CheckMatch(host.getHost(), matchID);
+                    int check = player.Weeks[week].CheckMatchOnResultOnly(hostweek, matchID);
                     if (check > 0)
                     {
                         halfs++;
@@ -152,7 +154,7 @@ namespace EDS_Poule
         private void btnRankingToExcel_Click(object sender, EventArgs e)
         {
             ExcelManager em = new ExcelManager();
-            foreach (var i in em.ExportPlayersToExcel(ConfigurationManager.AppSettings.Get("AdminLocation"), 
+            foreach (var i in em.ExportPlayersToExcel(ConfigurationManager.AppSettings.Get("AdminLocation"),
                 Convert.ToInt32(ConfigurationManager.AppSettings.Get("RankingSheet")), Manager.Players))
             {
                 rtbNotes.Text = "Exported " + (i - 2) + " out of " + Manager.Players.Count + " players.";

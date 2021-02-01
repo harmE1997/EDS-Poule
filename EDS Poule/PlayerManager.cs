@@ -13,7 +13,7 @@ namespace EDS_Poule
     [Serializable]
     public class PlayerManager
     {
-        public List<Player> Players {get; private set;}
+        public List<Player> Players { get; private set; }
         private string FilePath;
 
         public PlayerManager()
@@ -84,7 +84,7 @@ namespace EDS_Poule
                     if (player.TotalScore < previousScore)
                         ranking = index;
 
-                    player.Ranking = ranking;                    
+                    player.Ranking = ranking;
                     previousScore = player.TotalScore;
                 }
                 index++;
@@ -118,17 +118,18 @@ namespace EDS_Poule
             {
                 return -1;
             }
-            
+
         }
 
-        public IEnumerable<int> CheckAllPlayers(Player Host, int currentWeek)
+        public IEnumerable<int> CheckAllPlayers(Player Host, int currentWeek, bool recalculate = false)
         {
             int i = 0;
             ExcelManager em = new ExcelManager();
             var topscorers = em.readtopscorers(currentWeek, ConfigurationManager.AppSettings.Get("AdminLocation"), 8);
+
             foreach (Player player in Players)
             {
-                player.CheckPlayer(Host, currentWeek, topscorers);
+                player.CheckPlayer(Host, currentWeek, topscorers, recalculate);
                 i++;
                 yield return i;
             }

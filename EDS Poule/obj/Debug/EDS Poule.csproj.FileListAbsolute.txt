@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 =======
 C:\Mijn Documenten\EDS Poule\EDS Poule\bin\Debug\EDS Poule.exe.config
 C:\Mijn Documenten\EDS Poule\EDS Poule\bin\Debug\EDS Poule.exe
@@ -56,7 +55,6 @@ C:\Users\Administrator\Documents\EDS Poule\EDS Poule\obj\Debug\EDS Poule.csproj.
 C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\bin\Debug\EDS Poule.exe.config
 C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\bin\Debug\EDS Poule.exe
 C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\bin\Debug\EDS Poule.pdb
-C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csprojAssemblyReference.cache
 C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.ResolveComReference.cache
 C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS_Poule.MainForm.resources
 C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS_Poule.PlayerForm.resources
@@ -66,4 +64,4 @@ C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.
 C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.exe
 C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.pdb
->>>>>>> parent of 696ff89... Revert "revert older version"
+C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csprojAssemblyReference.cache

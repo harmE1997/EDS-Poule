@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Configuration;
 
 namespace EDS_Poule
 {
@@ -13,33 +14,12 @@ namespace EDS_Poule
     {
         public int StartRow = 12;
         public readonly int BlockSize = 9;
-        public int TotalBlocks = 34;
-        public readonly int FirstHalfSize = 14;
-        public int CurrentBlock = 0;
+        public readonly int NrBlocks = 34;
+        public readonly int FirstHalfSize = Convert.ToInt32(ConfigurationManager.AppSettings.Get("FirstHalfSize"));
         public readonly int HomeColumn = 7;
         public readonly int OutColumn = 8;
         public int Miss = 0;
-
-        public ExcelReadSettings(int adjustment = 0, int miss = 0)
-        {
-            Adjustsettings(adjustment);
-            StartRow += miss;
-        }
-        public void Adjustsettings(int adjustment)
-        {
-            // 1: only first half
-            // 2: switch to second half
-            if (adjustment == 1)
-            {
-                TotalBlocks = FirstHalfSize;
-            }
-
-            else if (adjustment == 2)
-            {
-                CurrentBlock = TotalBlocks - (TotalBlocks - FirstHalfSize);
-                StartRow = 162;
-            }
-        }
+        public int HalfWayJump = 10;
     }
 
     public class ExcelManager
@@ -48,6 +28,7 @@ namespace EDS_Poule
         excel.Workbook xlWorkbook;
         excel._Worksheet xlWorksheet;
         excel.Range xlRange;
+
         private void Initialise(string filename, int sheet)
         {
             if (!File.Exists(filename))
@@ -77,64 +58,75 @@ namespace EDS_Poule
             Clean();
         }
 
-        public Week[] ReadPredictions(string filename, int sheet, ExcelReadSettings Settings, Week[] Weeks = null)
+        public Week[] ReadPredictions(string filename, int sheet, bool firsthalf = false, bool secondhalf = false, Week[] Weeks = null)
         {
-            Initialise(filename, sheet);
+            var Settings = new ExcelReadSettings();
+            var weeks = new Week[34];
+            var StartWeek = 0;
+            var Endweek = Settings.NrBlocks;
+            if (firsthalf)
+                Endweek -= (Settings.NrBlocks - Settings.FirstHalfSize);
+            if (secondhalf)
+                StartWeek += Settings.FirstHalfSize;
+
             try
             {
-                var weeks = new Week[34];
-                if (Weeks != null)
-                    weeks = Weeks;
-
-                int currentblock = Settings.CurrentBlock;
-                while (currentblock < Settings.TotalBlocks)
+                Initialise(filename, sheet);
+                for (int i = StartWeek; i < Endweek; i++)
                 {
-                    weeks[currentblock] = new Week(currentblock + 1, ReadWeek(Settings));
-                    Settings.StartRow += Settings.BlockSize + 1;
-                    if (currentblock == (Settings.FirstHalfSize - 1) && Settings.TotalBlocks == 34)
-                    {
-                        Settings.Adjustsettings(2);
-                    }
-
-                    currentblock++;
+                    var matches = ReadSingleWeek(filename, sheet, i, false);
+                    weeks[i] = new Week((i + 1), matches);
                 }
                 Clean();
                 return weeks;
             }
-            catch { Clean(); return null; }
+
+            catch { Clean(); return weeks; }
         }
 
-        private Match[] ReadWeek(ExcelReadSettings Settings)
+        public Match[] ReadSingleWeek(string filename, int sheet, int week, bool initialize = true)
         {
-            Match[] fileMatches = new Match[9];
-            int rowschecked = 0;
-            while (rowschecked < Settings.BlockSize)
+            Match[] Week = new Match[9];
+
+            if(initialize)
+                Initialise(filename, sheet);
+
+            var Settings = new ExcelReadSettings();
+            int startrow = Settings.StartRow + (Settings.BlockSize + 1) * (week) + Settings.Miss;
+            if (week >= Settings.FirstHalfSize)
+                startrow += Settings.HalfWayJump;
+            try
             {
-                double x = 99;
-                double y = 99;
-                int currentRow = Settings.StartRow + rowschecked;
-
-                if (xlRange.Cells[currentRow, Settings.HomeColumn].Value2 != null && xlRange.Cells[currentRow, Settings.OutColumn].Value2 != null)
+                for (int rowschecked = 0; rowschecked < Settings.BlockSize; rowschecked++)
                 {
-                    try
+                    double x = 99;
+                    double y = 99;
+                    int currentRow = startrow + rowschecked;
+
+                    if (xlRange.Cells[currentRow, Settings.HomeColumn].Value2 != null && xlRange.Cells[currentRow, Settings.OutColumn].Value2 != null)
                     {
-                        x = xlRange.Cells[currentRow, Settings.HomeColumn].Value2;
-                        y = xlRange.Cells[currentRow, Settings.OutColumn].Value2;
+                        try
+                        {
+                            x = xlRange.Cells[currentRow, Settings.HomeColumn].Value2;
+                            y = xlRange.Cells[currentRow, Settings.OutColumn].Value2;
+                        }
+                        catch { };
                     }
-                    catch { };
-                }
-                
-                bool motw = false;
-                if (rowschecked == Settings.BlockSize - 1)
-                {
-                    motw = true;
-                }
 
-                Match match = new Match(Convert.ToInt32(x), Convert.ToInt32(y), motw);
-                fileMatches[rowschecked] = match;
-                rowschecked++;
+                    bool motw = false;
+                    if (rowschecked == Settings.BlockSize - 1)
+                    {
+                        motw = true;
+                    }
+
+                    Match match = new Match(Convert.ToInt32(x), Convert.ToInt32(y), motw);
+                    Week[rowschecked] = match;
+                }
+                if(initialize)
+                    Clean();
+                return Week;
             }
-            return fileMatches;
+            catch { Clean(); return Week; }
         }
 
         public BonusQuestions ReadHostBonus(string filename, int sheet)
@@ -179,21 +171,26 @@ namespace EDS_Poule
             catch { Clean(); return null; };
         }
 
-        public Dictionary<string, Topscorer> readtopscorers(int round, string filename, int sheet)
+        public List<Dictionary<string, Topscorer>> readtopscorers(int round, string filename, int sheet)
         {
+            List<Dictionary<string, Topscorer>> scorers = new List<Dictionary<string, Topscorer>>();
             Initialise(filename, sheet);
-            Topscorer ts = new Topscorer() { Total=0, Currentround=0 };
-            Dictionary<string, Topscorer> topscorers = new Dictionary<string, Topscorer>();
-            for (int i = 2; i < 12; i++)
+            for (int x = 0; x < round; x++)
             {
-                string name = Convert.ToString(xlRange.Cells[i, 1].value2);
-                ts.Total = Convert.ToInt32(xlRange.Cells[i, 3].value2);
-                ts.Currentround = Convert.ToInt32(xlRange.Cells[i, round + 3].value2);
-                topscorers.Add(name, ts);
+                Topscorer ts = new Topscorer() { Total = 0, Currentround = 0 };
+                Dictionary<string, Topscorer> topscorers = new Dictionary<string, Topscorer>();
+                var max = Convert.ToInt32(ConfigurationManager.AppSettings.Get("nrTopScorers")) + 2;
+                for (int i = 2; i < max; i++)
+                {
+                    string name = Convert.ToString(xlRange.Cells[i, 1].value2);
+                    ts.Total = Convert.ToInt32(xlRange.Cells[i, 3].value2);
+                    ts.Currentround = Convert.ToInt32(xlRange.Cells[i, x + 4].value2);
+                    topscorers.Add(name, ts);
+                }
+                scorers.Add(topscorers);
             }
-
             Clean();
-            return topscorers;
+            return scorers;
         }
 
         private void Clean()

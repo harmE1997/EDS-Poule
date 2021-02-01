@@ -66,7 +66,7 @@ namespace EDS_Poule
                     MessageBox.Show("Can't load week. It doesn't exist");
                     SavePlayer();
                 }
-                
+
             }
 
             else
@@ -88,20 +88,11 @@ namespace EDS_Poule
             }
 
             ExcelManager em = new ExcelManager();
+
             if (cbSecondHalf.Checked)
-            {
-                weeks = em.ReadPredictions(filename, 1, new ExcelReadSettings(2, Convert.ToInt32(nudAfwijking.Value)), Player.Weeks);
-            }
+                weeks = Player.Weeks;
+            weeks = em.ReadPredictions(filename, 1, cbFirstHalf.Checked, cbSecondHalf.Checked, weeks);
 
-            else if (cbFirstHalf.Checked)
-            {
-                weeks = em.ReadPredictions(filename, 1, new ExcelReadSettings(1, Convert.ToInt32(nudAfwijking.Value)));
-            }
-
-            else
-            {
-                weeks = em.ReadPredictions(filename, 1, new ExcelReadSettings(0, Convert.ToInt32(nudAfwijking.Value)));
-            }
             SavePlayer();
             MessageBox.Show("Predictions succesfully loaded and saved!");
         }
@@ -199,8 +190,8 @@ namespace EDS_Poule
                 string[] degradanten = { tbDegradant1.Text, tbDegradant2.Text };
                 string[] promovendi = { tbPromovendi1.Text, tbPromovendi2.Text };
                 BonusQuestions questions = new BonusQuestions(tbKampioen.Text, tbProdeg.Text, tbTopscorer.Text, tbTrainer.Text
-                    , tbWinterkampioen.Text, tbRonde.Text, tbMostRed.Text, finalists, degradanten,  promovendi   
-                     ,new int[10] {99,99,99,99,99,99,99,99,99,99});
+                    , tbWinterkampioen.Text, tbRonde.Text, tbMostRed.Text, finalists, degradanten, promovendi
+                     , new int[10] { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99 });
 
                 Player newplayer = new Player(tbName.Text, tbAge.Text, tbWoonplaats.Text, weeks, questions);
                 if (Player != null)
