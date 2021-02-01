@@ -38,22 +38,24 @@ namespace EDS_Poule
             return text;
         }
 
-        public void CheckPlayer(Player Host, int currentWeek, Dictionary<string, Topscorer> topscorers, bool recalculateWeeks=false)
+        public void CheckPlayer(Player Host, int currentWeek, Dictionary<string, Topscorer> topscorers)
         {
             TotalScore = 0;
-            foreach (var week in Weeks)
+            WeekScore = 0;
+            for (int i = 0; i < currentWeek; i++)
             {
-                if (week.Weeknr <= currentWeek)
+                if (Weeks[i] != null)
                 {
-                    if(week.WeekScore == 0 || recalculateWeeks)
-                        week.Checkweek(Host, Questions,topscorers);
-
-                    WeekScore = week.WeekScore;
-                    TotalScore += week.WeekScore;
-                }   
+                    int weekscore = Weeks[i].Checkweek(Host);
+                    TotalScore += weekscore;
+                    if (i == (currentWeek - 1))
+                        WeekScore = weekscore;
+                }
             }
 
-            PreviousScore = Weeks[currentWeek-1].WeekScore;
+            TotalScore += Questions.CheckBonus(Host.Questions, currentWeek, topscorers);
+            WeekScore += Questions.WeekScore;
+            PreviousScore = TotalScore - WeekScore;
         }
     }
 }

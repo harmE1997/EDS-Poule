@@ -49,10 +49,9 @@
             this.gbMatchInfo = new System.Windows.Forms.GroupBox();
             this.btnGetMatch = new System.Windows.Forms.Button();
             this.gbOtherOptions = new System.Windows.Forms.GroupBox();
-            this.btnAverage = new System.Windows.Forms.Button();
             this.btnResetHost = new System.Windows.Forms.Button();
             this.gbRankingOptions = new System.Windows.Forms.GroupBox();
-            this.cbRecalculate = new System.Windows.Forms.CheckBox();
+            this.btnAverage = new System.Windows.Forms.Button();
             this.gbPlayerOptions.SuspendLayout();
             this.gbMatchInfo.SuspendLayout();
             this.gbOtherOptions.SuspendLayout();
@@ -115,7 +114,7 @@
             // 
             // btnCheck
             // 
-            this.btnCheck.Location = new System.Drawing.Point(9, 91);
+            this.btnCheck.Location = new System.Drawing.Point(7, 58);
             this.btnCheck.Margin = new System.Windows.Forms.Padding(4);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(270, 30);
@@ -205,7 +204,7 @@
             // rtbNotes
             // 
             this.rtbNotes.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbNotes.Location = new System.Drawing.Point(552, 413);
+            this.rtbNotes.Location = new System.Drawing.Point(552, 373);
             this.rtbNotes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbNotes.Name = "rtbNotes";
             this.rtbNotes.Size = new System.Drawing.Size(596, 296);
@@ -215,7 +214,7 @@
             // lblNotes
             // 
             this.lblNotes.AutoSize = true;
-            this.lblNotes.Location = new System.Drawing.Point(556, 393);
+            this.lblNotes.Location = new System.Drawing.Point(556, 353);
             this.lblNotes.Name = "lblNotes";
             this.lblNotes.Size = new System.Drawing.Size(45, 17);
             this.lblNotes.TabIndex = 15;
@@ -223,7 +222,7 @@
             // 
             // btnRankingToExcel
             // 
-            this.btnRankingToExcel.Location = new System.Drawing.Point(9, 127);
+            this.btnRankingToExcel.Location = new System.Drawing.Point(5, 94);
             this.btnRankingToExcel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRankingToExcel.Name = "btnRankingToExcel";
             this.btnRankingToExcel.Size = new System.Drawing.Size(270, 30);
@@ -327,17 +326,6 @@
             this.gbOtherOptions.TabStop = false;
             this.gbOtherOptions.Text = "Other Options";
             // 
-            // btnAverage
-            // 
-            this.btnAverage.Location = new System.Drawing.Point(13, 22);
-            this.btnAverage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAverage.Name = "btnAverage";
-            this.btnAverage.Size = new System.Drawing.Size(270, 30);
-            this.btnAverage.TabIndex = 9;
-            this.btnAverage.Text = "Average";
-            this.btnAverage.UseVisualStyleBackColor = true;
-            this.btnAverage.Click += new System.EventHandler(this.btnAverage_Click);
-            // 
             // btnResetHost
             // 
             this.btnResetHost.Location = new System.Drawing.Point(13, 93);
@@ -350,7 +338,6 @@
             // 
             // gbRankingOptions
             // 
-            this.gbRankingOptions.Controls.Add(this.cbRecalculate);
             this.gbRankingOptions.Controls.Add(this.btnRanking);
             this.gbRankingOptions.Controls.Add(this.btnCheck);
             this.gbRankingOptions.Controls.Add(this.btnRankingToExcel);
@@ -358,20 +345,21 @@
             this.gbRankingOptions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbRankingOptions.Name = "gbRankingOptions";
             this.gbRankingOptions.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbRankingOptions.Size = new System.Drawing.Size(285, 161);
+            this.gbRankingOptions.Size = new System.Drawing.Size(285, 134);
             this.gbRankingOptions.TabIndex = 23;
             this.gbRankingOptions.TabStop = false;
             this.gbRankingOptions.Text = "Ranking Options";
             // 
-            // cbRecalculate
+            // btnAverage
             // 
-            this.cbRecalculate.AutoSize = true;
-            this.cbRecalculate.Location = new System.Drawing.Point(70, 63);
-            this.cbRecalculate.Name = "cbRecalculate";
-            this.cbRecalculate.Size = new System.Drawing.Size(151, 21);
-            this.cbRecalculate.TabIndex = 17;
-            this.cbRecalculate.Text = "Recalculate Weeks";
-            this.cbRecalculate.UseVisualStyleBackColor = true;
+            this.btnAverage.Location = new System.Drawing.Point(13, 22);
+            this.btnAverage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAverage.Name = "btnAverage";
+            this.btnAverage.Size = new System.Drawing.Size(270, 30);
+            this.btnAverage.TabIndex = 9;
+            this.btnAverage.Text = "Average";
+            this.btnAverage.UseVisualStyleBackColor = true;
+            this.btnAverage.Click += new System.EventHandler(this.btnAverage_Click);
             // 
             // MainForm
             // 
@@ -396,7 +384,6 @@
             this.gbMatchInfo.PerformLayout();
             this.gbOtherOptions.ResumeLayout(false);
             this.gbRankingOptions.ResumeLayout(false);
-            this.gbRankingOptions.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,7 +414,6 @@
         private System.Windows.Forms.GroupBox gbRankingOptions;
         private System.Windows.Forms.Button btnAverage;
         private System.Windows.Forms.Button btnResetHost;
-        private System.Windows.Forms.CheckBox cbRecalculate;
     }
 }
 

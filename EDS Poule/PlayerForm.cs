@@ -88,11 +88,20 @@ namespace EDS_Poule
             }
 
             ExcelManager em = new ExcelManager();
-            
             if (cbSecondHalf.Checked)
-                weeks = Player.Weeks;
-            weeks = em.ReadPredictions(filename, 1, cbFirstHalf.Checked, cbSecondHalf.Checked, weeks);
+            {
+                weeks = em.ReadPredictions(filename, 1, new ExcelReadSettings(2, Convert.ToInt32(nudAfwijking.Value)), Player.Weeks);
+            }
 
+            else if (cbFirstHalf.Checked)
+            {
+                weeks = em.ReadPredictions(filename, 1, new ExcelReadSettings(1, Convert.ToInt32(nudAfwijking.Value)));
+            }
+
+            else
+            {
+                weeks = em.ReadPredictions(filename, 1, new ExcelReadSettings(0, Convert.ToInt32(nudAfwijking.Value)));
+            }
             SavePlayer();
             MessageBox.Show("Predictions succesfully loaded and saved!");
         }
