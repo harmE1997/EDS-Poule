@@ -13,33 +13,12 @@ namespace EDS_Poule
     {
         public int StartRow = 12;
         public readonly int BlockSize = 9;
-        public int TotalBlocks = 34;
+        public readonly int NrBlocks = 34;
         public readonly int FirstHalfSize = 14;
-        public int CurrentBlock = 0;
         public readonly int HomeColumn = 7;
         public readonly int OutColumn = 8;
         public int Miss = 0;
-
-        public ExcelReadSettings(int adjustment = 0, int miss = 0)
-        {
-            Adjustsettings(adjustment);
-            StartRow += miss;
-        }
-        public void Adjustsettings(int adjustment)
-        {
-            // 1: only first half
-            // 2: switch to second half
-            if (adjustment == 1)
-            {
-                TotalBlocks = FirstHalfSize;
-            }
-
-            else if (adjustment == 2)
-            {
-                CurrentBlock = TotalBlocks - (TotalBlocks - FirstHalfSize);
-                StartRow = 162;
-            }
-        }
+        public int HalfWayJump = 12;
     }
 
     public class ExcelManager
@@ -48,6 +27,7 @@ namespace EDS_Poule
         excel.Workbook xlWorkbook;
         excel._Worksheet xlWorksheet;
         excel.Range xlRange;
+
         private void Initialise(string filename, int sheet)
         {
             if (!File.Exists(filename))
@@ -77,64 +57,64 @@ namespace EDS_Poule
             Clean();
         }
 
-        public Week[] ReadPredictions(string filename, int sheet, ExcelReadSettings Settings, Week[] Weeks = null)
+        public Week[] ReadPredictions(string filename, int sheet, bool firsthalf = false, bool secondhalf=false, Week[] Weeks = null)
         {
-            Initialise(filename, sheet);
-            try
+            var Settings = new ExcelReadSettings();
+            var weeks = new Week[34];
+            var StartWeek = 0;
+            var Endweek = Settings.NrBlocks;
+            if (firsthalf)
+                Endweek -= (Settings.NrBlocks - Settings.FirstHalfSize);
+            if (secondhalf)
+                StartWeek += Settings.FirstHalfSize;
+            
+            for (int i = StartWeek; i < Endweek; i++)
             {
-                var weeks = new Week[34];
-                if (Weeks != null)
-                    weeks = Weeks;
-
-                int currentblock = Settings.CurrentBlock;
-                while (currentblock < Settings.TotalBlocks)
-                {
-                    weeks[currentblock] = new Week(currentblock + 1, ReadWeek(Settings));
-                    Settings.StartRow += Settings.BlockSize + 1;
-                    if (currentblock == (Settings.FirstHalfSize - 1) && Settings.TotalBlocks == 34)
-                    {
-                        Settings.Adjustsettings(2);
-                    }
-
-                    currentblock++;
-                }
-                Clean();
-                return weeks;
+                var matches = ReadSingleWeek(filename, sheet, (i + 1));
+                weeks[i] = new Week((i + 1), matches);
             }
-            catch { Clean(); return null; }
+            return weeks;
         }
 
-        private Match[] ReadWeek(ExcelReadSettings Settings)
+        public Match[] ReadSingleWeek(string filename, int sheet, int week)
         {
-            Match[] fileMatches = new Match[9];
-            int rowschecked = 0;
-            while (rowschecked < Settings.BlockSize)
+            Match[] Week = new Match[9];
+            Initialise(filename, sheet);
+            var Settings = new ExcelReadSettings();
+            int startrow = Settings.StartRow + (Settings.BlockSize+1) * (week - 1) + Settings.Miss;
+            if (week > Settings.FirstHalfSize)
+                startrow += Settings.HalfWayJump;
+            try
             {
-                double x = 99;
-                double y = 99;
-                int currentRow = Settings.StartRow + rowschecked;
-
-                if (xlRange.Cells[currentRow, Settings.HomeColumn].Value2 != null && xlRange.Cells[currentRow, Settings.OutColumn].Value2 != null)
+                for (int rowschecked = 0; rowschecked < Settings.BlockSize; rowschecked++)
                 {
-                    try
+                    double x = 99;
+                    double y = 99;
+                    int currentRow = Settings.StartRow + rowschecked;
+
+                    if (xlRange.Cells[currentRow, Settings.HomeColumn].Value2 != null && xlRange.Cells[currentRow, Settings.OutColumn].Value2 != null)
                     {
-                        x = xlRange.Cells[currentRow, Settings.HomeColumn].Value2;
-                        y = xlRange.Cells[currentRow, Settings.OutColumn].Value2;
+                        try
+                        {
+                            x = xlRange.Cells[currentRow, Settings.HomeColumn].Value2;
+                            y = xlRange.Cells[currentRow, Settings.OutColumn].Value2;
+                        }
+                        catch { };
                     }
-                    catch { };
-                }
-                
-                bool motw = false;
-                if (rowschecked == Settings.BlockSize - 1)
-                {
-                    motw = true;
-                }
 
-                Match match = new Match(Convert.ToInt32(x), Convert.ToInt32(y), motw);
-                fileMatches[rowschecked] = match;
-                rowschecked++;
+                    bool motw = false;
+                    if (rowschecked == Settings.BlockSize - 1)
+                    {
+                        motw = true;
+                    }
+
+                    Match match = new Match(Convert.ToInt32(x), Convert.ToInt32(y), motw);
+                    Week[rowschecked] = match;
+                }
+                Clean();
+                return Week;
             }
-            return fileMatches;
+            catch { Clean(); return Week; } 
         }
 
         public BonusQuestions ReadHostBonus(string filename, int sheet)
