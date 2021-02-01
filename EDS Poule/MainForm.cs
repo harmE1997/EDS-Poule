@@ -57,7 +57,7 @@ namespace EDS_Poule
         private void btnCheck_Click(object sender, EventArgs e)
         {
             int.TryParse(cbCheck.Text, out int round);
-            foreach (int i in (Manager.CheckAllPlayers(host.getHost(), round)))
+            foreach (int i in (Manager.CheckAllPlayers(host.getHost(), round, cbRecalculate.Checked)))
                 rtbNotes.Text = "Checked " + i + " out of " + Manager.Players.Count + " players";
             RefreshRanking();
         }
@@ -94,11 +94,13 @@ namespace EDS_Poule
             int matchID = GetMatchID();
             var week = Convert.ToInt16(cbCheck.Text) - 1;
             string Names = "";
+            ExcelManager em = new ExcelManager();
+            var hostweek = em.ReadSingleWeek(ConfigurationManager.AppSettings.Get("AdminLocation"), Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet")), week);
             foreach (Player player in Manager.Players)
             {
                 if (player.Weeks[week] != null)
                 {
-                    int check = player.Weeks[week].CheckMatch(host.getHost(), matchID);
+                    int check = player.Weeks[week].CheckMatchOnResultOnly(hostweek, matchID);
                     if (check > 0)
                     {
                         halfs++;
