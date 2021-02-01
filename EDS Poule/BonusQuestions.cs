@@ -66,53 +66,64 @@ namespace EDS_Poule
             };
         }
 
-        public void CheckBonus(BonusQuestions HostQuestions, int currentweek, Dictionary<string, Topscorer> topscorers)
+        public int CheckBonus(BonusQuestions HostQuestions, int currentweek, Dictionary<string, Topscorer> topscorers)
         {          
             if (HostQuestions == null)
             {
                 throw new ArgumentNullException("hostquestions");
             }
             WeekScore = 0;
+            int score = 0;
             
             foreach (var a in Answers)
             {
                 var ans = HostQuestions.Answers[a.Key];
-                if (ans.WeekAnswered > 0)
+                if (ans.WeekAnswered <= currentweek && ans.WeekAnswered > 0)
                 {
                     if (a.Value.IsArray)
                     {
                         foreach (var e in a.Value.AnswerArray)
                         {
-                            if (ans.AnswerArray.Contains(e) && ans.WeekAnswered == currentweek)
+                            if (ans.AnswerArray.Contains(e))
                             {
-                                WeekScore += a.Value.Points;                                
+                                score += a.Value.Points;
+                                if (ans.WeekAnswered == currentweek)
+                                {
+                                    WeekScore += a.Value.Points;
+                                }
                             }
                         }
                     }
 
                     else
                     {
-                        if (a.Value.Answer == ans.Answer && ans.WeekAnswered == currentweek)
+                        if (a.Value.Answer == ans.Answer)
                         {
-                            WeekScore += a.Value.Points;
+                            score += a.Value.Points;
+                            if (ans.WeekAnswered == currentweek)
+                            {
+                                WeekScore += a.Value.Points;
+                            }
                         }
                     }
                 }
             }
 
-            checkTopscorer(currentweek, topscorers);
+            score += checkTopscorer(currentweek, topscorers);
+            return score;
         }
 
-        private void checkTopscorer(int round, Dictionary<string, Topscorer> topscorers)
+        private int checkTopscorer(int round, Dictionary<string, Topscorer> topscorers)
         {
             ExcelManager ex = new ExcelManager();
             try
             {
                 var ans = topscorers[Answers[BonusKeys.Topscorer].Answer];
                 WeekScore += ans.Currentround * 5;
+                return ans.Total * 5;
             }
 
-            catch{ }         
+            catch{ return 0; }         
         }
     }
 }

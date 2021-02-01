@@ -10,28 +10,26 @@ namespace EDS_Poule
     public class Week
     {
         public int Weeknr { get; private set; }
-        public int WeekScore { get; private set; }
         public Match[] Matches { get; private set; }
 
         public Week(int nr, Match[] matches)
         {
             Matches = matches;
             Weeknr = nr;
-            WeekScore = 0;
         }
-        public void Checkweek(Player host, BonusQuestions questions, Dictionary<string, Topscorer> topscorers)
+        public int Checkweek(Player host)
         {
-            ExcelManager em = new ExcelManager();
-            
             Week hostweek = host.Weeks[Weeknr - 1];
-            WeekScore = 0;
-            for (int counter = 0; counter < Matches.Length; counter++)
+            int score = 0;
+            int counter = 0;
+
+            while (counter < Matches.Length)
             {
-                WeekScore += CheckMatch(hostweek, counter);
+                score += CheckMatch(hostweek, counter);
+                counter++;
             }
 
-            questions.CheckBonus(host.Questions, Weeknr, topscorers);
-            WeekScore += questions.WeekScore;
+            return score;
         }
 
         private int CheckMatch(Week hostweek, int counter)
@@ -74,10 +72,10 @@ namespace EDS_Poule
             return Matches[matchID].Winner;
         }
 
-        public int CheckMatchOnResultOnly(Match[] Host, int matchID)
+        public int CheckMatch(Player Host, int matchID)
         {
             //MOTW has matchID 0.
-            Match HostMatch = Host[matchID];
+            Match HostMatch = Host.Weeks[Weeknr - 1].Matches[matchID];
             Match ThisMatch = Matches[matchID];
 
             if (HostMatch.ResultA != 99 && ThisMatch.ResultA != 99)
