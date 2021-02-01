@@ -64,16 +64,3 @@ C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.
 C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.exe
 C:\Users\Administrator\Documents\GitHub\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.pdb
-C:\Harm\EDS-Poule\EDS Poule\bin\Debug\EDS Poule.exe.config
-C:\Harm\EDS-Poule\EDS Poule\bin\Debug\EDS Poule.exe
-C:\Harm\EDS-Poule\EDS Poule\bin\Debug\EDS Poule.pdb
-C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csprojAssemblyReference.cache
-C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.ResolveComReference.cache
-C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS_Poule.MainForm.resources
-C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS_Poule.PlayerForm.resources
-C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS_Poule.Properties.Resources.resources
-C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS_Poule.StatsForm.resources
-C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.GenerateResource.cache
-C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.CoreCompileInputs.cache
-C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.exe
-C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.pdb
