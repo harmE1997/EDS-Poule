@@ -17,17 +17,21 @@ namespace EDS_Poule
 
         public Player getHost()
         {
-            if (host != null)
+            if (host == null)
             {
-                return host;
+                setHost();
             }
 
+            return host;
+        }
+
+        public void setHost()
+        { 
             ExcelManager excelManager = new ExcelManager();
             int sheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet"));
             Week[] weeks = excelManager.ReadPredictions(ConfigurationManager.AppSettings.Get("AdminLocation"), sheet);
-            BonusQuestions bonus = excelManager.ReadHostBonus(ConfigurationManager.AppSettings.Get("AdminLocation"), sheet);
+            BonusQuestions bonus = excelManager.ReadHostBonus();
             host = new Player("host", "22", "zb", weeks, bonus);
-            return host;
         }
     }
 }

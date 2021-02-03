@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using System.IO;
 
 namespace EDS_Poule
 {
@@ -56,10 +57,16 @@ namespace EDS_Poule
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
-            int.TryParse(cbCheck.Text, out int round);
-            foreach (int i in (Manager.CheckAllPlayers(host.getHost(), round, cbRecalculate.Checked)))
-                rtbNotes.Text = "Checked " + i + " out of " + Manager.Players.Count + " players";
-            RefreshRanking();
+            try
+            {
+                int.TryParse(cbCheck.Text, out int round);
+                foreach (int i in (Manager.CheckAllPlayers(host.getHost(), round, cbRecalculate.Checked)))
+                    rtbNotes.Text = "Checked " + i + " out of " + Manager.Players.Count + " players";
+                RefreshRanking();
+            }
+
+            catch (FileNotFoundException) { MessageBox.Show("Excel file does not exist");} 
+            catch { MessageBox.Show("Can't open excel file. It's already in use."); }
         }
 
         private void btnLoadPlayer_Click(object sender, EventArgs e)
@@ -89,32 +96,38 @@ namespace EDS_Poule
 
         private void btnMatch_Click(object sender, EventArgs e)
         {
-            int fulls = 0;
-            int halfs = 0;
-            int matchID = GetMatchID();
-            var week = Convert.ToInt16(cbCheck.Text) -1;
-            string Names = "";
-            ExcelManager em = new ExcelManager();
-            var hostweek = em.ReadSingleWeek(ConfigurationManager.AppSettings.Get("AdminLocation"), Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet")), week);
-            foreach (Player player in Manager.Players)
+            try
             {
-                if (player.Weeks[week] != null)
+                int fulls = 0;
+                int halfs = 0;
+                int matchID = GetMatchID();
+                var week = Convert.ToInt16(cbCheck.Text) - 1;
+                string Names = "";
+                ExcelManager em = new ExcelManager();
+                var hostweek = em.ReadSingleWeek(ConfigurationManager.AppSettings.Get("AdminLocation"), Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet")), week);
+                foreach (Player player in Manager.Players)
                 {
-                    int check = player.Weeks[week].CheckMatchOnResultOnly(hostweek, matchID);
-                    if (check > 0)
+                    if (player.Weeks[week] != null)
                     {
-                        halfs++;
-                    }
+                        int check = player.Weeks[week].CheckMatchOnResultOnly(hostweek, matchID);
+                        if (check > 0)
+                        {
+                            halfs++;
+                        }
 
-                    if (check == 2)
-                    {
-                        fulls++;
-                        Names += player.Name + ", ";
+                        if (check == 2)
+                        {
+                            fulls++;
+                            Names += player.Name + ", ";
+                        }
                     }
                 }
+
+                rtbNotes.Text = "Goede winnaar: " + halfs + "\nHelemaal correct: " + fulls + " " + Names;
             }
 
-            rtbNotes.Text = "Goede winnaar: " + halfs + "\nHelemaal correct: " + fulls + " " + Names;
+            catch (FileNotFoundException) { MessageBox.Show("Excel file does not exist"); }
+            catch { MessageBox.Show("Can't open excel file. It's already in use."); }
         }
 
         private void btnGetMatch_Click(object sender, EventArgs e)
@@ -154,8 +167,7 @@ namespace EDS_Poule
         private void btnRankingToExcel_Click(object sender, EventArgs e)
         {
             ExcelManager em = new ExcelManager();
-            foreach (var i in em.ExportPlayersToExcel(ConfigurationManager.AppSettings.Get("AdminLocation"),
-                Convert.ToInt32(ConfigurationManager.AppSettings.Get("RankingSheet")), Manager.Players))
+            foreach (var i in em.ExportPlayersToExcel(Manager.Players))
             {
                 rtbNotes.Text = "Exported " + (i - 2) + " out of " + Manager.Players.Count + " players.";
             }
@@ -196,6 +208,7 @@ namespace EDS_Poule
         private void btnResetHost_Click(object sender, EventArgs e)
         {
             host = new Host();
+            host.setHost();
         }
     }
 }

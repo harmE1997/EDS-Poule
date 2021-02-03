@@ -125,7 +125,7 @@ namespace EDS_Poule
         {
             int i = 0;
             ExcelManager em = new ExcelManager();
-            var topscorers = em.readtopscorers(currentWeek, ConfigurationManager.AppSettings.Get("AdminLocation"), 8);
+            var topscorers = em.readtopscorers(currentWeek);
 
             foreach (Player player in Players)
             {

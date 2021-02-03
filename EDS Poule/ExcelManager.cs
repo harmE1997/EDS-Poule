@@ -20,29 +20,29 @@ namespace EDS_Poule
         public readonly int OutColumn = 8;
         public int Miss = 0;
         public int HalfWayJump = 10;
+
+        public string AdminFileName = ConfigurationManager.AppSettings.Get("AdminLocation");
+        public int Hostsheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet"));
+        public int Rankingheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Rankingsheet"));
+        public int Topscorerssheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Topscorerssheet"));
     }
 
     public class ExcelManager
     {
-        excel.Application xlApp;
-        excel.Workbook xlWorkbook;
-        excel._Worksheet xlWorksheet;
-        excel.Range xlRange;
+        private ExcelReadSettings Settings;
+        private excel.Application xlApp;
+        private excel.Workbook xlWorkbook;
+        private excel._Worksheet xlWorksheet;
+        private excel.Range xlRange;
 
-        private void Initialise(string filename, int sheet)
+        public ExcelManager()
         {
-            if (!File.Exists(filename))
-                throw new FileNotFoundException();
-
-            xlApp = new excel.Application();
-            xlWorkbook = xlApp.Workbooks.Open(filename);
-            xlWorksheet = xlWorkbook.Sheets[sheet];
-            xlRange = xlWorksheet.UsedRange;
+            Settings = new ExcelReadSettings();
         }
 
-        public IEnumerable<int> ExportPlayersToExcel(string filename, int sheet, List<Player> Players)
+        public IEnumerable<int> ExportPlayersToExcel(List<Player> Players)
         {
-            Initialise(filename, sheet);
+            InitialiseWorkbook(Settings.AdminFileName, Settings.Rankingheet);
             int y = 2;
             foreach (Player player in Players)
             {
@@ -55,12 +55,11 @@ namespace EDS_Poule
                 y++;
                 yield return y;
             }
-            Clean();
+            CleanWorkbook();
         }
 
         public Week[] ReadPredictions(string filename, int sheet, bool firsthalf = false, bool secondhalf = false, Week[] Weeks = null)
         {
-            var Settings = new ExcelReadSettings();
             var weeks = new Week[34];
             var StartWeek = 0;
             var Endweek = Settings.NrBlocks;
@@ -71,17 +70,17 @@ namespace EDS_Poule
 
             try
             {
-                Initialise(filename, sheet);
+                InitialiseWorkbook(filename, sheet);
                 for (int i = StartWeek; i < Endweek; i++)
                 {
                     var matches = ReadSingleWeek(filename, sheet, i, false);
                     weeks[i] = new Week((i + 1), matches);
                 }
-                Clean();
+                CleanWorkbook();
                 return weeks;
             }
 
-            catch { Clean(); return weeks; }
+            catch { CleanWorkbook(); return weeks; }
         }
 
         public Match[] ReadSingleWeek(string filename, int sheet, int week, bool initialize = true)
@@ -89,9 +88,8 @@ namespace EDS_Poule
             Match[] Week = new Match[9];
 
             if(initialize)
-                Initialise(filename, sheet);
+                InitialiseWorkbook(filename, sheet);
 
-            var Settings = new ExcelReadSettings();
             int startrow = Settings.StartRow + (Settings.BlockSize + 1) * (week) + Settings.Miss;
             if (week >= Settings.FirstHalfSize)
                 startrow += Settings.HalfWayJump;
@@ -123,17 +121,17 @@ namespace EDS_Poule
                     Week[rowschecked] = match;
                 }
                 if(initialize)
-                    Clean();
+                    CleanWorkbook();
                 return Week;
             }
-            catch { Clean(); return Week; }
+            catch { CleanWorkbook(); return Week; }
         }
 
-        public BonusQuestions ReadHostBonus(string filename, int sheet)
+        public BonusQuestions ReadHostBonus()
         {
             int column = 7;
             int weekcolumn = 10;
-            Initialise(filename, sheet);
+            InitialiseWorkbook(Settings.AdminFileName, Settings.Hostsheet);
             try
             {
                 int[] weeks =
@@ -165,16 +163,16 @@ namespace EDS_Poule
                     finalists, promovendi, degradanten,
                     weeks
                     );
-                Clean();
+                CleanWorkbook();
                 return bonus;
             }
-            catch { Clean(); return null; };
+            catch { CleanWorkbook(); return null; };
         }
 
-        public List<Dictionary<string, Topscorer>> readtopscorers(int round, string filename, int sheet)
+        public List<Dictionary<string, Topscorer>> readtopscorers(int round)
         {
             List<Dictionary<string, Topscorer>> scorers = new List<Dictionary<string, Topscorer>>();
-            Initialise(filename, sheet);
+            InitialiseWorkbook(Settings.AdminFileName, Settings.Topscorerssheet);
             for (int x = 0; x < round; x++)
             {
                 Topscorer ts = new Topscorer() { Total = 0, Currentround = 0 };
@@ -189,11 +187,22 @@ namespace EDS_Poule
                 }
                 scorers.Add(topscorers);
             }
-            Clean();
+            CleanWorkbook();
             return scorers;
         }
 
-        private void Clean()
+        private void InitialiseWorkbook(string filename, int sheet)
+        {
+            if (!File.Exists(filename))
+                throw new FileNotFoundException();
+
+            xlApp = new excel.Application();
+            xlWorkbook = xlApp.Workbooks.Open(filename);
+            xlWorksheet = xlWorkbook.Sheets[sheet];
+            xlRange = xlWorksheet.UsedRange;
+        }
+
+        private void CleanWorkbook()
         {
             //cleanup
             GC.Collect();
