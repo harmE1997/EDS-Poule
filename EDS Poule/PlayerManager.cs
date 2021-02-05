@@ -125,7 +125,7 @@ namespace EDS_Poule
         {
             int i = 0;
             ExcelManager em = new ExcelManager();
-            var topscorers = em.readtopscorers(currentWeek);
+            var topscorers = em.readtopscorers(currentWeek, GetNrOfTopscorers());
 
             foreach (Player player in Players)
             {
@@ -145,6 +145,18 @@ namespace EDS_Poule
                 total += p.WeekScore;
             }
             return total / Players.Count;
+        }
+
+        private int GetNrOfTopscorers()
+        {
+            List<string> scorers = new List<string>();
+            foreach (var player in Players)
+            {
+                var playerscorer = player.Questions.Answers[BonusKeys.Topscorer].Answer;
+                if (!scorers.Contains(playerscorer))
+                    scorers.Add(playerscorer);
+            }
+            return scorers.Count;
         }
     }
 }

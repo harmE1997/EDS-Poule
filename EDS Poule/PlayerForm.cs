@@ -87,8 +87,8 @@ namespace EDS_Poule
                 return;
             }
 
-            ExcelManager em = new ExcelManager();
-
+            ExcelManager em = new ExcelManager(Convert.ToInt32(nudAfwijking.Value));
+            
             if (cbSecondHalf.Checked)
                 weeks = Player.Weeks;
             weeks = em.ReadPredictions(filename, 1, cbFirstHalf.Checked, cbSecondHalf.Checked, weeks);

@@ -12,19 +12,19 @@ namespace EDS_Poule
 {
     public class ExcelReadSettings
     {
-        public int StartRow = 12;
-        public readonly int BlockSize = 9;
-        public readonly int NrBlocks = 34;
+        public readonly int StartRow = Convert.ToInt32(ConfigurationManager.AppSettings.Get("StartRow"));
+        public readonly int BlockSize = Convert.ToInt32(ConfigurationManager.AppSettings.Get("BlockSize"));
+        public readonly int NrBlocks = Convert.ToInt32(ConfigurationManager.AppSettings.Get("NrBlocks"));
         public readonly int FirstHalfSize = Convert.ToInt32(ConfigurationManager.AppSettings.Get("FirstHalfSize"));
-        public readonly int HomeColumn = 7;
-        public readonly int OutColumn = 8;
+        public readonly int HomeColumn = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HomeClumn"));
+        public readonly int OutColumn = Convert.ToInt32(ConfigurationManager.AppSettings.Get("OutColumn"));
         public int Miss = 0;
-        public int HalfWayJump = 10;
+        public readonly int HalfWayJump = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HalfWayJump"));
 
-        public string AdminFileName = ConfigurationManager.AppSettings.Get("AdminLocation");
-        public int Hostsheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet"));
-        public int Rankingheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Rankingsheet"));
-        public int Topscorerssheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Topscorerssheet"));
+        public readonly string AdminFileName = ConfigurationManager.AppSettings.Get("AdminLocation");
+        public readonly int Hostsheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet"));
+        public readonly int Rankingheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Rankingsheet"));
+        public readonly int Topscorerssheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Topscorerssheet"));
     }
 
     public class ExcelManager
@@ -35,9 +35,10 @@ namespace EDS_Poule
         private excel._Worksheet xlWorksheet;
         private excel.Range xlRange;
 
-        public ExcelManager()
+        public ExcelManager(int miss =0)
         {
             Settings = new ExcelReadSettings();
+            Settings.Miss = miss;
         }
 
         public IEnumerable<int> ExportPlayersToExcel(List<Player> Players)
@@ -169,7 +170,7 @@ namespace EDS_Poule
             catch { CleanWorkbook(); return null; };
         }
 
-        public List<Dictionary<string, Topscorer>> readtopscorers(int round)
+        public List<Dictionary<string, Topscorer>> readtopscorers(int round, int nrScorers)
         {
             List<Dictionary<string, Topscorer>> scorers = new List<Dictionary<string, Topscorer>>();
             InitialiseWorkbook(Settings.AdminFileName, Settings.Topscorerssheet);
@@ -177,8 +178,8 @@ namespace EDS_Poule
             {
                 Topscorer ts = new Topscorer() { Total = 0, Currentround = 0 };
                 Dictionary<string, Topscorer> topscorers = new Dictionary<string, Topscorer>();
-                var max = Convert.ToInt32(ConfigurationManager.AppSettings.Get("nrTopScorers")) + 2;
-                for (int i = 2; i < max; i++)
+
+                for (int i = 2; i < (nrScorers+2); i++)
                 {
                     string name = Convert.ToString(xlRange.Cells[i, 1].value2);
                     ts.Total = Convert.ToInt32(xlRange.Cells[i, 3].value2);
