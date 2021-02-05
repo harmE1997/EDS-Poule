@@ -35,7 +35,7 @@ namespace EDS_Poule
         private excel._Worksheet xlWorksheet;
         private excel.Range xlRange;
 
-        public ExcelManager(int miss =0)
+        public ExcelManager(int miss = 0)
         {
             Settings = new ExcelReadSettings();
             Settings.Miss = miss;
@@ -61,13 +61,17 @@ namespace EDS_Poule
 
         public Week[] ReadPredictions(string filename, int sheet, bool firsthalf = false, bool secondhalf = false, Week[] Weeks = null)
         {
-            var weeks = new Week[34];
+            var weeks = new Week[Settings.NrBlocks];
+            if (Weeks != null)
+                weeks = Weeks;
+
             var StartWeek = 0;
             var Endweek = Settings.NrBlocks;
             if (firsthalf)
                 Endweek -= (Settings.NrBlocks - Settings.FirstHalfSize);
             if (secondhalf)
                 StartWeek += Settings.FirstHalfSize;
+            
 
             try
             {
