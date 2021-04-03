@@ -121,15 +121,14 @@ namespace EDS_Poule
 
         }
 
-        public IEnumerable<int> CheckAllPlayers(Player Host, int currentWeek, bool recalculate = false)
+        public IEnumerable<int> CheckAllPlayers(Host host, int currentWeek, bool recalculate = false)
         {
             int i = 0;
             ExcelManager em = new ExcelManager();
-            var topscorers = em.readtopscorers(currentWeek, GetNrOfTopscorers());
 
             foreach (Player player in Players)
             {
-                player.CheckPlayer(Host, currentWeek, topscorers, recalculate);
+                player.CheckPlayer(host.getHost(), currentWeek, host.getTopscorers(GetNrOfTopscorers()), recalculate);
                 i++;
                 yield return i;
             }
@@ -147,7 +146,7 @@ namespace EDS_Poule
             return total / Players.Count;
         }
 
-        private int GetNrOfTopscorers()
+        public int GetNrOfTopscorers()
         {
             List<string> scorers = new List<string>();
             foreach (var player in Players)

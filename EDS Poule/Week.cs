@@ -19,7 +19,7 @@ namespace EDS_Poule
             Weeknr = nr;
             WeekScore = 0;
         }
-        public void Checkweek(Player host, BonusQuestions questions, List<Dictionary<string, Topscorer>> topscorers)
+        public void Checkweek(Player host, BonusQuestions questions, Dictionary<string, Topscorer> topscorers)
         {
             ExcelManager em = new ExcelManager();
 

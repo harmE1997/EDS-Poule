@@ -60,7 +60,7 @@ namespace EDS_Poule
             try
             {
                 int.TryParse(cbCheck.Text, out int round);
-                foreach (int i in (Manager.CheckAllPlayers(host.getHost(), round, cbRecalculate.Checked)))
+                foreach (int i in (Manager.CheckAllPlayers(host, round, cbRecalculate.Checked)))
                     rtbNotes.Text = "Checked " + i + " out of " + Manager.Players.Count + " players";
                 RefreshRanking();
             }
@@ -207,8 +207,8 @@ namespace EDS_Poule
 
         private void btnResetHost_Click(object sender, EventArgs e)
         {
-            host = new Host();
             host.setHost();
+            host.setTopscorers(Manager.GetNrOfTopscorers());
         }
     }
 }

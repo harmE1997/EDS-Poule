@@ -38,7 +38,7 @@ namespace EDS_Poule
             return text;
         }
 
-        public void CheckPlayer(Player Host, int currentWeek, List<Dictionary<string, Topscorer>> topscorers, bool recalculateWeeks = false)
+        public void CheckPlayer(Player Host, int currentWeek, Dictionary<string, Topscorer> topscorers, bool recalculateWeeks = false)
         {
             TotalScore = 0;
             foreach (var week in Weeks)

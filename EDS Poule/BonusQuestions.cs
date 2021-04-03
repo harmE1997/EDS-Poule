@@ -37,7 +37,7 @@ namespace EDS_Poule
     public struct Topscorer
     {
         public int Total;
-        public int Currentround;
+        public List<int> Rounds;
     }
 
     [Serializable]
@@ -66,7 +66,7 @@ namespace EDS_Poule
             };
         }
 
-        public void CheckBonus(BonusQuestions HostQuestions, int currentweek, List<Dictionary<string, Topscorer>> topscorers)
+        public void CheckBonus(BonusQuestions HostQuestions, int currentweek, Dictionary<string, Topscorer> topscorers)
         {
             if (HostQuestions == null)
             {
@@ -103,13 +103,13 @@ namespace EDS_Poule
             checkTopscorer(currentweek, topscorers);
         }
 
-        private void checkTopscorer(int round, List<Dictionary<string, Topscorer>> topscorers)
+        private void checkTopscorer(int round, Dictionary<string, Topscorer> topscorers)
         {
             ExcelManager ex = new ExcelManager();
             try
             {
-                var ans = topscorers[round-1][Answers[BonusKeys.Topscorer].Answer];
-                WeekScore += ans.Currentround * 5;
+                var ans = topscorers[Answers[BonusKeys.Topscorer].Answer];
+                WeekScore += ans.Rounds[round-1] * 5;
             }
 
             catch { }

@@ -132,7 +132,7 @@ namespace EDS_Poule
             catch { CleanWorkbook(); return Week; }
         }
 
-        public BonusQuestions ReadHostBonus()
+        public BonusQuestions ReadBonus()
         {
             int column = 7;
             int weekcolumn = 10;
@@ -174,24 +174,23 @@ namespace EDS_Poule
             catch { CleanWorkbook(); return null; };
         }
 
-        public List<Dictionary<string, Topscorer>> readtopscorers(int round, int nrScorers)
+        public Dictionary<string, Topscorer> readtopscorers(int nrScorers)
         {
-            List<Dictionary<string, Topscorer>> scorers = new List<Dictionary<string, Topscorer>>();
+            Dictionary<string, Topscorer> scorers = new Dictionary<string, Topscorer>();
             InitialiseWorkbook(Settings.AdminFileName, Settings.Topscorerssheet);
-            for (int x = 0; x < round; x++)
+            for (int i = 2; i < (nrScorers+2); i++)
             {
-                Topscorer ts = new Topscorer() { Total = 0, Currentround = 0 };
-                Dictionary<string, Topscorer> topscorers = new Dictionary<string, Topscorer>();
-
-                for (int i = 2; i < (nrScorers+2); i++)
+                Topscorer ts = new Topscorer() { Total = 0, Rounds = new List<int>()};
+                string name = Convert.ToString(xlRange.Cells[i, 1].value2);
+                ts.Total = Convert.ToInt32(xlRange.Cells[i, 3].value2);
+                for (int x = 0; x < 34; x++)
                 {
-                    string name = Convert.ToString(xlRange.Cells[i, 1].value2);
-                    ts.Total = Convert.ToInt32(xlRange.Cells[i, 3].value2);
-                    ts.Currentround = Convert.ToInt32(xlRange.Cells[i, x + 4].value2);
-                    topscorers.Add(name, ts);
+                    var round = Convert.ToInt32(xlRange.Cells[i, x + 4].value2);
+                    ts.Rounds.Add(round);               
                 }
-                scorers.Add(topscorers);
+                scorers.Add(name, ts);
             }
+
             CleanWorkbook();
             return scorers;
         }

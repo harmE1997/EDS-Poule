@@ -7,12 +7,27 @@ using System.Configuration;
 
 namespace EDS_Poule
 {
-    class Host
+    public class Host
     {
         private Player host;
+        private Dictionary<string, Topscorer> Topscorers;
+
         public Host()
         {
             host = null;
+            Topscorers = new Dictionary<string, Topscorer>();
+        }
+
+        public Dictionary<string, Topscorer> getTopscorers(int nrtopscorers)
+        {
+            if (Topscorers.Count == 0)
+                setTopscorers(nrtopscorers);
+            return Topscorers;
+        }
+
+        public void setTopscorers(int nrtopscorers)
+        { 
+            Topscorers = new ExcelManager().readtopscorers(nrtopscorers);
         }
 
         public Player getHost()
@@ -30,7 +45,7 @@ namespace EDS_Poule
             ExcelManager excelManager = new ExcelManager();
             int sheet = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet"));
             Week[] weeks = excelManager.ReadPredictions(ConfigurationManager.AppSettings.Get("AdminLocation"), sheet);
-            BonusQuestions bonus = excelManager.ReadHostBonus();
+            BonusQuestions bonus = excelManager.ReadBonus();
             host = new Player("host", "22", "zb", weeks, bonus);
         }
     }
