@@ -165,7 +165,7 @@ namespace EDS_Poule
                     Convert.ToString(xlRange.Cells[370, column].value2),
                     Convert.ToString(xlRange.Cells[371, column].value2),
                     Convert.ToString(xlRange.Cells[372, column].value2),
-                    finalists, promovendi, degradanten,
+                    finalists, degradanten, promovendi, 
                     weeks
                     );
                 CleanWorkbook();
