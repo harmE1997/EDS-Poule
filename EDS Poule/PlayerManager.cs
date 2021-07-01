@@ -128,7 +128,7 @@ namespace EDS_Poule
 
             foreach (Player player in Players)
             {
-                player.CheckPlayer(host.getHost(), currentWeek, host.getTopscorers(GetNrOfTopscorers()), recalculate);
+                player.CheckPlayer(host.getHost(), currentWeek, host.getTopscorers(), recalculate);
                 i++;
                 yield return i;
             }
@@ -144,18 +144,6 @@ namespace EDS_Poule
                 total += p.WeekScore;
             }
             return total / Players.Count;
-        }
-
-        public int GetNrOfTopscorers()
-        {
-            List<string> scorers = new List<string>();
-            foreach (var player in Players)
-            {
-                var playerscorer = player.Questions.Answers[BonusKeys.Topscorer].Answer;
-                if (!scorers.Contains(playerscorer))
-                    scorers.Add(playerscorer);
-            }
-            return scorers.Count;
         }
     }
 }

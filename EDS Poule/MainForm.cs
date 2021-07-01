@@ -208,7 +208,7 @@ namespace EDS_Poule
         private void btnResetHost_Click(object sender, EventArgs e)
         {
             host.setHost();
-            host.setTopscorers(Manager.GetNrOfTopscorers());
+            host.setTopscorers();
         }
     }
 }

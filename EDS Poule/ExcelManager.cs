@@ -174,12 +174,15 @@ namespace EDS_Poule
             catch { CleanWorkbook(); return null; };
         }
 
-        public Dictionary<string, Topscorer> readtopscorers(int nrScorers)
+        public Dictionary<string, Topscorer> readtopscorers()
         {
             Dictionary<string, Topscorer> scorers = new Dictionary<string, Topscorer>();
             InitialiseWorkbook(Settings.AdminFileName, Settings.Topscorerssheet);
-            for (int i = 2; i < (nrScorers+2); i++)
+            int i = 2;
+            while (true)
             {
+                if (xlRange.Cells[i, 1])
+                    break;
                 Topscorer ts = new Topscorer() { Total = 0, Rounds = new List<int>()};
                 string name = Convert.ToString(xlRange.Cells[i, 1].value2);
                 ts.Total = Convert.ToInt32(xlRange.Cells[i, 3].value2);
@@ -189,6 +192,7 @@ namespace EDS_Poule
                     ts.Rounds.Add(round);               
                 }
                 scorers.Add(name, ts);
+                i++;
             }
 
             CleanWorkbook();

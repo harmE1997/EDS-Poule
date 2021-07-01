@@ -18,16 +18,16 @@ namespace EDS_Poule
             Topscorers = new Dictionary<string, Topscorer>();
         }
 
-        public Dictionary<string, Topscorer> getTopscorers(int nrtopscorers)
+        public Dictionary<string, Topscorer> getTopscorers()
         {
             if (Topscorers.Count == 0)
-                setTopscorers(nrtopscorers);
+                setTopscorers();
             return Topscorers;
         }
 
-        public void setTopscorers(int nrtopscorers)
+        public void setTopscorers()
         { 
-            Topscorers = new ExcelManager().readtopscorers(nrtopscorers);
+            Topscorers = new ExcelManager().readtopscorers();
         }
 
         public Player getHost()
