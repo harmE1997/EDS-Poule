@@ -17,6 +17,7 @@ namespace EDS_Poule
         public int WeekScore { get; private set; }
         public int Ranking { get; set; }
         public int PreviousRanking { get; set; }
+        public int RankingDifference { get; set; }
         public Week[] Weeks { get; private set; }
         public BonusQuestions Questions { get; set; }
 
@@ -30,6 +31,9 @@ namespace EDS_Poule
             WeekScore = 0;
             Questions = questions;
             PreviousScore = 0;
+            RankingDifference = 0;
+            PreviousRanking = 0;
+            Ranking = 0;
         }
 
         public string PlayerToString()

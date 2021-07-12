@@ -87,6 +87,8 @@ namespace EDS_Poule
                     player.Ranking = ranking;
                     previousScore = player.TotalScore;
                 }
+
+                player.RankingDifference = (player.Ranking - player.PreviousRanking) * -1;
                 index++;
             }
         }
