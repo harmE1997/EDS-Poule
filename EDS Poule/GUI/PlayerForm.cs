@@ -12,8 +12,9 @@ namespace EDS_Poule
 {
     public partial class PlayerForm : Form
     {
-        public Player Player;
+        private Player Player;
         public PlayerManager manager;
+        public ExcelManager excelManager;
         private NumericUpDown[] NUDs;
         private Week[] weeks;
         private int counter;
@@ -87,11 +88,11 @@ namespace EDS_Poule
                 return;
             }
 
-            ExcelManager em = new ExcelManager(Convert.ToInt32(nudAfwijking.Value));
+            excelManager.Settings.Miss = Convert.ToInt32(nudAfwijking.Value);
             
             if (cbSecondHalf.Checked)
                 weeks = Player.Weeks;
-            weeks = em.ReadPredictions(filename, 1, cbFirstHalf.Checked, cbSecondHalf.Checked, weeks);
+            weeks = excelManager.ReadPredictions(filename, 1, cbFirstHalf.Checked, cbSecondHalf.Checked, weeks);
 
             SavePlayer();
             MessageBox.Show("Predictions succesfully loaded and saved!");

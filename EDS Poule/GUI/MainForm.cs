@@ -17,13 +17,16 @@ namespace EDS_Poule
         private PlayerManager Manager;
         private PlayerForm playerForm;
         private Host host;
+        private ExcelManager excelManager;
         public MainForm()
         {
             Manager = new PlayerManager();
             InitializeComponent();
             Manager.LoadPlayers();
             RefreshRanking();
+            excelManager = new ExcelManager();
             playerForm = new PlayerForm();
+            playerForm.excelManager = excelManager;
             host = new Host();
         }
 
@@ -59,6 +62,7 @@ namespace EDS_Poule
         {
             try
             {
+                host.setHost();
                 int.TryParse(cbCheck.Text, out int round);
                 foreach (int i in (Manager.CheckAllPlayers(host, round, cbRecalculate.Checked)))
                     rtbNotes.Text = "Checked " + i + " out of " + Manager.Players.Count + " players";
@@ -103,8 +107,8 @@ namespace EDS_Poule
                 int matchID = GetMatchID();
                 var week = Convert.ToInt16(cbCheck.Text) - 1;
                 string Names = "";
-                ExcelManager em = new ExcelManager();
-                var hostweek = em.ReadSingleWeek(ConfigurationManager.AppSettings.Get("AdminLocation"), Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet")), week);
+                host.setHost();
+                var hostweek = excelManager.ReadSingleWeek(ConfigurationManager.AppSettings.Get("AdminLocation"), Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet")), week);
                 foreach (Player player in Manager.Players)
                 {
                     if (player.Weeks[week] != null)
@@ -166,8 +170,7 @@ namespace EDS_Poule
 
         private void btnRankingToExcel_Click(object sender, EventArgs e)
         {
-            ExcelManager em = new ExcelManager();
-            foreach (var i in em.ExportPlayersToExcel(Manager.Players))
+            foreach (var i in excelManager.ExportPlayersToExcel(Manager.Players))
             {
                 rtbNotes.Text = "Exported " + (i - 2) + " out of " + Manager.Players.Count + " players.";
             }
@@ -207,6 +210,7 @@ namespace EDS_Poule
 
         private void btnResetHost_Click(object sender, EventArgs e)
         {
+            host.HostSet = false;
             host.setHost();
             host.setTopscorers();
         }

@@ -126,11 +126,10 @@ namespace EDS_Poule
         public IEnumerable<int> CheckAllPlayers(Host host, int currentWeek, bool recalculate = false)
         {
             int i = 0;
-            ExcelManager em = new ExcelManager();
 
             foreach (Player player in Players)
             {
-                player.CheckPlayer(host.getHost(), currentWeek, host.getTopscorers(), recalculate);
+                player.CheckPlayer(host, currentWeek, host.getTopscorers(), recalculate);
                 i++;
                 yield return i;
             }

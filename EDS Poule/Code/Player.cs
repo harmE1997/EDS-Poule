@@ -18,7 +18,7 @@ namespace EDS_Poule
         public int Ranking { get; set; }
         public int PreviousRanking { get; set; }
         public int RankingDifference { get; set; }
-        public Week[] Weeks { get; private set; }
+        public Week[] Weeks { get; set; }
         public BonusQuestions Questions { get; set; }
 
         public Player(string name, string age, string woonplaats, Week[] weeks, BonusQuestions questions)

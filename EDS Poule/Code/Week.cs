@@ -21,8 +21,6 @@ namespace EDS_Poule
         }
         public void Checkweek(Player host, BonusQuestions questions, Dictionary<string, Topscorer> topscorers)
         {
-            ExcelManager em = new ExcelManager();
-
             Week hostweek = host.Weeks[Weeknr - 1];
             WeekScore = 0;
             for (int counter = 0; counter < Matches.Length; counter++)

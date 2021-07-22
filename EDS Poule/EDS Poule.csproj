@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>eredivisie.ico</ApplicationIcon>
+    <ApplicationIcon>GUI\eredivisie.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -51,38 +51,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BonusQuestions.cs" />
-    <Compile Include="ExcelManager.cs" />
-    <Compile Include="Host.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Code\BonusQuestions.cs" />
+    <Compile Include="Excel\ExcelManager.cs" />
+    <Compile Include="Code\Host.cs" />
+    <Compile Include="Excel\ExcelReadSettings.cs" />
+    <Compile Include="GUI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="GUI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Match.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="PlayerForm.cs">
+    <Compile Include="Code\Match.cs" />
+    <Compile Include="Code\Player.cs" />
+    <Compile Include="GUI\PlayerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PlayerForm.Designer.cs">
+    <Compile Include="GUI\PlayerForm.Designer.cs">
       <DependentUpon>PlayerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlayerManager.cs" />
+    <Compile Include="Code\PlayerManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stat.cs" />
-    <Compile Include="StatsForm.cs">
+    <Compile Include="Code\Stat.cs" />
+    <Compile Include="GUI\StatsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StatsForm.Designer.cs">
+    <Compile Include="GUI\StatsForm.Designer.cs">
       <DependentUpon>StatsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Week.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <Compile Include="Code\Week.cs" />
+    <EmbeddedResource Include="GUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlayerForm.resx">
+    <EmbeddedResource Include="GUI\PlayerForm.resx">
       <DependentUpon>PlayerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -94,7 +95,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="StatsForm.resx">
+    <EmbeddedResource Include="GUI\StatsForm.resx">
       <DependentUpon>StatsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -141,7 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="edst.ico" />
-    <Content Include="eredivisie.ico" />
+    <Content Include="GUI\eredivisie.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

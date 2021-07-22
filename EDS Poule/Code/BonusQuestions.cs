@@ -105,7 +105,6 @@ namespace EDS_Poule
 
         private void checkTopscorer(int round, Dictionary<string, Topscorer> topscorers)
         {
-            ExcelManager ex = new ExcelManager();
             try
             {
                 var ans = topscorers[Answers[BonusKeys.Topscorer].Answer];
