@@ -34,6 +34,7 @@ namespace EDS_Poule
         private void btnNewPlayer_Click(object sender, EventArgs e)
         {
             playerForm = new PlayerForm();
+            playerForm.excelManager = excelManager;
             playerForm.manager = Manager;
             playerForm.Show();
         }
@@ -79,6 +80,7 @@ namespace EDS_Poule
             if (player != null)
             {
                 playerForm = new PlayerForm();
+                playerForm.excelManager = excelManager;
                 playerForm.manager = Manager;
                 playerForm.LoadPlayer(player);
                 playerForm.Show();
