@@ -28,6 +28,7 @@ namespace EDS_Poule
             playerForm = new PlayerForm();
             playerForm.excelManager = excelManager;
             host = new Host();
+            host.excelManager = excelManager;
         }
 
 

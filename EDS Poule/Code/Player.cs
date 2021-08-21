@@ -45,8 +45,11 @@ namespace EDS_Poule
         public void CheckPlayer(Player Host, int currentWeek, Dictionary<string, Topscorer> topscorers, bool recalculateWeeks = false)
         {
             TotalScore = 0;
-            foreach (var week in Weeks)
+            for (int i = 0; i < Weeks.Length; i++)
             {
+                var week = Weeks[i];
+                if (week == null)
+                    break;
                 if (week.Weeknr <= currentWeek)
                 {
                     if (week.WeekScore == 0 || recalculateWeeks)

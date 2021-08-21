@@ -164,10 +164,10 @@ namespace EDS_Poule
             int i = 2;
             while (true)
             {
-                if (xlRange.Cells[i, 1])
-                    break;
                 Topscorer ts = new Topscorer() { Total = 0, Rounds = new List<int>()};
                 string name = Convert.ToString(xlRange.Cells[i, 1].value2);
+                if (name == null)
+                    break;
                 ts.Total = Convert.ToInt32(xlRange.Cells[i, 3].value2);
                 for (int x = 0; x < 34; x++)
                 {
