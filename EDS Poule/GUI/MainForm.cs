@@ -64,7 +64,9 @@ namespace EDS_Poule
         {
             try
             {
+                rtbNotes.Text += "loading host\n";
                 host.setHost();
+                rtbNotes.Text += "host loaded\n";
                 int.TryParse(cbCheck.Text, out int round);
                 foreach (int i in (Manager.CheckAllPlayers(host, round, cbRecalculate.Checked)))
                     rtbNotes.Text = "Checked " + i + " out of " + Manager.Players.Count + " players";
