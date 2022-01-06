@@ -194,11 +194,17 @@ namespace EDS_Poule
                     , tbWinterkampioen.Text, tbRonde.Text, tbMostRed.Text, finalists, degradanten, promovendi
                      , new int[10] { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99 });
 
+
                 Player newplayer = new Player(tbName.Text, tbAge.Text, tbWoonplaats.Text, weeks, questions);
-                if (Player != null)
+                if (cbSecondHalf.Checked)
                 {
-                    manager.RemovePlayer(Player.Name);
+                    Player.Weeks = weeks;
+                    newplayer = Player;
                 }
+
+                if (Player != null)
+                    manager.RemovePlayer(Player.Name);
+                
                 manager.AddPlayer(newplayer);
                 this.Dispose();
                 this.Close();
