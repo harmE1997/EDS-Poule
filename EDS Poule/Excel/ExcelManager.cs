@@ -89,6 +89,9 @@ namespace EDS_Poule
                     double y = 99;
                     int currentRow = startrow + rowschecked;
 
+                    var xt = xlRange.Cells[currentRow, Settings.HomeColumn].Value2;
+                    var yt = xlRange.Cells[currentRow, Settings.OutColumn].Value2;
+
                     if (xlRange.Cells[currentRow, Settings.HomeColumn].Value2 != null && xlRange.Cells[currentRow, Settings.OutColumn].Value2 != null)
                     {
                         try
