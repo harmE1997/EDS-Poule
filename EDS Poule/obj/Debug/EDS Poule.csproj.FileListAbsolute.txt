@@ -75,3 +75,17 @@ C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.GenerateResource.cache
 C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.CoreCompileInputs.cache
 C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.exe
 C:\Harm\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.pdb
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\bin\Debug\EDS Poule.exe.config
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\bin\Debug\EDS Poule.exe
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\bin\Debug\EDS Poule.pdb
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.AssemblyReference.cache
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.SuggestedBindingRedirects.cache
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.ResolveComReference.cache
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\obj\Debug\EDS_Poule.Properties.Resources.resources
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.GenerateResource.cache
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.csproj.CoreCompileInputs.cache
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.exe
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\obj\Debug\EDS Poule.pdb
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\obj\Debug\EDS_Poule.GUI.MainForm.resources
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\obj\Debug\EDS_Poule.GUI.PlayerForm.resources
+C:\Users\Harm\Documents\Github\EDS-Poule\EDS Poule\obj\Debug\EDS_Poule.GUI.StatsForm.resources

@@ -1,4 +1,4 @@
-﻿namespace EDS_Poule
+﻿namespace EDS_Poule.GUI
 {
     partial class StatsForm
     {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EDS_Poule.Code;
+using EDS_Poule.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +12,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.IO;
 
-namespace EDS_Poule
+namespace EDS_Poule.GUI
 {
     public partial class MainForm : Form
     {

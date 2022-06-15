@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EDS_Poule
+namespace EDS_Poule.Code
 {
     [Serializable]
     public class Player

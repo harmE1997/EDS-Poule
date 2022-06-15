@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EDS_Poule.Code;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using System.IO;
 
-namespace EDS_Poule
+namespace EDS_Poule.Excel
 {
     public class ExcelManager
     {

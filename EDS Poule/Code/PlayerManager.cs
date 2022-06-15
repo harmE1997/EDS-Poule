@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.Configuration;
 
-namespace EDS_Poule
+namespace EDS_Poule.Code
 {
     [Serializable]
     public class PlayerManager

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace EDS_Poule
+namespace EDS_Poule.Code
 {
     [Serializable]
     public enum BonusKeys

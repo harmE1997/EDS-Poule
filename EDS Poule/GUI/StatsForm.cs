@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EDS_Poule.Code;
+using EDS_Poule.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EDS_Poule
+namespace EDS_Poule.GUI
 {
     public partial class StatsForm : Form
     {

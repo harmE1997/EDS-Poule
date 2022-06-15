@@ -1,11 +1,12 @@
-﻿using System;
+﻿using EDS_Poule.Excel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace EDS_Poule
+namespace EDS_Poule.Code
 {
     public class Host : Player
     {
