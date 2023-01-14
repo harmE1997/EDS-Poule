@@ -49,7 +49,10 @@ namespace EDS_Poule.Code
             {
                 var week = Weeks[i];
                 if (week == null)
+                {
+                    WeekScore = 0;
                     break;
+                }
 
                 if (week.Weeknr <= currentWeek)
                 {
