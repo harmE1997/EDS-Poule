@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30621.155
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDS Poule", "EDS Poule\EDS Poule.csproj", "{3ACFC930-D530-41E3-B88E-876F72A24918}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDS_V4", "EDS_V4\EDS_V4.csproj", "{75906947-093E-4877-B10F-4D9B70F7821E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{3ACFC930-D530-41E3-B88E-876F72A24918}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ACFC930-D530-41E3-B88E-876F72A24918}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ACFC930-D530-41E3-B88E-876F72A24918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75906947-093E-4877-B10F-4D9B70F7821E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75906947-093E-4877-B10F-4D9B70F7821E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75906947-093E-4877-B10F-4D9B70F7821E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75906947-093E-4877-B10F-4D9B70F7821E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

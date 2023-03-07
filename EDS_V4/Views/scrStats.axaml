@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="540"
+             x:Class="EDS_V4.Views.scrStats">
+	<UserControl.Styles>
+		<Style Selector="Button">
+			<Setter Property="Width" Value="200"/>
+			<Setter Property="Height" Value="50"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Margin" Value="1"/>
+		</Style>
+	</UserControl.Styles>
+
+	<Grid RowDefinitions="*,*,*" ColumnDefinitions="auto,auto" Margin="10">
+		<StackPanel Orientation="Vertical">
+			<Button Content="Champions" Grid.Row="0" Grid.Column="0"/>
+			<Button Content="Degradanten" Grid.Row="1" Grid.Column="0"/>
+			<Button Content="Promovendi" Grid.Row="3" Grid.Column="0"/>
+			<Button Content="Nacompetitieteams" Grid.Row="9" Grid.Column="0"/>
+			<Button Content="Winterkampioenen" Grid.Row="5" Grid.Column="0"/>
+			<Button Content="Ronde kampioenschap" Grid.Row="2" Grid.Column="0"/>
+			<Button Content="Topscorers" Grid.Row="8" Grid.Column="0"/>
+			<Button Content="Meeste rode kaarten" Grid.Row="4" Grid.Column="0"/>			
+			<Button Content="Ontslagen trainers" Grid.Row="6" Grid.Column="0"/>
+			<Button Content="Bekerfinalisten" Grid.Row="7" Grid.Column="0"/>					
+		</StackPanel>
+		<ListBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Items="testlistaasdfghasjhfsjkfgd" Width="500">
+			<ListBox.Styles>
+				<!-- Give the ListBoxItems a fixed with of 100 and right-align them -->
+				<Style Selector="ListBoxItem">
+					<Setter Property="Height" Value="35"/>
+					<Setter Property="VerticalContentAlignment" Value="Top"/>
+				</Style>
+			</ListBox.Styles>
+		</ListBox>
+	</Grid>
+</UserControl>
