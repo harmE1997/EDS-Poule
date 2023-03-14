@@ -20,6 +20,9 @@
 			<Setter Property="Height" Value="35"/>
 			<Setter Property="VerticalContentAlignment" Value="Center"/>
 			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="Background" Value="Blue"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="BorderBrush" Value="Black"/>
 		</Style>
 
 		<Style Selector="TextBlock">

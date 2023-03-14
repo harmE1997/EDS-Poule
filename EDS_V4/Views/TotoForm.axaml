@@ -10,118 +10,139 @@
 		<Style Selector="TextBox">
 			<Setter Property="Width" Value="150"/>
 		</Style>
+
+		<Style Selector="TabItem">
+			<Setter Property="Height" Value="15"/>
+			<Setter Property="FontSize" Value="20"/>
+			<Setter Property="Background" Value="Blue"/>
+			<Setter Property="Foreground" Value="White"/>
+		</Style>
+
+		<Style Selector="Button">
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="Background" Value="Blue"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="BorderBrush" Value="Black"/>
+		</Style>
 	</Window.Styles>
 	
-	<Grid ColumnDefinitions="*,auto" RowDefinitions="auto,*">
-		<StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Margin="10">
-			<TextBlock Text="Name" VerticalAlignment="Center" Margin="5"/>
-			<TextBox Width="200"/>
+	<Grid ColumnDefinitions="auto,auto" RowDefinitions="auto,*">
+		<StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Margin="20">
+			<TextBlock Text="Name:" VerticalAlignment="Center" Margin="5"/>
+			<TextBox Width="200" Text="{Binding PlayerName}"/>
+			<TextBlock Text="Town:" VerticalAlignment="Center" Margin="5"/>
+			<TextBox Width="200" Text="{Binding PlayerTown}"/>
 		</StackPanel>
-
-		<Grid Grid.Column="0" Grid.Row="1">
-			<TabControl TabStripPlacement="Bottom">
-				<TabItem>
-					<TabItem.Header>
-						<StackPanel Orientation="Vertical">
-							<TextBlock Text="Excel" Width="100"/>
+		<TabControl TabStripPlacement="Bottom" Grid.Row="1" Grid.ColumnSpan="2">
+			<TabItem>
+				<TabItem.Header>
+					<StackPanel Orientation="Vertical">
+						<TextBlock Text="Excel" Width="100"/>
+					</StackPanel>
+				</TabItem.Header>
+				<Grid RowDefinitions="auto,auto,auto,auto">
+					<views:isoFileBrowser BrowseForDirectory="False"/>
+					<StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Margin="10">
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5"/>
+							<TextBox Width="50"/>
 						</StackPanel>
-					</TabItem.Header>
-					<Grid RowDefinitions="auto,auto,auto,auto">
-						<views:isoFileBrowser BrowseForDirectory="False"/>
-						<StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Margin="10">
-							<StackPanel Orientation="Horizontal">
-								<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5"/>
-								<TextBox Width="50"/>
-							</StackPanel>
-							<CheckBox Content="1st half only"/>
-							<CheckBox Content="2nd half only"/>
-							<Button Content="Load predictions" Width="150"/>
+						<CheckBox Content="1st half only"/>
+						<CheckBox Content="2nd half only"/>
+						<Button Content="Load predictions" Width="150"/>
+					</StackPanel>
+				</Grid>
+			</TabItem>
+			<TabItem>
+				<TabItem.Header>
+					<StackPanel Orientation="Vertical">
+						<TextBlock Text="Manual"/>
+					</StackPanel>
+				</TabItem.Header>				
+				<Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="auto,auto,auto" Margin="10">
+					<TextBlock Text="{Binding CurrentWeekText}" Grid.Row="0" Grid.ColumnSpan="3"/>
+						<TextBlock Text="Match 1" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+						<StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+							<TextBox Width="50" Text="{Binding Score1A}"/>
+							<TextBox Width="50" Text="{Binding Score1B}"/>
 						</StackPanel>
-					</Grid>
-				</TabItem>
-				<TabItem>
-					<TabItem.Header>
-						<StackPanel Orientation="Vertical">
-							<TextBlock Text="Manual"/>
+						<TextBlock Text="Match 2" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
+						<StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+							<TextBox Width="50" Text="{Binding Score2A}"/>
+							<TextBox Width="50" Text="{Binding Score2B}"/>
 						</StackPanel>
-					</TabItem.Header>				
-					<Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="auto,auto,auto">
-						<TextBlock Text="Week 1" Grid.Row="0" Grid.ColumnSpan="3"/>
-							<TextBlock Text="Match 1" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
-							<StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-								<TextBox Width="50"/>
-								<TextBox Width="50"/>
-							</StackPanel>
-							<TextBlock Text="Match 2" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
-							<StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-								<TextBox Width="50"/>
-								<TextBox Width="50"/>
-							</StackPanel>
-								<TextBlock Text="Match 3" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
-							<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
-								<TextBox Width="50"/>
-								<TextBox Width="50"/>
-							</StackPanel>
-								<TextBlock Text="Match 4" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"/>
-							<StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
-								<TextBox Width="50"/>
-								<TextBox Width="50"/>
-							</StackPanel>
-								<TextBlock Text="Match 5" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"/>
-							<StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
-								<TextBox Width="50"/>
-								<TextBox Width="50"/>
-							</StackPanel>
-								<TextBlock Text="Match 6" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0"/>
-							<StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
-								<TextBox Width="50"/>
-								<TextBox Width="50"/>
-							</StackPanel>
-								<TextBlock Text="Match 7" VerticalAlignment="Center" Grid.Row="7" Grid.Column="0"/>
-							<StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1">
-								<TextBox Width="50"/>
-								<TextBox Width="50"/>
-							</StackPanel>
-								<TextBlock Text="Match 8" VerticalAlignment="Center" Grid.Row="8" Grid.Column="0"/>
-							<StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1">
-								<TextBox Width="50"/>
-								<TextBox Width="50"/>
-							</StackPanel>
-								<TextBlock Text="MOTW" VerticalAlignment="Center" Grid.Row="9" Grid.Column="0"/>
-							<StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="1">
-								<TextBox Width="50"/>
-								<TextBox Width="50"/>
-							</StackPanel>
-							<Button Content="Previous Week" Width="150" HorizontalContentAlignment="Center" Grid.Row="10" Grid.Column="0"/>
-							<Button Content="Next Week" Width="150" HorizontalContentAlignment="Center" Grid.Row="10" Grid.Column="1"/>
-					</Grid>
-				</TabItem>
-			</TabControl>
-		</Grid>
-		
-		<Grid Grid.Column="1" Grid.Row="1" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*,*,*">
-				<TextBlock Text="Kampioen" VerticalAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="0"/>
-				<TextBox Grid.Row="0" Grid.Column="1"/>
-				<TextBlock Text="Winterkampioen" VerticalAlignment="Center" Margin="5" Grid.Row="1" Grid.Column="0"/>
-				<TextBox Grid.Row="1" Grid.Column="1"/>
-				<TextBlock Text="Topscorer" VerticalAlignment="Center" Margin="5" Grid.Row="2" Grid.Column="0"/>
-				<TextBox Grid.Row="2" Grid.Column="1"/>
-				<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="3" Grid.Column="0"/>
-				<TextBox Grid.Row="3" Grid.Column="1"/>
-				<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="4" Grid.Column="0"/>
-				<TextBox Grid.Row="4" Grid.Column="1"/>
-				<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="5" Grid.Column="0"/>
-				<TextBox Grid.Row="5" Grid.Column="1"/>
-				<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="6" Grid.Column="0"/>
-				<TextBox Grid.Row="6" Grid.Column="1"/>
-				<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="7" Grid.Column="0"/>
-				<TextBox Grid.Row="7" Grid.Column="1"/>
-				<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="8" Grid.Column="0"/>
-				<TextBox Grid.Row="8" Grid.Column="1"/>
-				<TextBox Grid.Row="8" Grid.Column="2"/>
-				<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="9" Grid.Column="0"/>
-				<TextBox Grid.Row="9" Grid.Column="1"/>
-				<TextBox Grid.Row="9" Grid.Column="2"/>
-		</Grid>
+							<TextBlock Text="Match 3" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
+						<StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+							<TextBox Width="50" Text="{Binding Score3A}"/>
+							<TextBox Width="50" Text="{Binding Score3B}"/>
+						</StackPanel>
+							<TextBlock Text="Match 4" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"/>
+						<StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+							<TextBox Width="50" Text="{Binding Score4A}"/>
+							<TextBox Width="50" Text="{Binding Score4B}"/>
+						</StackPanel>
+							<TextBlock Text="Match 5" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"/>
+						<StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
+							<TextBox Width="50" Text="{Binding Score5A}"/>
+							<TextBox Width="50" Text="{Binding Score5B}"/>
+						</StackPanel>
+							<TextBlock Text="Match 6" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0"/>
+						<StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
+							<TextBox Width="50" Text="{Binding Score6A}"/>
+							<TextBox Width="50" Text="{Binding Score6B}"/>
+						</StackPanel>
+							<TextBlock Text="Match 7" VerticalAlignment="Center" Grid.Row="7" Grid.Column="0"/>
+						<StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1">
+							<TextBox Width="50" Text="{Binding Score7A}"/>
+							<TextBox Width="50" Text="{Binding Score7B}"/>
+						</StackPanel>
+							<TextBlock Text="Match 8" VerticalAlignment="Center" Grid.Row="8" Grid.Column="0"/>
+						<StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1">
+							<TextBox Width="50" Text="{Binding Score8A}"/>
+							<TextBox Width="50" Text="{Binding Score8B}"/>
+						</StackPanel>
+							<TextBlock Text="MOTW" VerticalAlignment="Center" Grid.Row="9" Grid.Column="0"/>
+						<StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="1">
+							<TextBox Width="50" Text="{Binding Score9A}"/>
+							<TextBox Width="50" Text="{Binding Score9B}"/>
+						</StackPanel>
+						<Button Content="Previous Week" Width="150" HorizontalContentAlignment="Center" Grid.Row="10" Grid.Column="0" Command="{Binding PreviousWeekCommand}"/>
+						<Button Content="Next Week" Width="150" HorizontalContentAlignment="Center" Grid.Row="10" Grid.Column="1" Command="{Binding NextWeekCommand}"/>
+				</Grid>
+			</TabItem>
+			<TabItem>
+				<TabItem.Header>
+					<StackPanel Orientation="Vertical">
+						<TextBlock Text="Bonus Questions"/>
+					</StackPanel>
+				</TabItem.Header>
+				<Grid Grid.Column="1" Grid.Row="1" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*,*,auto" Margin="10">
+					<TextBlock Text="Kampioen" VerticalAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="0"/>
+					<TextBox Grid.Row="0" Grid.Column="1"/>
+					<TextBlock Text="Winterkampioen" VerticalAlignment="Center" Margin="5" Grid.Row="1" Grid.Column="0"/>
+					<TextBox Grid.Row="1" Grid.Column="1"/>
+					<TextBlock Text="Topscorer" VerticalAlignment="Center" Margin="5" Grid.Row="2" Grid.Column="0"/>
+					<TextBox Grid.Row="2" Grid.Column="1"/>
+					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="3" Grid.Column="0"/>
+					<TextBox Grid.Row="3" Grid.Column="1"/>
+					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="4" Grid.Column="0"/>
+					<TextBox Grid.Row="4" Grid.Column="1"/>
+					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="5" Grid.Column="0"/>
+					<TextBox Grid.Row="5" Grid.Column="1"/>
+					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="6" Grid.Column="0"/>
+					<TextBox Grid.Row="6" Grid.Column="1"/>
+					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="7" Grid.Column="0"/>
+					<TextBox Grid.Row="7" Grid.Column="1"/>
+					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="8" Grid.Column="0"/>
+					<TextBox Grid.Row="8" Grid.Column="1"/>
+					<TextBox Grid.Row="8" Grid.Column="2"/>
+					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="9" Grid.Column="0"/>
+					<TextBox Grid.Row="9" Grid.Column="1"/>
+					<TextBox Grid.Row="9" Grid.Column="2"/>
+				</Grid>
+			</TabItem>
+	</TabControl>
+	<Button Grid.Row="0" Grid.Column="1" Content="Submit Predictions" Margin="10" Width="300" Height="50" Click="SubmitCommand"/>
 	</Grid>
 </Window>

@@ -12,9 +12,9 @@
 		<Setter Property="Height" Value="90"/>
 		<Setter Property="Background" Value="Blue"/>
 		<Setter Property="Foreground" Value="White"/>
-	</Style>
-		
+	</Style>	
 	</UserControl.Styles>
+	
 	<Grid>
 		<TabControl TabStripPlacement="Left">
 			<TabItem>
