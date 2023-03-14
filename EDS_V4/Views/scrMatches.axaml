@@ -32,10 +32,10 @@
 		</Style>
 	</UserControl.Styles>
 	
-	<Grid RowDefinitions="auto,auto" ColumnDefinitions="auto,auto,auto">
+	<Grid RowDefinitions="auto,auto" ColumnDefinitions="auto,auto,auto" Margin="10">
 		<StackPanel Orientation="Horizontal" Grid.Column="0">
 			<TextBlock Text="Week"/>
-			<ComboBox/>
+			<ComboBox Items=""/>
 		</StackPanel>
 		<StackPanel Orientation="Horizontal" Grid.Column="1">
 			<TextBlock Text="Match"/>

@@ -19,12 +19,12 @@
 	</UserControl.Styles>
 	
 	<Grid RowDefinitions="*,*,*" ColumnDefinitions="auto,auto" Margin="10">
-		<StackPanel Orientation="Vertical">
-		<Button Content="New Player" Grid.Row="0" Grid.Column="0" Command="{Binding NewPlayerCommand}"/>
-		<Button Content="Load Player" Grid.Row="1" Grid.Column="0"/>
-		<Button Content="Remove Player" Grid.Row="2" Grid.Column="0"/>
+		<StackPanel Orientation="Vertical" Margin="5">
+			<Button Content="New Player" Grid.Row="0" Grid.Column="0" Command="{Binding NewPlayerCommand}"/>
+			<Button Content="Load Player" Grid.Row="1" Grid.Column="0"/>
+			<Button Content="Remove Player" Grid.Row="2" Grid.Column="0"/>
 		</StackPanel>
-		<ListBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Items="testlistaasdfghasjhfsjkfgd" Width="500">
+		<ListBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Items="testlistaasdfghasjhfsjkfgd" Width="500" Margin="5">
 			<ListBox.Styles>
 				<!-- Give the ListBoxItems a fixed with of 100 and right-align them -->
 				<Style Selector="ListBoxItem">

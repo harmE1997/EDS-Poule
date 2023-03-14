@@ -3,29 +3,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:views="clr-namespace:EDS_V4.Views;assembly=EDS_V4"
-             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="500"
-             x:Class="EDS_V4.Views.scrHome">
-
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="EDS_V4.Views.SideMenu">
 	<UserControl.Styles>
-	<Style Selector="TabItem">
-		<Setter Property="Width" Value="150"/>
-		<Setter Property="Height" Value="90"/>
-		<Setter Property="Background" Value="Blue"/>
-		<Setter Property="Foreground" Value="White"/>
-	</Style>	
+		<Style Selector="TabItem">
+			<Setter Property="Width" Value="150"/>
+			<Setter Property="Height" Value="90"/>
+			<Setter Property="Background" Value="Blue"/>
+			<Setter Property="Foreground" Value="White"/>
+		</Style>
 	</UserControl.Styles>
-	
+
 	<Grid>
-		<TabControl TabStripPlacement="Left">
+		<TabControl TabStripPlacement="Left">		
 			<TabItem>
 				<TabItem.Header>
 					<StackPanel Orientation="Vertical">
-						<TextBlock Text="Home" Width="100"/>
+						<TextBlock Text="Ranking"/>
 					</StackPanel>
 				</TabItem.Header>
-			</TabItem>
-			
-			<TabItem>
+				<views:scrRanking/>
+			</TabItem>	
+				<TabItem>
 				<TabItem.Header>
 					<StackPanel Orientation="Vertical">
 						<TextBlock Text="Players" Width="100"/>
@@ -33,7 +32,6 @@
 				</TabItem.Header>
 				<views:scrPlayers/>
 			</TabItem>
-			
 			<TabItem>
 				<TabItem.Header>
 					<StackPanel Orientation="Vertical">
@@ -42,16 +40,6 @@
 				</TabItem.Header>
 				<views:scrMatches/>
 			</TabItem>
-			
-			<TabItem>
-				<TabItem.Header>
-					<StackPanel Orientation="Vertical">
-						<TextBlock Text="Ranking"/>
-					</StackPanel>
-				</TabItem.Header>
-				<views:scrRanking/>
-			</TabItem>
-			
 			<TabItem>
 				<TabItem.Header>
 					<StackPanel Orientation="Vertical">
@@ -59,6 +47,14 @@
 					</StackPanel>
 				</TabItem.Header>
 				<views:scrStats/>
+			</TabItem>
+			<TabItem>
+				<TabItem.Header>
+					<StackPanel Orientation="Vertical">
+						<TextBlock Text="Settings"/>
+					</StackPanel>
+				</TabItem.Header>
+				<views:scrSettings/>
 			</TabItem>
 		</TabControl>
 	</Grid>

@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="EDS_V4.Views.scrRanking">
+             x:Class="EDS_V4.Views.scrSettings">
 	<UserControl.Styles>
 		<Style Selector="Button">
 			<Setter Property="Width" Value="200"/>
@@ -16,22 +16,5 @@
 			<Setter Property="Margin" Value="1"/>
 		</Style>
 	</UserControl.Styles>
-
-	<Grid RowDefinitions="*,*,*" ColumnDefinitions="auto,auto" Margin="10">
-		<StackPanel Orientation="Vertical" Margin="10">
-			<Button Content="Refresh ranking"/>
-			<CheckBox Content="Recalculate weeks" HorizontalAlignment="Center"/>
-			<Button Content="Calculate new ranking"/>
-			<Button Content="Export ranking"/>			
-		</StackPanel>
-		<ListBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Items="testlistaasdfghasjhfsjkfgd" Width="500" Margin="10">
-			<ListBox.Styles>
-				<!-- Give the ListBoxItems a fixed with of 100 and right-align them -->
-				<Style Selector="ListBoxItem">
-					<Setter Property="Height" Value="35"/>
-					<Setter Property="VerticalContentAlignment" Value="Top"/>
-				</Style>
-			</ListBox.Styles>
-		</ListBox>
-	</Grid>
+<Button Content="Save Settings" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20"/>
 </UserControl>
