@@ -13,6 +13,7 @@
     <AvaloniaXaml Remove="Views\scrHome.axaml" />
     <Compile Remove="Views\scrHome.axaml.cs" />
     <None Remove=".gitignore" />
+    <None Remove="Assets\Icons\eredivisie.ico" />
     <None Remove="Assets\Icons\openfoldericon.png" />
   </ItemGroup>
 
