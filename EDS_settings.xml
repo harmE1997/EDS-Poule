@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configurables xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SaveFileLocation>C:\Users\Harm\OneDrive\Documenten\Sport\Poules\EDS Poule Docs\2022-2023\EDS2223</SaveFileLocation>
+  <AdminFileLocation>C:\Users\Harm\OneDrive\Documenten\Sport\Poules\EDS Poule Docs\2022-2023\EDS Poule Admin 2022-2023.xlsx</AdminFileLocation>
+  <StartRow>12</StartRow>
+  <FirstHalfSize>17</FirstHalfSize>
+  <HomeColumn>7</HomeColumn>
+  <OutColumn>8</OutColumn>
+  <HalfWayJump>10</HalfWayJump>
+  <HostSheet>6</HostSheet>
+  <RankingSheet>2</RankingSheet>
+  <TopscorersSheet>8</TopscorersSheet>
+</Configurables>

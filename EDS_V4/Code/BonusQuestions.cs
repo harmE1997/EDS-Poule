@@ -19,13 +19,11 @@ namespace EDS_V4.Code
         Promovendi,
         Finalisten,
         Teamrood,
-        Assists,
-        Defensie,
         Prodeg
     }
 
     [Serializable]
-    public struct Question
+    public class Question
     {
         public string Answer;
         public string[] AnswerArray;
@@ -34,7 +32,7 @@ namespace EDS_V4.Code
         public int WeekAnswered;
     }
 
-    public struct Topscorer
+    public class Topscorer
     {
         public int Total;
         public List<int> Rounds;

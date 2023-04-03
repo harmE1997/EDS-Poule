@@ -7,6 +7,7 @@ namespace EDS_V4.Views
         public scrSettings()
         {
             InitializeComponent();
+            DataContext = new ViewModels.SettingsVm();
         }
     }
 }

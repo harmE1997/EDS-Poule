@@ -42,14 +42,14 @@
 					</StackPanel>
 				</TabItem.Header>
 				<Grid RowDefinitions="auto,auto,auto,auto">
-					<views:isoFileBrowser BrowseForDirectory="False"/>
+					<views:isoFileBrowser BrowseForDirectory="False" BrowserResult="{Binding PredictionsFileName}"/>
 					<StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Margin="10">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5"/>
-							<TextBox Width="50"/>
+							<TextBox Width="50" Text="{Binding Miss}"/>
 						</StackPanel>
-						<CheckBox Content="1st half only"/>
-						<CheckBox Content="2nd half only"/>
+						<CheckBox Content="1st half only" IsChecked="{Binding FirstHalf}"/>
+						<CheckBox Content="2nd half only" IsChecked="{Binding SecondHalf}"/>
 						<Button Content="Load predictions" Width="150"/>
 					</StackPanel>
 				</Grid>
@@ -117,29 +117,30 @@
 						<TextBlock Text="Bonus Questions"/>
 					</StackPanel>
 				</TabItem.Header>
-				<Grid Grid.Column="1" Grid.Row="1" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*,*,auto" Margin="10">
+				<Grid Grid.Column="1" Grid.Row="1" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="*,auto,auto" Margin="10">
 					<TextBlock Text="Kampioen" VerticalAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="0"/>
-					<TextBox Grid.Row="0" Grid.Column="1"/>
-					<TextBlock Text="Winterkampioen" VerticalAlignment="Center" Margin="5" Grid.Row="1" Grid.Column="0"/>
-					<TextBox Grid.Row="1" Grid.Column="1"/>
+					<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Champion}"/>
+					<TextBlock Text="Nummer 16" VerticalAlignment="Center" Margin="5" Grid.Row="1" Grid.Column="0"/>
+					<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Nr16}"/>
 					<TextBlock Text="Topscorer" VerticalAlignment="Center" Margin="5" Grid.Row="2" Grid.Column="0"/>
-					<TextBox Grid.Row="2" Grid.Column="1"/>
-					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="3" Grid.Column="0"/>
-					<TextBox Grid.Row="3" Grid.Column="1"/>
-					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="4" Grid.Column="0"/>
-					<TextBox Grid.Row="4" Grid.Column="1"/>
-					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="5" Grid.Column="0"/>
-					<TextBox Grid.Row="5" Grid.Column="1"/>
-					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="6" Grid.Column="0"/>
-					<TextBox Grid.Row="6" Grid.Column="1"/>
-					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="7" Grid.Column="0"/>
-					<TextBox Grid.Row="7" Grid.Column="1"/>
-					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="8" Grid.Column="0"/>
-					<TextBox Grid.Row="8" Grid.Column="1"/>
-					<TextBox Grid.Row="8" Grid.Column="2"/>
-					<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5" Grid.Row="9" Grid.Column="0"/>
-					<TextBox Grid.Row="9" Grid.Column="1"/>
-					<TextBox Grid.Row="9" Grid.Column="2"/>
+					<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Topscorer}"/>
+					<TextBlock Text="Ontslagen trainer" VerticalAlignment="Center" Margin="5" Grid.Row="3" Grid.Column="0"/>
+					<TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Trainer}"/>
+					<TextBlock Text="Winterkampioen" VerticalAlignment="Center" Margin="5" Grid.Row="4" Grid.Column="0"/>
+					<TextBox Grid.Row="4" Grid.Column="1" Text="{Binding WinterChampion}"/>
+					<TextBlock Text="Speelronde kampioenschap" VerticalAlignment="Center" Margin="5" Grid.Row="5" Grid.Column="0"/>
+					<TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Ronde}"/>
+					<TextBlock Text="Rode kaarten" VerticalAlignment="Center" Margin="5" Grid.Row="6" Grid.Column="0"/>
+					<TextBox Grid.Row="6" Grid.Column="1" Text="{Binding TeamRood}"/>
+					<TextBlock Text="Bekerfinalisten" VerticalAlignment="Center" Margin="5" Grid.Row="7" Grid.Column="0"/>
+					<TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Bekerfinalisten[0]}"/>
+					<TextBox Grid.Row="7" Grid.Column="2" Text="{Binding Bekerfinalisten[1]}"/>
+					<TextBlock Text="Degradanten" VerticalAlignment="Center" Margin="5" Grid.Row="8" Grid.Column="0"/>
+					<TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Degradanten[0]}"/>
+					<TextBox Grid.Row="8" Grid.Column="2" Text="{Binding Degradanten[1]}"/>
+					<TextBlock Text="Promovendi" VerticalAlignment="Center" Margin="5" Grid.Row="9" Grid.Column="0"/>
+					<TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Promovendi[0]}"/>
+					<TextBox Grid.Row="9" Grid.Column="2" Text="{Binding Promovendi[1]}"/>
 				</Grid>
 			</TabItem>
 	</TabControl>
