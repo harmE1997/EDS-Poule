@@ -58,16 +58,31 @@ namespace EDS_V4.ViewModels
         public int Score9A { get => ActivePlayer.Weeks[CurrentWeek - 1].Matches[8].ResultA; set { ActivePlayer.Weeks[CurrentWeek - 1].Matches[8].ResultA = value; this.WhenAnyValue(x => x.CurrentWeek).Subscribe(a => this.RaisePropertyChanged()); } }
         public int Score9B { get => ActivePlayer.Weeks[CurrentWeek - 1].Matches[8].ResultB; set { ActivePlayer.Weeks[CurrentWeek - 1].Matches[8].ResultB = value; this.WhenAnyValue(x => x.CurrentWeek).Subscribe(a => this.RaisePropertyChanged()); } }
 
-        public string Champion { get => ActivePlayer.Questions.Answers[BonusKeys.Kampioen].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Kampioen].Answer ,value); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
-        public string Nr16 { get => ActivePlayer.Questions.Answers[BonusKeys.Prodeg].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Prodeg].Answer, value); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
-        public string Topscorer { get => ActivePlayer.Questions.Answers[BonusKeys.Topscorer].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Topscorer].Answer, value); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
-        public string Trainer { get => ActivePlayer.Questions.Answers[BonusKeys.Trainer].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Trainer].Answer, value); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
-        public string WinterChampion { get => ActivePlayer.Questions.Answers[BonusKeys.Winterkampioen].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Winterkampioen].Answer, value); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
-        public string Ronde { get => ActivePlayer.Questions.Answers[BonusKeys.Ronde].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Ronde].Answer, value); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
-        public string TeamRood { get => ActivePlayer.Questions.Answers[BonusKeys.Teamrood].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Teamrood].Answer, value); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
-        public string[] Bekerfinalisten { get => ActivePlayer.Questions.Answers[BonusKeys.Finalisten].AnswerArray; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Finalisten].AnswerArray, value); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
-        public string[] Degradanten { get => ActivePlayer.Questions.Answers[BonusKeys.Degradanten].AnswerArray; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Degradanten].AnswerArray, value); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
-        public string[] Promovendi { get => ActivePlayer.Questions.Answers[BonusKeys.Promovendi].AnswerArray; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Promovendi].AnswerArray, value); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
+        public string Champion { get => ActivePlayer.Questions.Answers[BonusKeys.Kampioen].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Kampioen].Answer ,value.ToLower()); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
+        public string Nr16 { get => ActivePlayer.Questions.Answers[BonusKeys.Prodeg].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Prodeg].Answer, value.ToLower()); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
+        public string Topscorer { get => ActivePlayer.Questions.Answers[BonusKeys.Topscorer].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Topscorer].Answer, value.ToLower()); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
+        public string Trainer { get => ActivePlayer.Questions.Answers[BonusKeys.Trainer].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Trainer].Answer, value.ToLower()); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
+        public string WinterChampion { get => ActivePlayer.Questions.Answers[BonusKeys.Winterkampioen].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Winterkampioen].Answer, value.ToLower()); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
+        public string Ronde { get => ActivePlayer.Questions.Answers[BonusKeys.Ronde].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Ronde].Answer, value.ToLower()); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
+        public string TeamRood { get => ActivePlayer.Questions.Answers[BonusKeys.Teamrood].Answer; set { this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Teamrood].Answer, value.ToLower()); this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
+        public string[] Bekerfinalisten { 
+            get => ActivePlayer.Questions.Answers[BonusKeys.Finalisten].AnswerArray; 
+            set { 
+                this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Finalisten].AnswerArray[0], value[0].ToLower()); 
+                this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Finalisten].AnswerArray[1], value[1].ToLower()); 
+                this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
+        public string[] Degradanten { 
+            get => ActivePlayer.Questions.Answers[BonusKeys.Degradanten].AnswerArray; 
+            set { 
+                this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Degradanten].AnswerArray[0], value[0].ToLower());
+                this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Degradanten].AnswerArray[1], value[1].ToLower());
+                this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
+        public string[] Promovendi { 
+            get => ActivePlayer.Questions.Answers[BonusKeys.Promovendi].AnswerArray; 
+            set { 
+                this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Promovendi].AnswerArray[0], value[0].ToLower());
+                this.RaiseAndSetIfChanged(ref ActivePlayer.Questions.Answers[BonusKeys.Promovendi].AnswerArray[1], value[1].ToLower());
+                this.WhenAnyValue(x => x.ActivePlayer).Subscribe(a => this.RaisePropertyChanged()); } }
 
         public ReactiveCommand<Unit,Unit> NextWeekCommand { get; set; }
         public ReactiveCommand<Unit, Unit> PreviousWeekCommand { get; set; }
