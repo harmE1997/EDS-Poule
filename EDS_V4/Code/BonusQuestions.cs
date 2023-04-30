@@ -27,12 +27,9 @@ namespace EDS_V4.Code
     [Serializable]
     public class Question
     {
-        public string Answer;
-        public string[] AnswerArray;
-        public int Points;
-        public bool IsArray;
-        public int WeekAnswered;
-        public int[] WeeksAnsweredArray;
+        public string[] Answer;
+        public int[] WeeksAnswered;
+        public int Points;      
     }
 
     public class Topscorer
@@ -53,16 +50,16 @@ namespace EDS_V4.Code
         {
             Answers = new Dictionary<BonusKeys, Question>()
             {
-                {BonusKeys.Kampioen, new Question(){Answer = kampioen, Points = 140, IsArray = false, WeekAnswered = weeks[0] } },
-                {BonusKeys.Prodeg, new Question(){Answer = prodeg, Points = 70, IsArray = false, WeekAnswered = weeks[1] } },
-                {BonusKeys.Topscorer, new Question(){Answer = topscorer, Points = 0, IsArray = false, WeekAnswered = weeks[2] } },
-                {BonusKeys.Trainer, new Question(){Answer = trainer, Points = 120, IsArray = false, WeekAnswered = weeks[3] } },
-                {BonusKeys.Winterkampioen, new Question(){Answer = winterkampioen, Points = 90, IsArray = false, WeekAnswered = weeks[4] } },
-                {BonusKeys.Ronde, new Question(){Answer = championround, Points = 70, IsArray = false, WeekAnswered = weeks[5] } },
-                {BonusKeys.Teamrood, new Question(){Answer = teamReds, Points = 90, IsArray = false, WeekAnswered = weeks[6]} },
-                {BonusKeys.Finalisten, new Question(){AnswerArray = finalisten, Points = 50, IsArray = true, WeekAnswered = 1, WeeksAnsweredArray = new int[]{ weeks[7], weeks[8] } } },
-                {BonusKeys.Degradanten, new Question(){AnswerArray = degradanten, Points = 50, IsArray = true, WeekAnswered = 1, WeeksAnsweredArray = new int[]{ weeks[9], weeks[10] } } },
-                {BonusKeys.Promovendi, new Question(){AnswerArray = promovendi, Points = 50, IsArray = true, WeekAnswered = 1, WeeksAnsweredArray = new int[]{ weeks[11], weeks[12] } } },
+                {BonusKeys.Kampioen, new Question(){Answer = new string[] {kampioen }, Points = 140, WeeksAnswered = new int[] {weeks[0] } } },
+                {BonusKeys.Prodeg, new Question(){Answer = new string[] {prodeg }, Points = 70, WeeksAnswered = new int[] {weeks[1] } } },
+                {BonusKeys.Topscorer, new Question(){Answer = new string[] {topscorer }, Points = 0, WeeksAnswered = new int[] {weeks[2] } } },
+                {BonusKeys.Trainer, new Question(){Answer = new string[] {trainer }, Points = 120, WeeksAnswered = new int[] {weeks[3] } } },
+                {BonusKeys.Winterkampioen, new Question(){Answer = new string[] {winterkampioen }, Points = 90, WeeksAnswered = new int[] {weeks[4] } } },
+                {BonusKeys.Ronde, new Question(){Answer = new string[] {championround }, Points = 70, WeeksAnswered = new int[] { weeks[5] } } },
+                {BonusKeys.Teamrood, new Question(){Answer = new string[] {teamReds }, Points = 90, WeeksAnswered = new int[] {weeks[6]} } },
+                {BonusKeys.Finalisten, new Question(){Answer = finalisten, Points = 50, WeeksAnswered = new int[]{ weeks[7], weeks[8] } } },
+                {BonusKeys.Degradanten, new Question(){Answer = degradanten, Points = 50, WeeksAnswered = new int[]{ weeks[9], weeks[10] } } },
+                {BonusKeys.Promovendi, new Question(){Answer = promovendi, Points = 50, WeeksAnswered = new int[]{ weeks[11], weeks[12] } } },
 
             };
         }
@@ -75,25 +72,15 @@ namespace EDS_V4.Code
             }
             WeekScore = 0;
 
+            //check all questions except topscorers
             foreach (var a in Answers)
             {
                 var ans = HostQuestions.Answers[a.Key];
-                if (ans.WeekAnswered > 0)
+                if (ans.WeeksAnswered[0] > 0)
                 {
-                    if (a.Value.IsArray)
+                    for (int i = 0; i < ans.Answer.Length; i++)
                     {
-                        for (int i = 0; i < ans.AnswerArray.Length; i++)
-                        {
-                            if (a.Value.AnswerArray.Contains(ans.AnswerArray[i]) && ans.WeeksAnsweredArray[i] == currentweek)
-                            {
-                                WeekScore += a.Value.Points;
-                            }
-                        }
-                    }
-
-                    else
-                    {
-                        if (a.Value.Answer == ans.Answer && ans.WeekAnswered == currentweek)
+                        if (a.Value.Answer.Contains(ans.Answer[i]) && ans.WeeksAnswered[i] == currentweek)
                         {
                             WeekScore += a.Value.Points;
                         }
@@ -101,18 +88,9 @@ namespace EDS_V4.Code
                 }
             }
 
-            checkTopscorer(currentweek, topscorers);
-        }
-
-        private void checkTopscorer(int round, Dictionary<string, Topscorer> topscorers)
-        {
-            try
-            {
-                var ans = topscorers[Answers[BonusKeys.Topscorer].Answer];
-                WeekScore += ans.Rounds[round-1] * 5;
-            }
-
-            catch { }
+            //check the topscorers
+            var ansscorer = topscorers[Answers[BonusKeys.Topscorer].Answer[0]];
+            WeekScore += ansscorer.Rounds[currentweek - 1] * 5;
         }
     }
 }
