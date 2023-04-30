@@ -30,24 +30,26 @@ namespace EDS_V4.ViewModels
         private Configurables defaults;
         private Configurables configurables;
 
-        
-        public string AdminFileLocation { get { ReadConfigFromXml(); return configurables.AdminFileLocation; } set { this.RaiseAndSetIfChanged(ref configurables.AdminFileLocation, value); } }
-        public string SaveFileLocation { get => configurables.SaveFileLocation; set => this.RaiseAndSetIfChanged(ref configurables.SaveFileLocation, value); }
 
-        public int StartRow { get => configurables.StartRow; set => this.RaiseAndSetIfChanged(ref configurables.StartRow, value); }
-        public int FirstHalfSize { get => configurables.FirstHalfSize; set => this.RaiseAndSetIfChanged(ref configurables.FirstHalfSize, value); }
-        public int HomeColumn { get => configurables.HomeColumn; set => this.RaiseAndSetIfChanged(ref configurables.HomeColumn, value); }
-        public int OutColumn { get => configurables.OutColumn; set => this.RaiseAndSetIfChanged(ref configurables.OutColumn, value); }
-        public int HalfWayJump { get => configurables.HalfWayJump; set => this.RaiseAndSetIfChanged(ref configurables.HalfWayJump, value); }
-        public int HostSheet { get => configurables.HostSheet; set => this.RaiseAndSetIfChanged(ref configurables.HostSheet, value); }
-        public int RankingSheet { get => configurables.RankingSheet; set => this.RaiseAndSetIfChanged(ref configurables.RankingSheet, value); }
-        public int TopscorersSheet { get => configurables.TopscorersSheet; set => this.RaiseAndSetIfChanged (ref configurables.TopscorersSheet, value); }
+        public string AdminFileLocation { get { ReadConfigFromXml(); return configurables.AdminFileLocation; } set { this.RaiseAndSetIfChanged(ref configurables.AdminFileLocation, value); SaveCommandEnabled = true; } }
+        public string SaveFileLocation { get => configurables.SaveFileLocation; set { this.RaiseAndSetIfChanged(ref configurables.SaveFileLocation, value); SaveCommandEnabled = true; } }
 
+        public int StartRow { get => configurables.StartRow; set { this.RaiseAndSetIfChanged(ref configurables.StartRow, value); SaveCommandEnabled = true; } }
+        public int FirstHalfSize { get => configurables.FirstHalfSize; set { this.RaiseAndSetIfChanged(ref configurables.FirstHalfSize, value); SaveCommandEnabled = true; } }
+    public int HomeColumn { get => configurables.HomeColumn; set { this.RaiseAndSetIfChanged(ref configurables.HomeColumn, value); SaveCommandEnabled = true; } }
+        public int OutColumn { get => configurables.OutColumn; set { this.RaiseAndSetIfChanged(ref configurables.OutColumn, value); SaveCommandEnabled = true; } }
+        public int HalfWayJump { get => configurables.HalfWayJump; set { this.RaiseAndSetIfChanged(ref configurables.HalfWayJump, value); SaveCommandEnabled = true; } }
+        public int HostSheet { get => configurables.HostSheet; set { this.RaiseAndSetIfChanged(ref configurables.HostSheet, value); SaveCommandEnabled = true; } }
+        public int RankingSheet { get => configurables.RankingSheet; set { this.RaiseAndSetIfChanged(ref configurables.RankingSheet, value); SaveCommandEnabled = true; } }
+        public int TopscorersSheet { get => configurables.TopscorersSheet; set { this.RaiseAndSetIfChanged (ref configurables.TopscorersSheet, value); SaveCommandEnabled = true; } }
+
+        private bool savecommandenabled;
+        public bool SaveCommandEnabled { get => savecommandenabled; set => this.RaiseAndSetIfChanged(ref savecommandenabled, value); }
 
         public SettingsVm()
         {
-            var savefilelocation = "C:\\Users\\Harm\\OneDrive\\Documenten\\Sport\\Poules\\EDS Poule Docs\\2022-2023\\EDS2223";
-            var adminloc = "C:\\Users\\Harm\\OneDrive\\Documenten\\Sport\\Poules\\EDS Poule Docs\\2022-2023\\EDS Poule Admin 2022-2023.xlsx";
+            var savefilelocation = "C:\\Users\\Harm\\OneDrive\\Documenten\\Sport\\Poules\\EDS Poule Docs\\2023-2024\\EDS2324";
+            var adminloc = "C:\\Users\\Harm\\OneDrive\\Documenten\\Sport\\Poules\\EDS Poule Docs\\2023-2024\\EDS Poule Admin 2023-2024.xlsx";
             xmlhandler = new XmlHandler<Configurables>();
             defaults = new Configurables()
             {
@@ -64,11 +66,13 @@ namespace EDS_V4.ViewModels
             };
             configurables = new();
             ReadConfigFromXml();
+            SaveCommandEnabled = false;
         }
 
         public void SaveSettingsCommand()
         {
             WriteConfigToXml();
+            SaveCommandEnabled = false;
         }
 
         private void WriteConfigToXml()

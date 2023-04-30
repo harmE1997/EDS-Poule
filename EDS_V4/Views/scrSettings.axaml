@@ -56,6 +56,6 @@
 			<TextBlock Text="Topscorers sheet" Grid.Column="0" Grid.Row="8" />
 			<TextBox Text="{Binding TopscorersSheet}" Grid.Column="1" Grid.Row="8"/>
 		</Grid>
-		<Button Content="Save Settings" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Grid.Row="1" Grid.ColumnSpan="2"/>
+		<Button Content="Save Settings" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Grid.Row="1" Grid.ColumnSpan="2" Command="{Binding SaveSettingsCommand}" IsEnabled="{Binding SaveCommandEnabled}"/>
 	</Grid>
 </UserControl>
