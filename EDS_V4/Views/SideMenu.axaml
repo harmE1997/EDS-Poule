@@ -19,19 +19,20 @@
 			<TabItem>
 				<TabItem.Header>
 					<StackPanel Orientation="Vertical">
-						<TextBlock Text="Ranking"/>
-					</StackPanel>
-				</TabItem.Header>
-				<views:scrRanking/>
-			</TabItem>	
-				<TabItem>
-				<TabItem.Header>
-					<StackPanel Orientation="Vertical">
 						<TextBlock Text="Players" Width="100"/>
 					</StackPanel>
 				</TabItem.Header>
 				<views:scrPlayers/>
 			</TabItem>
+			<TabItem>
+				<TabItem.Header>
+					<StackPanel Orientation="Vertical">
+						<TextBlock Text="Ranking"/>
+					</StackPanel>
+				</TabItem.Header>
+				<views:scrRanking/>
+			</TabItem>	
+
 			<TabItem>
 				<TabItem.Header>
 					<StackPanel Orientation="Vertical">

@@ -139,7 +139,7 @@ namespace EDS_V4.ViewModels
 
                 weeks[i] = new Week(i, matches);
             }
-            return new Player("", "", weeks, new BonusQuestions("", "", "", "", "", "", "", new string[2], new string[2], new string[2], new int[10]));
+            return new Player("", "", weeks, new BonusQuestions("", "", "", "", "", "", "", new string[2], new string[2], new string[2], new int[13]));
         }
     }
 }

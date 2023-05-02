@@ -7,6 +7,7 @@ namespace EDS_V4.Views
         public MainWindow()
         {
             InitializeComponent();
+            isoPopup popup = new isoPopup();
         }
     }
 }

@@ -143,7 +143,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="edst.ico" />
     <Content Include="GUI\eredivisie.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

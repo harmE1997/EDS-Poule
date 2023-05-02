@@ -114,7 +114,6 @@ namespace EDS_Poule.GUI
                 int matchID = GetMatchID();
                 var week = Convert.ToInt16(cbCheck.Text) - 1;
                 string Names = "";
-                host.setHost();
                 var hostweek = excelManager.ReadSingleWeek(ConfigurationManager.AppSettings.Get("AdminLocation"), Convert.ToInt32(ConfigurationManager.AppSettings.Get("HostSheet")), week);
                 foreach (Player player in Manager.Players)
                 {

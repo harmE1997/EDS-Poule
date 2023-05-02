@@ -25,6 +25,9 @@ namespace EDS_V4.ViewModels
     }
     public class SettingsVm : ViewModelBase
     {
+        public static event SettingsEventHandler? SettingsEvent;
+        public delegate void SettingsEventHandler();
+
         private const string configeFileName = "EDS_settings.xml";
         private XmlHandler<Configurables> xmlhandler;
         private Configurables defaults;
@@ -79,6 +82,7 @@ namespace EDS_V4.ViewModels
         {
             xmlhandler.WriteToXml(configeFileName, configurables, overwrite: true);
             ConfigurablesToConfigurations();
+            SettingsEvent?.Invoke();
         }
 
         private void ReadConfigFromXml()

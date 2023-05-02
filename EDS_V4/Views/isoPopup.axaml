@@ -1,0 +1,25 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="EDS_V4.Views.isoPopup">
+
+	<UserControl.Styles>
+		<Style Selector="Button">
+			<Setter Property="Width" Value="200"/>
+			<Setter Property="Height" Value="50"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="Background" Value="Blue"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="BorderBrush" Value="Black"/>
+			<Setter Property="Margin" Value="1"/>
+		</Style>
+	</UserControl.Styles>
+	
+	<Grid RowDefinitions="20,50,50">
+		<TextBlock Text="message" Name="tbMessage" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" />
+		<Button Content="OK" Grid.Row="2" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="10" Width="100" Click="btnCloseClick"/>
+	</Grid>
+</UserControl>
