@@ -67,11 +67,6 @@ namespace EDS_V4.Code
             return matchScore;
         }
 
-        public string GetMatch(int matchID)
-        {
-            return Matches[matchID].Winner;
-        }
-
         public int CheckMatchOnResultOnly(Match[] Host, int matchID)
         {
             //MOTW has matchID 0.

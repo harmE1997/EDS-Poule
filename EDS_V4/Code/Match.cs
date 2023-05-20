@@ -34,5 +34,11 @@ namespace EDS_V4.Code
                 Winner = "D";
             }
         }
+
+        public string MatchToString()
+        { 
+            var res = ResultA.ToString() + " - " + ResultB.ToString();
+            return res;
+        }
     }
 }

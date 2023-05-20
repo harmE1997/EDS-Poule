@@ -26,7 +26,24 @@ namespace EDS_V4.Views
 
         public void SubmitCommand(object sender, RoutedEventArgs e)
         {
-            Close(viewmodel.ActivePlayer);
+            bool invalidpredictions = false;
+            foreach (var ans in viewmodel.ActivePlayer.Questions.Answers)
+            {
+                foreach (var ansfield in ans.Value.Answer)
+                {
+                    if (ansfield == "")
+                        invalidpredictions = true;
+                }                  
+            }
+
+            if (invalidpredictions)
+                PopupManager.OnMessage("cannot submit predictions. One or more bonusquestions have not been filled in.");
+
+            else
+            {
+                viewmodel.PredictionsSubmittedFlag = true;
+                Close();
+            }
         }
     }
 }

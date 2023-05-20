@@ -12,7 +12,7 @@ namespace EDS_V4.ViewModels
     {
         private Views.TotoForm totoForm;
         private bool existingPlayer = false;
-        public PlayerManager PlayerManager { get; private set; }
+        public static PlayerManager PlayerManager { get; private set; }
 
         private List<string> players;
         public List<string> Players { get => players; set => this.RaiseAndSetIfChanged(ref players, value); }
@@ -68,6 +68,8 @@ namespace EDS_V4.ViewModels
 
         private void TotoClosedEvent(object sender, EventArgs e)
         {
+            if ((totoForm.DataContext as TotoFormVm).PredictionsSubmittedFlag == false)
+                return;
             var player = (totoForm.DataContext as TotoFormVm).ActivePlayer;
             var res = PlayerManager.AddPlayer(player, existingPlayer);
             if (res == 0)

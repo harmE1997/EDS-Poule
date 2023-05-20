@@ -35,16 +35,16 @@
 	<Grid RowDefinitions="auto,auto" ColumnDefinitions="auto,auto,auto" Margin="10">
 		<StackPanel Orientation="Horizontal" Grid.Column="0">
 			<TextBlock Text="Week"/>
-			<ComboBox Items=""/>
+			<ComboBox Items="{Binding Weeks}" SelectedItem="{Binding SelectedWeek}"/>
 		</StackPanel>
 		<StackPanel Orientation="Horizontal" Grid.Column="1">
 			<TextBlock Text="Match"/>
-			<ComboBox/>
+			<ComboBox Items="{Binding Matches}" SelectedItem="{Binding SelectedMatch}"/>
 		</StackPanel>
 		<StackPanel Orientation="Horizontal" Grid.Column="2">
-			<Button Content="Get Predictions"/>
-			<Button Content="Get Results"/>
+			<Button Content="Get Predictions" Command="{Binding GetPredictionsCommand}"/>
+			<Button Content="Get Results" Command="{Binding GetResultsCommand}"/>
 		</StackPanel>
-		<TextBox Grid.Row="1" Grid.Column="0" Height="200" Width="530" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10"/>
+		<TextBox Grid.Row="1" Grid.Column="0" Height="200" Width="530" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10" Text="{Binding OutputText}"/>
 	</Grid>
 </UserControl>

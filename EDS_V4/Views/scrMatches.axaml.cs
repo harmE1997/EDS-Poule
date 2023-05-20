@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using EDS_V4.ViewModels;
 
 namespace EDS_V4.Views
 {
@@ -7,6 +8,7 @@ namespace EDS_V4.Views
         public scrMatches()
         {
             InitializeComponent();
+            DataContext = new scrMatchesVm();
         }
     }
 }

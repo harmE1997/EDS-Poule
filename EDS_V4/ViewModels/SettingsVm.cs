@@ -39,7 +39,7 @@ namespace EDS_V4.ViewModels
 
         public int StartRow { get => configurables.StartRow; set { this.RaiseAndSetIfChanged(ref configurables.StartRow, value); SaveCommandEnabled = true; } }
         public int FirstHalfSize { get => configurables.FirstHalfSize; set { this.RaiseAndSetIfChanged(ref configurables.FirstHalfSize, value); SaveCommandEnabled = true; } }
-    public int HomeColumn { get => configurables.HomeColumn; set { this.RaiseAndSetIfChanged(ref configurables.HomeColumn, value); SaveCommandEnabled = true; } }
+        public int HomeColumn { get => configurables.HomeColumn; set { this.RaiseAndSetIfChanged(ref configurables.HomeColumn, value); SaveCommandEnabled = true; } }
         public int OutColumn { get => configurables.OutColumn; set { this.RaiseAndSetIfChanged(ref configurables.OutColumn, value); SaveCommandEnabled = true; } }
         public int HalfWayJump { get => configurables.HalfWayJump; set { this.RaiseAndSetIfChanged(ref configurables.HalfWayJump, value); SaveCommandEnabled = true; } }
         public int HostSheet { get => configurables.HostSheet; set { this.RaiseAndSetIfChanged(ref configurables.HostSheet, value); SaveCommandEnabled = true; } }
@@ -70,6 +70,7 @@ namespace EDS_V4.ViewModels
             configurables = new();
             ReadConfigFromXml();
             SaveCommandEnabled = false;
+            SettingsEvent?.Invoke();
         }
 
         public void SaveSettingsCommand()

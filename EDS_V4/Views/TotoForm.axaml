@@ -50,7 +50,7 @@
 						</StackPanel>
 						<CheckBox Content="1st half only" IsChecked="{Binding FirstHalf}"/>
 						<CheckBox Content="2nd half only" IsChecked="{Binding SecondHalf}"/>
-						<Button Content="Load predictions" Width="150"/>
+						<Button Content="Load predictions" Width="150" Command="{Binding ReadPredictionsFromExcel}"/>
 					</StackPanel>
 				</Grid>
 			</TabItem>
