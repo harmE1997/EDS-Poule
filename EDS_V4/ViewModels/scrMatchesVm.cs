@@ -10,6 +10,13 @@ using System.Threading.Tasks;
 
 namespace EDS_V4.ViewModels
 {
+    public class MatchField
+    {
+        public string Result { get; set; }
+        public int NrPredictions { get; set; }
+        public string Names { get; set; }
+
+    }
     public class scrMatchesVm : ViewModelBase
     {
         private List<string> matches;
@@ -24,15 +31,19 @@ namespace EDS_V4.ViewModels
         private string selectedmatch;
         public string SelectedMatch { get => selectedmatch; set => this.RaiseAndSetIfChanged(ref selectedmatch, value); }
 
-        private string outputstring;
-        public string OutputText { get => outputstring; set => this.RaiseAndSetIfChanged(ref outputstring, value); }  
+        private List<MatchField> outputs;
+        public List<MatchField> Outputs { get => outputs; set => this.RaiseAndSetIfChanged(ref outputs, value); }  
+
 
         public scrMatchesVm()
         {
             Matches = new List<string>() {"1","2","3","4","5","6","7","8", "MOTW" };
+            SelectedMatch = Matches[0];
             Weeks = new List<string>() {"1", "2", "3", "4", "5", "6", "7", "8", "9","10",
                 "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", 
                 "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34"};
+            SelectedWeek = Weeks[0];
+            Outputs = new List<MatchField>();
         }
 
         public void GetPredictionsCommand()
@@ -61,12 +72,12 @@ namespace EDS_V4.ViewModels
                     results.Add(match.MatchToString(), 1);
             }
 
-            var output = "";
+            var output = new List<MatchField>();
             foreach (var result in results)
             {
-                output += result.Key + ": " + result.Value + "\n";
+                output.Add(new MatchField() { Result = result.Key, NrPredictions = result.Value, Names=""});
             }
-            OutputText = output;
+            Outputs = output;
         }
 
         public void GetResultsCommand()
@@ -91,12 +102,15 @@ namespace EDS_V4.ViewModels
                         if (check == 2)
                         {
                             fulls++;
-                            Names += player.Name + ", ";
+                            Names += player.Name + "\n";
                         }
                     }
                 }
 
-                OutputText = "Goede winnaar: " + halfs + "\nHelemaal correct: " + fulls + " " + Names;
+                var output = new List<MatchField>();
+                output.Add(new MatchField() { Result = "Goede winnaar", NrPredictions = halfs, Names= "" });
+                output.Add(new MatchField() { Result = "Helemaal correct", NrPredictions = fulls, Names = Names });
+                Outputs = output;
             }
 
             catch (FileNotFoundException) { PopupManager.OnMessage("Excel file does not exist"); }

@@ -128,13 +128,13 @@ namespace EDS_V4.Code
 
         }
 
-        public IEnumerable<int> CheckAllPlayers(Host host, int currentWeek, bool recalculate = false)
+        public IEnumerable<int> CheckAllPlayers(Host host, int currentWeek)
         {
             int i = 0;
 
             foreach (Player player in Players)
             {
-                player.CheckPlayer(host, currentWeek, host.getTopscorers(), recalculate);
+                player.CheckPlayer(host, currentWeek, host.getTopscorers());
                 i++;
                 yield return i;
             }

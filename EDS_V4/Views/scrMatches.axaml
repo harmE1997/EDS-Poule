@@ -6,6 +6,10 @@
              x:Class="EDS_V4.Views.scrMatches">
 
 	<UserControl.Styles>
+    <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
+    <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
+    <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Default.xaml"/>
+    
 		<Style Selector="StackPanel">
 			<Setter Property="Margin" Value="10"/>
 			<Setter Property="VerticalAlignment" Value="Center"/>
@@ -24,27 +28,21 @@
 			<Setter Property="Foreground" Value="White"/>
 			<Setter Property="BorderBrush" Value="Black"/>
 		</Style>
-
-		<Style Selector="TextBlock">
-			<Setter Property="Margin" Value="10"/>
-			<Setter Property="VerticalAlignment" Value="Center"/>
-			<Setter Property="HorizontalAlignment" Value="Right"/>
-		</Style>
 	</UserControl.Styles>
 	
 	<Grid RowDefinitions="auto,auto" ColumnDefinitions="auto,auto,auto" Margin="10">
 		<StackPanel Orientation="Horizontal" Grid.Column="0">
-			<TextBlock Text="Week"/>
+			<TextBlock Text="Week" Margin="10"/>
 			<ComboBox Items="{Binding Weeks}" SelectedItem="{Binding SelectedWeek}"/>
 		</StackPanel>
 		<StackPanel Orientation="Horizontal" Grid.Column="1">
-			<TextBlock Text="Match"/>
+			<TextBlock Text="Match" Margin="10"/>
 			<ComboBox Items="{Binding Matches}" SelectedItem="{Binding SelectedMatch}"/>
 		</StackPanel>
 		<StackPanel Orientation="Horizontal" Grid.Column="2">
 			<Button Content="Get Predictions" Command="{Binding GetPredictionsCommand}"/>
 			<Button Content="Get Results" Command="{Binding GetResultsCommand}"/>
 		</StackPanel>
-		<TextBox Grid.Row="1" Grid.Column="0" Height="200" Width="530" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10" Text="{Binding OutputText}"/>
+		<DataGrid Grid.Row="1" Grid.Column="0" Height="200" Width="530" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10" AutoGenerateColumns="True" Items="{Binding Outputs}" />
 	</Grid>
 </UserControl>

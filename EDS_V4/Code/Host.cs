@@ -16,6 +16,7 @@ namespace EDS_V4.Code
 
         public Host() : base("", "", null, null)
         { 
+            excelManager = new ExcelManager();
         }
 
         public Dictionary<string, Topscorer> getTopscorers()

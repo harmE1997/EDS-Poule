@@ -4,7 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="EDS_V4.Views.scrRanking">
+
 	<UserControl.Styles>
+    <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
+    <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
+    <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Default.xaml"/>
+    
 		<Style Selector="Button">
 			<Setter Property="Width" Value="200"/>
 			<Setter Property="Height" Value="50"/>
@@ -23,34 +28,19 @@
 		<Style Selector="ComboBox">
 			<Setter Property="VerticalAlignment" Value="Center"/>
 		</Style>
-
-		<Style Selector="TextBlock">
-			<Setter Property="Margin" Value="10"/>
-			<Setter Property="VerticalAlignment" Value="Center"/>
-			<Setter Property="HorizontalAlignment" Value="Right"/>
-		</Style>
 	</UserControl.Styles>
 
 	<Grid RowDefinitions="*,*,*" ColumnDefinitions="auto,auto" Margin="10">
 		<StackPanel Orientation="Vertical" Margin="10">
 			<StackPanel Orientation="Horizontal" Grid.Column="0">
-				<TextBlock Text="Week"/>
-				<ComboBox Items=""/>
+				<TextBlock Text="Week" Margin="10"/>
+				<ComboBox Items="{Binding Weeks}" SelectedItem="{Binding SelectedWeek}"/>
 			</StackPanel>
-			<CheckBox Content="Recalculate weeks" HorizontalAlignment="Center"/>
-			<Button Content="Calculate new ranking"/>
-			<Button Content="Export ranking"/>
+			<Button Content="Calculate new ranking" Command="{Binding CalculateNewRanking}"/>
+			<Button Content="Export ranking" Command="{Binding ExportRanking}"/>
 			
 		</StackPanel>
 		<Button Content="Reset host" Grid.Column="0" Grid.Row="2" Margin="10"/>
-		<ListBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Items="testlistaasdfghasjhfsjkfgd" Width="500" Margin="10">
-			<ListBox.Styles>
-				<!-- Give the ListBoxItems a fixed with of 100 and right-align them -->
-				<Style Selector="ListBoxItem">
-					<Setter Property="Height" Value="35"/>
-					<Setter Property="VerticalContentAlignment" Value="Top"/>
-				</Style>
-			</ListBox.Styles>
-		</ListBox>
+    <DataGrid Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" AutoGenerateColumns="True" Items="{Binding Ranking}"/>
 	</Grid>
 </UserControl>

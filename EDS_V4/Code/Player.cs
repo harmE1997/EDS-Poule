@@ -34,13 +34,7 @@ namespace EDS_V4.Code
             Ranking = 0;
         }
 
-        public string PlayerToString()
-        {
-            string text = Ranking + "\t" + PreviousRanking + "\t" + TotalScore + "\t" + WeekScore + "\t" + Name;
-            return text;
-        }
-
-        public void CheckPlayer(Player Host, int currentWeek, Dictionary<string, Topscorer> topscorers, bool recalculateWeeks = false)
+        public void CheckPlayer(Player Host, int currentWeek, Dictionary<string, Topscorer> topscorers)
         {
             TotalScore = 0;
             for (int i = 0; i < Weeks.Length; i++)
@@ -54,9 +48,7 @@ namespace EDS_V4.Code
 
                 if (week.Weeknr <= currentWeek)
                 {
-                    if (week.WeekScore == 0 || recalculateWeeks)
-                        week.Checkweek(Host, Questions, topscorers);
-
+                    week.Checkweek(Host, Questions, topscorers);
                     WeekScore = week.WeekScore;
                     TotalScore += week.WeekScore;
                 }

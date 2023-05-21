@@ -5,6 +5,10 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="560"
              x:Class="EDS_V4.Views.scrStats">
 	<UserControl.Styles>
+    <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
+    <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
+    <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Default.xaml"/>
+    
 		<Style Selector="Button">
 			<Setter Property="Width" Value="200"/>
 			<Setter Property="Height" Value="50"/>
@@ -19,25 +23,17 @@
 
 	<Grid RowDefinitions="*,*,*" ColumnDefinitions="auto,auto" Margin="10">
 		<StackPanel Orientation="Vertical" Margin="10">
-			<Button Content="Champions" Grid.Row="0" Grid.Column="0"/>
-			<Button Content="Degradanten" Grid.Row="1" Grid.Column="0"/>
-			<Button Content="Promovendi" Grid.Row="3" Grid.Column="0"/>
-			<Button Content="Nacompetitieteams" Grid.Row="9" Grid.Column="0"/>
-			<Button Content="Winterkampioenen" Grid.Row="5" Grid.Column="0"/>
-			<Button Content="Ronde kampioenschap" Grid.Row="2" Grid.Column="0"/>
-			<Button Content="Topscorers" Grid.Row="8" Grid.Column="0"/>
-			<Button Content="Meeste rode kaarten" Grid.Row="4" Grid.Column="0"/>			
-			<Button Content="Ontslagen trainers" Grid.Row="6" Grid.Column="0"/>
-			<Button Content="Bekerfinalisten" Grid.Row="7" Grid.Column="0"/>					
+			<Button Content="Champions" Grid.Row="0" Grid.Column="0" Command="{Binding ChampionsCommand}"/>
+			<Button Content="Degradanten" Grid.Row="1" Grid.Column="0" Command="{Binding DegradantenCommand}"/>
+			<Button Content="Promovendi" Grid.Row="3" Grid.Column="0" Command="{Binding PromovendiCommand}"/>
+			<Button Content="Nacompetitieteams" Grid.Row="9" Grid.Column="0" Command="{Binding NacompetitieCommand}"/>
+			<Button Content="Winterkampioenen" Grid.Row="5" Grid.Column="0" Command="{Binding WinterkampioenCommand}"/>
+			<Button Content="Ronde kampioenschap" Grid.Row="2" Grid.Column="0" Command="{Binding RondeCommand}"/>
+			<Button Content="Topscorers" Grid.Row="8" Grid.Column="0" Command="{Binding TopscorersCommand}"/>
+			<Button Content="Meeste rode kaarten" Grid.Row="4" Grid.Column="0" Command="{Binding RodekaartenCommand}"/>			
+			<Button Content="Ontslagen trainers" Grid.Row="6" Grid.Column="0" Command="{Binding TrainersCommand}"/>
+			<Button Content="Bekerfinalisten" Grid.Row="7" Grid.Column="0" Command="{Binding BekerfinalistenCommand}"/>					
 		</StackPanel>
-		<ListBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Items="testlistaasdfghasjhfsjkfgd" Width="500" Margin="10">
-			<ListBox.Styles>
-				<!-- Give the ListBoxItems a fixed with of 100 and right-align them -->
-				<Style Selector="ListBoxItem">
-					<Setter Property="Height" Value="35"/>
-					<Setter Property="VerticalContentAlignment" Value="Top"/>
-				</Style>
-			</ListBox.Styles>
-		</ListBox>
+		<DataGrid Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Width="500" Margin="10" AutoGenerateColumns="True" Items="{Binding StatsFields}"/>
 	</Grid>
 </UserControl>

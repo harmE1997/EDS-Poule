@@ -28,7 +28,7 @@
 			<ListBox.Styles>
 				<!-- Give the ListBoxItems a fixed with of 100 and right-align them -->
 				<Style Selector="ListBoxItem">
-					<Setter Property="Height" Value="35"/>
+          <Setter Property="Height" Value="35"/>
 					<Setter Property="VerticalContentAlignment" Value="Top"/>
 				</Style>
 			</ListBox.Styles>
