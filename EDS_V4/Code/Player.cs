@@ -41,7 +41,13 @@ namespace EDS_V4.Code
         public void CheckPlayer(Player Host, int currentWeek, Dictionary<string, Topscorer> topscorers)
         {
             TotalScore = 0;
-            foreach(var week in Weeks)
+            //reset postponement scores
+            foreach (var week in Weeks)
+            {
+                week.Value.WeekPostponementScore = 0;
+            }
+            
+            foreach (var week in Weeks)
             {
                 if (week.Value == null)
                 {
@@ -51,7 +57,7 @@ namespace EDS_V4.Code
 
                 if (week.Value.Weeknr > currentWeek)
                     break;
-                
+
                 var posts = week.Value.Checkweek(Host, Questions, topscorers, currentWeek);
                 MovePostponementScoresToCorrectWeeks(posts);
                 WeekMatchesScore = week.Value.WeekMatchesScore;
