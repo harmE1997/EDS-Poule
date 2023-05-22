@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:views="clr-namespace:EDS_V4.Views;assembly=EDS_V4"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="480"
              x:Class="EDS_V4.Views.scrSettings">
 	<UserControl.Styles>
@@ -18,7 +19,6 @@
 
 		<Style Selector="TextBlock">
 			<Setter Property="VerticalAlignment" Value="Center"/>
-			<Setter Property="Margin" Value="5"/>
 		</Style>
 
 		<Style Selector="TextBox">
@@ -28,12 +28,14 @@
 		</Style>
 	</UserControl.Styles>
 	<Grid ColumnDefinitions="auto,auto" RowDefinitions="*,auto">
-		<Grid RowDefinitions="auto,auto,auto" ColumnDefinitions="auto,auto" Margin="10" Grid.Column="0" HorizontalAlignment="Center">
+		<Grid RowDefinitions="auto,auto,auto,auto" ColumnDefinitions="auto,auto" Margin="10" Grid.Column="0" HorizontalAlignment="Center">
 			<TextBlock Text="Algemene instellingen" Grid.Row="0" Grid.ColumnSpan="2" FontSize="16" HorizontalAlignment="Center"/>
 			<TextBlock Text="Admin location" Grid.Column="0" Grid.Row="1"/>
-			<TextBox Text="{Binding AdminFileLocation}" Grid.Column="1" Grid.Row="1" Width="200"/>
-			<TextBlock Text="Save file location" Grid.Column="0" Grid.Row="2" />
-			<TextBox Text="{Binding SaveFileLocation}" Grid.Column="1" Grid.Row="2" Width="200"/>
+			<views:isoFileBrowser BrowserResult="{Binding AdminFileLocation}" Grid.Column="1" Grid.Row="1"/>
+			<TextBlock Text="Save file directory" Grid.Column="0" Grid.Row="2" />
+			<views:isoFileBrowser BrowserResult="{Binding SaveFileFolder}" Grid.Column="1" Grid.Row="2"/>
+			<TextBlock Text="Save file name" Grid.Column="0" Grid.Row="3"/>
+			<TextBox Text="{Binding SaveFileName}" Grid.Column="1" Grid.Row="3" />
 		</Grid>
 
 		<Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="auto,auto" Margin="10" Grid.Column="1" HorizontalAlignment="Center">

@@ -34,8 +34,9 @@ namespace EDS_V4.ViewModels
         private Configurables configurables;
 
 
-        public string AdminFileLocation { get { ReadConfigFromXml(); return configurables.AdminFileLocation; } set { this.RaiseAndSetIfChanged(ref configurables.AdminFileLocation, value); SaveCommandEnabled = true; } }
-        public string SaveFileLocation { get => configurables.SaveFileLocation; set { this.RaiseAndSetIfChanged(ref configurables.SaveFileLocation, value); SaveCommandEnabled = true; } }
+        public string AdminFileLocation { get => configurables.AdminFileLocation; set { this.RaiseAndSetIfChanged(ref configurables.AdminFileLocation, value); SaveCommandEnabled = true; } }
+        public string SaveFileFolder { get => Path.GetDirectoryName(configurables.SaveFileLocation); set { this.RaiseAndSetIfChanged(ref configurables.SaveFileLocation, Path.Combine(value, SaveFileName)); SaveCommandEnabled = true; } }
+        public string SaveFileName { get => Path.GetFileName(configurables.SaveFileLocation); set { this.RaiseAndSetIfChanged(ref configurables.SaveFileLocation, Path.Combine(SaveFileFolder, value)); ; SaveCommandEnabled = true; } }
 
         public int StartRow { get => configurables.StartRow; set { this.RaiseAndSetIfChanged(ref configurables.StartRow, value); SaveCommandEnabled = true; } }
         public int FirstHalfSize { get => configurables.FirstHalfSize; set { this.RaiseAndSetIfChanged(ref configurables.FirstHalfSize, value); SaveCommandEnabled = true; } }
@@ -51,8 +52,8 @@ namespace EDS_V4.ViewModels
 
         public SettingsVm()
         {
-            var savefilelocation = "C:\\Users\\Harm\\OneDrive\\Documenten\\Sport\\Poules\\EDS Poule Docs\\2023-2024\\EDS2324";
-            var adminloc = "C:\\Users\\Harm\\OneDrive\\Documenten\\Sport\\Poules\\EDS Poule Docs\\2023-2024\\EDS Poule Admin 2023-2024.xlsx";
+            var savefilelocation = "EDS2324";
+            var adminloc = "EDS Poule Admin 2023-2024.xlsx";
             xmlhandler = new XmlHandler<Configurables>();
             defaults = new Configurables()
             {

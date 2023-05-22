@@ -15,6 +15,7 @@ namespace EDS_V4.ViewModels
         public int PreviousRank { get; set; }
         public int Total { get; set; }
         public int Week { get; set; }
+        public int Bonus { get; set; }
         public string Name { get; set; }
     }
     public class scrRankingVm : ViewModelBase
@@ -51,12 +52,13 @@ namespace EDS_V4.ViewModels
             }
 
             catch (FileNotFoundException) { PopupManager.OnMessage("Excel file does not exist"); }
-            catch { PopupManager.OnMessage("Can't open excel file. It's already in use."); }
+            catch (Exception e){ PopupManager.OnMessage(e.Message); }
         }
 
         public void ExportRanking()
         {
             var excelManager = new Excel.ExcelManager();
+
             excelManager.ExportPlayersToExcel(scrPlayersVm.PlayerManager.Players);
             PopupManager.OnMessage("Ranking sucessfully exported");
         }
@@ -69,7 +71,7 @@ namespace EDS_V4.ViewModels
             List<RankingField> rank = new List<RankingField>();
             foreach (Player player in scrPlayersVm.PlayerManager.Players)
             {
-                rank.Add(new RankingField() { Rank = player.Ranking, PreviousRank = player.PreviousRanking, Total = player.TotalScore, Week = player.WeekScore, Name = player.Name }) ;
+                rank.Add(new RankingField() { Rank = player.Ranking, PreviousRank = player.PreviousRanking, Total = player.TotalScore, Week = player.WeekMatchesScore, Name = player.Name, Bonus=player.WeekBonusScore }) ;
             }
 
             Ranking = rank;

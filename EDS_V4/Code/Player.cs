@@ -13,7 +13,8 @@ namespace EDS_V4.Code
         public string Town;
         public int TotalScore { get; private set; }
         public int PreviousScore { get; set; }
-        public int WeekScore { get; private set; }
+        public int WeekMatchesScore { get; private set; }
+        public int WeekBonusScore { get; set; }
         public int Ranking { get; set; }
         public int PreviousRanking { get; set; }
         public int RankingDifference { get; set; }
@@ -26,7 +27,8 @@ namespace EDS_V4.Code
             Name = name;
             Town = woonplaats;
             TotalScore = 0;
-            WeekScore = 0;
+            WeekMatchesScore = 0;
+            WeekBonusScore = 0;
             Questions = questions;
             PreviousScore = 0;
             RankingDifference = 0;
@@ -37,24 +39,24 @@ namespace EDS_V4.Code
         public void CheckPlayer(Player Host, int currentWeek, Dictionary<string, Topscorer> topscorers)
         {
             TotalScore = 0;
-            for (int i = 0; i < Weeks.Length; i++)
+            foreach(var week in Weeks)
             {
-                var week = Weeks[i];
                 if (week == null)
                 {
-                    WeekScore = 0;
+                    WeekMatchesScore = 0;
                     break;
                 }
 
+                if (week.Weeknr > currentWeek)
+                    break;
+                
+                week.Checkweek(Host, Questions, topscorers);
+                WeekMatchesScore = week.WeekMatchesScore;
+                WeekBonusScore = week.WeekBonusScore;
+                TotalScore += week.WeekMatchesScore + week.WeekBonusScore;
                 if (week.Weeknr <= currentWeek)
-                {
-                    week.Checkweek(Host, Questions, topscorers);
-                    WeekScore = week.WeekScore;
-                    TotalScore += week.WeekScore;
-                }
+                    PreviousScore = TotalScore - week.WeekMatchesScore - week.WeekBonusScore;                   
             }
-
-            PreviousScore = TotalScore - WeekScore;
         }
     }
 }

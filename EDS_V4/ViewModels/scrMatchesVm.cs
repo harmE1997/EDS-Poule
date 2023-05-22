@@ -90,7 +90,7 @@ namespace EDS_V4.ViewModels
                 var week = Convert.ToInt16(selectedweek) - 1;
                 string Names = "";
                 ExcelManager em = new ExcelManager();
-                var hostweek = em.ReadSingleWeek(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet, week, 0);
+                var hostweek = em.ReadSingleWeek(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet, week, 0, true);
                 foreach (Player player in scrPlayersVm.PlayerManager.Players)
                 {
                     if (player.Weeks[week] != null)

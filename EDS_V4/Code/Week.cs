@@ -10,61 +10,27 @@ namespace EDS_V4.Code
     public class Week
     {
         public int Weeknr { get; private set; }
-        public int WeekScore { get; private set; }
+        public int WeekMatchesScore { get; private set; }
+        public int WeekBonusScore { get; private set; }
         public Match[] Matches { get; private set; }
 
         public Week(int nr, Match[] matches)
         {
             Matches = matches;
             Weeknr = nr;
-            WeekScore = 0;
+            WeekMatchesScore = 0;
         }
         public void Checkweek(Player host, BonusQuestions questions, Dictionary<string, Topscorer> topscorers)
         {
             Week hostweek = host.Weeks[Weeknr - 1];
-            WeekScore = 0;
-            for (int counter = 0; counter < Matches.Length; counter++)
+            WeekMatchesScore = 0;
+            int counter = 0;
+            foreach (var match in Matches)
             {
-                WeekScore += CheckMatch(hostweek, counter);
+                WeekMatchesScore += match.CheckMatch(hostweek.Matches[counter]);
+                counter++;
             }
-
-            questions.CheckBonus(host.Questions, Weeknr, topscorers);
-            WeekScore += questions.WeekScore;
-        }
-
-        private int CheckMatch(Week hostweek, int counter)
-        {
-            var ThisA = Matches[counter].ResultA;
-            var ThisB = Matches[counter].ResultB;
-            var HostA = hostweek.Matches[counter].ResultA;
-            var HostB = hostweek.Matches[counter].ResultB;
-            var ThisWinner = Matches[counter].Winner;
-            var HostWinner = hostweek.Matches[counter].Winner;
-            var matchScore = 0;
-
-            if (HostA != 99 && ThisA != 99)
-            {
-                if (ThisWinner == HostWinner)
-                {
-                    matchScore += 15;
-                }
-
-                if (ThisA == HostA)
-                {
-                    matchScore += 5;
-                }
-
-                if (ThisB == HostB)
-                {
-                    matchScore += 5;
-                }
-
-                if (hostweek.Matches[counter].MOTW)
-                {
-                    matchScore *= 2;
-                }
-            }
-            return matchScore;
+            WeekBonusScore = questions.CheckBonus(host.Questions, Weeknr, topscorers);
         }
 
         public int CheckMatchOnResultOnly(Match[] Host, int matchID)

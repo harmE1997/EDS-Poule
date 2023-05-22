@@ -42,7 +42,6 @@ namespace EDS_V4.Code
     public class BonusQuestions
     {
         public Dictionary<BonusKeys, Question> Answers { get; private set; }
-        public int WeekScore { get; private set; }
 
         public BonusQuestions(string kampioen, string prodeg, string topscorer, string trainer,
             string winterkampioen, string championround, string teamReds, string[] finalisten, string[] degradanten, string[] promovendi,
@@ -64,13 +63,13 @@ namespace EDS_V4.Code
             };
         }
 
-        public void CheckBonus(BonusQuestions HostQuestions, int currentweek, Dictionary<string, Topscorer> topscorers)
+        public int CheckBonus(BonusQuestions HostQuestions, int currentweek, Dictionary<string, Topscorer> topscorers)
         {
             if (HostQuestions == null)
             {
                 throw new ArgumentNullException("hostquestions");
             }
-            WeekScore = 0;
+            int WeekScore = 0;
 
             //check all questions except topscorers
             foreach (var a in Answers)
@@ -91,6 +90,7 @@ namespace EDS_V4.Code
             //check the topscorers
             var ansscorer = topscorers[Answers[BonusKeys.Topscorer].Answer[0]];
             WeekScore += ansscorer.Rounds[currentweek - 1] * 5;
+            return WeekScore;
         }
     }
 }

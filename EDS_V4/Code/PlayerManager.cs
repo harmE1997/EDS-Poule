@@ -38,6 +38,8 @@ namespace EDS_V4.Code
 
         private void SavePlayers()
         {
+            if (!File.Exists(GeneralConfiguration.SaveFileLocation))
+                Players.Clear();
             using (FileStream stream = new FileStream(GeneralConfiguration.SaveFileLocation, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
@@ -128,15 +130,12 @@ namespace EDS_V4.Code
 
         }
 
-        public IEnumerable<int> CheckAllPlayers(Host host, int currentWeek)
+        public void CheckAllPlayers(Host host, int currentWeek)
         {
-            int i = 0;
 
             foreach (Player player in Players)
             {
                 player.CheckPlayer(host, currentWeek, host.getTopscorers());
-                i++;
-                yield return i;
             }
 
             SavePlayers();
@@ -147,7 +146,7 @@ namespace EDS_V4.Code
             int total = 0;
             foreach (var p in Players)
             {
-                total += p.WeekScore;
+                total += p.WeekMatchesScore;
             }
             return total / Players.Count;
         }

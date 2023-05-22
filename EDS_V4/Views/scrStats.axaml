@@ -21,19 +21,19 @@
 		</Style>
 	</UserControl.Styles>
 
-	<Grid RowDefinitions="*,*,*" ColumnDefinitions="auto,auto" Margin="10">
-		<StackPanel Orientation="Vertical" Margin="10">
-			<Button Content="Champions" Grid.Row="0" Grid.Column="0" Command="{Binding ChampionsCommand}"/>
-			<Button Content="Degradanten" Grid.Row="1" Grid.Column="0" Command="{Binding DegradantenCommand}"/>
-			<Button Content="Promovendi" Grid.Row="3" Grid.Column="0" Command="{Binding PromovendiCommand}"/>
-			<Button Content="Nacompetitieteams" Grid.Row="9" Grid.Column="0" Command="{Binding NacompetitieCommand}"/>
-			<Button Content="Winterkampioenen" Grid.Row="5" Grid.Column="0" Command="{Binding WinterkampioenCommand}"/>
-			<Button Content="Ronde kampioenschap" Grid.Row="2" Grid.Column="0" Command="{Binding RondeCommand}"/>
-			<Button Content="Topscorers" Grid.Row="8" Grid.Column="0" Command="{Binding TopscorersCommand}"/>
-			<Button Content="Meeste rode kaarten" Grid.Row="4" Grid.Column="0" Command="{Binding RodekaartenCommand}"/>			
-			<Button Content="Ontslagen trainers" Grid.Row="6" Grid.Column="0" Command="{Binding TrainersCommand}"/>
-			<Button Content="Bekerfinalisten" Grid.Row="7" Grid.Column="0" Command="{Binding BekerfinalistenCommand}"/>					
+	<Grid RowDefinitions="*,*,*" ColumnDefinitions="auto,auto,auto" Margin="10">
+		<StackPanel Orientation="Vertical" Margin="10" Grid.Row="0" Grid.Column="0">
+			<Button Content="Champions" Command="{Binding ChampionsCommand}"/>
+			<Button Content="Degradanten" Command="{Binding DegradantenCommand}"/>
+			<Button Content="Ronde kampioenschap" Command="{Binding RondeCommand}"/>
+			<Button Content="Promovendi" Command="{Binding PromovendiCommand}"/>
+			<Button Content="Meeste rode kaarten" Command="{Binding RodekaartenCommand}"/>
+			<Button Content="Winterkampioenen" Command="{Binding WinterkampioenCommand}"/>
+			<Button Content="Ontslagen trainers" Command="{Binding TrainersCommand}"/>
+			<Button Content="Bekerfinalisten" Command="{Binding BekerfinalistenCommand}"/>
+			<Button Content="Topscorers" Command="{Binding TopscorersCommand}"/>
+			<Button Content="Nacompetitieteams" Command="{Binding NacompetitieCommand}"/>
 		</StackPanel>
-		<DataGrid Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Width="500" Margin="10" AutoGenerateColumns="True" Items="{Binding StatsFields}"/>
+		<DataGrid Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" Width="500" Margin="10" AutoGenerateColumns="True" Items="{Binding StatsFields}"/>
 	</Grid>
 </UserControl>

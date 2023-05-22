@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace EDS_V4.Views
 {
@@ -6,7 +7,7 @@ namespace EDS_V4.Views
     {
         public SideMenu()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
     }
 }

@@ -35,6 +35,35 @@ namespace EDS_V4.Code
             }
         }
 
+        public int CheckMatch(Match hostmatch)
+        {
+            var matchScore = 0;
+
+            if (hostmatch.ResultA != 99 && ResultA != 99)
+            {
+                if (Winner == hostmatch.Winner)
+                {
+                    matchScore += 15;
+                }
+
+                if (ResultA == hostmatch.ResultA)
+                {
+                    matchScore += 5;
+                }
+
+                if (ResultB == hostmatch.ResultB)
+                {
+                    matchScore += 5;
+                }
+
+                if (hostmatch.MOTW)
+                {
+                    matchScore *= 2;
+                }
+            }
+            return matchScore;
+        }
+
         public string MatchToString()
         { 
             var res = ResultA.ToString() + " - " + ResultB.ToString();

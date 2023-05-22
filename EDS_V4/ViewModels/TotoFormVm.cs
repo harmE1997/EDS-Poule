@@ -121,6 +121,7 @@ namespace EDS_V4.ViewModels
             {
                 ActivePlayer.Weeks = em.ReadPredictions(PredictionsFileName, 1, Miss,FirstHalf, SecondHalf, ActivePlayer.Weeks);
                 CurrentWeek = 1;
+                PopupManager.OnMessage("Predictions read");
             }
         }
 
@@ -140,7 +141,7 @@ namespace EDS_V4.ViewModels
                     matches[x] = new Match(99, 99, x==8);             
                 }
 
-                weeks[i] = new Week(i, matches);
+                weeks[i] = new Week(i+1, matches);
             }
             return new Player("", "", weeks, new BonusQuestions("", "", "", "", "", "", "", new string[2], new string[2], new string[2], new int[13]));
         }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using System.IO;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace EDS_V4.Excel
 {
@@ -17,7 +18,7 @@ namespace EDS_V4.Excel
         private excel._Worksheet xlWorksheet;
         private excel.Range xlRange;
 
-        public IEnumerable<int> ExportPlayersToExcel(List<Player> Players)
+        public void ExportPlayersToExcel(List<Player> Players)
         {
             InitialiseWorkbook(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.RankingSheet);
             int y = 2;
@@ -29,9 +30,9 @@ namespace EDS_V4.Excel
                 xlRange.Cells[y, 4].value2 = player.Name;
                 xlRange.Cells[y, 5].value2 = player.Town;
                 xlRange.Cells[y, 6].value2 = player.TotalScore;
-                xlRange.Cells[y, 7].value2 = player.WeekScore;
+                xlRange.Cells[y, 7].value2 = player.WeekMatchesScore;
+                xlRange.Cells[y, 8].value2 = player.WeekBonusScore;
                 y++;
-                yield return y;
             }
             CleanWorkbook();
         }
@@ -49,7 +50,6 @@ namespace EDS_V4.Excel
             if (secondhalf)
                 StartWeek += ExcelConfiguration.FirstHalfSize;
             
-
             try
             {
                 InitialiseWorkbook(filename, sheet);
@@ -65,13 +65,16 @@ namespace EDS_V4.Excel
             catch { CleanWorkbook(); return weeks; }
         }
 
-        public Match[] ReadSingleWeek(string filename, int sheet, int week, int miss)
+        public Match[] ReadSingleWeek(string filename, int sheet, int week, int miss, bool initializationRequired = false)
         {
             Match[] Week = new Match[9];
 
             int startrow = ExcelConfiguration.StartRow + (ExcelConfiguration.BlockSize + 1) * (week) + miss;
             if (week >= ExcelConfiguration.FirstHalfSize)
                 startrow += ExcelConfiguration.HalfWayJump;
+
+            if (initializationRequired)
+                InitialiseWorkbook(filename, sheet);
             try
             {
                 for (int rowschecked = 0; rowschecked < ExcelConfiguration.BlockSize; rowschecked++)
@@ -104,7 +107,12 @@ namespace EDS_V4.Excel
                 }
                 return Week;
             }
-            catch { CleanWorkbook(); return Week; }
+            catch { return Week; }
+            finally 
+            { 
+                if(initializationRequired)
+                    CleanWorkbook(); 
+            }
         }
 
         public BonusQuestions ReadBonus()
@@ -129,7 +137,7 @@ namespace EDS_V4.Excel
                     Convert.ToInt32(xlRange.Cells[376, weekcolumn].value2),
                     Convert.ToInt32(xlRange.Cells[377, weekcolumn].value2),
                     Convert.ToInt32(xlRange.Cells[378, weekcolumn].value2),
-            };
+                };
 
                 string[] degradanten = { Convert.ToString(xlRange.Cells[375, column].value2), Convert.ToString(xlRange.Cells[376, column].value2) };
                 string[] promovendi = { Convert.ToString(xlRange.Cells[377, column].value2), Convert.ToString(xlRange.Cells[378, column].value2) };
@@ -146,35 +154,42 @@ namespace EDS_V4.Excel
                     finalists, degradanten, promovendi, 
                     weeks
                     );
-                CleanWorkbook();
                 return bonus;
             }
-            catch { CleanWorkbook(); return null; };
+            catch {return null; }
+            finally{ CleanWorkbook(); }
         }
 
         public Dictionary<string, Topscorer> readtopscorers()
         {
             Dictionary<string, Topscorer> scorers = new Dictionary<string, Topscorer>();
             InitialiseWorkbook(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.TopscorersSheet);
-            int i = 2;
-            while (true)
+            try
             {
-                Topscorer ts = new Topscorer() { Total = 0, Rounds = new List<int>()};
-                string name = Convert.ToString(xlRange.Cells[i, 1].value2);
-                if (name == null)
-                    break;
-                ts.Total = Convert.ToInt32(xlRange.Cells[i, 3].value2);
-                for (int x = 0; x < 34; x++)
+                int i = 2;
+                while (true)
                 {
-                    var round = Convert.ToInt32(xlRange.Cells[i, x + 4].value2);
-                    ts.Rounds.Add(round);               
+                    Topscorer ts = new Topscorer() { Total = 0, Rounds = new List<int>() };
+                    string name = Convert.ToString(xlRange.Cells[i, 1].value2);
+                    if (string.IsNullOrEmpty(name))
+                        break;
+                    ts.Total = Convert.ToInt32(xlRange.Cells[i, 3].value2);
+                    for (int x = 0; x < 34; x++)
+                    {
+                        var round = Convert.ToInt32(xlRange.Cells[i, x + 4].value2);
+                        ts.Rounds.Add(round);
+                    }
+                    scorers.Add(name, ts);
+                    i++;
                 }
-                scorers.Add(name, ts);
-                i++;
+                return scorers;
             }
 
-            CleanWorkbook();
-            return scorers;
+            catch
+            {
+                return scorers;
+            }
+            finally { CleanWorkbook(); }
         }
 
         private void InitialiseWorkbook(string filename, int sheet)
