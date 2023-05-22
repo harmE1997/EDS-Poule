@@ -36,13 +36,13 @@ namespace EDS_V4.Code
                     WeekMatchesScore += matchscore;
                 if(hostmatch.Postponement > 0 && currentcheckingweek == Weeknr)
                     WeekMatchesScore += matchscore;
-                int postponementweek = Weeknr + hostmatch.Postponement;
-                if (hostmatch.Postponement > 0 && postponementweek <= currentcheckingweek)
+
+                if (hostmatch.Postponement > 0 && hostmatch.Postponement <= currentcheckingweek)
                 {
-                    if(postponementscores.ContainsKey(postponementweek))
-                        postponementscores[postponementweek] += matchscore;
+                    if(postponementscores.ContainsKey(hostmatch.Postponement))
+                        postponementscores[hostmatch.Postponement] += matchscore;
                     else
-                    postponementscores.Add(postponementweek, matchscore);
+                    postponementscores.Add(hostmatch.Postponement, matchscore);
                 }
             }
             WeekBonusScore = questions.CheckBonus(host.Questions, Weeknr, topscorers);

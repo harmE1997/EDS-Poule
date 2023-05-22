@@ -34,7 +34,7 @@
 		<StackPanel Orientation="Vertical" Margin="10">
 			<StackPanel Orientation="Horizontal" Grid.Column="0">
 				<TextBlock Text="Week" Margin="10"/>
-				<ComboBox Items="{Binding Weeks}" SelectedItem="{Binding SelectedWeek}"/>
+				<ComboBox Items="{Binding Weeks}" SelectedItem="{Binding SelectedWeek}" Width="50"/>
 			</StackPanel>
 			<Button Content="Calculate new ranking" Command="{Binding CalculateNewRanking}"/>
 			<Button Content="Export ranking" Command="{Binding ExportRanking}"/>
