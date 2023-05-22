@@ -12,6 +12,7 @@ namespace EDS_V4.Code
         public int Weeknr { get; private set; }
         public int WeekMatchesScore { get; private set; }
         public int WeekBonusScore { get; private set; }
+        public int WeekPostponementScore { get; set; }
         public Match[] Matches { get; private set; }
 
         public Week(int nr, Match[] matches)
@@ -19,18 +20,28 @@ namespace EDS_V4.Code
             Matches = matches;
             Weeknr = nr;
             WeekMatchesScore = 0;
+            WeekPostponementScore = 0;
         }
-        public void Checkweek(Player host, BonusQuestions questions, Dictionary<string, Topscorer> topscorers)
+        public Dictionary<int,int> Checkweek(Player host, BonusQuestions questions, Dictionary<string, Topscorer> topscorers, int currentcheckingweek)
         {
-            Week hostweek = host.Weeks[Weeknr - 1];
-            WeekMatchesScore = 0;
-            int counter = 0;
-            foreach (var match in Matches)
+            Week hostweek = host.Weeks[Weeknr];
+            WeekMatchesScore = 0;            
+            Dictionary<int, int> postponementscores = new Dictionary<int, int>();
+            for(int counter = 0; counter < Matches.Length; counter++)
             {
-                WeekMatchesScore += match.CheckMatch(hostweek.Matches[counter]);
-                counter++;
+                var hostmatch = hostweek.Matches[counter];
+                int matchscore = Matches[counter].CheckMatch(hostmatch);
+                WeekMatchesScore += matchscore;
+                if (hostmatch.Postponement > 0 && Weeknr + hostmatch.Postponement == currentcheckingweek)
+                {
+                    if(postponementscores.ContainsKey(currentcheckingweek))
+                        postponementscores[currentcheckingweek] += matchscore;
+                    else
+                    postponementscores.Add(currentcheckingweek, matchscore);
+                }
             }
             WeekBonusScore = questions.CheckBonus(host.Questions, Weeknr, topscorers);
+            return postponementscores;
         }
 
         public int CheckMatchOnResultOnly(Match[] Host, int matchID)

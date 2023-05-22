@@ -8,6 +8,7 @@ using excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using System.IO;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using ReactiveUI;
 
 namespace EDS_V4.Excel
 {
@@ -30,16 +31,18 @@ namespace EDS_V4.Excel
                 xlRange.Cells[y, 4].value2 = player.Name;
                 xlRange.Cells[y, 5].value2 = player.Town;
                 xlRange.Cells[y, 6].value2 = player.TotalScore;
-                xlRange.Cells[y, 7].value2 = player.WeekMatchesScore;
-                xlRange.Cells[y, 8].value2 = player.WeekBonusScore;
+                xlRange.Cells[y, 7].value2 = player.WeekTotalScore;
+                xlRange.Cells[y, 8].value2 = player.WeekMatchesScore;
+                xlRange.Cells[y, 9].value2 = player.WeekBonusScore;
+                xlRange.Cells[y, 10].value2 = player.WeekPostponementScore;
                 y++;
             }
             CleanWorkbook();
         }
 
-        public Week[] ReadPredictions(string filename, int sheet, int miss, bool firsthalf = false, bool secondhalf = false, Week[] Weeks = null)
+        public Dictionary<int, Week> ReadPredictions(string filename, int sheet, int miss, bool firsthalf = false, bool secondhalf = false, Dictionary<int, Week> Weeks = null)
         {
-            var weeks = new Week[ExcelConfiguration.NrBlocks];
+            var weeks = new Dictionary<int, Week>();
             if (Weeks != null)
                 weeks = Weeks;
 
@@ -56,13 +59,16 @@ namespace EDS_V4.Excel
                 for (int i = StartWeek; i < Endweek; i++)
                 {
                     var matches = ReadSingleWeek(filename, sheet, i, miss);
-                    weeks[i] = new Week((i + 1), matches);
+                    if (weeks.ContainsKey(i + 1))
+                        weeks[i + 1] = new Week(i + 1, matches);
+                    else
+                    weeks.Add(i + 1, new Week((i + 1), matches));
                 }
                 CleanWorkbook();
                 return weeks;
             }
 
-            catch { CleanWorkbook(); return weeks; }
+            catch (Exception e) { CleanWorkbook(); return weeks; }
         }
 
         public Match[] ReadSingleWeek(string filename, int sheet, int week, int miss, bool initializationRequired = false)
@@ -79,22 +85,24 @@ namespace EDS_V4.Excel
             {
                 for (int rowschecked = 0; rowschecked < ExcelConfiguration.BlockSize; rowschecked++)
                 {
-                    double x = 99;
-                    double y = 99;
+                    double a = 99;
+                    double b = 99;
+                    double p = 0; 
                     int currentRow = startrow + rowschecked;
+                
+                    var pt = xlRange.Cells[currentRow, ExcelConfiguration.PostponementColumn].Value2;
+                    var at = xlRange.Cells[currentRow, ExcelConfiguration.HomeColumn].Value2;
+                    var bt = xlRange.Cells[currentRow, ExcelConfiguration.OutColumn].Value2;
+                    
 
-                    var xt = xlRange.Cells[currentRow, ExcelConfiguration.HomeColumn].Value2;
-                    var yt = xlRange.Cells[currentRow, ExcelConfiguration.OutColumn].Value2;
-
-                    if (xlRange.Cells[currentRow, ExcelConfiguration.HomeColumn].Value2 != null && xlRange.Cells[currentRow, ExcelConfiguration.OutColumn].Value2 != null)
+                    if (at != null && bt != null)
                     {
-                        try
-                        {
-                            x = xlRange.Cells[currentRow, ExcelConfiguration.HomeColumn].Value2;
-                            y = xlRange.Cells[currentRow, ExcelConfiguration.OutColumn].Value2;
-                        }
-                        catch { };
+                        a = at;
+                        b = bt;
                     }
+
+                    if (pt != null)
+                        p = pt;
 
                     bool motw = false;
                     if (rowschecked == ExcelConfiguration.BlockSize - 1)
@@ -102,12 +110,12 @@ namespace EDS_V4.Excel
                         motw = true;
                     }
 
-                    Match match = new Match(Convert.ToInt32(x), Convert.ToInt32(y), motw);
+                    Match match = new Match(Convert.ToInt16(a), Convert.ToInt16(b), motw, Convert.ToInt16(p));
                     Week[rowschecked] = match;
                 }
                 return Week;
             }
-            catch { return Week; }
+            catch (Exception e) { return Week; }
             finally 
             { 
                 if(initializationRequired)

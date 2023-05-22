@@ -14,8 +14,10 @@ namespace EDS_V4.ViewModels
         public int Rank { get; set; }
         public int PreviousRank { get; set; }
         public int Total { get; set; }
-        public int Week { get; set; }
+        public int WeekTotal { get; set; }
+        public int Matches { get; set; }
         public int Bonus { get; set; }
+        public int Postponement { get; set; }
         public string Name { get; set; }
     }
     public class scrRankingVm : ViewModelBase
@@ -63,6 +65,12 @@ namespace EDS_V4.ViewModels
             PopupManager.OnMessage("Ranking sucessfully exported");
         }
 
+        public void ResetHost()
+        {
+            host.HostSet = false;
+            host.setHost();
+        }
+
         private void RefreshRanking()
         {
             //sort players by score
@@ -71,7 +79,7 @@ namespace EDS_V4.ViewModels
             List<RankingField> rank = new List<RankingField>();
             foreach (Player player in scrPlayersVm.PlayerManager.Players)
             {
-                rank.Add(new RankingField() { Rank = player.Ranking, PreviousRank = player.PreviousRanking, Total = player.TotalScore, Week = player.WeekMatchesScore, Name = player.Name, Bonus=player.WeekBonusScore }) ;
+                rank.Add(new RankingField() { Rank = player.Ranking, PreviousRank = player.PreviousRanking, Total = player.TotalScore, Matches = player.WeekMatchesScore, Name = player.Name, Bonus=player.WeekBonusScore, Postponement=player.WeekPostponementScore, WeekTotal=player.WeekTotalScore }) ;
             }
 
             Ranking = rank;

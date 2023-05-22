@@ -18,6 +18,7 @@ namespace EDS_V4.ViewModels
         public int FirstHalfSize;
         public int HomeColumn;
         public int OutColumn;
+        public int PostponementColumn;
         public int HalfWayJump;
         public int HostSheet;
         public int RankingSheet;
@@ -42,6 +43,7 @@ namespace EDS_V4.ViewModels
         public int FirstHalfSize { get => configurables.FirstHalfSize; set { this.RaiseAndSetIfChanged(ref configurables.FirstHalfSize, value); SaveCommandEnabled = true; } }
         public int HomeColumn { get => configurables.HomeColumn; set { this.RaiseAndSetIfChanged(ref configurables.HomeColumn, value); SaveCommandEnabled = true; } }
         public int OutColumn { get => configurables.OutColumn; set { this.RaiseAndSetIfChanged(ref configurables.OutColumn, value); SaveCommandEnabled = true; } }
+        public int PostponementColumn { get => configurables.PostponementColumn; set { this.RaiseAndSetIfChanged(ref configurables.PostponementColumn, value); SaveCommandEnabled = true; } }
         public int HalfWayJump { get => configurables.HalfWayJump; set { this.RaiseAndSetIfChanged(ref configurables.HalfWayJump, value); SaveCommandEnabled = true; } }
         public int HostSheet { get => configurables.HostSheet; set { this.RaiseAndSetIfChanged(ref configurables.HostSheet, value); SaveCommandEnabled = true; } }
         public int RankingSheet { get => configurables.RankingSheet; set { this.RaiseAndSetIfChanged(ref configurables.RankingSheet, value); SaveCommandEnabled = true; } }
@@ -63,6 +65,7 @@ namespace EDS_V4.ViewModels
                 FirstHalfSize = 17,          
                 HomeColumn = 7,
                 OutColumn = 8,
+                PostponementColumn = 6,
                 HalfWayJump = 10,
                 HostSheet = 6,
                 RankingSheet = 2,
@@ -109,6 +112,7 @@ namespace EDS_V4.ViewModels
             ExcelConfiguration.HomeColumn = configurables.HomeColumn;
             ExcelConfiguration.HostSheet = configurables.HostSheet;
             ExcelConfiguration.OutColumn = configurables.OutColumn;
+            ExcelConfiguration.PostponementColumn = configurables.PostponementColumn;
             ExcelConfiguration.RankingSheet = configurables.RankingSheet;
             ExcelConfiguration.StartRow = configurables.StartRow;
             ExcelConfiguration.TopscorersSheet = configurables.TopscorersSheet;

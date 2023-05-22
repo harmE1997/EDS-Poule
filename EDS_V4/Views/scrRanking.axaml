@@ -40,7 +40,7 @@
 			<Button Content="Export ranking" Command="{Binding ExportRanking}"/>
 			
 		</StackPanel>
-		<Button Content="Reset host" Grid.Column="0" Grid.Row="2" Margin="10"/>
+		<Button Content="Reset host" Grid.Column="0" Grid.Row="2" Margin="10" Command="{Binding ResetHost}"/>
     <DataGrid Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" AutoGenerateColumns="True" Items="{Binding Ranking}"/>
 	</Grid>
 </UserControl>

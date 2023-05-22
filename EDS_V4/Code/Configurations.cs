@@ -18,6 +18,7 @@ namespace EDS_V4.Code
         public static int FirstHalfSize;
         public static int HomeColumn;
         public static int OutColumn;
+        public static int PostponementColumn;
         public static int HalfWayJump;
         public static int HostSheet;
         public static int RankingSheet;

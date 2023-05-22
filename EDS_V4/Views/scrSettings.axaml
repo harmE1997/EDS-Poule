@@ -32,13 +32,13 @@
 			<TextBlock Text="Algemene instellingen" Grid.Row="0" Grid.ColumnSpan="2" FontSize="16" HorizontalAlignment="Center"/>
 			<TextBlock Text="Admin location" Grid.Column="0" Grid.Row="1"/>
 			<views:isoFileBrowser BrowserResult="{Binding AdminFileLocation}" Grid.Column="1" Grid.Row="1"/>
-			<TextBlock Text="Save file directory" Grid.Column="0" Grid.Row="2" />
-			<views:isoFileBrowser BrowserResult="{Binding SaveFileFolder}" Grid.Column="1" Grid.Row="2"/>
+			<TextBlock Text="Save file directory" Grid.Column="0" Grid.Row="2"/>
+			<views:isoFileBrowser BrowserResult="{Binding SaveFileFolder}" Grid.Column="1" Grid.Row="2" BrowseForDirectory="True"/>
 			<TextBlock Text="Save file name" Grid.Column="0" Grid.Row="3"/>
 			<TextBox Text="{Binding SaveFileName}" Grid.Column="1" Grid.Row="3" />
 		</Grid>
 
-		<Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="auto,auto" Margin="10" Grid.Column="1" HorizontalAlignment="Center">
+		<Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="auto,auto" Margin="10" Grid.Column="1" HorizontalAlignment="Center">
 			<TextBlock Text="Excel instellingen" Grid.Row="0" Grid.ColumnSpan="2" FontSize="16" HorizontalAlignment="Center"/>
 			<TextBlock Text="Startrij" Grid.Column="0" Grid.Row="1"/>
 			<TextBox Text="{Binding StartRow}" Grid.Column="1" Grid.Row="1" Width="50"/>
@@ -48,15 +48,17 @@
 			<TextBox Text="{Binding HomeColumn}" Grid.Column="1" Grid.Row="3" Width="50"/>
 			<TextBlock Text="Uitkolom" Grid.Column="0" Grid.Row="4" />
 			<TextBox Text="{Binding OutColumn}" Grid.Column="1" Grid.Row="4"/>
+			<TextBlock Text="Uitstelkolom" Grid.Column="0" Grid.Row="5" />
+			<TextBox Text="{Binding PostponementColumn}" Grid.Column="1" Grid.Row="5"/>
 
-			<TextBlock Text="Halfway jump" Grid.Column="0" Grid.Row="5"/>
-			<TextBox Text="{Binding HalfWayJump}" Grid.Column="1" Grid.Row="5" Width="50"/>
-			<TextBlock Text="Hostsheet" Grid.Column="0" Grid.Row="6" />
-			<TextBox Text="{Binding HostSheet}" Grid.Column="1" Grid.Row="6"/>
-			<TextBlock Text="Rankingsheet" Grid.Column="0" Grid.Row="7" />
-			<TextBox Text="{Binding RankingSheet}" Grid.Column="1" Grid.Row="7"/>
-			<TextBlock Text="Topscorers sheet" Grid.Column="0" Grid.Row="8" />
-			<TextBox Text="{Binding TopscorersSheet}" Grid.Column="1" Grid.Row="8"/>
+			<TextBlock Text="Halfway jump" Grid.Column="0" Grid.Row="6"/>
+			<TextBox Text="{Binding HalfWayJump}" Grid.Column="1" Grid.Row="6" Width="50"/>
+			<TextBlock Text="Hostsheet" Grid.Column="0" Grid.Row="7" />
+			<TextBox Text="{Binding HostSheet}" Grid.Column="1" Grid.Row="7"/>
+			<TextBlock Text="Rankingsheet" Grid.Column="0" Grid.Row="8" />
+			<TextBox Text="{Binding RankingSheet}" Grid.Column="1" Grid.Row="8"/>
+			<TextBlock Text="Topscorers sheet" Grid.Column="0" Grid.Row="9" />
+			<TextBox Text="{Binding TopscorersSheet}" Grid.Column="1" Grid.Row="9"/>
 		</Grid>
 		<Button Content="Save Settings" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Grid.Row="1" Grid.ColumnSpan="2" Command="{Binding SaveSettingsCommand}" IsEnabled="{Binding SaveCommandEnabled}"/>
 	</Grid>

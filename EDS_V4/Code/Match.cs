@@ -13,12 +13,14 @@ namespace EDS_V4.Code
         public int ResultB;
         public string Winner { get; private set; }
         public bool MOTW { get; set; }
+        public int Postponement { get; set; }
 
-        public Match(int resA, int resB, bool motw = false)
+        public Match(int resA, int resB, bool motw = false, int postponement=0)
         {
             ResultA = resA;
             ResultB = resB;
             MOTW = motw;
+            Postponement = postponement;
             if (resA > resB)
             {
                 Winner = "A";

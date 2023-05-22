@@ -13,15 +13,17 @@ namespace EDS_V4.Code
         public string Town;
         public int TotalScore { get; private set; }
         public int PreviousScore { get; set; }
+        public int WeekTotalScore { get; set; }
         public int WeekMatchesScore { get; private set; }
         public int WeekBonusScore { get; set; }
+        public int WeekPostponementScore { get; set; }
         public int Ranking { get; set; }
         public int PreviousRanking { get; set; }
         public int RankingDifference { get; set; }
-        public Week[] Weeks { get; set; }
+        public Dictionary<int, Week> Weeks{ get; set; }
         public BonusQuestions Questions { get; set; }
 
-        public Player(string name, string woonplaats, Week[] weeks, BonusQuestions questions)
+        public Player(string name, string woonplaats, Dictionary<int, Week> weeks, BonusQuestions questions)
         {
             Weeks = weeks;
             Name = name;
@@ -41,21 +43,32 @@ namespace EDS_V4.Code
             TotalScore = 0;
             foreach(var week in Weeks)
             {
-                if (week == null)
+                if (week.Value == null)
                 {
                     WeekMatchesScore = 0;
                     break;
                 }
 
-                if (week.Weeknr > currentWeek)
+                if (week.Value.Weeknr > currentWeek)
                     break;
                 
-                week.Checkweek(Host, Questions, topscorers);
-                WeekMatchesScore = week.WeekMatchesScore;
-                WeekBonusScore = week.WeekBonusScore;
-                TotalScore += week.WeekMatchesScore + week.WeekBonusScore;
-                if (week.Weeknr <= currentWeek)
-                    PreviousScore = TotalScore - week.WeekMatchesScore - week.WeekBonusScore;                   
+                var posts = week.Value.Checkweek(Host, Questions, topscorers, currentWeek);
+                MovePostponementScoresToCorrectWeeks(posts);
+                WeekMatchesScore = week.Value.WeekMatchesScore;
+                WeekBonusScore = week.Value.WeekBonusScore;
+                WeekPostponementScore = week.Value.WeekPostponementScore;
+                WeekTotalScore = WeekMatchesScore + WeekBonusScore + WeekPostponementScore;
+                TotalScore += WeekTotalScore;
+                if (week.Key <= currentWeek)
+                    PreviousScore = TotalScore - WeekTotalScore;                   
+            }
+        }
+
+        private void MovePostponementScoresToCorrectWeeks(Dictionary<int,int> scores) 
+        { 
+            foreach(var score in scores)
+            {
+                Weeks[score.Key].WeekPostponementScore += score.Value;
             }
         }
     }
