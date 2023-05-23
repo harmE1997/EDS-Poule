@@ -70,7 +70,6 @@ namespace EDS_V4.Views
                 return await dialog.ShowAsync(new Window());
             }
         }
-
         private string filearraytostring(string[] files)
         {
             if (files == null)
@@ -79,12 +78,10 @@ namespace EDS_V4.Views
             string output = "";
             foreach (string file in files)
             {
-                output += file;
-                if (!BrowseForDirectory)
-                    output += seperatorChar;
+                output += file + seperatorChar;
             }
 
-            if (!BrowseForDirectory)
+            if (output != "")
                 output = output.Remove(output.LastIndexOf(seperatorChar));
 
             return output;
