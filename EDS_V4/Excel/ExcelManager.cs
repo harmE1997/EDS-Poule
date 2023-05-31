@@ -22,7 +22,7 @@ namespace EDS_V4.Excel
         public void ExportPlayersToExcel(List<Player> Players)
         {
             InitialiseWorkbook(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.RankingSheet);
-            int y = 2;
+            int y = 3;
             foreach (Player player in Players)
             {
                 xlRange.Cells[y, 1].value2 = player.Ranking;

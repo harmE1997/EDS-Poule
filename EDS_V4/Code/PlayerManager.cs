@@ -38,8 +38,6 @@ namespace EDS_V4.Code
 
         private void SavePlayers()
         {
-            if (!File.Exists(GeneralConfiguration.SaveFileLocation))
-                Players.Clear();
             using (FileStream stream = new FileStream(GeneralConfiguration.SaveFileLocation, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
