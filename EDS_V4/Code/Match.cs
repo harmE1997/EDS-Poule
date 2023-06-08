@@ -12,7 +12,7 @@ namespace EDS_V4.Code
         public int ResultA;
         public int ResultB;
         public string Winner { get; private set; }
-        public bool MOTW { get; set; }
+        public bool MOTW { get; private set; }
         public int Postponement { get; set; }
 
         public Match(int resA, int resB, bool motw = false, int postponement=0)
