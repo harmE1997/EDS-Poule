@@ -55,6 +55,12 @@ namespace EDS_V4.Excel
             
             try
             {
+                if (!File.Exists(filename))
+                {
+                    PopupManager.OnMessage("Cannot read host. Admin cannot be found");
+                    return weeks;
+                }
+
                 InitialiseWorkbook(filename, sheet);
                 for (int i = StartWeek; i < Endweek; i++)
                 {

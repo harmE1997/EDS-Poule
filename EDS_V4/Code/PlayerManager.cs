@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
 using System.Configuration;
 
 namespace EDS_V4.Code
@@ -38,23 +36,23 @@ namespace EDS_V4.Code
 
         private void SavePlayers()
         {
-            using (FileStream stream = new FileStream(GeneralConfiguration.SaveFileLocation, FileMode.Create))
+            if (!string.IsNullOrEmpty(GeneralConfiguration.SaveFileLocation))
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(stream, Players);
+                string output = JsonSerializer.Serialize(Players, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(GeneralConfiguration.SaveFileLocation, output);
             }
         }
 
         public void LoadPlayers()
         {
-            if (!File.Exists(GeneralConfiguration.SaveFileLocation))
-                SavePlayers();
-
-            using (FileStream stream = new FileStream(GeneralConfiguration.SaveFileLocation, FileMode.Open))
+            if (string.IsNullOrEmpty(GeneralConfiguration.SaveFileLocation) || !File.Exists(GeneralConfiguration.SaveFileLocation))
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                Players = (List<Player>)formatter.Deserialize(stream);
+                SavePlayers();
+                return;
             }
+
+            string input = File.ReadAllText(GeneralConfiguration.SaveFileLocation);
+            Players = JsonSerializer.Deserialize<List<Player>>(input, new JsonSerializerOptions { WriteIndented = true });
         }
 
         public void RankPlayers(bool previous)

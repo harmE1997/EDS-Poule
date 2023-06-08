@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace EDS_V4.ViewModels
 {
@@ -30,8 +31,7 @@ namespace EDS_V4.ViewModels
         public static event SettingsEventHandler? SettingsEvent;
         public delegate void SettingsEventHandler();
 
-        private const string configeFileName = "EDS_settings.xml";
-        private XmlHandler<Configurables> xmlhandler;
+        private const string configeFileName = "EDS_settings.json";
         private Configurables defaults;
         private Configurables configurables;
 
@@ -55,9 +55,8 @@ namespace EDS_V4.ViewModels
 
         public SettingsVm()
         {
-            var savefilelocation = "EDS2324";
+            var savefilelocation = "EDS2324.json";
             var adminloc = "EDS Poule Admin 2023-2024.xlsx";
-            xmlhandler = new XmlHandler<Configurables>();
             defaults = new Configurables()
             {
                 SaveFileLocation = savefilelocation,
@@ -86,7 +85,9 @@ namespace EDS_V4.ViewModels
 
         private void WriteConfigToXml()
         {
-            xmlhandler.WriteToXml(configeFileName, configurables, overwrite: true);
+            var options = new JsonSerializerOptions { WriteIndented = true, IncludeFields = true,  };
+            string output = JsonSerializer.Serialize(configurables, options);
+            File.WriteAllText(configeFileName, output);
             ConfigurablesToConfigurations();
             SettingsEvent?.Invoke();
         }
@@ -99,7 +100,9 @@ namespace EDS_V4.ViewModels
                 WriteConfigToXml();
                 return;
             }
-            configurables = xmlhandler.ReadFromXmlFile(configeFileName);
+            string input = File.ReadAllText(configeFileName);
+            var options = new JsonSerializerOptions { WriteIndented = true, IncludeFields = true, };
+            configurables = JsonSerializer.Deserialize<Configurables>(input,options);
             ConfigurablesToConfigurations();
         }
 

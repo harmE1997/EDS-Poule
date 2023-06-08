@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace EDS_V4.Code
 {
-    [Serializable]
     public class Week
     {
-        public int Weeknr { get; private set; }
-        public int WeekMatchesScore { get; private set; }
-        public int WeekBonusScore { get; private set; }
+        public int Weeknr { get; set; }
+        public int WeekMatchesScore { get; set; }
+        public int WeekBonusScore { get; set; }
         public int WeekPostponementScore { get; set; }
-        public Match[] Matches { get; private set; }
+        public Match[] Matches { get; set; }
+
+        public Week()
+        {
+            //this parameterless constructor is used for json deserialization. Do not use it for implementations!
+        }
 
         public Week(int nr, Match[] matches)
         {

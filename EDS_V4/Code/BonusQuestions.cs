@@ -24,24 +24,32 @@ namespace EDS_V4.Code
         Prodeg
     }
 
-    [Serializable]
     public class Question
     {
-        public string[] Answer;
-        public int[] WeeksAnswered;
-        public int Points;      
+        public string[] Answer { get; set; }
+        public int[] WeeksAnswered { get; set; }
+        public int Points { get; set; }
+
+        public Question()
+        {
+            //this parameterless constructor is used for json deserialization. Do not use it for implementations!
+        }
     }
 
     public class Topscorer
     {
-        public int Total;
-        public List<int> Rounds;
+        public int Total { get; set; }
+        public List<int> Rounds { get; set; }
     }
 
-    [Serializable]
     public class BonusQuestions
     {
-        public Dictionary<BonusKeys, Question> Answers { get; private set; }
+        public Dictionary<BonusKeys, Question> Answers { get; set; }
+
+        public BonusQuestions()
+        {
+            //this parameterless constructor is used for json deserialization. Do not use it for implementations!
+        }
 
         public BonusQuestions(string kampioen, string prodeg, string topscorer, string trainer,
             string winterkampioen, string championround, string teamReds, string[] finalisten, string[] degradanten, string[] promovendi,

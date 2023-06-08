@@ -16,15 +16,20 @@ namespace EDS_V4.ViewModels
     public class TotoFormVm : ViewModelBase
     {
         public bool PredictionsSubmittedFlag = false;
+        private Week activeWeek;
+        private List<string> scoreProperties = new List<string>() { 
+            "Score1A", "Score1B", "Score2A", "Score2B", "Score3A", "Score3B", "Score14A", "Score4B",
+        "Score5A", "Score5B", "Score6A", "Score6B", "Score7A", "Score7B", "Score8A", "Score8B", "Score9A", "Score9B"};
+
 
         private int currentWeek;
-        public int CurrentWeek { get => currentWeek; set { this.RaiseAndSetIfChanged(ref currentWeek, value); CurrentWeekText = "Week " + value; SetWeek(); } }
+        public int CurrentWeek { get => currentWeek; set { SetCurrentWeek(value); this.RaisePropertyChanged(); } }
         
         private Player activeplayer;
-        public Player ActivePlayer { get { return activeplayer; } private set { activeplayer = value; CurrentWeek = 1; } }
+        public Player ActivePlayer { get => activeplayer; private set { activeplayer = value; CurrentWeek = 1; } }
         
-        public string PlayerName { get { return ActivePlayer.Name; } set { this.RaiseAndSetIfChanged(ref ActivePlayer.Name, value); } }
-        public string PlayerTown { get { return ActivePlayer.Town; } set { this.RaiseAndSetIfChanged(ref ActivePlayer.Town, value); } }
+        public string PlayerName { get => activeplayer.Name; set { ActivePlayer.Name = value; this.RaisePropertyChanged(); } }
+        public string PlayerTown { get => ActivePlayer.Town;  set { ActivePlayer.Town = value; this.RaisePropertyChanged(); } }
 
         private string currentweektext;
         public string CurrentWeekText { get => currentweektext; set => this.RaiseAndSetIfChanged(ref currentweektext, value); }
@@ -41,24 +46,24 @@ namespace EDS_V4.ViewModels
         private bool secondhalf;
         public bool SecondHalf { get => secondhalf; set => this.RaiseAndSetIfChanged(ref secondhalf, value); }
 
-        public int Score1A { get => ActivePlayer.Weeks[CurrentWeek].Matches[0].ResultA; set { ActivePlayer.Weeks[CurrentWeek].Matches[0].ResultA = value; this.RaisePropertyChanged(); } }
-        public int Score1B { get => ActivePlayer.Weeks[CurrentWeek].Matches[0].ResultB; set { ActivePlayer.Weeks[CurrentWeek].Matches[0].ResultB = value; this.RaisePropertyChanged(); } }
-        public int Score2A { get => ActivePlayer.Weeks[CurrentWeek].Matches[1].ResultA; set { ActivePlayer.Weeks[CurrentWeek].Matches[1].ResultA = value; this.RaisePropertyChanged(); } }
-        public int Score2B { get => ActivePlayer.Weeks[CurrentWeek].Matches[1].ResultB; set { ActivePlayer.Weeks[CurrentWeek].Matches[1].ResultB = value; this.RaisePropertyChanged(); } }
-        public int Score3A { get => ActivePlayer.Weeks[CurrentWeek].Matches[2].ResultA; set { ActivePlayer.Weeks[CurrentWeek].Matches[2].ResultA = value; this.RaisePropertyChanged(); } }
-        public int Score3B { get => ActivePlayer.Weeks[CurrentWeek].Matches[2].ResultB; set { ActivePlayer.Weeks[CurrentWeek].Matches[2].ResultB = value; this.RaisePropertyChanged(); } }
-        public int Score4A { get => ActivePlayer.Weeks[CurrentWeek].Matches[3].ResultA; set { ActivePlayer.Weeks[CurrentWeek].Matches[3].ResultA = value; this.RaisePropertyChanged(); } }
-        public int Score4B { get => ActivePlayer.Weeks[CurrentWeek].Matches[3].ResultB; set { ActivePlayer.Weeks[CurrentWeek].Matches[3].ResultB = value; this.RaisePropertyChanged(); } }
-        public int Score5A { get => ActivePlayer.Weeks[CurrentWeek].Matches[4].ResultA; set { ActivePlayer.Weeks[CurrentWeek].Matches[4].ResultA = value; this.RaisePropertyChanged(); } }
-        public int Score5B { get => ActivePlayer.Weeks[CurrentWeek].Matches[4].ResultB; set { ActivePlayer.Weeks[CurrentWeek].Matches[4].ResultB = value; this.RaisePropertyChanged(); } }
-        public int Score6A { get => ActivePlayer.Weeks[CurrentWeek].Matches[5].ResultA; set { ActivePlayer.Weeks[CurrentWeek].Matches[5].ResultA = value; this.RaisePropertyChanged(); } }
-        public int Score6B { get => ActivePlayer.Weeks[CurrentWeek].Matches[5].ResultB; set { ActivePlayer.Weeks[CurrentWeek].Matches[5].ResultB = value; this.RaisePropertyChanged(); } }
-        public int Score7A { get => ActivePlayer.Weeks[CurrentWeek].Matches[6].ResultA; set { ActivePlayer.Weeks[CurrentWeek].Matches[6].ResultA = value; this.RaisePropertyChanged(); } }
-        public int Score7B { get => ActivePlayer.Weeks[CurrentWeek].Matches[6].ResultB; set { ActivePlayer.Weeks[CurrentWeek].Matches[6].ResultB = value; this.RaisePropertyChanged(); } }
-        public int Score8A { get => ActivePlayer.Weeks[CurrentWeek].Matches[7].ResultA; set { ActivePlayer.Weeks[CurrentWeek].Matches[7].ResultA = value; this.RaisePropertyChanged(); } }
-        public int Score8B { get => ActivePlayer.Weeks[CurrentWeek].Matches[7].ResultB; set { ActivePlayer.Weeks[CurrentWeek].Matches[7].ResultB = value; this.RaisePropertyChanged(); } }
-        public int Score9A { get => ActivePlayer.Weeks[CurrentWeek].Matches[8].ResultA; set { ActivePlayer.Weeks[CurrentWeek].Matches[8].ResultA = value; this.RaisePropertyChanged(); } }
-        public int Score9B { get => ActivePlayer.Weeks[CurrentWeek].Matches[8].ResultB; set { ActivePlayer.Weeks[CurrentWeek].Matches[8].ResultB = value; this.RaisePropertyChanged(); } }
+        public int Score1A { get => activeWeek.Matches[0].ResultA; set { activeWeek.Matches[0].ResultA = value; this.RaisePropertyChanged(); } }
+        public int Score1B { get => activeWeek.Matches[0].ResultB; set { activeWeek.Matches[0].ResultB = value; this.RaisePropertyChanged(); } }
+        public int Score2A { get => activeWeek.Matches[1].ResultA; set { activeWeek.Matches[1].ResultA = value; this.RaisePropertyChanged(); } }
+        public int Score2B { get => activeWeek.Matches[1].ResultB; set { activeWeek.Matches[1].ResultB = value; this.RaisePropertyChanged(); } }
+        public int Score3A { get => activeWeek.Matches[2].ResultA; set { activeWeek.Matches[2].ResultA = value; this.RaisePropertyChanged(); } }
+        public int Score3B { get => activeWeek.Matches[2].ResultB; set { activeWeek.Matches[2].ResultB = value; this.RaisePropertyChanged(); } }
+        public int Score4A { get => activeWeek.Matches[3].ResultA; set { activeWeek.Matches[3].ResultA = value; this.RaisePropertyChanged(); } }
+        public int Score4B { get => activeWeek.Matches[3].ResultB; set { activeWeek.Matches[3].ResultB = value; this.RaisePropertyChanged(); } }
+        public int Score5A { get => activeWeek.Matches[4].ResultA; set { activeWeek.Matches[4].ResultA = value; this.RaisePropertyChanged(); } }
+        public int Score5B { get => activeWeek.Matches[4].ResultB; set { activeWeek.Matches[4].ResultB = value; this.RaisePropertyChanged(); } }
+        public int Score6A { get => activeWeek.Matches[5].ResultA; set { activeWeek.Matches[5].ResultA = value; this.RaisePropertyChanged(); } }
+        public int Score6B { get => activeWeek.Matches[5].ResultB; set { activeWeek.Matches[5].ResultB = value; this.RaisePropertyChanged(); } }
+        public int Score7A { get => activeWeek.Matches[6].ResultA; set { activeWeek.Matches[6].ResultA = value; this.RaisePropertyChanged(); } }
+        public int Score7B { get => activeWeek.Matches[6].ResultB; set { activeWeek.Matches[6].ResultB = value; this.RaisePropertyChanged(); } }
+        public int Score8A { get => activeWeek.Matches[7].ResultA; set { activeWeek.Matches[7].ResultA = value; this.RaisePropertyChanged(); } }
+        public int Score8B { get => activeWeek.Matches[7].ResultB; set { activeWeek.Matches[7].ResultB = value; this.RaisePropertyChanged(); } }
+        public int Score9A { get => activeWeek.Matches[8].ResultA; set { activeWeek.Matches[8].ResultA = value; this.RaisePropertyChanged(); } }
+        public int Score9B { get => activeWeek.Matches[8].ResultB; set { activeWeek.Matches[8].ResultB = value; this.RaisePropertyChanged(); } }
 
         public string Champion { get => ActivePlayer.Questions.Answers[BonusKeys.Kampioen].Answer[0]; set {ActivePlayer.Questions.Answers[BonusKeys.Kampioen].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
         public string Nr16 { get => ActivePlayer.Questions.Answers[BonusKeys.Prodeg].Answer[0]; set { ActivePlayer.Questions.Answers[BonusKeys.Prodeg].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
@@ -90,7 +95,7 @@ namespace EDS_V4.ViewModels
             } }
 
         public ReactiveCommand<Unit,Unit> NextWeekCommand { get; set; }
-        public ReactiveCommand<Unit, Unit> PreviousWeekCommand { get; set; }
+        public ReactiveCommand<Unit,Unit> PreviousWeekCommand { get; set; }
 
         public TotoFormVm(Player activeplayer)
         {
@@ -149,26 +154,13 @@ namespace EDS_V4.ViewModels
             return new Player("", "", weeks, new BonusQuestions("", "", "", "", "", "", "", new string[2], new string[2], new string[2], new int[13]));
         }
 
-        private void SetWeek()
+        private void SetCurrentWeek(int value)
         {
-            Score1A = ActivePlayer.Weeks[CurrentWeek].Matches[0].ResultA;
-            Score1B = ActivePlayer.Weeks[CurrentWeek].Matches[0].ResultB;
-            Score2A = ActivePlayer.Weeks[CurrentWeek].Matches[1].ResultA;
-            Score2B = ActivePlayer.Weeks[CurrentWeek].Matches[1].ResultB;
-            Score3A = ActivePlayer.Weeks[CurrentWeek].Matches[2].ResultA;
-            Score3B = ActivePlayer.Weeks[CurrentWeek].Matches[2].ResultB;
-            Score4A = ActivePlayer.Weeks[CurrentWeek].Matches[3].ResultA;
-            Score4B = ActivePlayer.Weeks[CurrentWeek].Matches[3].ResultB;
-            Score5A = ActivePlayer.Weeks[CurrentWeek].Matches[4].ResultA;
-            Score5B = ActivePlayer.Weeks[CurrentWeek].Matches[4].ResultB;
-            Score6A = ActivePlayer.Weeks[CurrentWeek].Matches[5].ResultA;
-            Score6B = ActivePlayer.Weeks[CurrentWeek].Matches[5].ResultB;
-            Score7A = ActivePlayer.Weeks[CurrentWeek].Matches[6].ResultA;
-            Score7B = ActivePlayer.Weeks[CurrentWeek].Matches[6].ResultB;
-            Score8A = ActivePlayer.Weeks[CurrentWeek].Matches[7].ResultA;
-            Score8B = ActivePlayer.Weeks[CurrentWeek].Matches[7].ResultB;
-            Score9A = ActivePlayer.Weeks[CurrentWeek].Matches[8].ResultA;
-            Score9B = ActivePlayer.Weeks[CurrentWeek].Matches[8].ResultB;
+            currentWeek = value;
+            CurrentWeekText = "Week " + value;
+            activeWeek = ActivePlayer.Weeks[value];
+            foreach (var prop in scoreProperties)
+                this.RaisePropertyChanged(prop);
         }
     }
 }

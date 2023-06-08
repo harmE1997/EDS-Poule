@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace EDS_V4.Code
 {
-    [Serializable]
     public class Player
     {
-        public string Name;
-        public string Town;
-        public int TotalScore { get; private set; }
+        public string Name { get; set; }
+        public string Town { get; set; }
+        public int TotalScore { get; set; }
         public int PreviousScore { get; set; }
         public int WeekTotalScore { get; set; }
-        public int WeekMatchesScore { get; private set; }
+        public int WeekMatchesScore { get; set; }
         public int WeekBonusScore { get; set; }
         public int WeekPostponementScore { get; set; }
         public int Ranking { get; set; }
@@ -23,6 +22,10 @@ namespace EDS_V4.Code
         public Dictionary<int, Week> Weeks{ get; set; }
         public BonusQuestions Questions { get; set; }
 
+        public Player()
+        { 
+            //this parameterless constructor is used for json deserialization. Do not use it for implementations!
+        }
         public Player(string name, string woonplaats, Dictionary<int, Week> weeks, BonusQuestions questions)
         {
             Weeks = weeks;

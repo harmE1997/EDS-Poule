@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace EDS_V4.Code
 {
-    [Serializable]
     public class Match
     {
-        public int ResultA;
-        public int ResultB;
-        public string Winner { get; private set; }
-        public bool MOTW { get; private set; }
+        public int ResultA { get; set; }
+        public int ResultB { get; set; }
+        public string Winner { get; set; }
+        public bool MOTW { get; set; }
         public int Postponement { get; set; }
+
+        public Match()
+        {
+            //this parameterless constructor is used for json deserialization. Do not use it for implementations!
+        }
 
         public Match(int resA, int resB, bool motw = false, int postponement=0)
         {
