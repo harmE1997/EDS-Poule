@@ -10,12 +10,15 @@ using System.Threading.Tasks;
 using System.Reactive;
 using System.Reactive.Linq;
 using EDS_V4.Code;
+using EDS_V4.Views;
+using Avalonia.Controls;
 
 namespace EDS_V4.ViewModels
 {
     public class TotoFormVm : ViewModelBase
     {
         public bool PredictionsSubmittedFlag = false;
+        private Window totoformWindow;
         private Week activeWeek;
         private List<string> scoreProperties = new List<string>() { 
             "Score1A", "Score1B", "Score2A", "Score2B", "Score3A", "Score3B", "Score14A", "Score4B",
@@ -97,7 +100,7 @@ namespace EDS_V4.ViewModels
         public ReactiveCommand<Unit,Unit> NextWeekCommand { get; set; }
         public ReactiveCommand<Unit,Unit> PreviousWeekCommand { get; set; }
 
-        public TotoFormVm(Player activeplayer)
+        public TotoFormVm(Player activeplayer, Window totoformwindow)
         {
             if (activeplayer == null)
                 this.activeplayer = ActivePlayer = CreateDefaultActivePlayer();
@@ -120,6 +123,29 @@ namespace EDS_V4.ViewModels
             SecondHalf = false;
             predictionsfilename = "";
             PredictionsSubmittedFlag = false;
+            totoformWindow = totoformwindow;
+        }
+
+        public void SubmitCommand()
+        {
+            bool invalidpredictions = false;
+            foreach (var ans in ActivePlayer.Questions.Answers)
+            {
+                foreach (var ansfield in ans.Value.Answer)
+                {
+                    if (ansfield == "")
+                        invalidpredictions = true;
+                }
+            }
+
+            if (invalidpredictions)
+                PopupManager.OnMessage("cannot submit predictions. One or more bonusquestions have not been filled in.");
+
+            else
+            {
+                PredictionsSubmittedFlag = true;
+                totoformWindow.Close();
+            }
         }
 
         public void ReadPredictionsFromExcel()
@@ -151,7 +177,7 @@ namespace EDS_V4.ViewModels
 
                 weeks.Add(i,new Week(i, matches));
             }
-            return new Player("", "", weeks, new BonusQuestions("", "", "", "", "", "", "", new string[2], new string[2], new string[2], new int[13]));
+            return new Player("", "", weeks, new BonusQuestions(new string[13], new int[13]));
         }
 
         private void SetCurrentWeek(int value)

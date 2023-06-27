@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.IO;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using ReactiveUI;
+using System.Threading;
 
 namespace EDS_V4.Excel
 {
@@ -131,46 +132,22 @@ namespace EDS_V4.Excel
 
         public BonusQuestions ReadBonus()
         {
-            int column = 7;
-            int weekcolumn = 10;
             InitialiseWorkbook(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet);
-            try
-            {
-                int[] weeks =
-                {
-                    Convert.ToInt32(xlRange.Cells[366, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[367, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[368, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[369, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[370, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[371, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[372, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[373, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[374, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[375, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[376, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[377, weekcolumn].value2),
-                    Convert.ToInt32(xlRange.Cells[378, weekcolumn].value2),
-                };
 
-                string[] degradanten = { Convert.ToString(xlRange.Cells[375, column].value2), Convert.ToString(xlRange.Cells[376, column].value2) };
-                string[] promovendi = { Convert.ToString(xlRange.Cells[377, column].value2), Convert.ToString(xlRange.Cells[378, column].value2) };
-                string[] finalists = { Convert.ToString(xlRange.Cells[373, column].value2), Convert.ToString(xlRange.Cells[374, column].value2) };
-                BonusQuestions bonus = new BonusQuestions
-                    (
-                    Convert.ToString(xlRange.Cells[366, column].value2),
-                    Convert.ToString(xlRange.Cells[367, column].value2),
-                    Convert.ToString(xlRange.Cells[368, column].value2),
-                    Convert.ToString(xlRange.Cells[369, column].value2),
-                    Convert.ToString(xlRange.Cells[370, column].value2),
-                    Convert.ToString(xlRange.Cells[371, column].value2),
-                    Convert.ToString(xlRange.Cells[372, column].value2),
-                    finalists, degradanten, promovendi, 
-                    weeks
-                    );
+            try
+            {               
+                int[] weeks = new int[13];
+                string[] answers = new string[13];
+                for (int i = ExcelConfiguration.BonusStartRow; i < (ExcelConfiguration.BonusStartRow + weeks.Length); i++)
+                {
+                    weeks[i - ExcelConfiguration.BonusStartRow] = Convert.ToInt32(xlRange.Cells[i, ExcelConfiguration.BonusWeeksColumn].value2);
+                    answers[i - ExcelConfiguration.BonusStartRow] = xlRange.Cells[i, ExcelConfiguration.BonusAnswerColumn].value2;
+                }
+
+                BonusQuestions bonus = new BonusQuestions(answers, weeks);
                 return bonus;
             }
-            catch {return null; }
+            catch (Exception e) {return null; }
             finally{ CleanWorkbook(); }
         }
 

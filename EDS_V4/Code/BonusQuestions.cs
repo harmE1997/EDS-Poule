@@ -51,23 +51,20 @@ namespace EDS_V4.Code
             //this parameterless constructor is used for json deserialization. Do not use it for implementations!
         }
 
-        public BonusQuestions(string kampioen, string prodeg, string topscorer, string trainer,
-            string winterkampioen, string championround, string teamReds, string[] finalisten, string[] degradanten, string[] promovendi,
-             int[] weeks)
+        public BonusQuestions(string[] answers, int[] weeks)
         {
             Answers = new Dictionary<BonusKeys, Question>()
             {
-                {BonusKeys.Kampioen, new Question(){Answer = new string[] {kampioen }, Points = 140, WeeksAnswered = new int[] {weeks[0] } } },
-                {BonusKeys.Prodeg, new Question(){Answer = new string[] {prodeg }, Points = 70, WeeksAnswered = new int[] {weeks[1] } } },
-                {BonusKeys.Topscorer, new Question(){Answer = new string[] {topscorer }, Points = 0, WeeksAnswered = new int[] {weeks[2] } } },
-                {BonusKeys.Trainer, new Question(){Answer = new string[] {trainer }, Points = 120, WeeksAnswered = new int[] {weeks[3] } } },
-                {BonusKeys.Winterkampioen, new Question(){Answer = new string[] {winterkampioen }, Points = 90, WeeksAnswered = new int[] {weeks[4] } } },
-                {BonusKeys.Ronde, new Question(){Answer = new string[] {championround }, Points = 70, WeeksAnswered = new int[] { weeks[5] } } },
-                {BonusKeys.Teamrood, new Question(){Answer = new string[] {teamReds }, Points = 90, WeeksAnswered = new int[] {weeks[6]} } },
-                {BonusKeys.Finalisten, new Question(){Answer = finalisten, Points = 50, WeeksAnswered = new int[]{ weeks[7], weeks[8] } } },
-                {BonusKeys.Degradanten, new Question(){Answer = degradanten, Points = 50, WeeksAnswered = new int[]{ weeks[9], weeks[10] } } },
-                {BonusKeys.Promovendi, new Question(){Answer = promovendi, Points = 50, WeeksAnswered = new int[]{ weeks[11], weeks[12] } } },
-
+                {BonusKeys.Kampioen, new Question(){Answer = new string[] {answers[0] }, Points = 140, WeeksAnswered = new int[] {weeks[0] } } },
+                {BonusKeys.Prodeg, new Question(){Answer = new string[] {answers[1] }, Points = 70, WeeksAnswered = new int[] {weeks[1] } } },
+                {BonusKeys.Topscorer, new Question(){Answer = new string[] {answers[2] }, Points = 0, WeeksAnswered = new int[] {weeks[2] } } },
+                {BonusKeys.Trainer, new Question(){Answer = new string[] {answers[3] }, Points = 120, WeeksAnswered = new int[] {weeks[3] } } },
+                {BonusKeys.Winterkampioen, new Question(){Answer = new string[] {answers[4] }, Points = 90, WeeksAnswered = new int[] {weeks[4] } } },
+                {BonusKeys.Ronde, new Question(){Answer = new string[] {answers[5] }, Points = 70, WeeksAnswered = new int[] { weeks[5] } } },
+                {BonusKeys.Teamrood, new Question(){Answer = new string[] {answers[6] }, Points = 90, WeeksAnswered = new int[] {weeks[6]} } },
+                {BonusKeys.Finalisten, new Question(){Answer = new string[]{answers[7], answers[8] }, Points = 50, WeeksAnswered = new int[]{ weeks[7], weeks[8] } } },
+                {BonusKeys.Degradanten, new Question(){Answer = new string[]{answers[9], answers[10] }, Points = 50, WeeksAnswered = new int[]{ weeks[9], weeks[10] } } },
+                {BonusKeys.Promovendi, new Question(){Answer = new string[]{answers[11], answers[12] }, Points = 50, WeeksAnswered = new int[]{ weeks[11], weeks[12] } } },
             };
         }
 

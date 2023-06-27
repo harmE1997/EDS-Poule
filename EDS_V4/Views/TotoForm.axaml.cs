@@ -13,37 +13,15 @@ namespace EDS_V4.Views
         public TotoForm()
         {
             InitializeComponent();
-            viewmodel = new TotoFormVm(null);
+            viewmodel = new TotoFormVm(null, this);
             DataContext = viewmodel;
         }
 
         public TotoForm(Player activeplayer)
         {
             InitializeComponent();
-            viewmodel = new TotoFormVm(activeplayer);
+            viewmodel = new TotoFormVm(activeplayer, this);
             DataContext = viewmodel;
-        }
-
-        public void SubmitCommand(object sender, RoutedEventArgs e)
-        {
-            bool invalidpredictions = false;
-            foreach (var ans in viewmodel.ActivePlayer.Questions.Answers)
-            {
-                foreach (var ansfield in ans.Value.Answer)
-                {
-                    if (ansfield == "")
-                        invalidpredictions = true;
-                }                  
-            }
-
-            if (invalidpredictions)
-                PopupManager.OnMessage("cannot submit predictions. One or more bonusquestions have not been filled in.");
-
-            else
-            {
-                viewmodel.PredictionsSubmittedFlag = true;
-                Close();
-            }
         }
     }
 }

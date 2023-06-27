@@ -25,6 +25,9 @@ namespace EDS_V4.ViewModels
         public int HostSheet;
         public int RankingSheet;
         public int TopscorersSheet;
+        public int BonusWeeksColumn;
+        public int BonusAnswerColumn;
+        public int BonusStartRow;
     }
     public class SettingsVm : ViewModelBase
     {
@@ -49,6 +52,9 @@ namespace EDS_V4.ViewModels
         public int HostSheet { get => configurables.HostSheet; set { this.RaiseAndSetIfChanged(ref configurables.HostSheet, value); SaveCommandEnabled = true; } }
         public int RankingSheet { get => configurables.RankingSheet; set { this.RaiseAndSetIfChanged(ref configurables.RankingSheet, value); SaveCommandEnabled = true; } }
         public int TopscorersSheet { get => configurables.TopscorersSheet; set { this.RaiseAndSetIfChanged (ref configurables.TopscorersSheet, value); SaveCommandEnabled = true; } }
+        public int BonusWeeksColumn { get => configurables.BonusWeeksColumn; set { this.RaiseAndSetIfChanged(ref configurables.BonusWeeksColumn, value); SaveCommandEnabled = true; } }
+        public int BonusAnswerColumn { get => configurables.BonusAnswerColumn; set { this.RaiseAndSetIfChanged(ref configurables.BonusAnswerColumn, value); SaveCommandEnabled = true; } }
+        public int BonusStartRow { get => configurables.BonusStartRow; set { this.RaiseAndSetIfChanged (ref configurables.BonusStartRow, value); SaveCommandEnabled = true; } }
 
         private bool savecommandenabled;
         public bool SaveCommandEnabled { get => savecommandenabled; set => this.RaiseAndSetIfChanged(ref savecommandenabled, value); }
@@ -69,7 +75,10 @@ namespace EDS_V4.ViewModels
                 HalfWayJump = 10,
                 HostSheet = 6,
                 RankingSheet = 2,
-                TopscorersSheet = 8
+                TopscorersSheet = 8,
+                BonusStartRow = 365,
+                BonusAnswerColumn = 7,
+                BonusWeeksColumn = 10
             };
             configurables = new();
             ReadConfigFromXml();
@@ -120,6 +129,9 @@ namespace EDS_V4.ViewModels
             ExcelConfiguration.RankingSheet = configurables.RankingSheet;
             ExcelConfiguration.StartRow = configurables.StartRow;
             ExcelConfiguration.TopscorersSheet = configurables.TopscorersSheet;
+            ExcelConfiguration.BonusStartRow = configurables.BonusStartRow;
+            ExcelConfiguration.BonusAnswerColumn = configurables.BonusAnswerColumn;
+            ExcelConfiguration.BonusWeeksColumn = configurables.BonusWeeksColumn;           
         }
     }
 }

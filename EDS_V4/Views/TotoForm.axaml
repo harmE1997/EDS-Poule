@@ -144,6 +144,6 @@
 				</Grid>
 			</TabItem>
 	</TabControl>
-	<Button Grid.Row="0" Grid.Column="1" Content="Submit Predictions" Margin="10" Width="300" Height="50" Click="SubmitCommand"/>
+	<Button Grid.Row="0" Grid.Column="1" Content="Submit Predictions" Margin="10" Width="300" Height="50" Command="{Binding SubmitCommand}"/>
 	</Grid>
 </Window>

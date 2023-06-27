@@ -1,0 +1,13 @@
+{
+  "SaveFileLocation": "EDS2324.json",
+  "AdminFileLocation": "EDS Poule Admin 2023-2024.xlsx",
+  "StartRow": 12,
+  "FirstHalfSize": 17,
+  "HomeColumn": 7,
+  "OutColumn": 8,
+  "PostponementColumn": 6,
+  "HalfWayJump": 10,
+  "HostSheet": 6,
+  "RankingSheet": 2,
+  "TopscorersSheet": 8
+}
