@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\Icons\eredivisie.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -61,5 +62,8 @@
 			<Isolated>False</Isolated>
 			<EmbedInteropTypes>True</EmbedInteropTypes>
 		</COMReference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="Assets\Icons\eredivisie.ico" />
 	</ItemGroup>
 </Project>
