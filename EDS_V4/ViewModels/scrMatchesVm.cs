@@ -113,8 +113,8 @@ namespace EDS_V4.ViewModels
                 Outputs = output;
             }
 
-            catch (FileNotFoundException) { PopupManager.OnMessage("Excel file does not exist"); }
-            catch { PopupManager.OnMessage("Can't open excel file. It's already in use."); }
+            catch (FileNotFoundException) { PopupManager.ShowMessage("Excel file does not exist"); }
+            catch { PopupManager.ShowMessage("Can't open excel file. It's already in use."); }
         }
     }
 }

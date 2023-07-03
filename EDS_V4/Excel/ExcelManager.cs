@@ -58,7 +58,7 @@ namespace EDS_V4.Excel
             {
                 if (!File.Exists(filename))
                 {
-                    PopupManager.OnMessage("Cannot read host. Admin cannot be found");
+                    PopupManager.ShowMessage("Cannot read host. Admin cannot be found");
                     return weeks;
                 }
 

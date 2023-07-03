@@ -139,7 +139,7 @@ namespace EDS_V4.ViewModels
             }
 
             if (invalidpredictions)
-                PopupManager.OnMessage("cannot submit predictions. One or more bonusquestions have not been filled in.");
+                PopupManager.ShowMessage("cannot submit predictions. One or more bonusquestions have not been filled in.");
 
             else
             {
@@ -155,7 +155,7 @@ namespace EDS_V4.ViewModels
             {
                 ActivePlayer.Weeks = em.ReadPredictions(PredictionsFileName, 1, Miss,FirstHalf, SecondHalf, ActivePlayer.Weeks);
                 CurrentWeek = 1;
-                PopupManager.OnMessage("Predictions read");
+                PopupManager.ShowMessage("Predictions read");
             }
         }
 

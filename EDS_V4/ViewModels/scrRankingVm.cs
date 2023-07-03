@@ -53,8 +53,8 @@ namespace EDS_V4.ViewModels
                 RefreshRanking();
             }
 
-            catch (FileNotFoundException) { PopupManager.OnMessage("Excel file does not exist"); }
-            catch (Exception e){ PopupManager.OnMessage(e.Message); }
+            catch (FileNotFoundException) { PopupManager.ShowMessage("Excel file does not exist"); }
+            catch (Exception e){ PopupManager.ShowMessage(e.Message); }
         }
 
         public void ExportRanking()
@@ -62,13 +62,14 @@ namespace EDS_V4.ViewModels
             var excelManager = new Excel.ExcelManager();
 
             excelManager.ExportPlayersToExcel(scrPlayersVm.PlayerManager.Players);
-            PopupManager.OnMessage("Ranking sucessfully exported");
+            PopupManager.ShowMessage("Ranking sucessfully exported");
         }
 
         public void ResetHost()
         {
             host.HostSet = false;
             host.setHost();
+            PopupManager.ShowMessage("Host was reset succesfully");
         }
 
         private void RefreshRanking()

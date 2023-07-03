@@ -37,7 +37,7 @@ namespace EDS_V4.ViewModels
         {
             if (string.IsNullOrEmpty(SelectedPlayer))
             {
-                PopupManager.OnMessage("Cannot remove player. No player selected.");
+                PopupManager.ShowMessage("Cannot remove player. No player selected.");
                 return;
             }
 
@@ -45,18 +45,18 @@ namespace EDS_V4.ViewModels
             if (res == 0)
             {
                 RefreshPlayers();
-                PopupManager.OnMessage("Player succesfully removed");
+                PopupManager.ShowMessage("Player succesfully removed");
             }
 
             else
-                PopupManager.OnMessage("Cannot remove player. Player not existing");
+                PopupManager.ShowMessage("Cannot remove player. Player not existing");
         }
 
         public void LoadPlayerCommand()
         {
             if (string.IsNullOrEmpty(SelectedPlayer))
             {
-                PopupManager.OnMessage("Cannot load player. No player selected.");
+                PopupManager.ShowMessage("Cannot load player. No player selected.");
                 return;
             }
             
@@ -76,12 +76,12 @@ namespace EDS_V4.ViewModels
             {
                 existingPlayer = false;
                 RefreshPlayers();
-                PopupManager.OnMessage("Player succesfully Created/Saved");
+                PopupManager.ShowMessage("Player succesfully Created/Saved");
             }
 
-            else if(res == 1) { PopupManager.OnMessage("Cannot create/save player. Invalid player"); }
+            else if(res == 1) { PopupManager.ShowMessage("Cannot create/save player. Invalid player"); }
             else
-                PopupManager.OnMessage("Cannot create/save player. No permission to overwrite");
+                PopupManager.ShowMessage("Cannot create/save player. No permission to overwrite");
         }
 
         private void SettingsChangedEvent()

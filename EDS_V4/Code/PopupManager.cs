@@ -7,7 +7,7 @@ namespace EDS_V4
         public static event MessageEventHandler MessageEvent;
         public delegate void MessageEventHandler(string arg);
 
-        public static void OnMessage(string message)
+        public static void ShowMessage(string message)
         {
             MessageEvent?.Invoke(message);
         }
