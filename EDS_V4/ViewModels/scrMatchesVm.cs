@@ -87,10 +87,10 @@ namespace EDS_V4.ViewModels
                 int fulls = 0;
                 int halfs = 0;
                 int matchID = matchID = Convert.ToInt16(SelectedMatch);
-                var week = Convert.ToInt16(selectedweek) - 1;
+                var week = Convert.ToInt16(selectedweek);
                 string Names = "";
                 ExcelManager em = new ExcelManager();
-                var hostweek = em.ReadSingleWeek(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet, week, 0, true);
+                var hostweek = em.InitializeAndReadSingleWeek(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet, week, 0);
                 foreach (Player player in scrPlayersVm.PlayerManager.Players)
                 {
                     if (player.Weeks[week] != null)
@@ -114,7 +114,7 @@ namespace EDS_V4.ViewModels
             }
 
             catch (FileNotFoundException) { PopupManager.OnMessage("Excel file does not exist"); }
-            catch { PopupManager.OnMessage("Can't open excel file. It's already in use."); }
+            catch(Exception e) { PopupManager.OnMessage("Can't get results. Unknown error."); }
         }
     }
 }
