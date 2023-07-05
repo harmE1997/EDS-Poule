@@ -3,6 +3,8 @@ using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,10 +22,20 @@ namespace EDS_V4.ViewModels
         private string selectedPlayer;
         public string SelectedPlayer { get => selectedPlayer; set => this.RaiseAndSetIfChanged(ref  selectedPlayer, value); }
 
+        public ReactiveCommand<Unit, Unit> LoadPlayerCommand { get; private set; }
+        public ReactiveCommand<Unit, Unit> RemovePlayerCommand { get; private set; }
+
         public scrPlayersVm()
         { 
             PlayerManager = new PlayerManager();
             SettingsVm.SettingsEvent += SettingsChangedEvent;
+
+            var PlayerCommandsCanExecute = this.WhenAnyValue(
+                x => x.SelectedPlayer,
+                (a) => { return !string.IsNullOrEmpty(a); }).ObserveOn(RxApp.MainThreadScheduler);
+
+            LoadPlayerCommand = ReactiveCommand.Create(() => { this.cmdLoadPlayer(); }, PlayerCommandsCanExecute);
+            RemovePlayerCommand = ReactiveCommand.Create(() => { this.cmdRemovePlayer(); }, PlayerCommandsCanExecute);
         }
 
         public void NewPlayerCommand()
@@ -33,14 +45,8 @@ namespace EDS_V4.ViewModels
             totoForm.Show();
         }
 
-        public void RemovePlayerCommand()
+        private void cmdRemovePlayer()
         {
-            if (string.IsNullOrEmpty(SelectedPlayer))
-            {
-                PopupManager.OnMessage("Cannot remove player. No player selected.");
-                return;
-            }
-
             var res = PlayerManager.RemovePlayer(SelectedPlayer);
             if (res == 0)
             {
@@ -52,14 +58,8 @@ namespace EDS_V4.ViewModels
                 PopupManager.OnMessage("Cannot remove player. Player not existing");
         }
 
-        public void LoadPlayerCommand()
-        {
-            if (string.IsNullOrEmpty(SelectedPlayer))
-            {
-                PopupManager.OnMessage("Cannot load player. No player selected.");
-                return;
-            }
-            
+        private void cmdLoadPlayer()
+        {   
             totoForm = new Views.TotoForm(PlayerManager.FindPlayer(SelectedPlayer));
             totoForm.Closed += TotoClosedEvent;
             existingPlayer = true;
