@@ -37,6 +37,7 @@ namespace EDS_V4.ViewModels
         private const string configeFileName = "EDS_settings.json";
         private Configurables defaults;
         private Configurables configurables;
+        private JsonSerializerOptions jsonSerializerOptions;
 
 
         public string AdminFileLocation { get => configurables.AdminFileLocation; set { this.RaiseAndSetIfChanged(ref configurables.AdminFileLocation, value); SaveCommandEnabled = true; } }
@@ -63,6 +64,7 @@ namespace EDS_V4.ViewModels
         {
             var savefilelocation = "EDS2324.json";
             var adminloc = "EDS Poule Admin 2023-2024.xlsx";
+            jsonSerializerOptions = new JsonSerializerOptions { WriteIndented = true, IncludeFields = true, };
             defaults = new Configurables()
             {
                 SaveFileLocation = savefilelocation,
@@ -94,8 +96,7 @@ namespace EDS_V4.ViewModels
 
         private void WriteConfigToXml()
         {
-            var options = new JsonSerializerOptions { WriteIndented = true, IncludeFields = true,  };
-            string output = JsonSerializer.Serialize(configurables, options);
+            string output = JsonSerializer.Serialize(configurables, jsonSerializerOptions);
             File.WriteAllText(configeFileName, output);
             ConfigurablesToConfigurations();
             SettingsEvent?.Invoke();
@@ -110,8 +111,7 @@ namespace EDS_V4.ViewModels
                 return;
             }
             string input = File.ReadAllText(configeFileName);
-            var options = new JsonSerializerOptions { WriteIndented = true, IncludeFields = true, };
-            configurables = JsonSerializer.Deserialize<Configurables>(input,options);
+            configurables = JsonSerializer.Deserialize<Configurables>(input,jsonSerializerOptions);
             ConfigurablesToConfigurations();
         }
 
