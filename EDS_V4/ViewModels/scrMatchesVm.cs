@@ -113,8 +113,8 @@ namespace EDS_V4.ViewModels
                 Outputs = output;
             }
 
-            catch (FileNotFoundException) { PopupManager.OnMessage("Excel file does not exist"); }
-            catch(Exception e) { PopupManager.OnMessage("Can't get results. Unknown error."); }
+            catch (FileNotFoundException) { PopupManager.ShowMessage("Excel file does not exist"); }
+            catch(Exception e) { PopupManager.ShowMessage("Can't get results. Unknown error."); }
         }
     }
 }
