@@ -137,12 +137,12 @@ namespace EDS_V4.Code
             SavePlayers();
         }
 
-        public int GetAverageScore()
+        public int GetAverageScore(int weeknr)
         {
             int total = 0;
             foreach (var p in Players)
             {
-                total += p.WeekMatchesScore;
+                total += p.Weeks[weeknr].WeekMatchesScore;
             }
             return total / Players.Count;
         }

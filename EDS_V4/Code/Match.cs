@@ -8,8 +8,11 @@ namespace EDS_V4.Code
 {
     public class Match
     {
-        public int ResultA { get; set; }
-        public int ResultB { get; set; }
+        private int resulta;
+        public int ResultA { get {return resulta ; } set { resulta = value; SetWinner(); } }
+
+        private int resultb;
+        public int ResultB { get { return resultb; } set { resultb = value; SetWinner(); } }
         public string Winner { get; set; }
         public bool MOTW { get; set; }
         public int Postponement { get; set; }
@@ -25,12 +28,16 @@ namespace EDS_V4.Code
             ResultB = resB;
             MOTW = motw;
             Postponement = postponement;
-            if (resA > resB)
+        }
+
+        public void SetWinner()
+        {
+            if (ResultA > ResultB)
             {
                 Winner = "A";
             }
 
-            else if (resB > resA)
+            else if (ResultB > ResultA)
             {
                 Winner = "B";
             }

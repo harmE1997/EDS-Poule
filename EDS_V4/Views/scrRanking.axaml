@@ -38,6 +38,7 @@
 			</StackPanel>
 			<Button Content="Calculate new ranking" Command="{Binding CalculateNewRanking}"/>
 			<Button Content="Export ranking" Command="{Binding ExportRanking}"/>
+      <Button Content="Get Average Score" Command="{Binding GetAverageScore}"/>
 			
 		</StackPanel>
 		<Button Content="Reset host" Grid.Column="0" Grid.Row="2" Margin="10" Command="{Binding ResetHost}"/>

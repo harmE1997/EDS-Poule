@@ -19,22 +19,23 @@ namespace EDS_V4.Excel
         private excel._Worksheet xlWorksheet;
         private excel.Range xlRange;
 
-        public void ExportPlayersToExcel(List<Player> Players)
+        public void ExportPlayersToExcel(List<Player> Players, int weeknr)
         {
             InitialiseWorkbook(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.RankingSheet);
             int y = 3;
             foreach (Player player in Players)
             {
+                var playerweek = player.Weeks[weeknr];
                 xlRange.Cells[y, 1].value2 = player.Ranking;
                 xlRange.Cells[y, 2].value2 = player.PreviousRanking;
                 xlRange.Cells[y, 3].value2 = player.RankingDifference;
                 xlRange.Cells[y, 4].value2 = player.Name;
                 xlRange.Cells[y, 5].value2 = player.Town;
                 xlRange.Cells[y, 6].value2 = player.TotalScore;
-                xlRange.Cells[y, 7].value2 = player.WeekTotalScore;
-                xlRange.Cells[y, 8].value2 = player.WeekMatchesScore;
-                xlRange.Cells[y, 9].value2 = player.WeekBonusScore;
-                xlRange.Cells[y, 10].value2 = player.WeekPostponementScore;
+                xlRange.Cells[y, 7].value2 = playerweek.WeekTotalScore;
+                xlRange.Cells[y, 8].value2 = playerweek.WeekMatchesScore;
+                xlRange.Cells[y, 9].value2 = playerweek.WeekBonusScore;
+                xlRange.Cells[y, 10].value2 = playerweek.WeekPostponementScore;
                 y++;
             }
             CleanWorkbook();

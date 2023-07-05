@@ -12,6 +12,7 @@ namespace EDS_V4.Code
         public int WeekMatchesScore { get; set; }
         public int WeekBonusScore { get; set; }
         public int WeekPostponementScore { get; set; }
+        public int WeekTotalScore { get; set; }
         public Match[] Matches { get; set; }
 
         public Week()
@@ -26,6 +27,12 @@ namespace EDS_V4.Code
             WeekMatchesScore = 0;
             WeekPostponementScore = 0;
         }
+
+        public void SetTotalScore()
+        {
+            WeekTotalScore = WeekMatchesScore + WeekBonusScore + WeekPostponementScore;
+        }
+
         public Dictionary<int,int> Checkweek(Player host, BonusQuestions questions, Dictionary<string, Topscorer> topscorers, int currentcheckingweek)
         {
             Week hostweek = host.Weeks[Weeknr];

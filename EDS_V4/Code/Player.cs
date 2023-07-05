@@ -12,10 +12,6 @@ namespace EDS_V4.Code
         public string Town { get; set; }
         public int TotalScore { get; set; }
         public int PreviousScore { get; set; }
-        public int WeekTotalScore { get; set; }
-        public int WeekMatchesScore { get; set; }
-        public int WeekBonusScore { get; set; }
-        public int WeekPostponementScore { get; set; }
         public int Ranking { get; set; }
         public int PreviousRanking { get; set; }
         public int RankingDifference { get; set; }
@@ -32,8 +28,6 @@ namespace EDS_V4.Code
             Name = name;
             Town = woonplaats;
             TotalScore = 0;
-            WeekMatchesScore = 0;
-            WeekBonusScore = 0;
             Questions = questions;
             PreviousScore = 0;
             RankingDifference = 0;
@@ -54,7 +48,7 @@ namespace EDS_V4.Code
             {
                 if (week.Value == null)
                 {
-                    WeekMatchesScore = 0;
+                    week.Value.WeekMatchesScore = 0;
                     break;
                 }
 
@@ -63,13 +57,10 @@ namespace EDS_V4.Code
 
                 var posts = week.Value.Checkweek(Host, Questions, topscorers, currentWeek);
                 MovePostponementScoresToCorrectWeeks(posts);
-                WeekMatchesScore = week.Value.WeekMatchesScore;
-                WeekBonusScore = week.Value.WeekBonusScore;
-                WeekPostponementScore = week.Value.WeekPostponementScore;
-                WeekTotalScore = WeekMatchesScore + WeekBonusScore + WeekPostponementScore;
-                TotalScore += WeekTotalScore;
+                week.Value.SetTotalScore();
+                TotalScore += week.Value.WeekTotalScore;
                 if (week.Key <= currentWeek)
-                    PreviousScore = TotalScore - WeekTotalScore;                   
+                    PreviousScore = TotalScore - week.Value.WeekTotalScore;                   
             }
         }
 
