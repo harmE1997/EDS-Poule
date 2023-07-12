@@ -78,14 +78,6 @@ namespace EDS_V4.Excel
             catch (Exception e) { CleanWorkbook(); return weeks; }
         }
 
-        public Match[] InitializeAndReadSingleWeek(string filename, int sheet, int week, int miss)
-        {
-            InitialiseWorkbook(filename, sheet);
-            var res = ReadSingleWeek(week, miss);
-            CleanWorkbook();
-            return res;
-        }
-
         public BonusQuestions ReadBonus()
         {
             InitialiseWorkbook(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet);

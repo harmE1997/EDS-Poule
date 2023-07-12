@@ -15,8 +15,8 @@ namespace EDS_V4.ViewModels
         public string Result { get; set; }
         public int NrPredictions { get; set; }
         public string Names { get; set; }
-
     }
+
     public class scrMatchesVm : ViewModelBase
     {
         private List<string> matches;
@@ -48,8 +48,8 @@ namespace EDS_V4.ViewModels
 
         public void GetPredictionsCommand()
         {
-            var week = Convert.ToInt16(selectedweek) - 1;
-            Dictionary<string, int> results = new Dictionary<string, int>();
+            var week = Convert.ToInt16(selectedweek);
+            Dictionary<string, MatchField> results = new Dictionary<string, MatchField>();
 
             foreach (Player p in scrPlayersVm.PlayerManager.Players)
             {
@@ -62,59 +62,23 @@ namespace EDS_V4.ViewModels
 
                 var match = p.Weeks[week].Matches[matchID];
                 if (results.ContainsKey(match.Winner))
-                    results[match.Winner]++;
+                    results[match.Winner].NrPredictions++;
                 else
-                    results.Add(match.Winner, 1);
+                    results.Add(match.Winner, new MatchField() { Result = match.Winner, NrPredictions=1, Names=""});
                 
                 if (results.ContainsKey(match.MatchToString()))
-                    results[match.MatchToString()]++;
+                    results[match.MatchToString()].NrPredictions++;
                 else
-                    results.Add(match.MatchToString(), 1);
+                    results.Add(match.MatchToString(), new MatchField() { Result = match.MatchToString(), NrPredictions = 1, Names = "" });
+                results[match.MatchToString()].Names += p.Name + "\n";
             }
 
             var output = new List<MatchField>();
             foreach (var result in results)
             {
-                output.Add(new MatchField() { Result = result.Key, NrPredictions = result.Value, Names=""});
+                output.Add(result.Value);
             }
             Outputs = output;
-        }
-
-        public void GetResultsCommand()
-        {
-            try
-            {
-                int fulls = 0;
-                int halfs = 0;
-                int matchID = matchID = Convert.ToInt16(SelectedMatch);
-                var week = Convert.ToInt16(selectedweek);
-                string Names = "";
-                ExcelManager em = new ExcelManager();
-                var hostweek = em.InitializeAndReadSingleWeek(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet, week, 0);
-                foreach (Player player in scrPlayersVm.PlayerManager.Players)
-                {
-                    if (player.Weeks[week] != null)
-                    {
-                        int check = player.Weeks[week].CheckMatchOnResultOnly(hostweek, matchID);
-                        if (check > 0)
-                            halfs++;
-
-                        if (check == 2)
-                        {
-                            fulls++;
-                            Names += player.Name + "\n";
-                        }
-                    }
-                }
-
-                var output = new List<MatchField>();
-                output.Add(new MatchField() { Result = "Goede winnaar", NrPredictions = halfs, Names= "" });
-                output.Add(new MatchField() { Result = "Helemaal correct", NrPredictions = fulls, Names = Names });
-                Outputs = output;
-            }
-
-            catch (FileNotFoundException) { PopupManager.ShowMessage("Excel file does not exist"); }
-            catch(Exception e) { PopupManager.ShowMessage("Can't get results. Unknown error."); }
         }
     }
 }

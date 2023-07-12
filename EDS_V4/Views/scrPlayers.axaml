@@ -24,7 +24,7 @@
 			<Button Content="Load Player" Grid.Row="1" Grid.Column="0" Command="{Binding LoadPlayerCommand}"/>
 			<Button Content="Remove Player" Grid.Row="2" Grid.Column="0" Command="{Binding RemovePlayerCommand}"/>
 		</StackPanel>
-		<ListBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Items="{Binding Players}" SelectedItem="{Binding SelectedPlayer}" Width="500" Margin="5">
+		<ListBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" ItemsSource="{Binding Players}" SelectedItem="{Binding SelectedPlayer}" Width="500" Margin="5">
 			<ListBox.Styles>
 				<!-- Give the ListBoxItems a fixed with of 100 and right-align them -->
 				<Style Selector="ListBoxItem">

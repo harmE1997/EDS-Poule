@@ -8,7 +8,7 @@
 		<Image x:Key="OpenFolderIcon" Source="/Assets/Icons/openfoldericon.png" />
 	</UserControl.Resources>
 	<StackPanel Orientation="Horizontal">
-		<Button Name="BtnBrowse" Grid.Column="1" VerticalContentAlignment="Center"
+		<Button Name="btnBrowse" Grid.Column="1" VerticalContentAlignment="Center"
 				HorizontalContentAlignment="Stretch" Click="Browse" Height="33" Width="95" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="1">
 			<StackPanel Orientation="Horizontal">
 				<Image Source="/Assets/Icons/openfoldericon.png"/>

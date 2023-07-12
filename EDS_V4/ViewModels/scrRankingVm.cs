@@ -13,12 +13,14 @@ namespace EDS_V4.ViewModels
     {
         public int Rank { get; set; }
         public int PreviousRank { get; set; }
+        public int RankingDifference { get; set; }
+        public string Name { get; set; }
         public int Total { get; set; }
         public int WeekTotal { get; set; }
         public int Matches { get; set; }
         public int Bonus { get; set; }
         public int Postponement { get; set; }
-        public string Name { get; set; }
+        
     }
     public class scrRankingVm : ViewModelBase
     {
@@ -85,9 +87,9 @@ namespace EDS_V4.ViewModels
             foreach (Player player in scrPlayersVm.PlayerManager.Players)
             {
                 var playerweek = player.Weeks[SelectedWeek];
-                rank.Add(new RankingField() { Rank = player.Ranking, PreviousRank = player.PreviousRanking, Total = player.TotalScore, 
-                    Matches = playerweek.WeekMatchesScore, Name = player.Name, Bonus=playerweek.WeekBonusScore, 
-                    Postponement=playerweek.WeekPostponementScore, WeekTotal=playerweek.WeekTotalScore }) ;
+                rank.Add(new RankingField() { Rank = player.Ranking, PreviousRank = player.PreviousRanking, RankingDifference = player.RankingDifference, Name = player.Name, Total = player.TotalScore, 
+                    WeekTotal=playerweek.WeekTotalScore, Matches = playerweek.WeekMatchesScore, 
+                    Bonus=playerweek.WeekBonusScore, Postponement=playerweek.WeekPostponementScore }) ;
             }
 
             Ranking = rank;

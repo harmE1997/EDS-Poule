@@ -7,7 +7,9 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="EDS_V4.Views.MainWindow"
         Icon="/Assets/Icons/eredivisie.ico"
-        Title="EDS_V4">
+        Title="EDS_V4"
+		Height="550"
+		Width="910">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
