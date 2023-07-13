@@ -60,7 +60,7 @@ namespace EDS_V4.Code
                 {BonusKeys.Topscorer, new Question(){Answer = new string[] {answers[2] }, Points = 0, WeeksAnswered = new int[] {weeks[2] } } },
                 {BonusKeys.Trainer, new Question(){Answer = new string[] {answers[3] }, Points = 120, WeeksAnswered = new int[] {weeks[3] } } },
                 {BonusKeys.Winterkampioen, new Question(){Answer = new string[] {answers[4] }, Points = 90, WeeksAnswered = new int[] {weeks[4] } } },
-                {BonusKeys.Ronde, new Question(){Answer = new string[] {answers[5] }, Points = 70, WeeksAnswered = new int[] { weeks[5] } } },
+                {BonusKeys.Ronde, new Question(){Answer = new string[] {answers[5] }, Points = 40, WeeksAnswered = new int[] { weeks[5] } } },
                 {BonusKeys.Teamrood, new Question(){Answer = new string[] {answers[6] }, Points = 90, WeeksAnswered = new int[] {weeks[6]} } },
                 {BonusKeys.Finalisten, new Question(){Answer = new string[]{answers[7], answers[8] }, Points = 50, WeeksAnswered = new int[]{ weeks[7], weeks[8] } } },
                 {BonusKeys.Degradanten, new Question(){Answer = new string[]{answers[9], answers[10] }, Points = 50, WeeksAnswered = new int[]{ weeks[9], weeks[10] } } },
