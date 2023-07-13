@@ -12,7 +12,7 @@
 		</Style>
 
 		<Style Selector="TabItem">
-			<Setter Property="Height" Value="15"/>
+			<Setter Property="Height" Value="45"/>
 			<Setter Property="FontSize" Value="20"/>
 			<Setter Property="Background" Value="Blue"/>
 			<Setter Property="Foreground" Value="White"/>
@@ -42,7 +42,7 @@
 					</StackPanel>
 				</TabItem.Header>
 				<Grid RowDefinitions="auto,auto,auto,auto">
-					<views:isoFileBrowser BrowseForDirectory="False" BrowserResult="{Binding PredictionsFileName}"/>
+					<views:isoFileBrowser BrowseForDirectory="False" BrowserResult="{Binding PredictionsFileName}" Margin="10"/>
 					<StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Margin="10">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5"/>
@@ -50,7 +50,7 @@
 						</StackPanel>
 						<CheckBox Content="1st half only" IsChecked="{Binding FirstHalf}"/>
 						<CheckBox Content="2nd half only" IsChecked="{Binding SecondHalf}"/>
-						<Button Content="Load predictions" Width="150" Command="{Binding ReadPredictionsFromExcel}"/>
+						<Button Content="Load predictions" Width="150" Command="{Binding ReadPredictionsFromExcel}" HorizontalAlignment="Left"/>
 					</StackPanel>
 				</Grid>
 			</TabItem>
