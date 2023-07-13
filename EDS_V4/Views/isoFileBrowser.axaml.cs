@@ -42,7 +42,7 @@ namespace EDS_V4.Views
         public async void Browse(object sender, RoutedEventArgs e)
         {
             string[] paths = new string[] { };
-            var browsebtn = this.FindControl<Button>("BtnBrowse");
+            var browsebtn = this.FindControl<Button>("btnBrowse");
             browsebtn.IsEnabled = false;
             paths = await GetPaths();
             var res = filearraytostring(paths);

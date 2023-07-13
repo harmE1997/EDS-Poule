@@ -15,6 +15,6 @@
 				<TextBlock Text=" Browse" VerticalAlignment="Center"/>
 			</StackPanel>
 		</Button>
-		<TextBox Name="tbOutput" Grid.Column="0" Height="25" Width="230" IsReadOnly="True"/>
+		<TextBox Name="tbOutput" Grid.Column="0" Height="33" Width="230" IsReadOnly="True"/>
 	</StackPanel>
 </UserControl>
