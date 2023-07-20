@@ -5,7 +5,8 @@
 		xmlns:views="clr-namespace:EDS_V4.Views;assembly=EDS_V4"
         mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
         x:Class="EDS_V4.Views.TotoForm"
-        Title="TotoForm">
+        Title="TotoForm"
+        Width="850">
 	<Window.Styles>
 		<Style Selector="TextBox">
 			<Setter Property="Width" Value="150"/>
@@ -50,7 +51,7 @@
 						</StackPanel>
 						<CheckBox Content="1st half only" IsChecked="{Binding FirstHalf}"/>
 						<CheckBox Content="2nd half only" IsChecked="{Binding SecondHalf}"/>
-						<Button Content="Load predictions" Width="150" Command="{Binding ReadPredictionsFromExcel}" HorizontalAlignment="Left"/>
+						<Button Content="Load predictions" Width="150" Command="{Binding ReadExcelCommand}" HorizontalAlignment="Left"/>
 					</StackPanel>
 				</Grid>
 			</TabItem>

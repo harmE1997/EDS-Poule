@@ -99,6 +99,7 @@ namespace EDS_V4.ViewModels
 
         public ReactiveCommand<Unit,Unit> NextWeekCommand { get; set; }
         public ReactiveCommand<Unit,Unit> PreviousWeekCommand { get; set; }
+        public ReactiveCommand<Unit,Unit> ReadExcelCommand { get; set; }
 
         public TotoFormVm(Player activeplayer, Window totoformwindow)
         {
@@ -116,8 +117,13 @@ namespace EDS_V4.ViewModels
                 x => x.CurrentWeek,
                 (a) => { return a > 1; }).ObserveOn(RxApp.MainThreadScheduler);
 
+            var ReadExcelCommandCanExecute = this.WhenAnyValue(
+                x => x.PredictionsFileName,
+                (a) => { return !string.IsNullOrEmpty(a); }).ObserveOn(RxApp.MainThreadScheduler);
+
             NextWeekCommand = ReactiveCommand.Create(() => { this.ChangeWeek(1); }, NextWeekCommandCanExecute);
             PreviousWeekCommand = ReactiveCommand.Create(() => { this.ChangeWeek(-1); }, PreviousWeekCommandCanExecute);
+            ReadExcelCommand = ReactiveCommand.Create(() => { this.ReadPredictionsFromExcel(); }, ReadExcelCommandCanExecute);
             Miss = 0;
             FirstHalf = false;
             SecondHalf = false;
