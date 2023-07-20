@@ -21,7 +21,7 @@ namespace EDS_V4.ViewModels
         private Window totoformWindow;
         private Week activeWeek;
         private List<string> scoreProperties = new List<string>() { 
-            "Score1A", "Score1B", "Score2A", "Score2B", "Score3A", "Score3B", "Score14A", "Score4B",
+            "Score1A", "Score1B", "Score2A", "Score2B", "Score3A", "Score3B", "Score4A", "Score4B",
         "Score5A", "Score5B", "Score6A", "Score6B", "Score7A", "Score7B", "Score8A", "Score8B", "Score9A", "Score9B"};
 
 

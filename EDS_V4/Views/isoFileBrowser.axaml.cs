@@ -56,14 +56,14 @@ namespace EDS_V4.Views
             if (BrowseForDirectory)
             {
                 OpenFolderDialog dialog = new OpenFolderDialog();
-                dialog.Directory = Directory.GetCurrentDirectory();
+                dialog.Directory = Path.GetDirectoryName(EDS_V4.Code.GeneralConfiguration.AdminFileLocation);
                 return new string[] { await dialog.ShowAsync(new Window()) };
             }
 
             else
             {
                 OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Directory = Directory.GetCurrentDirectory();
+                dialog.Directory = Path.GetDirectoryName(EDS_V4.Code.GeneralConfiguration.AdminFileLocation);
                 dialog.AllowMultiple = true;
                 if (!string.IsNullOrEmpty(FileType))
                     dialog.Filters.Add(new FileDialogFilter() { Name = "Filter", Extensions = { FileType } });
