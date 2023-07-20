@@ -49,8 +49,8 @@
 							<TextBlock Text="Miss" VerticalAlignment="Center" Margin="5"/>
 							<TextBox Width="50" Text="{Binding Miss}"/>
 						</StackPanel>
-						<CheckBox Content="1st half only" IsChecked="{Binding FirstHalf}"/>
-						<CheckBox Content="2nd half only" IsChecked="{Binding SecondHalf}"/>
+						<RadioButton Content="1st half only" IsChecked="{Binding FirstHalf}" GroupName="TotoHalfs"/>
+						<RadioButton Content="2nd half only" IsChecked="{Binding SecondHalf}" GroupName="TotoHalfs"/>
 						<Button Content="Load predictions" Width="150" Command="{Binding ReadExcelCommand}" HorizontalAlignment="Left"/>
 					</StackPanel>
 				</Grid>

@@ -51,7 +51,7 @@ namespace EDS_V4.Excel
             var Endweek = ExcelConfiguration.NrBlocks;
             if (firsthalf)
                 Endweek -= (ExcelConfiguration.NrBlocks - ExcelConfiguration.FirstHalfSize);
-            if (secondhalf)
+            else if (secondhalf)
                 StartWeek += ExcelConfiguration.FirstHalfSize;
             
             try
