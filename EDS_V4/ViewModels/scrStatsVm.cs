@@ -99,7 +99,9 @@ namespace EDS_V4.ViewModels
                 var field = new StatsField() { Name = stat.Name, Number = stat.Number };
                 foreach (var name in stat.Names)
                 {
-                    field.Names += name + "\n";
+                    field.Names += name;
+                    if(stat.Names.Last() != name)
+                        field.Names += "\n";
                 }
                 newoutput.Add(field);
             }

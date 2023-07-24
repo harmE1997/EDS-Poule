@@ -70,7 +70,11 @@ namespace EDS_V4.ViewModels
                     results[match.MatchToString()].NrPredictions++;
                 else
                     results.Add(match.MatchToString(), new MatchField() { Result = match.MatchToString(), NrPredictions = 1, Names = "" });
-                results[match.MatchToString()].Names += p.Name + "\n";
+                
+                if(results[match.MatchToString()].Names == "")
+                    results[match.MatchToString()].Names += p.Name;
+                else
+                    results[match.MatchToString()].Names += "\n" + p.Name;
             }
 
             var output = new List<MatchField>();
