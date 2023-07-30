@@ -9,7 +9,7 @@
         Icon="/Assets/Icons/eredivisie.ico"
         Title="EDS_V4"
 		Height="550"
-		Width="975">
+		Width="1000">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
