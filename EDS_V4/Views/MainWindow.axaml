@@ -8,6 +8,7 @@
         x:Class="EDS_V4.Views.MainWindow"
         Icon="/Assets/Icons/eredivisie.ico"
         Title="EDS_V4"
+        WindowState="Maximized"
 		Height="550"
 		Width="1000">
 

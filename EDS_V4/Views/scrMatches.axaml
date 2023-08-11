@@ -40,6 +40,6 @@
 		<StackPanel Orientation="Horizontal" Grid.Column="2">
 			<Button Content="Get Predictions" Command="{Binding GetPredictionsCommand}"/>
 		</StackPanel>
-		<DataGrid Grid.Row="1" Grid.Column="0" Height="200" Width="530" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10" AutoGenerateColumns="True" ItemsSource="{Binding Outputs}" />
+		<DataGrid Grid.Row="1" Grid.Column="0" Height="700" Width="530" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="10" AutoGenerateColumns="True" ItemsSource="{Binding Outputs}" />
 	</Grid>
 </UserControl>

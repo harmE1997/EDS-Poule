@@ -10,11 +10,16 @@ using System.Threading.Tasks;
 
 namespace EDS_V4.ViewModels
 {
-    public class MatchField
+    public class MatchField : IComparable<MatchField>
     {
         public string Result { get; set; }
         public int NrPredictions { get; set; }
         public string Names { get; set; }
+
+        public int CompareTo(MatchField? other)
+        {
+            return string.Compare(Result, other.Result);
+        }
     }
 
     public class scrMatchesVm : ViewModelBase
@@ -82,6 +87,7 @@ namespace EDS_V4.ViewModels
             {
                 output.Add(result.Value);
             }
+            output.Sort();
             Outputs = output;
         }
     }
