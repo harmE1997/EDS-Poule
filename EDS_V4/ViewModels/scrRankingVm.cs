@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace EDS_V4.ViewModels
@@ -25,6 +26,7 @@ namespace EDS_V4.ViewModels
     public class scrRankingVm : ViewModelBase
     {
         private Host host;
+        private const string lastWeekCheckedFileName = "LastWeekChecked.JSON";
 
         private List<RankingField> ranking;
         public List<RankingField> Ranking { get => ranking; set => this.RaiseAndSetIfChanged(ref ranking, value); }
@@ -39,7 +41,14 @@ namespace EDS_V4.ViewModels
         {
             host = new Host();
             Weeks = new List<int>() {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34};
-            SelectedWeek = Weeks[0];
+            if (File.Exists(lastWeekCheckedFileName))
+            {
+                string input = File.ReadAllText(lastWeekCheckedFileName);
+                SelectedWeek = JsonSerializer.Deserialize<int>(input, new JsonSerializerOptions { WriteIndented = true });
+            }
+
+            else
+                SelectedWeek = Weeks[0];
             Ranking = new List<RankingField>();
             SettingsVm.SettingsEvent += RefreshRanking;
         }
@@ -49,7 +58,9 @@ namespace EDS_V4.ViewModels
             try
             {
                 host.setHost();
-                scrPlayersVm.PlayerManager.CheckAllPlayers(host, selectedweek);
+                scrPlayersVm.PlayerManager.CheckAllPlayers(host, SelectedWeek);
+                string output = JsonSerializer.Serialize(SelectedWeek, new JsonSerializerOptions { WriteIndented = false });
+                File.WriteAllText(lastWeekCheckedFileName, output);
                 RefreshRanking();
             }
 

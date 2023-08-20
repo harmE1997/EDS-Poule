@@ -18,7 +18,7 @@ namespace EDS_V4.ViewModels
 
         public int CompareTo(MatchField? other)
         {
-            return string.Compare(Result, other.Result);
+            return string.Compare(other.Result, Result);
         }
     }
 
