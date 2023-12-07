@@ -62,6 +62,7 @@ namespace EDS_V4.ViewModels
                 string output = JsonSerializer.Serialize(SelectedWeek, new JsonSerializerOptions { WriteIndented = false });
                 File.WriteAllText(lastWeekCheckedFileName, output);
                 RefreshRanking();
+                PopupManager.ShowMessage("New ranking calculated");
             }
 
             catch (FileNotFoundException) { PopupManager.ShowMessage("Excel file does not exist"); }
