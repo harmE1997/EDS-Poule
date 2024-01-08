@@ -62,7 +62,7 @@
 					</StackPanel>
 				</TabItem.Header>				
 				<Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" ColumnDefinitions="auto,auto,auto" Margin="10">
-					<TextBlock Text="{Binding CurrentWeekText}" Grid.Row="0" Grid.ColumnSpan="3"/>
+					<TextBlock Text="{Binding CurrentWeekText}" Grid.Row="0" Grid.ColumnSpan="3" TextDecorations="Underline"/>
 						<TextBlock Text="Match 1" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
 						<StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
 							<TextBox Width="50" Text="{Binding Score1A}"/>
