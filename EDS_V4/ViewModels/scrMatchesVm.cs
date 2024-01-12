@@ -61,6 +61,9 @@ namespace EDS_V4.ViewModels
                 if (p.Weeks[week] == null)
                     continue;
 
+                if (p.Weeks[week].Matches[0].ResultA == 99)
+                    continue;
+
                 int matchID = 8;
                 if (SelectedMatch != "MOTW")
                     matchID = Convert.ToInt16(SelectedMatch) - 1;
