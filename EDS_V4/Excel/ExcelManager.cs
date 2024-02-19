@@ -69,7 +69,7 @@ namespace EDS_V4.Excel
                     if (matches == null)
                     {
                         PopupManager.ShowMessage("Cannot read predictions. Problem at week " + (i+1));
-                        return weeks;
+                        return null;
                     }
                     if (weeks.ContainsKey(i + 1))
                         weeks[i + 1] = new Week(i + 1, matches);
@@ -77,7 +77,6 @@ namespace EDS_V4.Excel
                     weeks.Add(i + 1, new Week((i + 1), matches));
                 }
                 CleanWorkbook();
-                PopupManager.ShowMessage("Predictions read");
                 return weeks;
             }
 
