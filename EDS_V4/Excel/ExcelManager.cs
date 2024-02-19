@@ -69,6 +69,7 @@ namespace EDS_V4.Excel
                     if (matches == null)
                     {
                         PopupManager.ShowMessage("Cannot read predictions. Problem at week " + (i+1));
+                        CleanWorkbook();
                         return null;
                     }
                     if (weeks.ContainsKey(i + 1))
