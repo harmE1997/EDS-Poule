@@ -66,12 +66,18 @@ namespace EDS_V4.Excel
                 for (int i = StartWeek; i < Endweek; i++)
                 {
                     var matches = ReadSingleWeek(i, miss);
+                    if (matches == null)
+                    {
+                        PopupManager.ShowMessage("Cannot read predictions. Problem at week " + (i+1));
+                        return weeks;
+                    }
                     if (weeks.ContainsKey(i + 1))
                         weeks[i + 1] = new Week(i + 1, matches);
                     else
                     weeks.Add(i + 1, new Week((i + 1), matches));
                 }
                 CleanWorkbook();
+                PopupManager.ShowMessage("Predictions read");
                 return weeks;
             }
 
@@ -152,11 +158,11 @@ namespace EDS_V4.Excel
                     var bt = xlRange.Cells[currentRow, ExcelConfiguration.OutColumn].Value2;
                     
 
-                    if (at != null && bt != null)
-                    {
-                        a = at;
-                        b = bt;
-                    }
+                    if (at == null || bt == null)
+                        return null;
+
+                    a = at;
+                    b = bt;
 
                     if (pt != null)
                         p = pt;
@@ -172,7 +178,7 @@ namespace EDS_V4.Excel
                 }
                 return Week;
             }
-            catch (Exception e) { return Week; }
+            catch (Exception e) { return null; }
         }
 
         private void InitialiseWorkbook(string filename, int sheet)

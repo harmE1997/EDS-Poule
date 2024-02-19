@@ -159,7 +159,6 @@ namespace EDS_V4.ViewModels
             Excel.ExcelManager em = new Excel.ExcelManager();
             ActivePlayer.Weeks = em.ReadPredictions(PredictionsFileName, 1, Miss,FirstHalf, SecondHalf, ActivePlayer.Weeks);
             CurrentWeek = 1;
-            PopupManager.ShowMessage("Predictions read");
         }
 
         private void ChangeWeek(int change)
