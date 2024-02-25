@@ -41,7 +41,7 @@ namespace EDS_V4.Excel
             CleanWorkbook();
         }
 
-        public Dictionary<int, Week> ReadPredictions(string filename, int sheet, int miss, bool firsthalf = false, bool secondhalf = false, Dictionary<int, Week> Weeks = null)
+        public Dictionary<int, Week> ReadPredictions(string filename, int sheet, int miss, bool firsthalf = false, bool secondhalf = false, Dictionary<int, Week> Weeks = null, bool host = false)
         {
             var weeks = new Dictionary<int, Week>();
             if (Weeks != null)
@@ -65,7 +65,7 @@ namespace EDS_V4.Excel
                 InitialiseWorkbook(filename, sheet);
                 for (int i = StartWeek; i < Endweek; i++)
                 {
-                    var matches = ReadSingleWeek(i, miss);
+                    var matches = ReadSingleWeek(i, miss, host);
                     if (matches == null)
                     {
                         PopupManager.ShowMessage("Cannot read predictions. Problem at week " + (i+1));
@@ -136,7 +136,7 @@ namespace EDS_V4.Excel
             finally { CleanWorkbook(); }
         }
 
-        private Match[] ReadSingleWeek(int week, int miss)
+        private Match[] ReadSingleWeek(int week, int miss, bool host = false)
         {
             Match[] Week = new Match[9];
 
@@ -156,13 +156,19 @@ namespace EDS_V4.Excel
                     var pt = xlRange.Cells[currentRow, ExcelConfiguration.PostponementColumn].Value2;
                     var at = xlRange.Cells[currentRow, ExcelConfiguration.HomeColumn].Value2;
                     var bt = xlRange.Cells[currentRow, ExcelConfiguration.OutColumn].Value2;
-                    
+
 
                     if (at == null || bt == null)
-                        return null;
+                    {
+                        if(!host)
+                            return null;
+                    }
 
-                    a = at;
-                    b = bt;
+                    else
+                    {
+                        a = at;
+                        b = bt;
+                    }
 
                     if (pt != null)
                         p = pt;
