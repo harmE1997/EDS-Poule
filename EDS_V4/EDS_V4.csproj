@@ -4,9 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
-	  <AssemblyVersion>4.0.5</AssemblyVersion>
-	  <FileVersion>4.0.5</FileVersion>
-	  <InformationalVersion>4.0.5</InformationalVersion>
+	  <AssemblyVersion>4.0.6</AssemblyVersion>
+	  <FileVersion>4.0.6</FileVersion>
+	  <InformationalVersion>4.0.6</InformationalVersion>
 	  <Company>Harm Elfring VoetbalPoules</Company>
 	  <Product>EDS_V4</Product>
 	  <Copyright>© Harm Elfring VoetbalPoules. All rights reserved.</Copyright>
