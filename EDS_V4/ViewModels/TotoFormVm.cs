@@ -162,6 +162,22 @@ namespace EDS_V4.ViewModels
                 return;
             ActivePlayer.Weeks = predictions;
             CurrentWeek = 1;
+
+            var bonus = em.ReadBonus(PredictionsFileName, 1);
+            if (bonus == null)
+                return;
+            ActivePlayer.Questions = bonus;
+            this.RaisePropertyChanged(nameof(Champion));
+            this.RaisePropertyChanged(nameof(Nr16));
+            this.RaisePropertyChanged(nameof(Topscorer));
+            this.RaisePropertyChanged(nameof(Trainer));
+            this.RaisePropertyChanged(nameof(WinterChampion));
+            this.RaisePropertyChanged(nameof(Ronde));
+            this.RaisePropertyChanged(nameof(TeamRood));
+            this.RaisePropertyChanged(nameof(Bekerfinalisten));
+            this.RaisePropertyChanged(nameof(Degradanten));
+            this.RaisePropertyChanged(nameof(Promovendi));
+
             PopupManager.ShowMessage("Predictions read");
         }
 

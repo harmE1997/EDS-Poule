@@ -37,7 +37,7 @@ namespace EDS_V4.Code
             {
                 Topscorers = new Dictionary<string, Topscorer>();
                 Weeks = excelManager.ReadPredictions(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet, 0, host: true);
-                Questions = excelManager.ReadBonus();
+                Questions = excelManager.ReadBonus(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet, true);
                 setTopscorers();
                 HostSet = true;
             }

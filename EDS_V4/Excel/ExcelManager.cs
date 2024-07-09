@@ -84,17 +84,20 @@ namespace EDS_V4.Excel
             catch (Exception e) { CleanWorkbook(); return weeks; }
         }
 
-        public BonusQuestions ReadBonus()
+        public BonusQuestions ReadBonus(string filename, int sheet, bool host = false)
         {
-            InitialiseWorkbook(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet);
+            InitialiseWorkbook(filename, sheet);
             try
             {
-                int[] weeks = new int[13];
+                int[] weeks = new int[13] {0,0,0,0,0,0,0,0,0,0,0,0,0};
                 string[] answers = new string[13];
                 for (int i = ExcelConfiguration.BonusStartRow; i < (ExcelConfiguration.BonusStartRow + weeks.Length); i++)
                 {
-                    weeks[i - ExcelConfiguration.BonusStartRow] = Convert.ToInt32(xlRange.Cells[i, ExcelConfiguration.BonusWeeksColumn].value2);
-                    answers[i - ExcelConfiguration.BonusStartRow] = xlRange.Cells[i, ExcelConfiguration.BonusAnswerColumn].value2;
+                    if(host)
+                        weeks[i - ExcelConfiguration.BonusStartRow] = Convert.ToInt32(xlRange.Cells[i, ExcelConfiguration.BonusWeeksColumn].value2);
+                    
+                    string value = xlRange.Cells[i, ExcelConfiguration.BonusAnswerColumn].value2;
+                    answers[i - ExcelConfiguration.BonusStartRow] = value.ToLower();
                 }
 
                 BonusQuestions bonus = new BonusQuestions(answers, weeks);
