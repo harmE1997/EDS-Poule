@@ -97,7 +97,11 @@ namespace EDS_V4.Excel
                         weeks[i - ExcelConfiguration.BonusStartRow] = Convert.ToInt32(xlRange.Cells[i, ExcelConfiguration.BonusWeeksColumn].value2);
                     
                     string value = xlRange.Cells[i, ExcelConfiguration.BonusAnswerColumn].value2;
-                    answers[i - ExcelConfiguration.BonusStartRow] = value.ToLower();
+                    if(string.IsNullOrEmpty(value))
+                        answers[i - ExcelConfiguration.BonusStartRow] = value;
+
+                    else
+                        answers[i - ExcelConfiguration.BonusStartRow] = value.ToLower();
                 }
 
                 BonusQuestions bonus = new BonusQuestions(answers, weeks);
