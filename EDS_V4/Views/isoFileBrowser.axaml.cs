@@ -57,6 +57,8 @@ namespace EDS_V4.Views
             {
                 OpenFolderDialog dialog = new OpenFolderDialog();
                 dialog.Directory = Path.GetDirectoryName(EDS_V4.Code.GeneralConfiguration.AdminFileLocation);
+                if (string.IsNullOrEmpty(dialog.Directory) || !Directory.Exists(dialog.Directory))
+                    dialog.Directory = @"C:";
                 return new string[] { await dialog.ShowAsync(new Window()) };
             }
 
@@ -64,6 +66,8 @@ namespace EDS_V4.Views
             {
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Directory = Path.GetDirectoryName(EDS_V4.Code.GeneralConfiguration.AdminFileLocation);
+                if (string.IsNullOrEmpty(dialog.Directory) || !Directory.Exists(dialog.Directory))
+                    dialog.Directory = @"C:";
                 dialog.AllowMultiple = true;
                 if (!string.IsNullOrEmpty(FileType))
                     dialog.Filters.Add(new FileDialogFilter() { Name = "Filter", Extensions = { FileType } });
