@@ -121,7 +121,7 @@ namespace EDS_V4.Excel
                 while (true)
                 {
                     Topscorer ts = new Topscorer() { Total = 0, Rounds = new List<int>() };
-                    string name = Convert.ToString(xlRange.Cells[i, 1].value2);
+                    string name = Convert.ToString(xlRange.Cells[i, 1].value2).ToLower();
                     if (string.IsNullOrEmpty(name))
                         break;
                     ts.Total = Convert.ToInt32(xlRange.Cells[i, 3].value2);
