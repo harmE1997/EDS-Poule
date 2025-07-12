@@ -35,7 +35,7 @@ namespace EDS_V4.Code
             Ranking = 0;
         }
 
-        public void CheckPlayer(Player Host, int currentWeek, Dictionary<string, Topscorer> topscorers)
+        public void CheckPlayer(Player Host, int startWeek, int endWeek, Dictionary<string, Topscorer> topscorers, bool periodCalculation)
         {
             TotalScore = 0;
             //reset postponement scores
@@ -52,14 +52,14 @@ namespace EDS_V4.Code
                     break;
                 }
 
-                if (week.Value.Weeknr > currentWeek)
-                    break;
+                if (week.Value.Weeknr < startWeek|| week.Value.Weeknr > endWeek)
+                    continue;
 
-                var posts = week.Value.Checkweek(Host, Questions, topscorers, currentWeek);
+                var posts = week.Value.Checkweek(Host, Questions, topscorers, endWeek, periodCalculation);
                 MovePostponementScoresToCorrectWeeks(posts);
                 week.Value.SetTotalScore();
                 TotalScore += week.Value.WeekTotalScore;
-                if (week.Key <= currentWeek)
+                if (week.Key <= endWeek)
                     PreviousScore = TotalScore - week.Value.WeekTotalScore;                   
             }
         }

@@ -34,8 +34,14 @@ namespace EDS_V4.ViewModels
         private List<int> weeks;
         public List<int> Weeks { get => weeks; set => this.RaiseAndSetIfChanged(ref weeks, value); }
 
-        private int selectedweek;
-        public int SelectedWeek { get => selectedweek; set => this.RaiseAndSetIfChanged(ref selectedweek, value); }
+        private int startweek;
+        public int StartWeek { get => startweek; set => this.RaiseAndSetIfChanged(ref startweek, value); }
+
+        private int endweek;
+        public int EndWeek { get => endweek; set => this.RaiseAndSetIfChanged(ref endweek, value); }
+
+        private bool periodCalculation;
+        public bool PeriodCalculation { get => periodCalculation; set => this.RaiseAndSetIfChanged(ref periodCalculation, value); }
 
         public scrRankingVm()
         {
@@ -44,11 +50,15 @@ namespace EDS_V4.ViewModels
             if (File.Exists(lastWeekCheckedFileName))
             {
                 string input = File.ReadAllText(lastWeekCheckedFileName);
-                SelectedWeek = JsonSerializer.Deserialize<int>(input, new JsonSerializerOptions { WriteIndented = true });
+                StartWeek = JsonSerializer.Deserialize<KeyValuePair<int, int>>(input, new JsonSerializerOptions { WriteIndented = true }).Key;
+                EndWeek = JsonSerializer.Deserialize<KeyValuePair<int, int>>(input, new JsonSerializerOptions { WriteIndented = true }).Value;
             }
 
             else
-                SelectedWeek = Weeks[0];
+            {
+                StartWeek = Weeks[0];
+                EndWeek = Weeks[0];
+            }
             Ranking = new List<RankingField>();
             SettingsVm.SettingsEvent += RefreshRanking;
         }
@@ -58,8 +68,8 @@ namespace EDS_V4.ViewModels
             try
             {
                 host.setHost();
-                scrPlayersVm.PlayerManager.CheckAllPlayers(host, SelectedWeek);
-                string output = JsonSerializer.Serialize(SelectedWeek, new JsonSerializerOptions { WriteIndented = false });
+                scrPlayersVm.PlayerManager.CheckAllPlayers(host, StartWeek, EndWeek, PeriodCalculation);
+                string output = JsonSerializer.Serialize(new KeyValuePair<int,int>(StartWeek, EndWeek), new JsonSerializerOptions { WriteIndented = false });
                 File.WriteAllText(lastWeekCheckedFileName, output);
                 RefreshRanking();
                 PopupManager.ShowMessage("New ranking calculated");
@@ -73,13 +83,13 @@ namespace EDS_V4.ViewModels
         {
             var excelManager = new Excel.ExcelManager();
 
-            excelManager.ExportPlayersToExcel(scrPlayersVm.PlayerManager.Players, SelectedWeek);
+            excelManager.ExportPlayersToExcel(scrPlayersVm.PlayerManager.Players, EndWeek);
             PopupManager.ShowMessage("Ranking sucessfully exported");
         }
 
         public void GetAverageScore()
         {
-            int res = scrPlayersVm.PlayerManager.GetAverageScore(SelectedWeek);
+            int res = scrPlayersVm.PlayerManager.GetAverageScore(EndWeek);
             PopupManager.ShowMessage("Average score: " + res);
         }
 
@@ -98,7 +108,7 @@ namespace EDS_V4.ViewModels
             List<RankingField> rank = new List<RankingField>();
             foreach (Player player in scrPlayersVm.PlayerManager.Players)
             {
-                var playerweek = player.Weeks[SelectedWeek];
+                var playerweek = player.Weeks[EndWeek];
                 rank.Add(new RankingField() { Rank = player.Ranking, PreviousRank = player.PreviousRanking, RankingDifference = player.RankingDifference, Name = player.Name, Total = player.TotalScore, 
                     WeekTotal=playerweek.WeekTotalScore, Matches = playerweek.WeekMatchesScore, 
                     Bonus=playerweek.WeekBonusScore, Postponement=playerweek.WeekPostponementScore }) ;

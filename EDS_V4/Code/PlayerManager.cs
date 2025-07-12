@@ -131,12 +131,12 @@ namespace EDS_V4.Code
 
         }
 
-        public void CheckAllPlayers(Host host, int currentWeek)
+        public void CheckAllPlayers(Host host, int startWeek, int endWeek, bool periodCalculation)
         {
 
             foreach (Player player in Players)
             {
-                player.CheckPlayer(host, currentWeek, host.getTopscorers());
+                player.CheckPlayer(host, startWeek, endWeek, host.getTopscorers(), periodCalculation);
             }
 
             SavePlayers();

@@ -29,11 +29,14 @@
 	</UserControl.Styles>
 
 	<Grid RowDefinitions="*,*,*" ColumnDefinitions="auto,auto" Margin="10">
-		<StackPanel Orientation="Vertical" Margin="10">
-			<StackPanel Orientation="Horizontal" Grid.Column="0">
-				<TextBlock Text="Week" Margin="10"/>
-				<ComboBox ItemsSource="{Binding Weeks}" SelectedItem="{Binding SelectedWeek}" Width="50"/>
-			</StackPanel>
+		<StackPanel Orientation="Vertical">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="From week" Margin="10"/>
+				<ComboBox ItemsSource="{Binding Weeks}" SelectedItem="{Binding StartWeek}" Width="50"/>
+        <TextBlock Text="to week" Margin="10"/>
+        <ComboBox ItemsSource="{Binding Weeks}" SelectedItem="{Binding EndWeek}" Width="50"/>
+      </StackPanel>
+      <CheckBox HorizontalAlignment="Center" Margin="10" Content="Calculate Period" IsChecked="{Binding PeriodCalculation}"/>
 			<Button Content="Calculate new ranking" Command="{Binding CalculateNewRanking}"/>
 			<Button Content="Export ranking" Command="{Binding ExportRanking}"/>
       <Button Content="Get Average Score" Command="{Binding GetAverageScore}"/>
