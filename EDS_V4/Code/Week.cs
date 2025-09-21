@@ -45,10 +45,10 @@ namespace EDS_V4.Code
                 var hostmatch = hostweek.Matches[counter];
                 int matchscore = Matches[counter].CheckMatch(hostmatch);
 
-                if((hostmatch.Postponement > 0 && currentcheckingweek == Weeknr) || periodCalculation || hostmatch.Postponement == 0)
+                if((hostmatch.Postponement > 0 && currentcheckingweek == Weeknr) || hostmatch.Postponement == 0)
                     WeekMatchesScore += matchscore;
 
-                if (hostmatch.Postponement > 0 && hostmatch.Postponement <= currentcheckingweek && !periodCalculation)
+                if (hostmatch.Postponement > 0 && hostmatch.Postponement <= currentcheckingweek)
                 {
                     if(postponementscores.ContainsKey(hostmatch.Postponement))
                         postponementscores[hostmatch.Postponement] += matchscore;
