@@ -97,11 +97,14 @@ namespace EDS_V4.ViewModels
             foreach (Stat stat in stats)
             {
                 var field = new StatsField() { Name = stat.Name, Number = stat.Number };
+                int counter = 1;
                 foreach (var name in stat.Names)
                 {
                     field.Names += name;
-                    if(stat.Names.Last() != name)
+
+                    if (stat.Names.Count != counter)
                         field.Names += "\n";
+                    counter++;
                 }
                 newoutput.Add(field);
             }
