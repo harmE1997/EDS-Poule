@@ -4,6 +4,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:views="clr-namespace:EDS_V4.Views;assembly=EDS_V4"
         mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
+		xmlns:vm="clr-namespace:EDS_V4.ViewModels"
+		x:DataType="vm:TotoFormVm"
         x:Class="EDS_V4.Views.TotoForm"
         Title="TotoForm"
         Width="850">
@@ -134,14 +136,14 @@
 					<TextBlock Text="Rode kaarten" VerticalAlignment="Center" Margin="5" Grid.Row="6" Grid.Column="0"/>
 					<TextBox Grid.Row="6" Grid.Column="1" Text="{Binding TeamRood}"/>
 					<TextBlock Text="Bekerfinalisten" VerticalAlignment="Center" Margin="5" Grid.Row="7" Grid.Column="0"/>
-					<TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Bekerfinalisten[0]}"/>
-					<TextBox Grid.Row="7" Grid.Column="2" Text="{Binding Bekerfinalisten[1]}"/>
+					<TextBox Grid.Row="7" Grid.Column="1" Text="{Binding BekerFinalistA}"/>
+					<TextBox Grid.Row="7" Grid.Column="2" Text="{Binding BekerFinalistB}"/>
 					<TextBlock Text="Degradanten" VerticalAlignment="Center" Margin="5" Grid.Row="8" Grid.Column="0"/>
-					<TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Degradanten[0]}"/>
-					<TextBox Grid.Row="8" Grid.Column="2" Text="{Binding Degradanten[1]}"/>
+					<TextBox Grid.Row="8" Grid.Column="1" Text="{Binding DegradantA}"/>
+					<TextBox Grid.Row="8" Grid.Column="2" Text="{Binding DegradantB}"/>
 					<TextBlock Text="Promovendi" VerticalAlignment="Center" Margin="5" Grid.Row="9" Grid.Column="0"/>
-					<TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Promovendi[0]}"/>
-					<TextBox Grid.Row="9" Grid.Column="2" Text="{Binding Promovendi[1]}"/>
+					<TextBox Grid.Row="9" Grid.Column="1" Text="{Binding PromovendusA}"/>
+					<TextBox Grid.Row="9" Grid.Column="2" Text="{Binding PromovendusB}"/>
 				</Grid>
 			</TabItem>
 	</TabControl>

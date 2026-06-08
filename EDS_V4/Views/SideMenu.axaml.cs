@@ -1,5 +1,5 @@
 using Avalonia.Controls;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Avalonia.Markup.Xaml;
 
 namespace EDS_V4.Views
 {
@@ -7,7 +7,12 @@ namespace EDS_V4.Views
     {
         public SideMenu()
         {
-            InitializeComponent();          
+            InitializeComponent();
+        }
+
+        private void InitializeComponent()
+        {
+            AvaloniaXamlLoader.Load(this);
         }
     }
 }

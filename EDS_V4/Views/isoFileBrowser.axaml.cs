@@ -2,6 +2,8 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform.Storage;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -46,34 +48,38 @@ namespace EDS_V4.Views
             browsebtn.IsEnabled = false;
             paths = await GetPaths();
             var res = filearraytostring(paths);
-            if(res != "")
+            if (res != "")
                 BrowserResult = res;
             browsebtn.IsEnabled = true;
         }
 
         private async Task<string[]> GetPaths()
         {
+            var topLevel = TopLevel.GetTopLevel(this);
+            var directory = Path.GetDirectoryName(EDS_V4.Code.GeneralConfiguration.AdminFileLocation);
+            List<string> results = new();
+            if (string.IsNullOrEmpty(directory) || !Directory.Exists(directory))
+                directory = @"C:";
+
             if (BrowseForDirectory)
             {
-                OpenFolderDialog dialog = new OpenFolderDialog();
-                dialog.Directory = Path.GetDirectoryName(EDS_V4.Code.GeneralConfiguration.AdminFileLocation);
-                if (string.IsNullOrEmpty(dialog.Directory) || !Directory.Exists(dialog.Directory))
-                    dialog.Directory = @"C:";
-                return new string[] { await dialog.ShowAsync(new Window()) };
+                var options = new FolderPickerOpenOptions() { SuggestedStartLocation = topLevel.StorageProvider.TryGetFolderFromPathAsync(directory).Result, AllowMultiple = false };
+                var res = await topLevel.StorageProvider.OpenFolderPickerAsync(options);
+                foreach (var result in res)
+                    results.Add(result.Path.LocalPath);
             }
 
             else
             {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Directory = Path.GetDirectoryName(EDS_V4.Code.GeneralConfiguration.AdminFileLocation);
-                if (string.IsNullOrEmpty(dialog.Directory) || !Directory.Exists(dialog.Directory))
-                    dialog.Directory = @"C:";
-                dialog.AllowMultiple = true;
-                if (!string.IsNullOrEmpty(FileType))
-                    dialog.Filters.Add(new FileDialogFilter() { Name = "Filter", Extensions = { FileType } });
-                return await dialog.ShowAsync(new Window());
+                var options = new FilePickerOpenOptions() { SuggestedStartLocation = topLevel.StorageProvider.TryGetFolderFromPathAsync(directory).Result, AllowMultiple = true, FileTypeFilter = new[] { Excel } };
+                var res = await topLevel.StorageProvider.OpenFilePickerAsync(options);
+                foreach (var result in res)
+                    results.Add(result.Path.LocalPath);
             }
+
+            return results.ToArray();
         }
+
         private string filearraytostring(string[] files)
         {
             if (files == null)
@@ -90,5 +96,10 @@ namespace EDS_V4.Views
 
             return output;
         }
+
+        public static FilePickerFileType Excel { get; } = new("Exccel Files")
+        {
+            Patterns = new[] { "*.xls", "*.xlsx" }
+        };
     }
 }

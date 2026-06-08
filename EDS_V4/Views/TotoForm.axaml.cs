@@ -1,8 +1,7 @@
 using Avalonia.Controls;
-using Avalonia.Interactivity;
+using Avalonia.Markup.Xaml;
 using EDS_V4.Code;
 using EDS_V4.ViewModels;
-using System.Xml.Schema;
 
 namespace EDS_V4.Views
 {
@@ -22,6 +21,11 @@ namespace EDS_V4.Views
             InitializeComponent();
             viewmodel = new TotoFormVm(activeplayer, this);
             DataContext = viewmodel;
+        }
+
+        private void InitializeComponent()
+        {
+            AvaloniaXamlLoader.Load(this);
         }
     }
 }

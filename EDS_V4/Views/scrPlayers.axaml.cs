@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 
 namespace EDS_V4.Views
 {
@@ -8,6 +9,11 @@ namespace EDS_V4.Views
         {
             InitializeComponent();
             DataContext = new ViewModels.scrPlayersVm();
+        }
+
+        private void InitializeComponent()
+        {
+            AvaloniaXamlLoader.Load(this);
         }
     }
 }

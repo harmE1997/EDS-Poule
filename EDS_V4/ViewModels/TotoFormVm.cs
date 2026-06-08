@@ -1,17 +1,9 @@
-﻿using Microsoft.CodeAnalysis.Operations;
-using Avalonia;
+﻿using Avalonia.Controls;
+using EDS_V4.Code;
 using ReactiveUI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Reactive;
 using System.Reactive.Linq;
-using EDS_V4.Code;
-using EDS_V4.Views;
-using Avalonia.Controls;
 
 namespace EDS_V4.ViewModels
 {
@@ -20,19 +12,19 @@ namespace EDS_V4.ViewModels
         public bool PredictionsSubmittedFlag = false;
         private Window totoformWindow;
         private Week activeWeek;
-        private List<string> scoreProperties = new List<string>() { 
+        private List<string> scoreProperties = new List<string>() {
             "Score1A", "Score1B", "Score2A", "Score2B", "Score3A", "Score3B", "Score4A", "Score4B",
         "Score5A", "Score5B", "Score6A", "Score6B", "Score7A", "Score7B", "Score8A", "Score8B", "Score9A", "Score9B"};
 
 
         private int currentWeek;
         public int CurrentWeek { get => currentWeek; set { SetCurrentWeek(value); this.RaisePropertyChanged(); } }
-        
+
         private Player activeplayer;
         public Player ActivePlayer { get => activeplayer; private set { activeplayer = value; CurrentWeek = 1; } }
-        
+
         public string PlayerName { get => activeplayer.Name; set { ActivePlayer.Name = value; this.RaisePropertyChanged(); } }
-        public string PlayerTown { get => ActivePlayer.Town;  set { ActivePlayer.Town = value; this.RaisePropertyChanged(); } }
+        public string PlayerTown { get => ActivePlayer.Town; set { ActivePlayer.Town = value; this.RaisePropertyChanged(); } }
 
         private string currentweektext;
         public string CurrentWeekText { get => currentweektext; set => this.RaiseAndSetIfChanged(ref currentweektext, value); }
@@ -68,38 +60,26 @@ namespace EDS_V4.ViewModels
         public int Score9A { get => activeWeek.Matches[8].ResultA; set { activeWeek.Matches[8].ResultA = value; this.RaisePropertyChanged(); } }
         public int Score9B { get => activeWeek.Matches[8].ResultB; set { activeWeek.Matches[8].ResultB = value; this.RaisePropertyChanged(); } }
 
-        public string Champion { get => ActivePlayer.Questions.Answers[BonusKeys.Kampioen].Answer[0]; set {ActivePlayer.Questions.Answers[BonusKeys.Kampioen].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
+        public string Champion { get => ActivePlayer.Questions.Answers[BonusKeys.Kampioen].Answer[0]; set { ActivePlayer.Questions.Answers[BonusKeys.Kampioen].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
         public string Nr16 { get => ActivePlayer.Questions.Answers[BonusKeys.Prodeg].Answer[0]; set { ActivePlayer.Questions.Answers[BonusKeys.Prodeg].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
         public string Topscorer { get => ActivePlayer.Questions.Answers[BonusKeys.Topscorer].Answer[0]; set { ActivePlayer.Questions.Answers[BonusKeys.Topscorer].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
         public string Trainer { get => ActivePlayer.Questions.Answers[BonusKeys.Trainer].Answer[0]; set { ActivePlayer.Questions.Answers[BonusKeys.Trainer].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
         public string WinterChampion { get => ActivePlayer.Questions.Answers[BonusKeys.Winterkampioen].Answer[0]; set { ActivePlayer.Questions.Answers[BonusKeys.Winterkampioen].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
         public string Ronde { get => ActivePlayer.Questions.Answers[BonusKeys.Ronde].Answer[0]; set { ActivePlayer.Questions.Answers[BonusKeys.Ronde].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
         public string TeamRood { get => ActivePlayer.Questions.Answers[BonusKeys.Teamrood].Answer[0]; set { ActivePlayer.Questions.Answers[BonusKeys.Teamrood].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
-        public string[] Bekerfinalisten { 
-            get => ActivePlayer.Questions.Answers[BonusKeys.Finalisten].Answer; 
-            set { 
-                ActivePlayer.Questions.Answers[BonusKeys.Finalisten].Answer[0] = value[0].ToLower(); 
-                ActivePlayer.Questions.Answers[BonusKeys.Finalisten].Answer[1] = value[1].ToLower();
-                this.RaisePropertyChanged();
-            } }
-        public string[] Degradanten { 
-            get => ActivePlayer.Questions.Answers[BonusKeys.Degradanten].Answer; 
-            set { 
-                ActivePlayer.Questions.Answers[BonusKeys.Degradanten].Answer[0] = value[0].ToLower();
-                ActivePlayer.Questions.Answers[BonusKeys.Degradanten].Answer[1] = value[1].ToLower(); 
-                this.RaisePropertyChanged();
-            } }
-        public string[] Promovendi { 
-            get => ActivePlayer.Questions.Answers[BonusKeys.Promovendi].Answer; 
-            set { 
-                ActivePlayer.Questions.Answers[BonusKeys.Promovendi].Answer[0] = value[0].ToLower();
-                ActivePlayer.Questions.Answers[BonusKeys.Promovendi].Answer[1] = value[1].ToLower();
-                this.RaisePropertyChanged();
-            } }
 
-        public ReactiveCommand<Unit,Unit> NextWeekCommand { get; set; }
-        public ReactiveCommand<Unit,Unit> PreviousWeekCommand { get; set; }
-        public ReactiveCommand<Unit,Unit> ReadExcelCommand { get; set; }
+        public string BekerFinalistA { get => ActivePlayer.Questions.Answers[BonusKeys.Finalisten].Answer[0]; set { ActivePlayer.Questions.Answers[BonusKeys.Finalisten].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
+        public string BekerFinalistB { get => ActivePlayer.Questions.Answers[BonusKeys.Finalisten].Answer[1]; set { ActivePlayer.Questions.Answers[BonusKeys.Finalisten].Answer[1] = value.ToLower(); this.RaisePropertyChanged(); } }
+
+        public string DegradantA { get => ActivePlayer.Questions.Answers[BonusKeys.Degradanten].Answer[0]; set { ActivePlayer.Questions.Answers[BonusKeys.Degradanten].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
+        public string DegradantB { get => ActivePlayer.Questions.Answers[BonusKeys.Degradanten].Answer[1]; set { ActivePlayer.Questions.Answers[BonusKeys.Degradanten].Answer[1] = value.ToLower(); this.RaisePropertyChanged(); } }
+
+        public string PromovendusA { get => ActivePlayer.Questions.Answers[BonusKeys.Promovendi].Answer[0]; set { ActivePlayer.Questions.Answers[BonusKeys.Promovendi].Answer[0] = value.ToLower(); this.RaisePropertyChanged(); } }
+        public string PromovendusB { get => ActivePlayer.Questions.Answers[BonusKeys.Promovendi].Answer[1]; set { ActivePlayer.Questions.Answers[BonusKeys.Promovendi].Answer[1] = value.ToLower(); this.RaisePropertyChanged(); } }
+
+        public ReactiveCommand<Unit, Unit> NextWeekCommand { get; set; }
+        public ReactiveCommand<Unit, Unit> PreviousWeekCommand { get; set; }
+        public ReactiveCommand<Unit, Unit> ReadExcelCommand { get; set; }
 
         public TotoFormVm(Player activeplayer, Window totoformwindow)
         {
@@ -107,11 +87,11 @@ namespace EDS_V4.ViewModels
                 this.activeplayer = ActivePlayer = CreateDefaultActivePlayer();
             else
                 this.activeplayer = ActivePlayer = activeplayer;
-            CurrentWeek = 1;        
+            CurrentWeek = 1;
 
             var NextWeekCommandCanExecute = this.WhenAnyValue(
                 x => x.CurrentWeek,
-                (a) => { return a < 34; }).ObserveOn(RxApp.MainThreadScheduler);        
+                (a) => { return a < 34; }).ObserveOn(RxApp.MainThreadScheduler);
 
             var PreviousWeekCommandCanExecute = this.WhenAnyValue(
                 x => x.CurrentWeek,
@@ -157,7 +137,7 @@ namespace EDS_V4.ViewModels
         public void ReadPredictionsFromExcel()
         {
             Excel.ExcelManager em = new Excel.ExcelManager();
-            var predictions = em.ReadPredictions(PredictionsFileName, 1, Miss,FirstHalf, SecondHalf, ActivePlayer.Weeks);
+            var predictions = em.ReadPredictions(PredictionsFileName, 1, Miss, FirstHalf, SecondHalf, ActivePlayer.Weeks);
             if (predictions == null)
                 return;
             ActivePlayer.Weeks = predictions;
@@ -177,9 +157,12 @@ namespace EDS_V4.ViewModels
                 this.RaisePropertyChanged(nameof(WinterChampion));
                 this.RaisePropertyChanged(nameof(Ronde));
                 this.RaisePropertyChanged(nameof(TeamRood));
-                this.RaisePropertyChanged(nameof(Bekerfinalisten));
-                this.RaisePropertyChanged(nameof(Degradanten));
-                this.RaisePropertyChanged(nameof(Promovendi));
+                this.RaisePropertyChanged(nameof(BekerFinalistA));
+                this.RaisePropertyChanged(nameof(BekerFinalistB));
+                this.RaisePropertyChanged(nameof(DegradantA));
+                this.RaisePropertyChanged(nameof(DegradantB));
+                this.RaisePropertyChanged(nameof(PromovendusA));
+                this.RaisePropertyChanged(nameof(PromovendusB));
             }
             PopupManager.ShowMessage("Predictions read");
         }
@@ -192,15 +175,15 @@ namespace EDS_V4.ViewModels
         private Player CreateDefaultActivePlayer()
         {
             var weeks = new Dictionary<int, Week>();
-            for (int i = 1; i<= 34; i++)
+            for (int i = 1; i <= 34; i++)
             {
                 var matches = new Match[9];
-                for(int x = 0; x < 9; x++)
+                for (int x = 0; x < 9; x++)
                 {
-                    matches[x] = new Match(99, 99, x==8);             
+                    matches[x] = new Match(99, 99, x == 8);
                 }
 
-                weeks.Add(i,new Week(i, matches));
+                weeks.Add(i, new Week(i, matches));
             }
             return new Player("", "", weeks, new BonusQuestions(new string[13], new int[13]));
         }
