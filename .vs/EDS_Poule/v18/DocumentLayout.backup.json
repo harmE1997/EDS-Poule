@@ -1,0 +1,265 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\views\\isofilebrowser.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\views\\isofilebrowser.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\views\\totoform.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\views\\totoform.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\viewmodels\\totoformvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\viewmodels\\totoformvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\viewmodels\\scrstatsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\viewmodels\\scrstatsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\excel\\excelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\excel\\excelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\code\\host.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\code\\host.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\code\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\code\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\viewmodels\\scrrankingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\viewmodels\\scrrankingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\code\\week.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\code\\week.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\code\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\code\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\code\\popupmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\code\\popupmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\code\\bonusquestions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\code\\bonusquestions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\code\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\code\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|c:\\users\\h.elfring\\downloads\\priv\u00E9\\eds-poule\\eds_v4\\viewmodels\\scrmatchesvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75906947-093E-4877-B10F-4D9B70F7821E}|EDS_V4\\EDS_V4.csproj|solutionrelative:eds_v4\\viewmodels\\scrmatchesvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{79664857-03bf-4bca-aa54-ec998b3328f8}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "isoFileBrowser.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Views\\isoFileBrowser.axaml.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\Views\\isoFileBrowser.axaml.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Views\\isoFileBrowser.axaml.cs",
+              "RelativeToolTip": "EDS_V4\\Views\\isoFileBrowser.axaml.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAwwFkAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T08:21:30.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TotoForm.axaml",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Views\\TotoForm.axaml",
+              "RelativeDocumentMoniker": "EDS_V4\\Views\\TotoForm.axaml",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Views\\TotoForm.axaml",
+              "RelativeToolTip": "EDS_V4\\Views\\TotoForm.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-06-08T08:17:39.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TotoFormVm.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\ViewModels\\TotoFormVm.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\ViewModels\\TotoFormVm.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\ViewModels\\TotoFormVm.cs",
+              "RelativeToolTip": "EDS_V4\\ViewModels\\TotoFormVm.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAUwJgAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T08:08:14.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "scrStatsVm.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\ViewModels\\scrStatsVm.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\ViewModels\\scrStatsVm.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\ViewModels\\scrStatsVm.cs",
+              "RelativeToolTip": "EDS_V4\\ViewModels\\scrStatsVm.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAYwGsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:25:31.5Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ExcelManager.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Excel\\ExcelManager.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\Excel\\ExcelManager.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Excel\\ExcelManager.cs",
+              "RelativeToolTip": "EDS_V4\\Excel\\ExcelManager.cs",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAmwKcAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:25:31.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "scrRankingVm.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\ViewModels\\scrRankingVm.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\ViewModels\\scrRankingVm.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\ViewModels\\scrRankingVm.cs",
+              "RelativeToolTip": "EDS_V4\\ViewModels\\scrRankingVm.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAQwEYAAABmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:25:31.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PopupManager.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\PopupManager.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\Code\\PopupManager.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\PopupManager.cs",
+              "RelativeToolTip": "EDS_V4\\Code\\PopupManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:25:31.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Match.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\Match.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\Code\\Match.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\Match.cs",
+              "RelativeToolTip": "EDS_V4\\Code\\Match.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAlwEwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:25:31.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PlayerManager.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\PlayerManager.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\Code\\PlayerManager.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\PlayerManager.cs",
+              "RelativeToolTip": "EDS_V4\\Code\\PlayerManager.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAswIgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:25:31.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\Player.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\Code\\Player.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\Player.cs",
+              "RelativeToolTip": "EDS_V4\\Code\\Player.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAArwDMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:25:31.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Host.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\Host.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\Code\\Host.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\Host.cs",
+              "RelativeToolTip": "EDS_V4\\Code\\Host.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCYAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:25:31.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Week.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\Week.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\Code\\Week.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\Week.cs",
+              "RelativeToolTip": "EDS_V4\\Code\\Week.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAIBJwDEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:25:31.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BonusQuestions.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\BonusQuestions.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\Code\\BonusQuestions.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\Code\\BonusQuestions.cs",
+              "RelativeToolTip": "EDS_V4\\Code\\BonusQuestions.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAiwEwAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:25:31.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "scrMatchesVm.cs",
+              "DocumentMoniker": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\ViewModels\\scrMatchesVm.cs",
+              "RelativeDocumentMoniker": "EDS_V4\\ViewModels\\scrMatchesVm.cs",
+              "ToolTip": "C:\\Users\\h.elfring\\Downloads\\Priv\u00E9\\EDS-Poule\\EDS_V4\\ViewModels\\scrMatchesVm.cs",
+              "RelativeToolTip": "EDS_V4\\ViewModels\\scrMatchesVm.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAcwEAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:25:31.611Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
