@@ -1,25 +1,22 @@
 ﻿using EDS_V4.Excel;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
+using VoetbalPoolsBase;
+using VoetbalPoolsBase.Interfaces;
 
 namespace EDS_V4.Code
 {
-    public class Host : Player
+    public class Host : Player, IHost
     {
         private Dictionary<string, Topscorer> Topscorers;
         public ExcelManager excelManager;
         public bool HostSet = false;
 
         public Host() : base("", "", null, null)
-        { 
+        {
             excelManager = new ExcelManager();
         }
 
-        public Dictionary<string, Topscorer> getTopscorers()
+        public Dictionary<string, Topscorer> GetTopscorers()
         {
             if (Topscorers.Count == 0)
                 setTopscorers();
@@ -27,8 +24,8 @@ namespace EDS_V4.Code
         }
 
         public void setTopscorers()
-        { 
-            Topscorers = new ExcelManager().readtopscorers();
+        {
+            Topscorers = new ExcelManager().readtopscorers(true);
         }
 
         public void setHost()
@@ -37,7 +34,7 @@ namespace EDS_V4.Code
             {
                 Topscorers = new Dictionary<string, Topscorer>();
                 Weeks = excelManager.ReadPredictions(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet, 0, host: true);
-                Questions = excelManager.ReadBonus(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet, true);
+                Questions = new(excelManager.ReadBonus(GeneralConfiguration.AdminFileLocation, ExcelConfiguration.HostSheet, true));
                 setTopscorers();
                 HostSet = true;
             }

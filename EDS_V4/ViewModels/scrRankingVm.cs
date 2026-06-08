@@ -4,9 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
+using VoetbalPoolsBase;
 
 namespace EDS_V4.ViewModels
 {
@@ -21,7 +20,7 @@ namespace EDS_V4.ViewModels
         public int Matches { get; set; }
         public int Bonus { get; set; }
         public int Postponement { get; set; }
-        
+
     }
     public class scrRankingVm : ViewModelBase
     {
@@ -46,7 +45,7 @@ namespace EDS_V4.ViewModels
         public scrRankingVm()
         {
             host = new Host();
-            Weeks = new List<int>() {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34};
+            Weeks = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34 };
             if (File.Exists(lastWeekCheckedFileName))
             {
                 string input = File.ReadAllText(lastWeekCheckedFileName);
@@ -69,14 +68,14 @@ namespace EDS_V4.ViewModels
             {
                 host.setHost();
                 scrPlayersVm.PlayerManager.CheckAllPlayers(host, StartWeek, EndWeek, PeriodCalculation);
-                string output = JsonSerializer.Serialize(new KeyValuePair<int,int>(StartWeek, EndWeek), new JsonSerializerOptions { WriteIndented = false });
+                string output = JsonSerializer.Serialize(new KeyValuePair<int, int>(StartWeek, EndWeek), new JsonSerializerOptions { WriteIndented = false });
                 File.WriteAllText(lastWeekCheckedFileName, output);
                 RefreshRanking();
                 PopupManager.ShowMessage("New ranking calculated");
             }
 
             catch (FileNotFoundException) { PopupManager.ShowMessage("Excel file does not exist"); }
-            catch (Exception e){ PopupManager.ShowMessage(e.Message); }
+            catch (Exception e) { PopupManager.ShowMessage(e.Message); }
         }
 
         public void ExportRanking()
@@ -89,7 +88,7 @@ namespace EDS_V4.ViewModels
 
         public void GetAverageScore()
         {
-            int res = scrPlayersVm.PlayerManager.GetAverageScore(EndWeek);
+            int res = GetAverageScore(EndWeek);
             PopupManager.ShowMessage("Average score: " + res);
         }
 
@@ -103,18 +102,78 @@ namespace EDS_V4.ViewModels
         private void RefreshRanking()
         {
             //sort players by score
-            scrPlayersVm.PlayerManager.RankPlayers(true);
-            scrPlayersVm.PlayerManager.RankPlayers(false);
+            RankPlayers(true);
+            RankPlayers(false);
             List<RankingField> rank = new List<RankingField>();
             foreach (Player player in scrPlayersVm.PlayerManager.Players)
             {
                 var playerweek = player.Weeks[EndWeek];
-                rank.Add(new RankingField() { Rank = player.Ranking, PreviousRank = player.PreviousRanking, RankingDifference = player.RankingDifference, Name = player.Name, Total = player.TotalScore, 
-                    WeekTotal=playerweek.WeekTotalScore, Matches = playerweek.WeekMatchesScore, 
-                    Bonus=playerweek.WeekBonusScore, Postponement=playerweek.WeekPostponementScore }) ;
+                rank.Add(new RankingField()
+                {
+                    Rank = player.Ranking,
+                    PreviousRank = player.PreviousRanking,
+                    RankingDifference = player.RankingDifference,
+                    Name = player.Name,
+                    Total = player.TotalScore,
+                    WeekTotal = playerweek.WeekTotalScore,
+                    Matches = playerweek.WeekMatchesScore,
+                    Bonus = playerweek.WeekBonusScore,
+                    Postponement = playerweek.WeekPostponementScore
+                });
             }
 
             Ranking = rank;
+        }
+
+        private void RankPlayers(bool previous)
+        {
+            if (previous)
+            {
+                scrPlayersVm.PlayerManager.Players = scrPlayersVm.PlayerManager.Players.OrderBy(p => p.PreviousScore).ToList();
+            }
+            else
+            {
+                scrPlayersVm.PlayerManager.Players = scrPlayersVm.PlayerManager.Players.OrderBy(p => p.TotalScore).ToList();
+            }
+
+            scrPlayersVm.PlayerManager.Players.Reverse();
+            int index = 1;
+            int ranking = 1;
+            int previousScore = 10000;
+
+            foreach (Player player in scrPlayersVm.PlayerManager.Players)
+            {
+                if (previous)
+                {
+                    if (player.PreviousScore < previousScore)
+                        ranking = index;
+
+                    player.PreviousRanking = ranking;
+                    previousScore = player.PreviousScore;
+                }
+
+                else
+                {
+                    if (player.TotalScore < previousScore)
+                        ranking = index;
+
+                    player.Ranking = ranking;
+                    previousScore = player.TotalScore;
+                }
+
+                player.RankingDifference = (player.Ranking - player.PreviousRanking) * -1;
+                index++;
+            }
+        }
+
+        private int GetAverageScore(int weeknr)
+        {
+            int total = 0;
+            foreach (var p in scrPlayersVm.PlayerManager.Players)
+            {
+                total += p.Weeks[weeknr].WeekMatchesScore;
+            }
+            return total / scrPlayersVm.PlayerManager.Players.Count;
         }
     }
 }

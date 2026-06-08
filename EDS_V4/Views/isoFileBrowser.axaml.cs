@@ -6,6 +6,7 @@ using Avalonia.Platform.Storage;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using VoetbalPoolsBase;
 
 namespace EDS_V4.Views
 {
@@ -56,7 +57,7 @@ namespace EDS_V4.Views
         private async Task<string[]> GetPaths()
         {
             var topLevel = TopLevel.GetTopLevel(this);
-            var directory = Path.GetDirectoryName(EDS_V4.Code.GeneralConfiguration.AdminFileLocation);
+            var directory = Path.GetDirectoryName(GeneralConfiguration.AdminFileLocation);
             List<string> results = new();
             if (string.IsNullOrEmpty(directory) || !Directory.Exists(directory))
                 directory = @"C:";

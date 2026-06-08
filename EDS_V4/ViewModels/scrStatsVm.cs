@@ -1,15 +1,12 @@
 ﻿using EDS_V4.Code;
 using ReactiveUI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reactive;
-using System.Text;
-using System.Threading.Tasks;
+using VoetbalPoolsBase;
 
 namespace EDS_V4.ViewModels
 {
-    public class StatsField 
+    public class StatsField
     {
         public string Name { get; set; }
         public int Number { get; set; }

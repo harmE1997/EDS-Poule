@@ -1,14 +1,9 @@
-﻿using EDS_V4.Code;
-using EDS_V4.Excel;
+﻿using EDS_V4.Excel;
 using ReactiveUI;
-using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.Json;
+using VoetbalPoolsBase;
+using VoetbalPoolsBase.Excel;
 
 namespace EDS_V4.ViewModels
 {
@@ -52,10 +47,10 @@ namespace EDS_V4.ViewModels
         public int HalfWayJump { get => configurables.HalfWayJump; set { this.RaiseAndSetIfChanged(ref configurables.HalfWayJump, value); SaveCommandEnabled = true; } }
         public int HostSheet { get => configurables.HostSheet; set { this.RaiseAndSetIfChanged(ref configurables.HostSheet, value); SaveCommandEnabled = true; } }
         public int RankingSheet { get => configurables.RankingSheet; set { this.RaiseAndSetIfChanged(ref configurables.RankingSheet, value); SaveCommandEnabled = true; } }
-        public int TopscorersSheet { get => configurables.TopscorersSheet; set { this.RaiseAndSetIfChanged (ref configurables.TopscorersSheet, value); SaveCommandEnabled = true; } }
+        public int TopscorersSheet { get => configurables.TopscorersSheet; set { this.RaiseAndSetIfChanged(ref configurables.TopscorersSheet, value); SaveCommandEnabled = true; } }
         public int BonusWeeksColumn { get => configurables.BonusWeeksColumn; set { this.RaiseAndSetIfChanged(ref configurables.BonusWeeksColumn, value); SaveCommandEnabled = true; } }
         public int BonusAnswerColumn { get => configurables.BonusAnswerColumn; set { this.RaiseAndSetIfChanged(ref configurables.BonusAnswerColumn, value); SaveCommandEnabled = true; } }
-        public int BonusStartRow { get => configurables.BonusStartRow; set { this.RaiseAndSetIfChanged (ref configurables.BonusStartRow, value); SaveCommandEnabled = true; } }
+        public int BonusStartRow { get => configurables.BonusStartRow; set { this.RaiseAndSetIfChanged(ref configurables.BonusStartRow, value); SaveCommandEnabled = true; } }
 
         private bool savecommandenabled;
         public bool SaveCommandEnabled { get => savecommandenabled; set => this.RaiseAndSetIfChanged(ref savecommandenabled, value); }
@@ -70,7 +65,7 @@ namespace EDS_V4.ViewModels
                 SaveFileLocation = savefilelocation,
                 AdminFileLocation = adminloc,
                 StartRow = 12,
-                FirstHalfSize = 17,          
+                FirstHalfSize = 17,
                 HomeColumn = 7,
                 OutColumn = 8,
                 PostponementColumn = 6,
@@ -111,7 +106,7 @@ namespace EDS_V4.ViewModels
                 return;
             }
             string input = File.ReadAllText(configeFileName);
-            configurables = JsonSerializer.Deserialize<Configurables>(input,jsonSerializerOptions);
+            configurables = JsonSerializer.Deserialize<Configurables>(input, jsonSerializerOptions);
             ConfigurablesToConfigurations();
         }
 
@@ -120,18 +115,18 @@ namespace EDS_V4.ViewModels
             GeneralConfiguration.AdminFileLocation = configurables.AdminFileLocation;
             GeneralConfiguration.SaveFileLocation = configurables.SaveFileLocation;
 
-            ExcelConfiguration.FirstHalfSize = configurables.FirstHalfSize;
-            ExcelConfiguration.HalfWayJump = configurables.HalfWayJump;
-            ExcelConfiguration.HomeColumn = configurables.HomeColumn;
+            ExcelBaseConfiguration.FirstHalfSize = configurables.FirstHalfSize;
+            ExcelBaseConfiguration.HalfWayJump = configurables.HalfWayJump;
+            ExcelBaseConfiguration.HomeColumn = configurables.HomeColumn;
             ExcelConfiguration.HostSheet = configurables.HostSheet;
-            ExcelConfiguration.OutColumn = configurables.OutColumn;
-            ExcelConfiguration.PostponementColumn = configurables.PostponementColumn;
-            ExcelConfiguration.RankingSheet = configurables.RankingSheet;
-            ExcelConfiguration.StartRow = configurables.StartRow;
-            ExcelConfiguration.TopscorersSheet = configurables.TopscorersSheet;
-            ExcelConfiguration.BonusStartRow = configurables.BonusStartRow;
-            ExcelConfiguration.BonusAnswerColumn = configurables.BonusAnswerColumn;
-            ExcelConfiguration.BonusWeeksColumn = configurables.BonusWeeksColumn;           
+            ExcelBaseConfiguration.OutColumn = configurables.OutColumn;
+            ExcelBaseConfiguration.PostponementColumn = configurables.PostponementColumn;
+            ExcelBaseConfiguration.RankingSheet = configurables.RankingSheet;
+            ExcelBaseConfiguration.StartRow = configurables.StartRow;
+            ExcelBaseConfiguration.TopscorersSheet = configurables.TopscorersSheet;
+            ExcelBaseConfiguration.BonusStartRow = configurables.BonusStartRow;
+            ExcelBaseConfiguration.BonusAnswerColumn = configurables.BonusAnswerColumn;
+            ExcelBaseConfiguration.BonusRoundsColumn = configurables.BonusWeeksColumn;
         }
     }
 }

@@ -76,4 +76,7 @@
 	<ItemGroup>
 	  <Content Include="Assets\Icons\eredivisie.ico" />
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\VoetbalPoolsBase\VoetbalPoolsBase\VoetbalPoolsBase.csproj" />
+	</ItemGroup>
 </Project>

@@ -2,11 +2,9 @@
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using VoetbalPoolsBase;
 
 namespace EDS_V4.ViewModels
 {
@@ -14,20 +12,20 @@ namespace EDS_V4.ViewModels
     {
         private Views.TotoForm totoForm;
         private bool existingPlayer = false;
-        public static PlayerManager PlayerManager { get; private set; }
+        public static PlayerManager<Player, BonusQuestions> PlayerManager { get; private set; }
 
         private List<string> players;
         public List<string> Players { get => players; set => this.RaiseAndSetIfChanged(ref players, value); }
 
         private string selectedPlayer;
-        public string SelectedPlayer { get => selectedPlayer; set => this.RaiseAndSetIfChanged(ref  selectedPlayer, value); }
+        public string SelectedPlayer { get => selectedPlayer; set => this.RaiseAndSetIfChanged(ref selectedPlayer, value); }
 
         public ReactiveCommand<Unit, Unit> LoadPlayerCommand { get; private set; }
         public ReactiveCommand<Unit, Unit> RemovePlayerCommand { get; private set; }
 
         public scrPlayersVm()
-        { 
-            PlayerManager = new PlayerManager();
+        {
+            PlayerManager = new PlayerManager<Player, BonusQuestions>();
             SettingsVm.SettingsEvent += SettingsChangedEvent;
 
             var PlayerCommandsCanExecute = this.WhenAnyValue(
@@ -39,8 +37,8 @@ namespace EDS_V4.ViewModels
         }
 
         public void NewPlayerCommand()
-        { 
-            totoForm = new Views.TotoForm();         
+        {
+            totoForm = new Views.TotoForm();
             totoForm.Closed += TotoClosedEvent;
             totoForm.Show();
         }
@@ -59,7 +57,7 @@ namespace EDS_V4.ViewModels
         }
 
         private void cmdLoadPlayer()
-        {   
+        {
             totoForm = new Views.TotoForm(PlayerManager.FindPlayer(SelectedPlayer));
             totoForm.Closed += TotoClosedEvent;
             existingPlayer = true;
@@ -79,7 +77,7 @@ namespace EDS_V4.ViewModels
                 PopupManager.ShowMessage("Player succesfully Created/Saved");
             }
 
-            else if(res == 1) { PopupManager.ShowMessage("Cannot create/save player. Invalid player"); }
+            else if (res == 1) { PopupManager.ShowMessage("Cannot create/save player. Invalid player"); }
             else
                 PopupManager.ShowMessage("Cannot create/save player. No permission to overwrite");
         }
@@ -91,10 +89,10 @@ namespace EDS_V4.ViewModels
         }
 
         private void RefreshPlayers()
-        { 
+        {
             List<string> playernames = new List<string>();
-            foreach (var player in PlayerManager.Players) 
-            { 
+            foreach (var player in PlayerManager.Players)
+            {
                 playernames.Add(player.Name);
             }
 

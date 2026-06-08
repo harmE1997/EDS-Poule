@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using VoetbalPoolsBase;
 
 namespace EDS_V4.Code
 {
@@ -34,30 +31,30 @@ namespace EDS_V4.Code
             WeekTotalScore = WeekMatchesScore + WeekBonusScore + WeekPostponementScore;
         }
 
-        public Dictionary<int,int> Checkweek(Player host, BonusQuestions questions, Dictionary<string, Topscorer> topscorers, int currentcheckingweek, bool periodCalculation)
+        public Dictionary<int, int> Checkweek(Player host, BonusQuestions questions, Dictionary<string, Topscorer> topscorers, int currentcheckingweek, bool periodCalculation)
         {
             Week hostweek = host.Weeks[Weeknr];
             WeekMatchesScore = 0;
             WeekBonusScore = 0;
             Dictionary<int, int> postponementscores = new Dictionary<int, int>();
-            for(int counter = 0; counter < Matches.Length; counter++)
+            for (int counter = 0; counter < Matches.Length; counter++)
             {
                 var hostmatch = hostweek.Matches[counter];
                 int matchscore = Matches[counter].CheckMatch(hostmatch);
 
-                if((hostmatch.Postponement > 0 && currentcheckingweek == Weeknr) || hostmatch.Postponement == 0)
+                if ((hostmatch.Postponement > 0 && currentcheckingweek == Weeknr) || hostmatch.Postponement == 0)
                     WeekMatchesScore += matchscore;
 
                 if (hostmatch.Postponement > 0 && hostmatch.Postponement <= currentcheckingweek)
                 {
-                    if(postponementscores.ContainsKey(hostmatch.Postponement))
+                    if (postponementscores.ContainsKey(hostmatch.Postponement))
                         postponementscores[hostmatch.Postponement] += matchscore;
                     else
                         postponementscores.Add(hostmatch.Postponement, matchscore);
                 }
             }
 
-            if(!periodCalculation)
+            if (!periodCalculation)
                 WeekBonusScore = questions.CheckBonus(host.Questions, Weeknr, topscorers);
             return postponementscores;
         }

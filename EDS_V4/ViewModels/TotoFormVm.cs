@@ -4,6 +4,7 @@ using ReactiveUI;
 using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Linq;
+using VoetbalPoolsBase;
 
 namespace EDS_V4.ViewModels
 {
@@ -148,7 +149,7 @@ namespace EDS_V4.ViewModels
                 var bonus = em.ReadBonus(PredictionsFileName, 1);
                 if (bonus == null)
                     return;
-                ActivePlayer.Questions = bonus;
+                ActivePlayer.Questions = new(bonus);
 
                 this.RaisePropertyChanged(nameof(Champion));
                 this.RaisePropertyChanged(nameof(Nr16));
@@ -185,7 +186,7 @@ namespace EDS_V4.ViewModels
 
                 weeks.Add(i, new Week(i, matches));
             }
-            return new Player("", "", weeks, new BonusQuestions(new string[13], new int[13]));
+            return new Player("", "", weeks, new BonusQuestions(new Dictionary<string, int>()));
         }
 
         private void SetCurrentWeek(int value)
