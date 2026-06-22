@@ -187,7 +187,7 @@ namespace EDS_V4.ViewModels
 
                 weeks.Add(i, new Week(i, matches));
             }
-            return new Player("", "", weeks, new BonusQuestions(new Dictionary<string, int>()));
+            return new Player("", "", weeks, new BonusQuestions(new List<KeyValuePair<string, int>>()));
         }
 
         private void SetCurrentWeek(int value)

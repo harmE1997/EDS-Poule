@@ -31,7 +31,7 @@ namespace EDS_V4.Code
             //this parameterless constructor is used for json deserialization. Do not use it for implementations!
         }
 
-        public BonusQuestions(Dictionary<string, int> rawanswers)
+        public BonusQuestions(List<KeyValuePair<string, int>> rawanswers)
         {
             var answers = new List<string>();
             var weeks = new List<int>();
@@ -44,8 +44,13 @@ namespace EDS_V4.Code
 
             if (rawanswers.Count == 13)
             {
-                answers = rawanswers.Keys.ToList();
-                weeks = rawanswers.Values.ToList();
+                answers = new();
+                weeks = new();
+                foreach (var pair in rawanswers)
+                {
+                    answers.Add(pair.Key);
+                    weeks.Add(pair.Value);
+                }
             }
 
             Answers = new Dictionary<BonusKeys, BonusQuestion>()
