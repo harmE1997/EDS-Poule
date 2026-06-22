@@ -1,6 +1,7 @@
 ﻿using Avalonia.Controls;
 using EDS_V4.Code;
 using ReactiveUI;
+using ReactiveUI.Avalonia;
 using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Linq;
@@ -92,15 +93,15 @@ namespace EDS_V4.ViewModels
 
             var NextWeekCommandCanExecute = this.WhenAnyValue(
                 x => x.CurrentWeek,
-                (a) => { return a < 34; }).ObserveOn(RxApp.MainThreadScheduler);
+                (a) => { return a < 34; }).ObserveOn(RxSchedulers.MainThreadScheduler);
 
             var PreviousWeekCommandCanExecute = this.WhenAnyValue(
                 x => x.CurrentWeek,
-                (a) => { return a > 1; }).ObserveOn(RxApp.MainThreadScheduler);
+                (a) => { return a > 1; }).ObserveOn(RxSchedulers.MainThreadScheduler);
 
             var ReadExcelCommandCanExecute = this.WhenAnyValue(
                 x => x.PredictionsFileName,
-                (a) => { return !string.IsNullOrEmpty(a); }).ObserveOn(RxApp.MainThreadScheduler);
+                (a) => { return !string.IsNullOrEmpty(a); }).ObserveOn(RxSchedulers.MainThreadScheduler);
 
             NextWeekCommand = ReactiveCommand.Create(() => { this.ChangeWeek(1); }, NextWeekCommandCanExecute);
             PreviousWeekCommand = ReactiveCommand.Create(() => { this.ChangeWeek(-1); }, PreviousWeekCommandCanExecute);

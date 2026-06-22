@@ -30,7 +30,7 @@ namespace EDS_V4.ViewModels
 
             var PlayerCommandsCanExecute = this.WhenAnyValue(
                 x => x.SelectedPlayer,
-                (a) => { return !string.IsNullOrEmpty(a); }).ObserveOn(RxApp.MainThreadScheduler);
+                (a) => { return !string.IsNullOrEmpty(a); }).ObserveOn(RxSchedulers.MainThreadScheduler);
 
             LoadPlayerCommand = ReactiveCommand.Create(() => { this.cmdLoadPlayer(); }, PlayerCommandsCanExecute);
             RemovePlayerCommand = ReactiveCommand.Create(() => { this.cmdRemovePlayer(); }, PlayerCommandsCanExecute);

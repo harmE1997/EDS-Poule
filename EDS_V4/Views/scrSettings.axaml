@@ -66,8 +66,10 @@
 			<TextBlock Text="Bonus - WeeksColumn" Grid.Column="2" Grid.Row="5" />
 			<TextBox Text="{Binding BonusWeeksColumn}" Grid.Column="3" Grid.Row="5"/>
 			<TextBlock Text="Bonus - StartRow" Grid.Column="2" Grid.Row="6" />
-			<TextBox Text="{Binding BonusStartRow}" Grid.Column="3" Grid.Row="6"/>	
-		</Grid>
+			<TextBox Text="{Binding BonusStartRow}" Grid.Column="3" Grid.Row="6"/>
+      <TextBlock Text="Number of bonusquestions" Grid.Column="2" Grid.Row="7" />
+      <TextBox Text="{Binding NrBonusAnswers}" Grid.Column="3" Grid.Row="7"/>
+    </Grid>
 		<Button Content="Save Settings" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Grid.Row="1" Grid.ColumnSpan="2" Command="{Binding SaveSettingsCommand}" IsEnabled="{Binding SaveCommandEnabled}"/>
 	</Grid>
 </UserControl>

@@ -1,5 +1,5 @@
 ﻿using Avalonia;
-using Avalonia.ReactiveUI;
+using ReactiveUI.Avalonia;
 using System;
 
 namespace EDS_V4
@@ -18,6 +18,10 @@ namespace EDS_V4
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .LogToTrace()
-                .UseReactiveUI();
+                .UseReactiveUI(rxAppBuilder =>
+                {
+                    // Optional: Automatically wire up Views to ViewModels
+                    rxAppBuilder.WithViewsFromAssembly(System.Reflection.Assembly.GetExecutingAssembly());
+                });
     }
 }

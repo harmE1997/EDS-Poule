@@ -36,10 +36,13 @@ namespace EDS_V4.Code
             var answers = new List<string>();
             var weeks = new List<int>();
 
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 13; i++)
+            {
                 answers.Add(string.Empty);
+                weeks.Add(34);
+            }
 
-            if (rawanswers.Count == 12)
+            if (rawanswers.Count == 13)
             {
                 answers = rawanswers.Keys.ToList();
                 weeks = rawanswers.Values.ToList();

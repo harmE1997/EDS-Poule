@@ -23,6 +23,7 @@ namespace EDS_V4.ViewModels
         public int BonusWeeksColumn;
         public int BonusAnswerColumn;
         public int BonusStartRow;
+        public int NrBonusAnswers;
     }
     public class SettingsVm : ViewModelBase
     {
@@ -51,6 +52,7 @@ namespace EDS_V4.ViewModels
         public int BonusWeeksColumn { get => configurables.BonusWeeksColumn; set { this.RaiseAndSetIfChanged(ref configurables.BonusWeeksColumn, value); SaveCommandEnabled = true; } }
         public int BonusAnswerColumn { get => configurables.BonusAnswerColumn; set { this.RaiseAndSetIfChanged(ref configurables.BonusAnswerColumn, value); SaveCommandEnabled = true; } }
         public int BonusStartRow { get => configurables.BonusStartRow; set { this.RaiseAndSetIfChanged(ref configurables.BonusStartRow, value); SaveCommandEnabled = true; } }
+        public int NrBonusAnswers { get => configurables.NrBonusAnswers; set { this.RaiseAndSetIfChanged(ref configurables.NrBonusAnswers, value); SaveCommandEnabled = true; } }
 
         private bool savecommandenabled;
         public bool SaveCommandEnabled { get => savecommandenabled; set => this.RaiseAndSetIfChanged(ref savecommandenabled, value); }
@@ -75,7 +77,8 @@ namespace EDS_V4.ViewModels
                 TopscorersSheet = 8,
                 BonusStartRow = 365,
                 BonusAnswerColumn = 7,
-                BonusWeeksColumn = 10
+                BonusWeeksColumn = 10,
+                NrBonusAnswers = 13
             };
             configurables = new();
             ReadConfigFromXml();
@@ -127,6 +130,7 @@ namespace EDS_V4.ViewModels
             ExcelBaseConfiguration.BonusStartRow = configurables.BonusStartRow;
             ExcelBaseConfiguration.BonusAnswerColumn = configurables.BonusAnswerColumn;
             ExcelBaseConfiguration.BonusRoundsColumn = configurables.BonusWeeksColumn;
+            ExcelBaseConfiguration.NrBonusAnswers = configurables.NrBonusAnswers;
         }
     }
 }

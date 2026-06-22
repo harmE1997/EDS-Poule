@@ -16,6 +16,9 @@ namespace EDS_V4.Code
         }
         public Player(string name, string woonplaats, Dictionary<int, Week> weeks, BonusQuestions questions)
         {
+            Name = name;
+            Town = woonplaats;
+            Questions = questions;
             Weeks = weeks;
             PreviousScore = 0;
             PreviousRanking = 0;
