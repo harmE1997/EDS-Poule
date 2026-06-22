@@ -44,8 +44,8 @@ namespace EDS_V4.Code
 
             if (rawanswers.Count == 13)
             {
-                answers = new();
-                weeks = new();
+                answers.Clear();
+                weeks.Clear();
                 foreach (var pair in rawanswers)
                 {
                     answers.Add(pair.Key);
